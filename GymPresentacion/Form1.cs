@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GymNegocio;
 
-namespace GymPresentacion
+namespace GymPresentacion // nombre importante
 {
     public partial class Form1 : Form
     {
@@ -18,71 +18,163 @@ namespace GymPresentacion
         public Form1()
         {
             InitializeComponent();
-            _servicioMembresia = new Servicio_Membresia();
-            CargarMembresia();
-            ConfigurarDataGridView();
-            AsignarEventosBotones();
+            _servicioMembresia = new Servicio_Membresia(); // instaciacion 
+            ConfigurarDataGridView();// donde se muestra los datos
+            ConfigurarComboBoxTipoMembresia(); // opciones para los tipos Mensual Y Anual
+            ConfigurarMaskedTextBoxTelefono();//telefono y captura de error para el mismo 
+            CargarMembresia();//para membresias existentes 
+            AsignarEventosBotones();//conctar los eventos de los botones con sus funciones 
         }
 
         private void CargarMembresia()
         {
-            try
+            try// cpatura de error 
             {
-                List<Membresia> membresias = _servicioMembresia.ObtenerTodasLasMembresias();
+                List<Membresia> membresias = _servicioMembresia.ObtenerTodasLasMembresias();//Lamada para obtener membresias 
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = membresias;
 
             }
-            catch (Exception ex)
+            catch (Exception ex)//Captura de error
             {
-                MessageBox.Show($"Error al Cargar las memebresias: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al Cargar las membresias: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void ConfigurarDataGridView()
+        private void ConfigurarDataGridView() //configuracion para el DataGridView
         {
-            
+            dataGridView1.AutoGenerateColumns = false; // no permite general columnas de forma automatica 
+            dataGridView1.Columns.Clear();
+
+            //Como seran las columnas 
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Id",
+                HeaderText = "ID",
+                Width = 50
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Nombre",
+                HeaderText = "Nombre",
+                Width = 150
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "TipoMembresia",
+                HeaderText = " Tipo",
+                Width = 80
+
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "FechaInicio",
+                HeaderText = " Inicio",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "FechaFin",
+                HeaderText = "Vencimiento",
+                Width = 100,
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "CostoTotal",
+                HeaderText = "Costo",
+                Width = 100,
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewCheckBoxColumn
+            {
+                DataPropertyName = "Activa",
+                HeaderText = "Activa",
+                Width = 60
+            });
         }
 
+        //EVENTOS PARA LOS BOTONES 
         private void AsignarEventosBotones()
         {
-            btnAgregar.Click -= BtnAgregar_Click;
-            btnAgregar.Click += BtnAgregar_Click;
+            if (btnAgregar != null)// para ver si se creo el boton
+            {
+                btnAgregar.Click -= BtnAgregar_Click;
+                btnAgregar.Click += BtnAgregar_Click;
+            }
 
-            btnEditar.Click -= BtnEditar_Click;
-            btnEditar.Click += BtnEditar_Click;
+            if (btnEditar != null)
+            {
+                btnEditar.Click -= BtnEditar_Click;
+                btnEditar.Click += BtnEditar_Click;
+            }
 
-            btnEliminar.Click -= BtnEliminar_Click;
-            btnEliminar.Click += BtnEliminar_Click;
+            if (btnEliminar != null)
+            {
 
-            dataGridView1.SelectionChanged -= DataGridView1_SelectionChanged;
-            dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
+                btnEliminar.Click -= BtnEliminar_Click;
+                btnEliminar.Click += BtnEliminar_Click;
+            }
+
+            if (dataGridView1 != null)
+            {
+                dataGridView1.SelectionChanged -= DataGridView1_SelectionChanged;
+                dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
+            }
         }
-       
-      public void BtnAgregar_Click(object sender, EventArgs e)
+
+        public void BtnAgregar_Click(object sender, EventArgs e) //AGREGAR NUEVA MEMEBRSIA 
         {
-            try
+            try //Captura de error
             {
 
                 //para validar datos de antrada 
                 if (string.IsNullOrWhiteSpace(txtNombreCliente.Text) ||
-                    string.IsNullOrWhiteSpace(txtTipoMembresia.Text) ||
-                    !DateTime.TryParse(txtFechaInicio.Text, out DateTime fechaInicio)||
-                    !decimal.TryParse(txtCostoTotal.Text, out decimal costoTotal))
+                   cmbTipoMembresia.SelectedItem == null ||
+                    string.IsNullOrWhiteSpace(mtxtTelefono.Text))
+
                 {
                     MessageBox.Show("Por Favor, rellenar todos los campos correctamente. La fecha debe ser valida. ", " Error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                Membresia nuevaMembresia;
-                string tipoMembresiaInput = txtTipoMembresia.Text.Trim().ToLower();
 
-                if(tipoMembresiaInput == "anual")
+                if (!mtxtTelefono.MaskCompleted)
                 {
-                    nuevaMembresia = new Anual(fechaInicio, Convert.ToDecimal(txtCostoTotal), txtNombreCliente.Text.Trim()); 
+                    MessageBox.Show("Por favor, complete el número de teléfono.",
+                                  "Teléfono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    mtxtTelefono.Focus();
+                    return;
+                }
+
+                if (!ValidarTelefono(mtxtTelefono.Text))
+                {
+                    MessageBox.Show("El número de teléfono no es válido. Debe usar un código de área válido (809, 829, 849).",
+                                  "Teléfono Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    mtxtTelefono.Focus();
+                    return;
+                }
+
+
+                DateTime fechaInicio = dateTimePickerInicio.Value.Date;
+                string nombreCliente = txtNombreCliente.Text.Trim();
+                string telefonoCliente = mtxtTelefono.Text.Trim();
+
+                Membresia nuevaMembresia;
+                string tipoMembresiaInput = cmbTipoMembresia.SelectedItem.ToString().ToLower();
+
+                if (tipoMembresiaInput == "anual")
+                {
+                    nuevaMembresia = new Anual(fechaInicio, nombreCliente, telefonoCliente);
                 }
                 else if (tipoMembresiaInput == "mensual")
                 {
-                 nuevaMembresia = new Mensual(fechaInicio, Convert.ToDecimal(txtCostoTotal), txtNombreCliente.Text.Trim());    
+                    nuevaMembresia = new Mensual(fechaInicio, nombreCliente, telefonoCliente);
                 }
                 else
                 {
@@ -90,26 +182,26 @@ namespace GymPresentacion
                     return;
                 }
 
-                    _servicioMembresia.RegistrarMembresia(nuevaMembresia);
-                MessageBox.Show("Membresia agregada con exito.", "Exito",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                _servicioMembresia.RegistrarMembresia(nuevaMembresia);
+                MessageBox.Show("Membresia agregada con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 LimpiarCampos();
                 CargarMembresia();
 
             }
-            catch (Exception ex)
+            catch (Exception ex) //Captura de error 
             {
                 MessageBox.Show($"Error al agregar la membresia: {ex.Message} ", " Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void BtnEditar_Click(object sender, EventArgs e)
+        private void BtnEditar_Click(object sender, EventArgs e)//EDITAR MEMBRESIAS QUE YA EXISTEN O FUERON CREADAS 
         {
-            try
+            try//captura de error 
             {
                 if (dataGridView1.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Por Favor, seleccionar una memebresia para editar.", " Seleccion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por Favor, seleccionar una membresia para editar.", " Seleccion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -122,16 +214,33 @@ namespace GymPresentacion
                 }
                 // Agrega validación para el costo
                 if (string.IsNullOrWhiteSpace(txtNombreCliente.Text) ||
-                    string.IsNullOrWhiteSpace(txtTipoMembresia.Text) ||
-                    !DateTime.TryParse(txtFechaInicio.Text, out DateTime fechaInicioActualizada) ||
-                    !decimal.TryParse(txtCostoTotal.Text, out decimal costoTotalActualizado))
+                    cmbTipoMembresia.SelectedItem == null ||
+                    string.IsNullOrWhiteSpace(mtxtTelefono.Text))
                 {
                     MessageBox.Show("Por favor, Completa Nombre, Tipo de Cliente y una fecha de Inicio Valida para actualizar.", " Datos Imcompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
 
                 }
+
+                if (!mtxtTelefono.MaskCompleted)
+                {
+                    MessageBox.Show("Por favor, complete el número de teléfono.",
+                                  "Teléfono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    mtxtTelefono.Focus();
+                    return;
+                }
+
+                if (!ValidarTelefono(mtxtTelefono.Text))
+                {
+                    MessageBox.Show("El número de teléfono no es válido.",
+                                  "Teléfono Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    mtxtTelefono.Focus();
+                    return;
+                }
+
+                DateTime fechaInicioActualizada = dateTimePickerInicio.Value.Date;
                 DateTime fechaFinActualizada;
-                string tipoMembresiaLower = txtTipoMembresia.Text.Trim().ToLower(); // Convertir a minúsculas para comparar
+                string tipoMembresiaLower = cmbTipoMembresia.SelectedItem.ToString().ToLower(); // Convertir a minúsculas para comparar
 
                 if (tipoMembresiaLower == "anual")
                 {
@@ -151,8 +260,8 @@ namespace GymPresentacion
 
                 membresiaAEditar.Nombre = txtNombreCliente.Text.Trim();
                 membresiaAEditar.FechaInicio = fechaInicioActualizada;
-                membresiaAEditar.FechaFin = fechaFinActualizada; 
-                membresiaAEditar.CostoTotal = costoTotalActualizado;
+                membresiaAEditar.Telefono = mtxtTelefono.Text.Trim();
+                membresiaAEditar.FechaFin = fechaFinActualizada;
 
                 _servicioMembresia.ActualizarMembresia(membresiaAEditar);
                 MessageBox.Show("Membresia Actualizada exitosamente.", " Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -160,27 +269,27 @@ namespace GymPresentacion
                 CargarMembresia();
 
             }
-            catch (Exception ex)
+            catch (Exception ex)//captura de error
             {
                 MessageBox.Show($" Error al Actualizar la membresia: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
 
-        private void BtnEliminar_Click(object sender, EventArgs e)
+        private void BtnEliminar_Click(object sender, EventArgs e)//ELIMINAR MEMEBRESIAS QUE ESTAN CREADAS 
         {
-            try
+            try//Captura de error
             {
-                if(dataGridView1.SelectedRows.Count == 0)
+                if (dataGridView1.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Selecciona una memebresia de la para Eliminar.", " Ninguna Seleccion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Selecciona una membresia para Eliminar.", " Ninguna Seleccion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
 
                 }
                 Membresia membresiaAEliminar = dataGridView1.SelectedRows[0].DataBoundItem as Membresia;
                 if (membresiaAEliminar == null)
                 {
-                    MessageBox.Show(" No se pudo obtener la membresia seleccionada para eliminar.","Error Interno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(" No se pudo obtener la membresia seleccionada para eliminar.", "Error Interno", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -190,7 +299,7 @@ namespace GymPresentacion
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
 
-                if ( resultado == DialogResult.Yes )
+                if (resultado == DialogResult.Yes)
                 {
                     _servicioMembresia.EliminarMembresia(membresiaAEliminar.Id);
                     MessageBox.Show("Membresia Eliminada exitosamente.", " Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -200,7 +309,7 @@ namespace GymPresentacion
                 }
             }
 
-            catch(Exception ex)
+            catch (Exception ex)//captura de error 
             {
                 MessageBox.Show($"Error al Eliminar la membresia: {ex.Message}", " Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -214,10 +323,9 @@ namespace GymPresentacion
                 if (membresiaSeleccionada != null)
                 {
                     txtNombreCliente.Text = membresiaSeleccionada.Nombre;
-                    txtTipoMembresia.Text = membresiaSeleccionada.TipoMembresia;
-                    txtFechaInicio.Text = membresiaSeleccionada.FechaInicio.ToShortDateString();
-                    txtCostoTotal.Text = membresiaSeleccionada.CostoTotal.ToString("F2");
-
+                    cmbTipoMembresia.SelectedItem = membresiaSeleccionada.TipoMembresia;
+                    mtxtTelefono.Text = membresiaSeleccionada.Telefono;
+                    dateTimePickerInicio.Value = membresiaSeleccionada.FechaInicio;
                 }
             }
             else
@@ -227,17 +335,73 @@ namespace GymPresentacion
 
         }
 
-
-
-        private void LimpiarCampos()
+        private void ConfigurarComboBoxTipoMembresia()//configuracion del combo box 
         {
-            txtNombreCliente.Clear();
-            txtTipoMembresia.Clear();
-            txtFechaInicio.Clear();
-            txtCostoTotal.Clear();
+            cmbTipoMembresia.Items.Clear();
 
+            //hecho para que permita seleccionar una de las dos opciones y no escribir en el
+            cmbTipoMembresia.Items.Add("Mensual");//opcion MENSUAL
+            cmbTipoMembresia.Items.Add("Anual");//opcion Anual
+            cmbTipoMembresia.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipoMembresia.SelectedIndex = -1;
 
         }
+
+        //Poner modificaciones para el telefono
+        private void ConfigurarMaskedTextBoxTelefono()
+        {
+            //esto es para obligar a completar con ese formato establecido 
+            mtxtTelefono.Mask = "(000) 000-0000";
+            mtxtTelefono.PromptChar = '_';
+            mtxtTelefono.ResetOnPrompt = true;
+            mtxtTelefono.ResetOnSpace = true;
+            mtxtTelefono.SkipLiterals = true;
+
+            mtxtTelefono.Text = "";
+
+            mtxtTelefono.Leave += MtxtTelefono_Leave;
+        }
+
+        private void MtxtTelefono_Leave(object sender, EventArgs e)
+            //cpatura de error para evitar que dejen campos vacios o incompletos 
+        {
+            MaskedTextBox mtxt = sender as MaskedTextBox;
+
+            if (!mtxt.MaskCompleted && !string.IsNullOrWhiteSpace(mtxt.Text))
+            {
+                MessageBox.Show("Por favor, complete el número de teléfono correctamente.",
+                               "Teléfono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                mtxt.Focus(); 
+            }
+        }
+        private bool ValidarTelefono(string telefono)
+        {
+            string telefonoLimpio = telefono.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
+
+            // Validar que tenga exactamente  los 10 digitos 
+            if (telefonoLimpio.Length != 10)
+            {
+                return false;
+            }
+
+            // Validar que todos sean  numeros 
+            if (!telefonoLimpio.All(char.IsDigit))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private void LimpiarCampos()// limpia los campos de las cjas de textos
+        {
+            txtNombreCliente.Clear();
+            cmbTipoMembresia.SelectedItem = -1;
+            mtxtTelefono.Clear();
+            dateTimePickerInicio.Value = DateTime.Now;
+
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -254,6 +418,36 @@ namespace GymPresentacion
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombreCliente_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTipoMembresia_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbTipoMembresia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTelefonoCliente_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTelefono_Click(object sender, EventArgs e)
         {
 
         }

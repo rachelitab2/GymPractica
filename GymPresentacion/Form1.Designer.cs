@@ -40,6 +40,7 @@ namespace GymPresentacion
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             lblTitulo = new Label();
             lblName = new Label();
             lblCliente = new Label();
@@ -47,127 +48,188 @@ namespace GymPresentacion
             btnEliminar = new Button();
             dataGridView1 = new DataGridView();
             txtNombreCliente = new TextBox();
-            txtTipoMembresia = new TextBox();
-            txtFechaInicio = new TextBox();
             btnAgregar = new Button();
             lblFechaInicio = new Label();
-            txtCostoTotal = new TextBox();
+            dateTimePickerInicio = new DateTimePicker();
+            lblTelefono = new Label();
+            cmbTipoMembresia = new ComboBox();
+            mtxtTelefono = new MaskedTextBox();
             ((ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Location = new Point(389, 41);
+            lblTitulo.BackColor = Color.Black;
+            lblTitulo.Font = new Font("Perpetua Titling MT", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = Color.White;
+            lblTitulo.Location = new Point(701, 24);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(74, 20);
+            lblTitulo.Size = new Size(304, 56);
             lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "Gymnasio";
+            lblTitulo.Text = "GYMNASIO";
             // 
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(462, 108);
+            lblName.BackColor = Color.Black;
+            lblName.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblName.ForeColor = Color.White;
+            lblName.Location = new Point(1053, 148);
             lblName.Name = "lblName";
-            lblName.Size = new Size(64, 20);
+            lblName.Size = new Size(94, 25);
             lblName.TabIndex = 1;
             lblName.Text = "Nombre";
             // 
             // lblCliente
             // 
             lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(462, 154);
+            lblCliente.BackColor = Color.Black;
+            lblCliente.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCliente.ForeColor = Color.White;
+            lblCliente.Location = new Point(1053, 224);
             lblCliente.Name = "lblCliente";
-            lblCliente.Size = new Size(85, 20);
+            lblCliente.Size = new Size(82, 25);
             lblCliente.TabIndex = 2;
-            lblCliente.Text = "TipoCliente";
+            lblCliente.Text = "Cliente";
             lblCliente.Click += label3_Click;
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(74, 362);
+            btnEditar.BackColor = Color.Black;
+            btnEditar.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEditar.ForeColor = Color.White;
+            btnEditar.Location = new Point(607, 650);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(98, 28);
+            btnEditar.Size = new Size(174, 62);
             btnEditar.TabIndex = 3;
             btnEditar.Text = "Editar";
-            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.UseVisualStyleBackColor = false;
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(208, 361);
+            btnEliminar.BackColor = Color.Black;
+            btnEliminar.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEliminar.ForeColor = Color.White;
+            btnEliminar.Location = new Point(831, 650);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(94, 29);
+            btnEliminar.Size = new Size(174, 62);
             btnEliminar.TabIndex = 4;
             btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += button2_Click;
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.BackgroundColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(65, 77);
+            dataGridView1.GridColor = SystemColors.ScrollBar;
+            dataGridView1.Location = new Point(31, 105);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(374, 265);
+            dataGridView1.Size = new Size(974, 453);
             dataGridView1.TabIndex = 5;
             // 
             // txtNombreCliente
             // 
-            txtNombreCliente.Location = new Point(553, 105);
+            txtNombreCliente.BackColor = Color.White;
+            txtNombreCliente.Location = new Point(1216, 146);
             txtNombreCliente.Name = "txtNombreCliente";
-            txtNombreCliente.Size = new Size(125, 27);
+            txtNombreCliente.Size = new Size(296, 27);
             txtNombreCliente.TabIndex = 6;
-            // 
-            // txtTipoMembresia
-            // 
-            txtTipoMembresia.Location = new Point(553, 147);
-            txtTipoMembresia.Name = "txtTipoMembresia";
-            txtTipoMembresia.Size = new Size(125, 27);
-            txtTipoMembresia.TabIndex = 7;
-            // 
-            // txtFechaInicio
-            // 
-            txtFechaInicio.Location = new Point(553, 202);
-            txtFechaInicio.Name = "txtFechaInicio";
-            txtFechaInicio.Size = new Size(125, 27);
-            txtFechaInicio.TabIndex = 8;
+            txtNombreCliente.TextChanged += txtNombreCliente_TextChanged;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(516, 313);
+            btnAgregar.BackColor = Color.Black;
+            btnAgregar.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregar.ForeColor = Color.White;
+            btnAgregar.Location = new Point(1372, 650);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(94, 29);
+            btnAgregar.Size = new Size(177, 62);
             btnAgregar.TabIndex = 9;
             btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.UseVisualStyleBackColor = false;
             // 
             // lblFechaInicio
             // 
             lblFechaInicio.AutoSize = true;
-            lblFechaInicio.Location = new Point(462, 202);
+            lblFechaInicio.BackColor = Color.Black;
+            lblFechaInicio.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFechaInicio.ForeColor = Color.White;
+            lblFechaInicio.Location = new Point(1053, 310);
             lblFechaInicio.Name = "lblFechaInicio";
-            lblFechaInicio.Size = new Size(83, 20);
+            lblFechaInicio.Size = new Size(129, 25);
             lblFechaInicio.TabIndex = 10;
             lblFechaInicio.Text = "FechaInicio";
             lblFechaInicio.Click += label4_Click;
             // 
-            // txtCostoTotal
+            // dateTimePickerInicio
             // 
-            txtCostoTotal.Location = new Point(553, 252);
-            txtCostoTotal.Name = "txtCostoTotal";
-            txtCostoTotal.Size = new Size(125, 27);
-            txtCostoTotal.TabIndex = 11;
+            dateTimePickerInicio.CalendarFont = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dateTimePickerInicio.CalendarMonthBackground = SystemColors.ActiveBorder;
+            dateTimePickerInicio.Format = DateTimePickerFormat.Short;
+            dateTimePickerInicio.Location = new Point(1255, 310);
+            dateTimePickerInicio.Name = "dateTimePickerInicio";
+            dateTimePickerInicio.Size = new Size(257, 27);
+            dateTimePickerInicio.TabIndex = 12;
+            // 
+            // lblTelefono
+            // 
+            lblTelefono.AutoSize = true;
+            lblTelefono.BackColor = Color.Black;
+            lblTelefono.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTelefono.ForeColor = Color.White;
+            lblTelefono.Location = new Point(1053, 394);
+            lblTelefono.Name = "lblTelefono";
+            lblTelefono.Size = new Size(97, 25);
+            lblTelefono.TabIndex = 15;
+            lblTelefono.Text = "Telefono";
+            lblTelefono.Click += lblTelefono_Click;
+            // 
+            // cmbTipoMembresia
+            // 
+            cmbTipoMembresia.BackColor = Color.RosyBrown;
+            cmbTipoMembresia.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipoMembresia.FormattingEnabled = true;
+            cmbTipoMembresia.Location = new Point(1255, 221);
+            cmbTipoMembresia.Name = "cmbTipoMembresia";
+            cmbTipoMembresia.Size = new Size(257, 28);
+            cmbTipoMembresia.TabIndex = 18;
+            cmbTipoMembresia.SelectedIndexChanged += cmbTipoMembresia_SelectedIndexChanged;
+            // 
+            // mtxtTelefono
+            // 
+            mtxtTelefono.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            mtxtTelefono.Location = new Point(1224, 398);
+            mtxtTelefono.Name = "mtxtTelefono";
+            mtxtTelefono.Size = new Size(288, 25);
+            mtxtTelefono.TabIndex = 19;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(txtCostoTotal);
+            BackColor = Color.LightGray;
+            BackgroundImage = Properties.Resources.WhatsApp_Image_2025_06_04_at_12_01_16_AM;
+            ClientSize = new Size(1628, 842);
+            Controls.Add(mtxtTelefono);
+            Controls.Add(cmbTipoMembresia);
+            Controls.Add(lblTelefono);
+            Controls.Add(dateTimePickerInicio);
             Controls.Add(lblFechaInicio);
             Controls.Add(btnAgregar);
-            Controls.Add(txtFechaInicio);
-            Controls.Add(txtTipoMembresia);
             Controls.Add(txtNombreCliente);
             Controls.Add(dataGridView1);
             Controls.Add(btnEliminar);
@@ -192,11 +254,13 @@ namespace GymPresentacion
         private Button btnEliminar;
         private DataGridView dataGridView1;
         private TextBox txtNombreCliente;
-        private TextBox txtTipoMembresia;
-        private TextBox txtFechaInicio;
         private Button btnAgregar;
         private Label lblFechaInicio;
-        private TextBox txtCostoTotal;
+        private DateTimePicker dateTimePickerInicio;
+        private Label lblTelefono;
+        private TextBox txtTipoMembresia;
+        private ComboBox cmbTipoMembresia;
+        private MaskedTextBox mtxtTelefono;
     }
 
  

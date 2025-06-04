@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient; // Necesitamos esto para interactuar con la BD
+using System.Data.SqlClient; 
 using GymDatos;
-using Microsoft.Data.SqlClient; // Necesitamos esta referencia para acceder a ConexionDatos.connectionString
+using Microsoft.Data.SqlClient; 
 
 namespace GymNegocio
-//el nombre es importante para la llamada correcta y demas 
+//el nombre es importante para la llamada correcta y demas...
 {
     public abstract class Membresia //Clase principal o clase padre, para poder heredar en otras clases hijas 
     {
@@ -16,15 +16,14 @@ namespace GymNegocio
         public DateTime FechaFin { get; set; }
         public decimal CostoTotal { get; set; }
         public bool Activa { get; set; }
-        //una nueva propiedad para el estado de la membresia del cliente 
+        //una nueva propiedad para el estado de la membresia del cliente para saber si la membresia del cliente esta activa 
 
         public abstract string TipoMembresia { get; }
-        // esto va a forzar a la membresia a decir cual es su tipo 
+        // esto va a forzar a la membresia a decir cual es su tipo, si es Mensual O Anual opciones 
 
         public virtual void CalcularVencimiento()
-        // void es que no devuelvo ningun valor 
-        // aqui vamos a calcular la fecha de vencimiento de la membresia 
-        //si la FechaFin pasa de la FechaInicio entonces debe de vencer 
+        // void es que no devuelvo ningun valor, y aqui vamos a calcular la fecha de vencimiento de la membresia,
+        // si la FechaFin pasa de la FechaInicio entonces debe de vencer 
         {
             if (DateTime.Now > FechaFin)
             {
@@ -38,6 +37,17 @@ namespace GymNegocio
 
         public virtual void CalcularCostoTotal()
         {
+            //Se puede quedar vacio es un metodo que usaremos mas adelante 
+        }
+
+        // haremos esto para la creacion de nuevas membresias
+        protected Membresia(DateTime fechaInicio, decimal costoTotal, string nombre, string telefono)
+        {
+            FechaInicio = fechaInicio;
+            CostoTotal = costoTotal;
+            Nombre = nombre;
+            Telefono = telefono;
+            Activa = true;
         }
 
         protected Membresia()
@@ -47,57 +57,73 @@ namespace GymNegocio
         }
     }
 
-    //Clase hija derivada  Membresia Mensual - AHORA FUERA DE LA CLASE ABSTRACTA
+    //Clase hija derivada  Membresia Mensual
     public class Mensual : Membresia
     {
         public override string TipoMembresia => "Mensual";
-
+        private static readonly decimal CostoMensualBase = 1200m;// costo de la memebresia de forma mensual
         //Constructor sin parametros 
         public Mensual() : base()
         {
+            CalcularCostoTotal();// llamammos al metodo de calcualrCostoTotal
         }
 
-        public Mensual(DateTime fechaInicio, decimal costoTotal, string nombre) : base()
+        public Mensual(DateTime fechaInicio, string nombre, string telefono) 
+            : base(fechaInicio, 0, nombre, telefono)
         {
-            FechaInicio = fechaInicio;
-            FechaFin = FechaInicio.AddMonths(1);
-            CostoTotal = costoTotal;
-            Nombre = nombre;
+            FechaFin = FechaInicio.AddMonths(1);// eso es para un mes de membresia
+            CalcularCostoTotal();
+
+        }
+
+        public override void CalcularCostoTotal()
+        {
+            CostoTotal = CostoMensualBase;
         }
     }
 
-    //clase Hija derivada - Membresia Anual - AHORA FUERA DE LA CLASE ABSTRACTA
+    //clase Hija derivada - Membresia Anual
+    //Lo mismo pero para la opcion anual
     public class Anual : Membresia
     {
         public override string TipoMembresia => "Anual";
-
+        private static readonly decimal CostoAnualBase = 14400m;
         // Constructor sin parametros para el Datareader
         public Anual() : base()
         {
+            CalcularCostoTotal();// llamammos al metodo de calcualrCostoTotal
         }
 
         //Constructor con parametros 
-        public Anual(DateTime fechaInicio, decimal costoTotal, string nombre) : base()
+        public Anual(DateTime fechaInicio, string nombre, string telefono) 
+            : base(fechaInicio, 0 , nombre, telefono)
+       
         {
-            FechaInicio = fechaInicio;
             FechaFin = FechaInicio.AddYears(1);
-            CostoTotal = costoTotal;
-            Nombre = nombre;
+                CalcularCostoTotal();
+        }
+
+        public override void CalcularCostoTotal()
+        {
+                CostoTotal = CostoAnualBase;
         }
     }
 
-    //Clase Acceso a datos - AHORA FUERA DE LA CLASE ABSTRACTA
-    public class MemGymnasio
+    //Clase Acceso
+    //Usaremos ahora esto para insertar, actualizar y eliminar y listar nueva etapa del codigo
+    public class MemGymnasio //Nombre de la clase 
     {
-        public void InsertarMembresia(Membresia membresia)
+        public void InsertarMembresia(Membresia membresia)  // INSERTA
         {
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
             {
-                conn.Open(); //Abre la conexion 
-                //Consulta SQL para insertar. 
+                conn.Open(); //Abre la conexion, esto abre la conexion para hacer lo que falta de la conexion de la CapaConexionDatos
+                //a esta capa
+
+                //Consulta SQL para insertar. Esto tiene que ver con la conexion SQL y demas 
                 string query = "INSERT INTO Membresia (NOMBRE, TELEFONO, TIPO, FECHAINICIO, FECHAFIN, COSTOTOTAL, Activa) " +
                                " VALUES(@Nombre, @Telefono, @Tipo,  @FechaInicio, @FechaFin, @CostoTotal, @Activa); " +
-                               "SELECT SCOPE_IDENTITY();";//Para obtener el Id que se genera automaticamente 
+                               "SELECT SCOPE_IDENTITY();";//Para obtener el Id que se genera automaticamente desde la Base de Datos 
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))//Crea el comando SQL 
                 {
@@ -114,9 +140,9 @@ namespace GymNegocio
             }
         }
 
-        public void Actualizar(Membresia membresia)
+        public void Actualizar(Membresia membresia) //ACTUALIZAR
         {
-            using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
+            using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))// se debe repetir este paso una y otra vez para lla,r la conexion para actualizar 
             {
                 conn.Open(); //Abre la conexion 
                 //Consulta SQL para actualizar. 
@@ -138,9 +164,9 @@ namespace GymNegocio
             }
         }
 
-        public void Eliminar(int IdMembresia)
+        public void Eliminar(int IdMembresia) //Eliminar 
         {
-            using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
+            using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))//SAME
             {
                 conn.Open();
                 string query = "DELETE FROM Membresia WHERE Id = @IdMembresia";
@@ -152,12 +178,13 @@ namespace GymNegocio
             }
         }
 
-        public List<Membresia> Listar()
+        public List<Membresia> Listar() // Aqui estamos listando las membresias de la base de datos 
         {
-            List<Membresia> membresias = new List<Membresia>();
-            using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
+            List<Membresia> membresias = new List<Membresia>();// creamos lista vacia para guardar memebresias encontadas
+            using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion)) // conexion nuevamente
             {
                 string query = "SELECT Id, Nombre, Telefono, Tipo, FechaInicio, FechaFin, CostoTotal, Activa FROM Membresia";
+                //Consultamos los registros de la tabla 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     conn.Open();
@@ -166,14 +193,17 @@ namespace GymNegocio
                         while (reader.Read())
                         {
                             Membresia membresia;
-                            string tipo = reader["Tipo"].ToString();
+                            string tipo = reader["Tipo"].ToString(); // lee el tipo de membresia 
 
+                            // polimorfismo buena practica
                             if (tipo == "Mensual")
                                 membresia = new Mensual();
                             else if (tipo == "Anual")
                                 membresia = new Anual();
                             else
                                 continue;
+
+                            // Convertir cada campo de la Base de Datos a correctos
 
                             membresia.Id = Convert.ToInt32(reader["Id"]);
                             membresia.Nombre = reader["Nombre"].ToString();
@@ -183,15 +213,15 @@ namespace GymNegocio
                             membresia.CostoTotal = Convert.ToDecimal(reader["CostoTotal"]);
                             membresia.Activa = Convert.ToBoolean(reader["Activa"]);
 
-                            membresias.Add(membresia);
+                            membresias.Add(membresia);//Agregar lista 
                         }
                     }
                 }
             }
-            return membresias;
+            return membresias;//devolver lista de membresias 
         }
 
-        public Membresia ObtenerPorId(int IdMembresia)
+        public Membresia ObtenerPorId(int IdMembresia)//Lectura por Id
         {
             Membresia membresia = null;
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
@@ -211,7 +241,7 @@ namespace GymNegocio
                             else if (tipo == "Anual")
                                 membresia = new Anual();
                             else
-                                return null; // para tipo desconocido
+                                return null; // para tipo desconocido o si no encuentra nada
 
                             membresia.Id = Convert.ToInt32(reader["Id"]);
                             membresia.Nombre = reader["Nombre"].ToString();
@@ -228,14 +258,19 @@ namespace GymNegocio
         }
     }
 
-    //Implementamos aqui lo que es la logica de negocio - AHORA FUERA DE LA CLASE ABSTRACTA
+    //Implementamos aqui lo que es la logica de negocio
     public class Servicio_Membresia
     {
-        public MemGymnasio _accesoDatos; // Cambiado de Membresia.MemGymnasio a MemGymnasio
+        public MemGymnasio _accesoDatos; 
 
         public Servicio_Membresia()
         {
-            _accesoDatos = new MemGymnasio(); // Cambiado de Membresia.MemGymnasio a MemGymnasio
+            _accesoDatos = new MemGymnasio();
+        }
+
+        public int ContarMembresiaActivas()
+        {
+            return ObtenerTodasLasMembresias().Count(m => m.Activa);
         }
 
         public void RegistrarMembresia(Membresia miembro)
@@ -243,13 +278,13 @@ namespace GymNegocio
             if (string.IsNullOrWhiteSpace(miembro.Nombre))
             {
                 throw new ArgumentException("El nombre del Miembro es Obligatorio. ");
-                // Si la fecha de inicio es hoy, la fecha de fin se calcula 
+                
             }
-            if (miembro.FechaInicio > miembro.FechaFin)
+            if (miembro.FechaInicio > miembro.FechaFin)// Si la fecha de inicio es hoy, la fecha de fin se calcula 
             {
                 throw new ArgumentException("La fecha de inicio no puede ser posterior a la fecha fin. ");
             }
-            //Mensual y Anual deben  calcular costo y vencimiento al ser creadas ,
+            //Mensual y Anual , calcular costo y vencimiento al ser creadas ,
             //pero de todos modos llamaremos aqui para estar seguros de que se puedan actualizar antes de guardar.
             miembro.CalcularCostoTotal();
             miembro.CalcularVencimiento();
@@ -268,11 +303,11 @@ namespace GymNegocio
             {
                 throw new ArgumentException("Nombre del Miembro Obligatorio");
             }
-
+            //Llamamos nuevamente 
             miembro.CalcularCostoTotal();
             miembro.CalcularVencimiento();
 
-            _accesoDatos.Actualizar(miembro);
+            _accesoDatos.Actualizar(miembro);//actualiza 
         }
 
         public void EliminarMembresia(int idMembresia)
@@ -294,7 +329,7 @@ namespace GymNegocio
             return membresias;
         }
 
-        public Membresia ObtenerMembresiaPorId(int idMembresia) // Cambié el nombre del método para evitar confusión
+        public Membresia ObtenerMembresiaPorId(int idMembresia) 
         {
             if (idMembresia <= 0)
             {
