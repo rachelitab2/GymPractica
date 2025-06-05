@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient; 
 using GymDatos;
-using Microsoft.Data.SqlClient; 
+using Microsoft.Data.SqlClient; // verificacion de push
 
 namespace GymNegocio
 //el nombre es importante para la llamada correcta y demas...
