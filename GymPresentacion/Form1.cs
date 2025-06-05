@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GymNegocio;
+using GymNegocio;// ver 
 
 namespace GymPresentacion // nombre importante
 {
@@ -22,24 +22,9 @@ namespace GymPresentacion // nombre importante
             ConfigurarDataGridView();// donde se muestra los datos
             ConfigurarComboBoxTipoMembresia(); // opciones para los tipos Mensual Y Anual
             ConfigurarMaskedTextBoxTelefono();//telefono y captura de error para el mismo 
-            CargarMembresia();//para membresias existentes 
             AsignarEventosBotones();//conctar los eventos de los botones con sus funciones 
         }
 
-        private void CargarMembresia()
-        {
-            try// cpatura de error 
-            {
-                List<Membresia> membresias = _servicioMembresia.ObtenerTodasLasMembresias();//Lamada para obtener membresias 
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = membresias;
-
-            }
-            catch (Exception ex)//Captura de error
-            {
-                MessageBox.Show($"Error al Cargar las membresias: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void ConfigurarDataGridView() //configuracion para el DataGridView
         {
@@ -122,12 +107,47 @@ namespace GymPresentacion // nombre importante
                 btnEliminar.Click += BtnEliminar_Click;
             }
 
+            if (btnConsultar != null)
+            {
+                btnConsultar.Click -= BtnConsultar_Click;
+                btnConsultar.Click += BtnConsultar_Click;
+            }
+
             if (dataGridView1 != null)
             {
                 dataGridView1.SelectionChanged -= DataGridView1_SelectionChanged;
                 dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
             }
         }
+
+        public void BtnConsultar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LimpiarCampos();
+
+                List<Membresia> membresias = _servicioMembresia.ObtenerTodasLasMembresias();
+
+                if (membresias != null && membresias.Count > 0)
+                {
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = membresias;
+                    MessageBox.Show($"Se cargaron {membresias.Count} membresias correctamente.", "Consulta Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    dataGridView1.DataSource = null;
+                    MessageBox.Show("No se encontraron membresias en la base de datos.", " Sin Datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al Consultar las membresias: {ex.Message}", "Error de Consultar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
 
         public void BtnAgregar_Click(object sender, EventArgs e) //AGREGAR NUEVA MEMEBRSIA 
         {
@@ -165,6 +185,7 @@ namespace GymPresentacion // nombre importante
                 string nombreCliente = txtNombreCliente.Text.Trim();
                 string telefonoCliente = mtxtTelefono.Text.Trim();
 
+                // Crear la memebresia segun su tipo
                 Membresia nuevaMembresia;
                 string tipoMembresiaInput = cmbTipoMembresia.SelectedItem.ToString().ToLower();
 
@@ -186,7 +207,8 @@ namespace GymPresentacion // nombre importante
                 MessageBox.Show("Membresia agregada con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 LimpiarCampos();
-                CargarMembresia();
+                //recargar los datos automaticamente despues de agregar una nueva membresia 
+                BtnConsultar_Click(sender, e);
 
             }
             catch (Exception ex) //Captura de error 
@@ -266,7 +288,7 @@ namespace GymPresentacion // nombre importante
                 _servicioMembresia.ActualizarMembresia(membresiaAEditar);
                 MessageBox.Show("Membresia Actualizada exitosamente.", " Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarCampos();
-                CargarMembresia();
+                BtnConsultar_Click(sender, e);
 
             }
             catch (Exception ex)//captura de error
@@ -304,7 +326,7 @@ namespace GymPresentacion // nombre importante
                     _servicioMembresia.EliminarMembresia(membresiaAEliminar.Id);
                     MessageBox.Show("Membresia Eliminada exitosamente.", " Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarCampos();
-                    CargarMembresia();
+                    BtnConsultar_Click(sender, e);
 
                 }
             }
@@ -396,7 +418,7 @@ namespace GymPresentacion // nombre importante
         private void LimpiarCampos()// limpia los campos de las cjas de textos
         {
             txtNombreCliente.Clear();
-            cmbTipoMembresia.SelectedItem = -1;
+            cmbTipoMembresia.SelectedIndex = -1;
             mtxtTelefono.Clear();
             dateTimePickerInicio.Value = DateTime.Now;
 

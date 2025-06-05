@@ -183,7 +183,7 @@ namespace GymNegocio
             List<Membresia> membresias = new List<Membresia>();// creamos lista vacia para guardar memebresias encontadas
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion)) // conexion nuevamente
             {
-                string query = "SELECT Id, Nombre, Telefono, Tipo, FechaInicio, FechaFin, CostoTotal, Activa FROM Membresia";
+                string query = "SELECT Id, NOMBRE, TELEFONO, TIPO, FECHAINICIO, FECHAFIN, COSTOTOTAL, Activa FROM Membresia ORDER BY Id";
                 //Consultamos los registros de la tabla 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -193,7 +193,7 @@ namespace GymNegocio
                         while (reader.Read())
                         {
                             Membresia membresia;
-                            string tipo = reader["Tipo"].ToString(); // lee el tipo de membresia 
+                            string tipo = reader["TIPO"].ToString(); // lee el tipo de membresia 
 
                             // polimorfismo buena practica
                             if (tipo == "Mensual")
@@ -206,11 +206,11 @@ namespace GymNegocio
                             // Convertir cada campo de la Base de Datos a correctos
 
                             membresia.Id = Convert.ToInt32(reader["Id"]);
-                            membresia.Nombre = reader["Nombre"].ToString();
-                            membresia.Telefono = reader["Telefono"].ToString();
-                            membresia.FechaInicio = Convert.ToDateTime(reader["FechaInicio"]);
-                            membresia.FechaFin = Convert.ToDateTime(reader["FechaFin"]);
-                            membresia.CostoTotal = Convert.ToDecimal(reader["CostoTotal"]);
+                            membresia.Nombre = reader["NOMBRE"].ToString();
+                            membresia.Telefono = reader["TELEFONO"].ToString();
+                            membresia.FechaInicio = Convert.ToDateTime(reader["FECHAINICIO"]);
+                            membresia.FechaFin = Convert.ToDateTime(reader["FECHAFIN"]);
+                            membresia.CostoTotal = Convert.ToDecimal(reader["COSTOTOTAL"]);
                             membresia.Activa = Convert.ToBoolean(reader["Activa"]);
 
                             membresias.Add(membresia);//Agregar lista 
@@ -226,7 +226,7 @@ namespace GymNegocio
             Membresia membresia = null;
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
             {
-                string query = "SELECT Id, Nombre, Telefono, Tipo, FechaInicio, FechaFin, CostoTotal, Activa FROM Membresia WHERE Id = @IdMembresia";
+                string query = "SELECT Id, NOMBRE, TELEFONO, TIPO, FECHAINICIO, FECHAFIN, COSTOTOTAL, Activa FROM Membresia WHERE Id = @IdMembresia";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@IdMembresia", IdMembresia);
@@ -235,7 +235,7 @@ namespace GymNegocio
                     {
                         if (reader.Read())
                         {
-                            string tipo = reader["Tipo"].ToString();
+                            string tipo = reader["TIPO"].ToString();
                             if (tipo == "Mensual")
                                 membresia = new Mensual();
                             else if (tipo == "Anual")
@@ -244,11 +244,11 @@ namespace GymNegocio
                                 return null; // para tipo desconocido o si no encuentra nada
 
                             membresia.Id = Convert.ToInt32(reader["Id"]);
-                            membresia.Nombre = reader["Nombre"].ToString();
-                            membresia.Telefono = reader["Telefono"].ToString();
-                            membresia.FechaInicio = Convert.ToDateTime(reader["FechaInicio"]);
-                            membresia.FechaFin = Convert.ToDateTime(reader["FechaFin"]);
-                            membresia.CostoTotal = Convert.ToDecimal(reader["CostoTotal"]);
+                            membresia.Nombre = reader["NOMBRE"].ToString();
+                            membresia.Telefono = reader["TELEFONO"].ToString();
+                            membresia.FechaInicio = Convert.ToDateTime(reader["FECHAINICIO"]);
+                            membresia.FechaFin = Convert.ToDateTime(reader["FECHAFIN"]);
+                            membresia.CostoTotal = Convert.ToDecimal(reader["COSTOTOTAL"]);
                             membresia.Activa = Convert.ToBoolean(reader["Activa"]);
                         }
                     }

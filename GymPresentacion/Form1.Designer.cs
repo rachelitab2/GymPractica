@@ -54,6 +54,7 @@ namespace GymPresentacion
             lblTelefono = new Label();
             cmbTipoMembresia = new ComboBox();
             mtxtTelefono = new MaskedTextBox();
+            btnConsultar = new Button();
             ((ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -145,6 +146,7 @@ namespace GymPresentacion
             // 
             txtNombreCliente.BackColor = Color.White;
             txtNombreCliente.Location = new Point(1216, 146);
+            txtNombreCliente.MaxLength = 30;
             txtNombreCliente.Name = "txtNombreCliente";
             txtNombreCliente.Size = new Size(296, 27);
             txtNombreCliente.TabIndex = 6;
@@ -217,6 +219,18 @@ namespace GymPresentacion
             mtxtTelefono.Size = new Size(288, 25);
             mtxtTelefono.TabIndex = 19;
             // 
+            // btnConsultar
+            // 
+            btnConsultar.BackColor = Color.Black;
+            btnConsultar.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConsultar.ForeColor = Color.White;
+            btnConsultar.Location = new Point(374, 648);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(174, 64);
+            btnConsultar.TabIndex = 20;
+            btnConsultar.Text = "Consulta ";
+            btnConsultar.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -224,6 +238,7 @@ namespace GymPresentacion
             BackColor = Color.LightGray;
             BackgroundImage = Properties.Resources.WhatsApp_Image_2025_06_04_at_12_01_16_AM;
             ClientSize = new Size(1628, 842);
+            Controls.Add(btnConsultar);
             Controls.Add(mtxtTelefono);
             Controls.Add(cmbTipoMembresia);
             Controls.Add(lblTelefono);
@@ -261,6 +276,7 @@ namespace GymPresentacion
         private TextBox txtTipoMembresia;
         private ComboBox cmbTipoMembresia;
         private MaskedTextBox mtxtTelefono;
+        private Button btnConsultar;
     }
 
  
