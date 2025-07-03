@@ -1,0 +1,265 @@
+﻿using System;
+using System.CodeDom;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using GymNegocio.ClasesEntrenador;
+
+namespace GymPresentacion
+{
+    public partial class Form2Entrenadores : Form
+    {
+        private readonly Servicio_Entrenadores _servicioEntrenadores;
+        private Entrenador _entrenadorSeleccionado;
+        
+        public Form2Entrenadores()
+        {
+
+            InitializeComponent();
+            _servicioEntrenadores = new Servicio_Entrenadores();
+            AsignarEventos();
+        }
+
+        private void Form2Entrenadores_Load(object sender, EventArgs e)
+        {
+            CargarEntrenadores();
+            ConfigurarComboBoxes();
+            ConfigurarDataGridView();
+            ConfigurarNumericUpDown();
+        }
+
+        private void ConfigurarDataGridView()
+        {
+            dgvEntrenadores.AutoGenerateColumns = true;
+            dgvEntrenadores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEntrenadores.MultiSelect = false;
+        }
+
+        private void ConfigurarComboBoxes()
+        {
+
+         
+            cmbGeneroEntrenador.Items.Add("Masculino");
+            cmbGeneroEntrenador.Items.Add("Femenino");
+            cmbGeneroEntrenador.DropDownStyle = ComboBoxStyle.DropDownList; 
+
+        
+            cmbAreaEntrenador.Items.Add("Cardio");
+            cmbAreaEntrenador.Items.Add("Pesas");
+            cmbAreaEntrenador.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void ConfigurarNumericUpDown()
+        {
+            nudDuracion.Minimum = 1;
+            nudDuracion.Maximum = 36;
+            nudDuracion.Value = 12;
+
+        }
+
+        private void AsignarEventos()
+        {
+            this.Load += Form2Entrenadores_Load;
+            dgvEntrenadores.SelectionChanged += dvgEntrenadores_SelectionChanged;
+            btnAgregarEntrenador.Click += btnAgregarEntrenador_Click;
+            btnEditarEntrenador.Click += btnEditar_Click;
+            btnEliminarEntrenador.Click += btnEliminar_Click;
+            btnConsultar.Click += btnConsultar_Click;
+           
+        }
+
+       private void CargarEntrenadores()
+        {
+            try
+            {
+                dgvEntrenadores.DataSource = null;
+                dgvEntrenadores.DataSource = _servicioEntrenadores.ObtenerTodos();
+
+                // Ocultamos las columnas después de cargar los datos
+                if (dgvEntrenadores.Columns.Contains("Id")) dgvEntrenadores.Columns["Id"].Visible = false;
+                if (dgvEntrenadores.Columns.Contains("Genero")) dgvEntrenadores.Columns["Genero"].Visible = false;
+                if (dgvEntrenadores.Columns.Contains("Telefono")) dgvEntrenadores.Columns["Telefono"].Visible = false;
+                if (dgvEntrenadores.Columns.Contains("FechaIngreso")) dgvEntrenadores.Columns["FechaIngreso"].Visible = false;
+                if (dgvEntrenadores.Columns.Contains("Duracion")) dgvEntrenadores.Columns["Duracion"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar los entrenadores: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dvgEntrenadores_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvEntrenadores.SelectedRows.Count > 0)
+            {
+                _entrenadorSeleccionado = (Entrenador)dgvEntrenadores.SelectedRows[0].DataBoundItem;
+
+                txtNombreEntrenador.Text = _entrenadorSeleccionado.Nombre;
+                maskedTextBox1.Text = _entrenadorSeleccionado.Telefono;
+                cmbGeneroEntrenador.SelectedItem = _entrenadorSeleccionado.Genero;
+                cmbAreaEntrenador.SelectedItem = _entrenadorSeleccionado.Area;
+                dtpIngresoEntrenador.Value = _entrenadorSeleccionado.FechaIngreso;
+                nudDuracion.Value = _entrenadorSeleccionado.Duracion;
+                checkDisponible.Checked = _entrenadorSeleccionado.Activo;
+            }
+        }
+
+
+        //Boton Agregar 
+        private void btnAgregarEntrenador_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtNombreEntrenador.Text) || cmbAreaEntrenador.SelectedItem == null)
+                {
+                    MessageBox.Show("El Nombre y el Area son Obligatorio.", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
+                Entrenador nuevoAccesoEntrenador;
+                string areaSeleccionada = cmbAreaEntrenador.SelectedItem.ToString();
+                if (areaSeleccionada =="Pesas")
+                {
+                    nuevoAccesoEntrenador = new EntrenadorPesas();
+                }
+                else
+                {
+                    nuevoAccesoEntrenador = new EntrenadorCardio();
+                }
+
+                nuevoAccesoEntrenador.Nombre = txtNombreEntrenador.Text;
+                nuevoAccesoEntrenador.Telefono = maskedTextBox1.Text;
+                nuevoAccesoEntrenador.Genero = cmbGeneroEntrenador.SelectedItem?.ToString();
+                nuevoAccesoEntrenador.FechaIngreso = dtpIngresoEntrenador.Value;
+                nuevoAccesoEntrenador.Duracion = (int)nudDuracion.Value;
+                nuevoAccesoEntrenador.Activo = checkDisponible.Checked;
+
+                _servicioEntrenadores.RegistrarEntrenador(nuevoAccesoEntrenador);
+                MessageBox.Show("Entrenador registrado exitosamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarEntrenadores();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al Agregar el Entrenador: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        //Boton Editar
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
+            if (_entrenadorSeleccionado == null)
+            {
+                MessageBox.Show("Por favor, Seleccione un Entrenador para Editar.", " Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                _entrenadorSeleccionado.Nombre = txtNombreEntrenador.Text;
+                _entrenadorSeleccionado.Telefono = maskedTextBox1.Text;
+                _entrenadorSeleccionado.Genero = cmbGeneroEntrenador.SelectedItem?.ToString();
+                _entrenadorSeleccionado.FechaIngreso = dtpIngresoEntrenador.Value;
+                _entrenadorSeleccionado.Duracion = (int)nudDuracion.Value;
+                _entrenadorSeleccionado.Activo = checkDisponible.Checked;
+
+                _servicioEntrenadores.ActualizarEntrenador(_entrenadorSeleccionado);
+
+                MessageBox.Show("Entrenador actualizar  con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarEntrenadores();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al Actualizar el Entrenador: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        //Boton Eliminar
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (_entrenadorSeleccionado == null)
+            {
+                MessageBox.Show("Por favor, Seleccione un Entrenador para Eliminar.", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Pedir la confirmacion
+            var confirmacion = MessageBox.Show($"¿Esta seguro que desea Eliminar a {_entrenadorSeleccionado.Nombre}?", "Confirmar Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmacion == DialogResult.Yes)
+            {
+                try
+                {
+                    _servicioEntrenadores.EliminarEntrenador(_entrenadorSeleccionado.Id);
+                    MessageBox.Show("Entrenador Eliminado exitosamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarEntrenadores();
+                    LimpiarCampos();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al Eliminar el Entrenador: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+
+        }
+        private void btnConsultar_Click( object sender, EventArgs e)
+        {
+            CargarEntrenadores();
+            MessageBox.Show("Lista de Entrenadores Actualizada.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void LimpiarCampos()
+        {
+            txtNombreEntrenador.Clear();
+            maskedTextBox1.Clear();
+            cmbGeneroEntrenador.SelectedIndex = -1;
+            cmbAreaEntrenador.SelectedIndex = -1;
+            dtpIngresoEntrenador.Value = DateTime.Now;
+            nudDuracion.Value = 12;
+            checkDisponible.Checked = true;
+            _entrenadorSeleccionado = null;
+            dgvEntrenadores.ClearSelection();
+        }
+        private void btnVolver_Click(Object sender, EventArgs e)
+        {
+            Form1 FormPrincipal = new Form1();
+            FormPrincipal.Show();
+            this.Close();
+        }
+        private void lblGeneroEntrendor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkDisponible_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

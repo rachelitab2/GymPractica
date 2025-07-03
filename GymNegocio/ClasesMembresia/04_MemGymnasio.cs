@@ -1,114 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient; 
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using GymDatos;
-using Microsoft.Data.SqlClient; // verificacion de push
+using GymNegocio.ClasesMembresia;
+using Microsoft.Data.SqlClient;
 
-namespace GymNegocio
-//el nombre es importante para la llamada correcta y demas...
+
+namespace GymNegocio.ClasesMembresia
+   
 {
-    public abstract class Membresia //Clase principal o clase padre, para poder heredar en otras clases hijas 
-    {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Telefono { get; set; }
-        public DateTime FechaInicio { get; set; }
-        public DateTime FechaFin { get; set; }
-        public decimal CostoTotal { get; set; }
-        public bool Activa { get; set; }
-        //una nueva propiedad para el estado de la membresia del cliente para saber si la membresia del cliente esta activa 
-
-        public abstract string TipoMembresia { get; }
-        // esto va a forzar a la membresia a decir cual es su tipo, si es Mensual O Anual opciones 
-
-        public virtual void CalcularVencimiento()
-        // void es que no devuelvo ningun valor, y aqui vamos a calcular la fecha de vencimiento de la membresia,
-        // si la FechaFin pasa de la FechaInicio entonces debe de vencer 
-        {
-            if (DateTime.Now > FechaFin)
-            {
-                Activa = false; // si fecha actual sobrepasa a FechaFin es vencida osea callo la membresia 
-            }
-            else
-            {
-                Activa = true; // osea que si no ha vencido es que sigue activa 
-            }
-        }
-
-        public virtual void CalcularCostoTotal()
-        {
-            //Se puede quedar vacio es un metodo que usaremos mas adelante 
-        }
-
-        // haremos esto para la creacion de nuevas membresias
-        protected Membresia(DateTime fechaInicio, decimal costoTotal, string nombre, string telefono)
-        {
-            FechaInicio = fechaInicio;
-            CostoTotal = costoTotal;
-            Nombre = nombre;
-            Telefono = telefono;
-            Activa = true;
-        }
-
-        protected Membresia()
-        {
-            FechaInicio = DateTime.Now;
-            Activa = true;
-        }
-    }
-
-    //Clase hija derivada  Membresia Mensual
-    public class Mensual : Membresia
-    {
-        public override string TipoMembresia => "Mensual";
-        private static readonly decimal CostoMensualBase = 1200m;// costo de la memebresia de forma mensual
-        //Constructor sin parametros 
-        public Mensual() : base()
-        {
-            CalcularCostoTotal();// llamammos al metodo de calcualrCostoTotal
-        }
-
-        public Mensual(DateTime fechaInicio, string nombre, string telefono) 
-            : base(fechaInicio, 0, nombre, telefono)
-        {
-            FechaFin = FechaInicio.AddMonths(1);// eso es para un mes de membresia
-            CalcularCostoTotal();
-
-        }
-
-        public override void CalcularCostoTotal()
-        {
-            CostoTotal = CostoMensualBase;
-        }
-    }
-
-    //clase Hija derivada - Membresia Anual
-    //Lo mismo pero para la opcion anual
-    public class Anual : Membresia
-    {
-        public override string TipoMembresia => "Anual";
-        private static readonly decimal CostoAnualBase = 14400m;
-        // Constructor sin parametros para el Datareader
-        public Anual() : base()
-        {
-            CalcularCostoTotal();// llamammos al metodo de calcualrCostoTotal
-        }
-
-        //Constructor con parametros 
-        public Anual(DateTime fechaInicio, string nombre, string telefono) 
-            : base(fechaInicio, 0 , nombre, telefono)
-       
-        {
-            FechaFin = FechaInicio.AddYears(1);
-                CalcularCostoTotal();
-        }
-
-        public override void CalcularCostoTotal()
-        {
-                CostoTotal = CostoAnualBase;
-        }
-    }
-
     //Clase Acceso
     //Usaremos ahora esto para insertar, actualizar y eliminar y listar nueva etapa del codigo
     public class MemGymnasio //Nombre de la clase 
@@ -253,92 +156,6 @@ namespace GymNegocio
                         }
                     }
                 }
-            }
-            return membresia;
-        }
-    }
-
-    //Implementamos aqui lo que es la logica de negocio
-    public class Servicio_Membresia
-    {
-        public MemGymnasio _accesoDatos; 
-
-        public Servicio_Membresia()
-        {
-            _accesoDatos = new MemGymnasio();
-        }
-
-        public int ContarMembresiaActivas()
-        {
-            return ObtenerTodasLasMembresias().Count(m => m.Activa);
-        }
-
-        public void RegistrarMembresia(Membresia miembro)
-        {
-            if (string.IsNullOrWhiteSpace(miembro.Nombre))
-            {
-                throw new ArgumentException("El nombre del Miembro es Obligatorio. ");
-                
-            }
-            if (miembro.FechaInicio > miembro.FechaFin)// Si la fecha de inicio es hoy, la fecha de fin se calcula 
-            {
-                throw new ArgumentException("La fecha de inicio no puede ser posterior a la fecha fin. ");
-            }
-            //Mensual y Anual , calcular costo y vencimiento al ser creadas ,
-            //pero de todos modos llamaremos aqui para estar seguros de que se puedan actualizar antes de guardar.
-            miembro.CalcularCostoTotal();
-            miembro.CalcularVencimiento();
-
-            _accesoDatos.InsertarMembresia(miembro);
-        }
-
-        public void ActualizarMembresia(Membresia miembro)
-        {
-            // agregamos reglas para el negocio y ver validaciones para la actualizacion 
-            if (miembro.Id <= 0)
-            {
-                throw new ArgumentException("ID de Membresia Invalido para la Actualizacion.");
-            }
-            if (string.IsNullOrEmpty(miembro.Nombre))
-            {
-                throw new ArgumentException("Nombre del Miembro Obligatorio");
-            }
-            //Llamamos nuevamente 
-            miembro.CalcularCostoTotal();
-            miembro.CalcularVencimiento();
-
-            _accesoDatos.Actualizar(miembro);//actualiza 
-        }
-
-        public void EliminarMembresia(int idMembresia)
-        {
-            if (idMembresia <= 0)
-            {
-                throw new ArgumentException("ID de Membresia Invalido para la Eliminacion.");
-            }
-            _accesoDatos.Eliminar(idMembresia);
-        }
-
-        public List<Membresia> ObtenerTodasLasMembresias()
-        {
-            var membresias = _accesoDatos.Listar(); //Llama a los datos 
-            foreach (var m in membresias)
-            {
-                m.CalcularVencimiento();
-            }
-            return membresias;
-        }
-
-        public Membresia ObtenerMembresiaPorId(int idMembresia) 
-        {
-            if (idMembresia <= 0)
-            {
-                return null;
-            }
-            var membresia = _accesoDatos.ObtenerPorId(idMembresia);
-            if (membresia != null)// solo si se encuentra la membresia se va a actualizar su estado 
-            {
-                membresia.CalcularVencimiento();
             }
             return membresia;
         }

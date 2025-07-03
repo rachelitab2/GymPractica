@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GymNegocio;// ver 
+using GymNegocio.ClasesMembresia;
 
 namespace GymPresentacion // nombre importante
 {
@@ -385,7 +386,7 @@ namespace GymPresentacion // nombre importante
         }
 
         private void MtxtTelefono_Leave(object sender, EventArgs e)
-            //cpatura de error para evitar que dejen campos vacios o incompletos 
+        //cpatura de error para evitar que dejen campos vacios o incompletos 
         {
             MaskedTextBox mtxt = sender as MaskedTextBox;
 
@@ -393,7 +394,7 @@ namespace GymPresentacion // nombre importante
             {
                 MessageBox.Show("Por favor, complete el número de teléfono correctamente.",
                                "Teléfono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                mtxt.Focus(); 
+                mtxt.Focus();
             }
         }
         private bool ValidarTelefono(string telefono)
@@ -471,6 +472,27 @@ namespace GymPresentacion // nombre importante
 
         private void lblTelefono_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void PicEntrenadores_Click(object sender, EventArgs e)
+        {
+            Form2Entrenadores f2 = new Form2Entrenadores();
+            f2.Show();
+            this.Hide();
+
+        }
+
+        private void PicRutinas_Click(object sender, EventArgs e)
+        {
+            Form2Entrenadores f2 = new Form2Entrenadores();
+            f2.Show();
+            this.Hide();
 
         }
     }
