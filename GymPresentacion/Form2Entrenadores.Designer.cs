@@ -67,6 +67,7 @@
             dgvEntrenadores.RowHeadersWidth = 51;
             dgvEntrenadores.Size = new Size(841, 424);
             dgvEntrenadores.TabIndex = 5;
+            dgvEntrenadores.CellContentClick += dgvEntrenadores_CellContentClick;
             // 
             // btnConsultar
             // 

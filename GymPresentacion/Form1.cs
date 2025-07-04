@@ -482,7 +482,7 @@ namespace GymPresentacion // nombre importante
 
         private void PicEntrenadores_Click(object sender, EventArgs e)
         {
-            Form2Entrenadores f2 = new Form2Entrenadores();
+            Form2Entrenadores f2 = new Form2Entrenadores(this);
             f2.Show();
             this.Hide();
 
@@ -490,8 +490,8 @@ namespace GymPresentacion // nombre importante
 
         private void PicRutinas_Click(object sender, EventArgs e)
         {
-            Form2Entrenadores f2 = new Form2Entrenadores();
-            f2.Show();
+            Form3Rutina formRutinas = new Form3Rutina(this);
+            formRutinas.Show();
             this.Hide();
 
         }

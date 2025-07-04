@@ -16,11 +16,12 @@ namespace GymPresentacion
     {
         private readonly Servicio_Entrenadores _servicioEntrenadores;
         private Entrenador _entrenadorSeleccionado;
-        
-        public Form2Entrenadores()
+        private readonly Form _formPrincipal;
+        public Form2Entrenadores(Form formPrincipal)
         {
 
             InitializeComponent();
+            _formPrincipal = formPrincipal;
             _servicioEntrenadores = new Servicio_Entrenadores();
             AsignarEventos();
         }
@@ -31,6 +32,7 @@ namespace GymPresentacion
             ConfigurarComboBoxes();
             ConfigurarDataGridView();
             ConfigurarNumericUpDown();
+            ConfigurarMaskedTextBoxTelefono();
         }
 
         private void ConfigurarDataGridView()
@@ -42,18 +44,21 @@ namespace GymPresentacion
 
         private void ConfigurarComboBoxes()
         {
+            if (cmbGeneroEntrenador.Items.Count == 0)
+            {
+                cmbGeneroEntrenador.Items.Add("Masculino");
+                cmbGeneroEntrenador.Items.Add("Femenino");
+                cmbGeneroEntrenador.Items.Add("Mixto");
+                cmbGeneroEntrenador.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
 
-         
-            cmbGeneroEntrenador.Items.Add("Masculino");
-            cmbGeneroEntrenador.Items.Add("Femenino");
-            cmbGeneroEntrenador.DropDownStyle = ComboBoxStyle.DropDownList; 
-
-        
-            cmbAreaEntrenador.Items.Add("Cardio");
-            cmbAreaEntrenador.Items.Add("Pesas");
-            cmbAreaEntrenador.DropDownStyle = ComboBoxStyle.DropDownList;
+            if (cmbAreaEntrenador.Items.Count == 0)
+            {
+                cmbAreaEntrenador.Items.Add("Cardio");
+                cmbAreaEntrenador.Items.Add("Pesas");
+                cmbAreaEntrenador.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
         }
-
         private void ConfigurarNumericUpDown()
         {
             nudDuracion.Minimum = 1;
@@ -70,10 +75,11 @@ namespace GymPresentacion
             btnEditarEntrenador.Click += btnEditar_Click;
             btnEliminarEntrenador.Click += btnEliminar_Click;
             btnConsultar.Click += btnConsultar_Click;
-           
+            PicMem2.Click += PicMem2_Click;
+            PicRutinaEntrenador.Click += PicRutinaEntrenador_Click;
         }
 
-       private void CargarEntrenadores()
+        private void CargarEntrenadores()
         {
             try
             {
@@ -121,10 +127,24 @@ namespace GymPresentacion
                     return;
                 }
 
+                if (!maskedTextBox1.MaskCompleted)
+                {
+                    MessageBox.Show("Por Favor, Complete el numero de telefono.", "Telefono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    maskedTextBox1.Focus();
+                    return;
+                }
+
+                if (!ValidarTelefono(maskedTextBox1.Text))
+                {
+                    MessageBox.Show("El numero de Telefono no es valido. Debe tener 10 digitos.", "Telefono Invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    maskedTextBox1.Focus();
+                    return;
+                }
+
 
                 Entrenador nuevoAccesoEntrenador;
                 string areaSeleccionada = cmbAreaEntrenador.SelectedItem.ToString();
-                if (areaSeleccionada =="Pesas")
+                if (areaSeleccionada == "Pesas")
                 {
                     nuevoAccesoEntrenador = new EntrenadorPesas();
                 }
@@ -155,15 +175,36 @@ namespace GymPresentacion
         //Boton Editar
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
-            if (_entrenadorSeleccionado == null)
-            {
-                MessageBox.Show("Por favor, Seleccione un Entrenador para Editar.", " Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             try
             {
+
+                if (_entrenadorSeleccionado == null)
+                {
+                    MessageBox.Show("Por favor, Seleccione un Entrenador para Editar.", " Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtNombreEntrenador.Text) || cmbAreaEntrenador.SelectedItem == null)
+                {
+                    MessageBox.Show("El Nombre y el Area son Obligatorios.", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!maskedTextBox1.MaskCompleted)
+                {
+                    MessageBox.Show("Por Favor, Complete el numero de telefono.", "Telefono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    maskedTextBox1.Focus();
+                    return;
+                }
+
+                if (!ValidarTelefono(maskedTextBox1.Text))
+                {
+                    MessageBox.Show("El numero de Telefono no es valido. Debe tener 10 digitos.", "Telefono Invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    maskedTextBox1.Focus();
+                    return;
+                }
+
+
                 _entrenadorSeleccionado.Nombre = txtNombreEntrenador.Text;
                 _entrenadorSeleccionado.Telefono = maskedTextBox1.Text;
                 _entrenadorSeleccionado.Genero = cmbGeneroEntrenador.SelectedItem?.ToString();
@@ -182,9 +223,36 @@ namespace GymPresentacion
                 MessageBox.Show($"Error al Actualizar el Entrenador: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
         }
 
+        private void ConfigurarMaskedTextBoxTelefono()
+        {
+            maskedTextBox1.Mask = "(000) 000-0000";
+            maskedTextBox1.PromptChar = '_';
+            maskedTextBox1.ResetOnPrompt = true;
+            maskedTextBox1.ResetOnSpace = true;
+            maskedTextBox1.SkipLiterals = true;
+            maskedTextBox1.Leave += MtxtTelefono_Leave;
+        }
+
+        private void MtxtTelefono_Leave(object sender, EventArgs e)
+        {
+            MaskedTextBox mtxt = sender as MaskedTextBox;
+            if (!mtxt.MaskCompleted && !string.IsNullOrWhiteSpace(mtxt.Text.Replace("(", "").Replace(")", "").Replace("-", "").Trim()))
+            {
+                MessageBox.Show("Por favor Complete el numero de Telefono Correctamente.", "Telefono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                mtxt.Focus();
+            }
+        }
+        private bool ValidarTelefono(string telefono)
+        {
+            string telefonoLimpio = telefono.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
+            if (telefonoLimpio.Length != 10)
+            {
+                return false;
+            }
+            return telefonoLimpio.All(char.IsDigit);
+        }
         //Boton Eliminar
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -213,10 +281,23 @@ namespace GymPresentacion
             }
 
         }
-        private void btnConsultar_Click( object sender, EventArgs e)
+        private void btnConsultar_Click(object sender, EventArgs e)
         {
             CargarEntrenadores();
             MessageBox.Show("Lista de Entrenadores Actualizada.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void PicMem2_Click(object sender, EventArgs e)
+        {
+            _formPrincipal.Show();
+            this.Close();
+        }
+
+        private void PicRutinaEntrenador_Click(object sender, EventArgs e)
+        {
+            Form3Rutina formRutina = new Form3Rutina(_formPrincipal);
+            formRutina.Show();
+            this.Close();
         }
 
         private void LimpiarCampos()
@@ -230,12 +311,6 @@ namespace GymPresentacion
             checkDisponible.Checked = true;
             _entrenadorSeleccionado = null;
             dgvEntrenadores.ClearSelection();
-        }
-        private void btnVolver_Click(Object sender, EventArgs e)
-        {
-            Form1 FormPrincipal = new Form1();
-            FormPrincipal.Show();
-            this.Close();
         }
         private void lblGeneroEntrendor_Click(object sender, EventArgs e)
         {
@@ -258,6 +333,11 @@ namespace GymPresentacion
         }
 
         private void checkDisponible_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvEntrenadores_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

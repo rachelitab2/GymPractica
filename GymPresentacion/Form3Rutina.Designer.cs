@@ -1,6 +1,6 @@
 ﻿namespace GymPresentacion
 {
-    partial class PicMem3
+    partial class Form3Rutina
     {
         /// <summary>
         /// Required designer variable.
@@ -43,11 +43,11 @@
             lblDuracion = new Label();
             nudDuracion = new NumericUpDown();
             btnEditarRutina = new Button();
-            lblEntrenador = new Label();
-            cmbEntrenador = new ComboBox();
+            PicEntrenadorIr = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)PicMemRutina).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvRutinas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudDuracion).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PicEntrenadorIr).BeginInit();
             SuspendLayout();
             // 
             // btnAgregarRutina
@@ -105,7 +105,7 @@
             lblGeneroRutina.BackColor = Color.IndianRed;
             lblGeneroRutina.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblGeneroRutina.ForeColor = Color.White;
-            lblGeneroRutina.Location = new Point(1013, 237);
+            lblGeneroRutina.Location = new Point(930, 237);
             lblGeneroRutina.Name = "lblGeneroRutina";
             lblGeneroRutina.Size = new Size(163, 25);
             lblGeneroRutina.TabIndex = 4;
@@ -118,7 +118,7 @@
             lblZonaRutina.BackColor = Color.IndianRed;
             lblZonaRutina.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblZonaRutina.ForeColor = Color.White;
-            lblZonaRutina.Location = new Point(1013, 313);
+            lblZonaRutina.Location = new Point(930, 317);
             lblZonaRutina.Name = "lblZonaRutina";
             lblZonaRutina.Size = new Size(135, 25);
             lblZonaRutina.TabIndex = 5;
@@ -128,7 +128,7 @@
             // 
             cmbGeneroRutina.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGeneroRutina.FormattingEnabled = true;
-            cmbGeneroRutina.Location = new Point(1223, 238);
+            cmbGeneroRutina.Location = new Point(1174, 238);
             cmbGeneroRutina.Name = "cmbGeneroRutina";
             cmbGeneroRutina.Size = new Size(296, 28);
             cmbGeneroRutina.TabIndex = 9;
@@ -141,7 +141,7 @@
             PicMemRutina.BackgroundImageLayout = ImageLayout.Zoom;
             PicMemRutina.Cursor = Cursors.Hand;
             PicMemRutina.Image = Properties.Resources._1;
-            PicMemRutina.Location = new Point(32, 39);
+            PicMemRutina.Location = new Point(-67, 39);
             PicMemRutina.Name = "PicMemRutina";
             PicMemRutina.Size = new Size(319, 86);
             PicMemRutina.SizeMode = PictureBoxSizeMode.Zoom;
@@ -157,7 +157,7 @@
             dgvRutinas.BackgroundColor = Color.WhiteSmoke;
             dgvRutinas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRutinas.GridColor = SystemColors.ScrollBar;
-            dgvRutinas.Location = new Point(146, 131);
+            dgvRutinas.Location = new Point(53, 131);
             dgvRutinas.Name = "dgvRutinas";
             dgvRutinas.ReadOnly = true;
             dgvRutinas.RowHeadersWidth = 51;
@@ -170,7 +170,7 @@
             lblNombreRutina.BackColor = Color.IndianRed;
             lblNombreRutina.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNombreRutina.ForeColor = Color.White;
-            lblNombreRutina.Location = new Point(1013, 159);
+            lblNombreRutina.Location = new Point(930, 160);
             lblNombreRutina.Name = "lblNombreRutina";
             lblNombreRutina.Size = new Size(204, 25);
             lblNombreRutina.TabIndex = 11;
@@ -178,7 +178,7 @@
             // 
             // txtNombreRutina
             // 
-            txtNombreRutina.Location = new Point(1223, 160);
+            txtNombreRutina.Location = new Point(1174, 161);
             txtNombreRutina.Name = "txtNombreRutina";
             txtNombreRutina.Size = new Size(296, 27);
             txtNombreRutina.TabIndex = 12;
@@ -188,7 +188,7 @@
             // 
             cmbAreaRutina.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAreaRutina.FormattingEnabled = true;
-            cmbAreaRutina.Location = new Point(1223, 314);
+            cmbAreaRutina.Location = new Point(1174, 317);
             cmbAreaRutina.Name = "cmbAreaRutina";
             cmbAreaRutina.Size = new Size(296, 28);
             cmbAreaRutina.TabIndex = 13;
@@ -199,7 +199,7 @@
             lblDuracion.BackColor = Color.IndianRed;
             lblDuracion.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDuracion.ForeColor = Color.White;
-            lblDuracion.Location = new Point(1013, 396);
+            lblDuracion.Location = new Point(930, 394);
             lblDuracion.Name = "lblDuracion";
             lblDuracion.Size = new Size(158, 25);
             lblDuracion.TabIndex = 14;
@@ -208,7 +208,7 @@
             // 
             // nudDuracion
             // 
-            nudDuracion.Location = new Point(1299, 394);
+            nudDuracion.Location = new Point(1228, 396);
             nudDuracion.Maximum = new decimal(new int[] { 120, 0, 0, 0 });
             nudDuracion.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             nudDuracion.Name = "nudDuracion";
@@ -229,34 +229,26 @@
             btnEditarRutina.Text = "Editar";
             btnEditarRutina.UseVisualStyleBackColor = false;
             // 
-            // lblEntrenador
+            // PicEntrenadorIr
             // 
-            lblEntrenador.AutoSize = true;
-            lblEntrenador.BackColor = Color.IndianRed;
-            lblEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEntrenador.ForeColor = Color.White;
-            lblEntrenador.Location = new Point(1013, 475);
-            lblEntrenador.Name = "lblEntrenador";
-            lblEntrenador.Size = new Size(129, 25);
-            lblEntrenador.TabIndex = 17;
-            lblEntrenador.Text = "Entrenador";
+            PicEntrenadorIr.BackColor = Color.Transparent;
+            PicEntrenadorIr.BackgroundImage = Properties.Resources._3;
+            PicEntrenadorIr.BackgroundImageLayout = ImageLayout.Zoom;
+            PicEntrenadorIr.Image = Properties.Resources._3;
+            PicEntrenadorIr.Location = new Point(147, 39);
+            PicEntrenadorIr.Name = "PicEntrenadorIr";
+            PicEntrenadorIr.Size = new Size(93, 86);
+            PicEntrenadorIr.SizeMode = PictureBoxSizeMode.StretchImage;
+            PicEntrenadorIr.TabIndex = 19;
+            PicEntrenadorIr.TabStop = false;
             // 
-            // cmbEntrenador
-            // 
-            cmbEntrenador.FormattingEnabled = true;
-            cmbEntrenador.Location = new Point(1223, 472);
-            cmbEntrenador.Name = "cmbEntrenador";
-            cmbEntrenador.Size = new Size(296, 28);
-            cmbEntrenador.TabIndex = 18;
-            // 
-            // PicMem3
+            // Form3Rutina
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources._4;
-            ClientSize = new Size(1572, 706);
-            Controls.Add(cmbEntrenador);
-            Controls.Add(lblEntrenador);
+            ClientSize = new Size(1532, 667);
+            Controls.Add(PicEntrenadorIr);
             Controls.Add(btnEditarRutina);
             Controls.Add(nudDuracion);
             Controls.Add(lblDuracion);
@@ -273,12 +265,13 @@
             Controls.Add(btnConsultarRutina);
             Controls.Add(btnAgregarRutina);
             Cursor = Cursors.Hand;
-            Name = "PicMem3";
+            Name = "Form3Rutina";
             Text = "Form3";
             Load += PicMem2_Load;
             ((System.ComponentModel.ISupportInitialize)PicMemRutina).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvRutinas).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudDuracion).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PicEntrenadorIr).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -302,5 +295,6 @@
         private Button btnEditarRutina;
         private Label lblEntrenador;
         private ComboBox cmbEntrenador;
+        private PictureBox PicEntrenadorIr;
     }
 }

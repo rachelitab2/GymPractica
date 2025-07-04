@@ -12,9 +12,6 @@ namespace GymNegocio.ClasesRutinas
         public string NombreRutina { get; set; }
         public string Genero { get; set; }
         public string AreaCuerpo { get; set; }
-        public string Descripcion { get; set; }
         public int DuracionMinutos { get; set; }
-
-        public int IdEntrenador { get; set; }
     }
 }

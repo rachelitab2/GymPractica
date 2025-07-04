@@ -17,16 +17,16 @@ namespace GymNegocio.ClasesRutinas
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
             {
                 conn.Open();
-                string query = "INSERT INTO Rutinas (NombreRutina, Genero, AreaCuerpo,DuracionMinutos, IdEntrenador)" +
-                    "VALUES(@NombreRutina,@Genero,@AreaCuerpo,@DuracionMinutos, @IdEntrenador ); " +
+                string query = "INSERT INTO Rutinas (NombreRutina, Genero, AreaCuerpo,DuracionMinutos)" +
+                    "VALUES(@NombreRutina,@Genero,@AreaCuerpo,@DuracionMinutos); " +
                     "SELECT SCOPE_IDENTITY();";
-                using(SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@NombreRutina", rutina.NombreRutina);
                     cmd.Parameters.AddWithValue("@Genero", rutina.Genero);
                     cmd.Parameters.AddWithValue("@AreaCuerpo", rutina.AreaCuerpo);
                     cmd.Parameters.AddWithValue("@DuracionMinutos", rutina.DuracionMinutos);
-                    cmd.Parameters.AddWithValue("@IdEntrenador", rutina.IdEntrenador);
+
 
                     rutina.Id = Convert.ToInt32(cmd.ExecuteScalar());
                 }
@@ -39,15 +39,15 @@ namespace GymNegocio.ClasesRutinas
             {
                 conn.Open();
                 string query = "UPDATE Rutinas SET NombreRutina = @NombreRutina, Genero =@Genero, AreaCuerpo = @AreaCuerpo" +
-                    "DuracionMinutos = @DuracionMinutos, IdEntrenador = @IdEntrenador WHERE Id = @Id";
+                    "DuracionMinutos = @DuracionMinutos WHERE Id = @Id";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Id", rutina.Id);
                     cmd.Parameters.AddWithValue("@NombreRutina", rutina.NombreRutina);
                     cmd.Parameters.AddWithValue("@Genero", rutina.Genero);
-                    cmd.Parameters.AddWithValue("@AreaCuerpo",rutina.AreaCuerpo);
+                    cmd.Parameters.AddWithValue("@AreaCuerpo", rutina.AreaCuerpo);
                     cmd.Parameters.AddWithValue("@DuracionMinutos", rutina.DuracionMinutos);
-                    cmd.Parameters.AddWithValue("@IdEntrenador", rutina.IdEntrenador);
+
 
                     cmd.ExecuteNonQuery();
                 }
@@ -75,7 +75,7 @@ namespace GymNegocio.ClasesRutinas
             List<Rutina> rutinas = new List<Rutina>();
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
             {
-                string query = "SELECT Id, NombreRutina, Genero, AreaCuerpo, DuracionMinutos, IdEntrenador FROM Rutinas ORDER BY Id";
+                string query = "SELECT Id, NombreRutina, Genero, AreaCuerpo, DuracionMinutos FROM Rutinas ORDER BY Id";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     conn.Open();
@@ -85,12 +85,12 @@ namespace GymNegocio.ClasesRutinas
                         {
                             Rutina rutina = new Rutina
                             {
-                                Id = Convert.ToInt32(reader["Id"]),
+                                Id = Convert.ToInt32(reader["ID"]),
                                 NombreRutina = reader["NombreRutina"].ToString(),
                                 Genero = reader["Genero"].ToString(),
                                 AreaCuerpo = reader["AreaCuerpo"].ToString(),
-                                DuracionMinutos = Convert.ToInt32(reader["DuracionMinutos"]),
-                                IdEntrenador = Convert.ToInt32(reader["IdEntrenador"])
+                                DuracionMinutos = Convert.ToInt32(reader["DuracionMinutos"])
+
                             };
 
                             rutinas.Add(rutina);
@@ -100,13 +100,13 @@ namespace GymNegocio.ClasesRutinas
             }
             return rutinas;
         }
-        
+
         public Rutina ObtenerRutinaPorId(int idRutina)
         {
             Rutina rutina = null;
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
             {
-                string query = "SELECT Id, NombreRutina, Genero, AreaCuerpo, DuracionMinutos, IdEntrenador FROM Rutinas WHERE Id = @Id";
+                string query = "SELECT Id, NombreRutina, Genero, AreaCuerpo, DuracionMinutos FROM Rutinas WHERE Id = @Id";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Id", idRutina);
@@ -117,18 +117,54 @@ namespace GymNegocio.ClasesRutinas
                         {
                             rutina = new Rutina
                             {
-                                Id = Convert.ToInt32(reader["Id"]),
+                                Id = Convert.ToInt32(reader["ID"]),
                                 NombreRutina = reader["NombreRutina"].ToString(),
                                 Genero = reader["Genero"].ToString(),
                                 AreaCuerpo = reader["AreaCuerpo"].ToString(),
-                                DuracionMinutos = Convert.ToInt32(reader["DuracionMinutos"]),
-                                IdEntrenador = Convert.ToInt32(reader["IdEntrenador"])
+                                DuracionMinutos = Convert.ToInt32(reader["DuracionMinutos"])
                             };
                         }
                     }
                 }
             }
             return rutina;
+
+
+        }
+
+
+        public bool ExisteRutina(string nombre)
+        {
+            using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
+            {
+                string query = "SELECT COUNT(1) FROM Rutinas WHERE NombreRutina = @NombreRutina";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@NombreRutina", nombre);
+                    conn.Open();
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+
+                }
+            }
+        }
+
+        public bool ExisteRutina(string nombre, int idExcluir)
+        {
+            using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
+            {
+                string query = "SELECT COUNT(1) FROM Rutinas WHERE NombreRutina = @NombreRutina AND ID != @Id";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@NombreRutina", nombre);
+                    cmd.Parameters.AddWithValue("@Id", idExcluir);
+                    conn.Open();
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+            }
         }
     }
+
+    
 }

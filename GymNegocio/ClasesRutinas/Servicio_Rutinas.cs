@@ -8,7 +8,7 @@ namespace GymNegocio.ClasesRutinas
 {
    public class Servicio_Rutinas 
     {
-        private readonly AccesoRutina _accesoRutina;
+        private AccesoRutina _accesoRutina;
 
         public Servicio_Rutinas()
         {
@@ -25,13 +25,7 @@ namespace GymNegocio.ClasesRutinas
             if (string.IsNullOrWhiteSpace(nuevaRutina.Genero))
             {
                 throw new ArgumentException("El Genero de la Rutina es Obligatorio.");
-            }
-
-            if (nuevaRutina.IdEntrenador <= 0)
-            {
-                throw new ArgumentException("Se debe Asignar un Entrenador a la Rutina");
-            }
-
+            }           
             _accesoRutina.InsertarRutina(nuevaRutina);
         }
 
@@ -45,12 +39,7 @@ namespace GymNegocio.ClasesRutinas
             if (string.IsNullOrWhiteSpace(rutina.NombreRutina))
             {
                 throw new ArgumentException("El Nombre de la Rutina es Obligatorio.");
-            }
-
-            if(rutina.IdEntrenador <= 0)
-            {
-                throw new ArgumentException("Se debe reasignar un Entrenador a la Rutina.");
-            }
+            }          
             _accesoRutina.ActualizarRutina(rutina);
         }
 
@@ -85,6 +74,16 @@ namespace GymNegocio.ClasesRutinas
         public List<Rutina> ObtenerRutinasPorArea(string areaCuerpo)
         {
             return ObtenerTodasLasRutinas().Where(r => r.AreaCuerpo.Equals(areaCuerpo, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
+        public bool ExisteRutina(string nombre)
+        {
+            return _accesoRutina.ExisteRutina(nombre);
+        }
+
+        public bool ExisteRutina(string nombre, int idExcluir)
+        {
+            return _accesoRutina.ExisteRutina(nombre, idExcluir);
         }
     }
 }

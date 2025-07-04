@@ -9,94 +9,156 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GymNegocio.ClasesRutinas;
 using GymNegocio.ClasesEntrenador;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace GymPresentacion
 {
-    public partial class PicMem3 : Form
+    public partial class Form3Rutina : Form
     {
         private readonly Servicio_Rutinas _servicioRutinas;
-        private readonly Servicio_Entrenadores _servicioEntrenadores;
         private Rutina _rutinaSeleccionada;
-        public PicMem3()
+        private readonly Form _formPrincipal;
+        public Form3Rutina(Form formPrincipal)
         {
             InitializeComponent();
+            _formPrincipal = formPrincipal;
             _servicioRutinas = new Servicio_Rutinas();
-            _servicioEntrenadores = new Servicio_Entrenadores();
             ConfigurarDataGridView();
-            ConfigurarComboBoxes();
-            ConfigurarNumericUpDown();
-            AsignarEventos();
-            CargarRutina();
+            ConfigurarControles();
+            AsignarEventos();         
+            BtnConsultarRutina_Click(null, null);
         }
 
-        private void ConfigurarDataGridView()
+        private void ConfigurarControles()
         {
-            dgvRutinas.AutoGenerateColumns = true;
-            dgvRutinas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvRutinas.MultiSelect = false;
-        }
-
-        private void ConfigurarComboBoxes()
-        {
-            cmbGeneroRutina.Items.Clear();
-            cmbGeneroRutina.Items.Add("Masculino");
-            cmbGeneroRutina.Items.Add("Femenino");
-            cmbGeneroRutina.Items.Add("Mixto");
-            cmbGeneroRutina.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbGeneroRutina.SelectedIndex = -1;
-
-            cmbAreaRutina.Items.Clear();
-            cmbAreaRutina.Items.Add("Pecho");
-            cmbAreaRutina.Items.Add("Espalda");
-            cmbAreaRutina.Items.Add("Piernas");
-            cmbAreaRutina.Items.Add("Brazos");
-            cmbAreaRutina.Items.Add("Abdomen");
-            cmbAreaRutina.Items.Add("Cardio");
-            cmbAreaRutina.Items.Add("Full Body");
-            cmbAreaRutina.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbAreaRutina.SelectedIndex = -1;
-
-            try
+            if (cmbGeneroRutina.Items.Count == 0)
             {
-                cmbEntrenador.DataSource = _servicioEntrenadores.ObtenerTodos();
-                cmbEntrenador.DisplayMember = "Nombre"; // Lo que el usuario ve
-                cmbEntrenador.ValueMember = "Id";       // El valor que usamos internamente
-                cmbEntrenador.DropDownStyle = ComboBoxStyle.DropDownList;
+                cmbGeneroRutina.Items.AddRange(new string[] { "Masculino", "Femenino", "Mixto" });
+                cmbGeneroRutina.DropDownStyle = ComboBoxStyle.DropDownList;
             }
-            catch (Exception ex)
+            if (cmbAreaRutina.Items.Count == 0)
             {
-                MessageBox.Show($"Error al Cargar Entrenadores: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbAreaRutina.Items.AddRange(new string[] { "Pecho", "Espalda", "Piernas", "Brazos", "Hombros", "Abdomen" });
+                cmbAreaRutina.DropDownStyle = ComboBoxStyle.DropDownList;
             }
-        }
-
-
-        private void ConfigurarNumericUpDown()
-        {
-            nudDuracion.Minimum = 1;
-            nudDuracion.Maximum = 300;
-            nudDuracion.Value = 60;
+            nudDuracion.Minimum = 5;
+            nudDuracion.Maximum = 120;
+            nudDuracion.Value = 30;
 
         }
+
 
         private void AsignarEventos()
         {
-            btnAgregarRutina.Click += BtnAgregarRutina_Click;
-            btnEditarRutina.Click += BtnEditarRutina_Click;
-            btnEliminarRutina.Click += BtnEliminarRutina_Click;
-            btnConsultarRutina.Click += BtnConsultarRutina_Click;
-            dgvRutinas.SelectionChanged += DgvRutinas_SelectionChanged;
+
+
+            if(btnAgregarRutina != null) 
+            {
+                btnAgregarRutina.Click -= BtnAgregarRutina_Click;
+                btnAgregarRutina.Click += BtnAgregarRutina_Click;
+            }
+
+            if (btnEditarRutina != null)
+            {
+                btnEditarRutina.Click -= BtnEditarRutina_Click;
+                btnEditarRutina.Click += BtnEditarRutina_Click;               
+            }
+
+            if(btnEliminarRutina != null)
+            {
+                btnEliminarRutina.Click -= BtnEliminarRutina_Click;
+                btnEliminarRutina.Click += BtnEliminarRutina_Click;
+            }
+            if(btnConsultarRutina != null)
+            {
+                btnConsultarRutina.Click -= BtnConsultarRutina_Click;
+                btnConsultarRutina.Click += BtnConsultarRutina_Click;
+            }
+            if(dgvRutinas != null)
+            {
+                dgvRutinas.SelectionChanged -= DgvRutinas_SelectionChanged;
+                dgvRutinas.SelectionChanged += DgvRutinas_SelectionChanged;
+
+            }
+
+            if (PicMemRutina != null)
+            {
+                PicMemRutina.Click -= PicMemRutina_Click;
+                PicMemRutina.Click += PicMemRutina_Click;
+            }
+
+            if (PicEntrenadorIr != null)
+            {
+                PicEntrenadorIr.Click -= PicEntrenadorIr_Click;
+                PicEntrenadorIr.Click += PicEntrenadorIr_Click;
+            }
+        
+
+            
+           
         }
+        private void ConfigurarDataGridView()
+
+        {
+            dgvRutinas.AutoGenerateColumns = false;
+            dgvRutinas.Columns.Clear();
+
+            dgvRutinas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Id",
+                HeaderText = "ID",
+                Name = "Id",
+                Width = 50,
+
+            });
+
+            dgvRutinas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "NombreRutina",
+                HeaderText = "Nombre",
+                Name = "NombreRutina",
+                Width = 150
+            });
+
+            dgvRutinas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Genero",
+                HeaderText = "Genero",
+                Name = "Genero",
+                Width = 100
+            });
+
+            dgvRutinas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "AreaCuerpo",
+                HeaderText = "Area del Cuerpo",
+                Name = "AreaCuerpo",
+                Width = 120
+            });
+
+            dgvRutinas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "DuracionMinutos",
+                HeaderText = "Duracion (min)",
+                Name = "DuracionMinutos",
+                Width = 80
+            });
+
+            dgvRutinas.Columns["Id"].Visible = false;
+
+        }
+
 
         private void CargarRutina()
         {
+
             try
             {
+
                 dgvRutinas.DataSource = null;
                 dgvRutinas.DataSource = _servicioRutinas.ObtenerTodasLasRutinas();
 
-                // Ocultamos las columnas que no queremos ver en la tabla
-                if (dgvRutinas.Columns["Id"] != null) dgvRutinas.Columns["Id"].Visible = false;
-                if (dgvRutinas.Columns["IdEntrenador"] != null) dgvRutinas.Columns["IdEntrenador"].Visible = false;
+
             }
             catch (Exception ex)
             {
@@ -106,9 +168,10 @@ namespace GymPresentacion
 
         private void DgvRutinas_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvRutinas.SelectedRows.Count > 0)
+            if (dgvRutinas.SelectedRows.Count > 0 )
             {
-                _rutinaSeleccionada = (Rutina)dgvRutinas.SelectedRows[0].DataBoundItem;
+
+                _rutinaSeleccionada = dgvRutinas.SelectedRows[0].DataBoundItem as Rutina;
 
                 if (_rutinaSeleccionada != null)
                 {
@@ -116,7 +179,11 @@ namespace GymPresentacion
                     cmbGeneroRutina.SelectedItem = _rutinaSeleccionada.Genero;
                     cmbAreaRutina.SelectedItem = _rutinaSeleccionada.AreaCuerpo;
                     nudDuracion.Value = _rutinaSeleccionada.DuracionMinutos;
-                    cmbEntrenador.SelectedValue = _rutinaSeleccionada.IdEntrenador; // CAMPO AÑADIDO
+
+                }
+                else
+                {
+                    LimpiarCampos();
                 }
             }
         }
@@ -125,26 +192,31 @@ namespace GymPresentacion
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtNombreRutina.Text) ||  cmbGeneroRutina.SelectedItem == null )
+                if (string.IsNullOrWhiteSpace(txtNombreRutina.Text) || cmbGeneroRutina.SelectedItem == null || cmbAreaRutina.SelectedItem == null)
                 {
-                    MessageBox.Show("El Nombre de la Rutina y el Entrenador es Obligatorio.", "Campos Requeridos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor, complete todos los campos requeridos.", "Campos Requeridos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (_servicioRutinas.ExisteRutina(txtNombreRutina.Text.Trim()))
+                {
+                    MessageBox.Show("Ya existe una rutina con este Nombre. Por Favor, elija otro.", " Error de Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                Rutina nueva = new Rutina
+                Rutina nuevaRutina = new Rutina
                 {
                     NombreRutina = txtNombreRutina.Text.Trim(),
                     Genero = cmbGeneroRutina.SelectedItem.ToString(),
                     AreaCuerpo = cmbAreaRutina.SelectedItem.ToString(),
                     DuracionMinutos = (int)nudDuracion.Value,
-                    IdEntrenador = (int)cmbEntrenador.SelectedValue 
+
                 };
 
-                _servicioRutinas.RegistrarRutina(nueva);
-                MessageBox.Show("Rutina Agregada exitosamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                LimpiarCampos();
-                CargarRutinas();
+                _servicioRutinas.RegistrarRutina(nuevaRutina);
+                MessageBox.Show("Rutina Agregada exitosamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BtnConsultarRutina_Click(sender, e);
+                
             }
             catch (Exception ex)
             {
@@ -154,32 +226,37 @@ namespace GymPresentacion
 
         private void BtnEditarRutina_Click(object sender, EventArgs e)
         {
-            
-                if (_rutinaSeleccionada == null)
-                {
-                    MessageBox.Show("Por Favor, Seleccione una Rutina para editar.", "Seleccion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+
+            if (_rutinaSeleccionada == null)
+            {
+                MessageBox.Show("Por Favor, Seleccione una Rutina para editar.", "Seleccion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             try
             {
+                if (_servicioRutinas.ExisteRutina (txtNombreRutina.Text.Trim(), _rutinaSeleccionada.Id))
+                {
+                    MessageBox.Show("Ya existe otra Rutina con este Nombre, Por favor, Elija Otro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 _rutinaSeleccionada.NombreRutina = txtNombreRutina.Text.Trim();
                 _rutinaSeleccionada.Genero = cmbGeneroRutina.SelectedItem.ToString();
                 _rutinaSeleccionada.AreaCuerpo = cmbAreaRutina.SelectedItem.ToString();
                 _rutinaSeleccionada.DuracionMinutos = (int)nudDuracion.Value;
-                _rutinaSeleccionada.IdEntrenador = (int)cmbEntrenador.SelectedValue;
+
 
                 _servicioRutinas.ActualizarRutina(_rutinaSeleccionada);
                 MessageBox.Show("Rutina Actuslizar  exitosamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                LimpiarCampos();
-                CargarRutinas();
+                BtnConsultarRutina_Click(sender, e);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al Actualizar Rutina: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
 
         private void BtnEliminarRutina_Click(object sender, EventArgs e)
         {
@@ -196,9 +273,7 @@ namespace GymPresentacion
                 {
                     _servicioRutinas.EliminarRutina(_rutinaSeleccionada.Id);
                     MessageBox.Show("Rutina Eliminada exitosamente.", " Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    LimpiarCampos();
-                    CargarRutinas();
+                    BtnConsultarRutina_Click(sender, e);
                 }
                 catch (Exception ex)
                 {
@@ -211,34 +286,43 @@ namespace GymPresentacion
 
         private void BtnConsultarRutina_Click(object sender, EventArgs e)
         {
-            CargarRutinas();
-            MessageBox.Show("Lista de Rutinas Actualizada.", " Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-
-        private void CargarRutinas()
-        {
             try
             {
-                List<Rutina> rutinas = _servicioRutinas.ObtenerTodasLasRutinas();
+                List<Rutina> rutina = _servicioRutinas.ObtenerTodasLasRutinas();
                 dgvRutinas.DataSource = null;
-                dgvRutinas.DataSource = rutinas;
+                dgvRutinas.DataSource = rutina;
+
+                LimpiarCampos();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                MessageBox.Show($"Error al Cargar Rutina: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al Cargar las Rutinas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-         private void LimpiarCampos()
+
+        
+        private void PicMemRutina_Click(object sender, EventArgs e)
+        {
+            _formPrincipal.Show();
+            this.Close();
+        }
+        private void PicEntrenadorIr_Click(object sender, EventArgs e)
+        {
+            // Abrimos el form de entrenadores, pasándole la referencia del Form1
+            Form2Entrenadores formEntrenadores = new Form2Entrenadores(_formPrincipal);
+            formEntrenadores.Show();
+            this.Close(); // Cierra este formulario
+        }
+
+        private void LimpiarCampos()
         {
             txtNombreRutina.Clear();
             cmbGeneroRutina.SelectedIndex = -1;
             cmbAreaRutina.SelectedIndex = -1;
-            cmbEntrenador.SelectedIndex = -1; 
             nudDuracion.Value = 60;
             _rutinaSeleccionada = null;
-            dgvRutinas.ClearSelection();
+           
         }
 
 
@@ -269,14 +353,6 @@ namespace GymPresentacion
 
         private void nudDuracion_ValueChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void PicMemRutina_Click(object sender, EventArgs e)
-        {
-            Form1 form1 = new Form1();
-            form1.Show();
-            this.Hide();
 
         }
 

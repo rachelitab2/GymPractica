@@ -242,9 +242,9 @@ namespace GymPresentacion
             PicEntrenadores.BackColor = Color.Transparent;
             PicEntrenadores.Cursor = Cursors.Hand;
             PicEntrenadores.Image = Properties.Resources._3;
-            PicEntrenadores.Location = new Point(41, 103);
+            PicEntrenadores.Location = new Point(41, 82);
             PicEntrenadores.Name = "PicEntrenadores";
-            PicEntrenadores.Size = new Size(58, 63);
+            PicEntrenadores.Size = new Size(96, 84);
             PicEntrenadores.SizeMode = PictureBoxSizeMode.Zoom;
             PicEntrenadores.TabIndex = 21;
             PicEntrenadores.TabStop = false;
@@ -256,9 +256,9 @@ namespace GymPresentacion
             PicRutinas.BackgroundImageLayout = ImageLayout.None;
             PicRutinas.Cursor = Cursors.Hand;
             PicRutinas.Image = Properties.Resources._41;
-            PicRutinas.Location = new Point(106, 103);
+            PicRutinas.Location = new Point(143, 82);
             PicRutinas.Name = "PicRutinas";
-            PicRutinas.Size = new Size(61, 63);
+            PicRutinas.Size = new Size(96, 84);
             PicRutinas.SizeMode = PictureBoxSizeMode.Zoom;
             PicRutinas.TabIndex = 22;
             PicRutinas.TabStop = false;
