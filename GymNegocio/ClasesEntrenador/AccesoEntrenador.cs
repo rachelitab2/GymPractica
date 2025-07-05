@@ -96,6 +96,10 @@ namespace GymNegocio.ClasesEntrenador
                                 entrenador = new EntrenadorPesas();
                             else if (area == "Cardio")
                                 entrenador = new EntrenadorCardio();
+                            else if (area == "Pilates")
+                                entrenador = new EntrenadorPilates();
+                            else if (area == "Yoga")
+                                entrenador = new EntrenadorYoga();
                             else continue;
 
                             entrenador.Id = Convert.ToInt32(reader["Id"]);
@@ -137,6 +141,10 @@ namespace GymNegocio.ClasesEntrenador
                                 entrenador = new EntrenadorPesas();
                             else if (area == "Cardio")
                                 entrenador = new EntrenadorCardio();
+                            else if (area == "Pilates")
+                                entrenador = new EntrenadorPilates();
+                            else if (area == "Yoga")
+                                entrenador = new EntrenadorYoga();
                             else
                                 return null; // No se encontro del tipo valido
 

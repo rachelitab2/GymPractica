@@ -17,29 +17,89 @@ namespace GymPresentacion
         private readonly Servicio_Entrenadores _servicioEntrenadores;
         private Entrenador _entrenadorSeleccionado;
         private readonly Form _formPrincipal;
-        public Form2Entrenadores(Form formPrincipal)
+        private bool _isNavigating = false;
+        private readonly Form _dashboard;
+        public Form2Entrenadores(Form dashboard)
         {
 
             InitializeComponent();
-            _formPrincipal = formPrincipal;
+            _dashboard = dashboard;
             _servicioEntrenadores = new Servicio_Entrenadores();
             AsignarEventos();
+           
         }
 
         private void Form2Entrenadores_Load(object sender, EventArgs e)
         {
-            CargarEntrenadores();
             ConfigurarComboBoxes();
             ConfigurarDataGridView();
             ConfigurarNumericUpDown();
             ConfigurarMaskedTextBoxTelefono();
+            LimpiarCampos();
         }
+
 
         private void ConfigurarDataGridView()
         {
-            dgvEntrenadores.AutoGenerateColumns = true;
+            dgvEntrenadores.AutoGenerateColumns = false;
+            dgvEntrenadores.Columns.Clear();
+            dgvEntrenadores.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Id", Name = "Id", Visible = false });
+            dgvEntrenadores.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Genero", Name = "Genero", Visible = false });
+
+            dgvEntrenadores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Nombre",
+                HeaderText = "Nombre",
+                Name = "Nombre",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            dgvEntrenadores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Area",
+                HeaderText = "Area",
+                Name = "Area",
+                Width = 100
+            });
+
+            dgvEntrenadores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Telefono",
+                HeaderText = "Telefono",
+                Name = "Telefono",
+                Width = 100
+            });
+
+            dgvEntrenadores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "FechaIngreso",
+                HeaderText = "Fecha Ingreso",
+                Name = "FechaIngreso",
+                Width = 120,
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
+            });
+
+            dgvEntrenadores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Duracion",
+                HeaderText = "Duracion (Meses)",
+                Name = "Duracion",
+                Width = 80
+            });
+
+            dgvEntrenadores.Columns.Add(new DataGridViewCheckBoxColumn
+            {
+                DataPropertyName = "Activo",
+                HeaderText = "Activo",
+                Name = "Activo",
+                Width = 60
+            });
+
+
             dgvEntrenadores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEntrenadores.MultiSelect = false;
+            dgvEntrenadores.AllowUserToAddRows = false;
+            dgvEntrenadores.ReadOnly = true;
         }
 
         private void ConfigurarComboBoxes()
@@ -56,6 +116,8 @@ namespace GymPresentacion
             {
                 cmbAreaEntrenador.Items.Add("Cardio");
                 cmbAreaEntrenador.Items.Add("Pesas");
+                cmbAreaEntrenador.Items.Add("Pilates");
+                cmbAreaEntrenador.Items.Add("Yoga");
                 cmbAreaEntrenador.DropDownStyle = ComboBoxStyle.DropDownList;
             }
         }
@@ -70,13 +132,23 @@ namespace GymPresentacion
         private void AsignarEventos()
         {
             this.Load += Form2Entrenadores_Load;
+            this.FormClosing += Form2Entrenadores_FormClosing;
             dgvEntrenadores.SelectionChanged += dvgEntrenadores_SelectionChanged;
             btnAgregarEntrenador.Click += btnAgregarEntrenador_Click;
             btnEditarEntrenador.Click += btnEditar_Click;
             btnEliminarEntrenador.Click += btnEliminar_Click;
-            btnConsultar.Click += btnConsultar_Click;
+            btnConsultar.Click += (s, e) => CargarEntrenadores();
             PicMem2.Click += PicMem2_Click;
             PicRutinaEntrenador.Click += PicRutinaEntrenador_Click;
+            PicEntrenadorInicio.Click += PicEntrenadorInicio_Click;
+        }
+
+        private void Form2Entrenadores_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!_isNavigating)
+            {
+                _dashboard.Show();
+            }
         }
 
         private void CargarEntrenadores()
@@ -85,13 +157,7 @@ namespace GymPresentacion
             {
                 dgvEntrenadores.DataSource = null;
                 dgvEntrenadores.DataSource = _servicioEntrenadores.ObtenerTodos();
-
-                // Ocultamos las columnas después de cargar los datos
-                if (dgvEntrenadores.Columns.Contains("Id")) dgvEntrenadores.Columns["Id"].Visible = false;
-                if (dgvEntrenadores.Columns.Contains("Genero")) dgvEntrenadores.Columns["Genero"].Visible = false;
-                if (dgvEntrenadores.Columns.Contains("Telefono")) dgvEntrenadores.Columns["Telefono"].Visible = false;
-                if (dgvEntrenadores.Columns.Contains("FechaIngreso")) dgvEntrenadores.Columns["FechaIngreso"].Visible = false;
-                if (dgvEntrenadores.Columns.Contains("Duracion")) dgvEntrenadores.Columns["Duracion"].Visible = false;
+                LimpiarCampos();
             }
             catch (Exception ex)
             {
@@ -103,15 +169,23 @@ namespace GymPresentacion
         {
             if (dgvEntrenadores.SelectedRows.Count > 0)
             {
-                _entrenadorSeleccionado = (Entrenador)dgvEntrenadores.SelectedRows[0].DataBoundItem;
+                _entrenadorSeleccionado = dgvEntrenadores.SelectedRows[0].DataBoundItem as Entrenador;
 
-                txtNombreEntrenador.Text = _entrenadorSeleccionado.Nombre;
-                maskedTextBox1.Text = _entrenadorSeleccionado.Telefono;
-                cmbGeneroEntrenador.SelectedItem = _entrenadorSeleccionado.Genero;
-                cmbAreaEntrenador.SelectedItem = _entrenadorSeleccionado.Area;
-                dtpIngresoEntrenador.Value = _entrenadorSeleccionado.FechaIngreso;
-                nudDuracion.Value = _entrenadorSeleccionado.Duracion;
-                checkDisponible.Checked = _entrenadorSeleccionado.Activo;
+                if (_entrenadorSeleccionado != null)
+                {
+                    txtNombreEntrenador.Text = _entrenadorSeleccionado.Nombre;
+                    maskedTextBox1.Text = _entrenadorSeleccionado.Telefono;
+                    cmbGeneroEntrenador.SelectedItem = _entrenadorSeleccionado.Genero;
+                    cmbAreaEntrenador.SelectedItem = _entrenadorSeleccionado.Area;
+                    dtpIngresoEntrenador.Value = _entrenadorSeleccionado.FechaIngreso;
+                    nudDuracion.Value = _entrenadorSeleccionado.Duracion;
+                    checkDisponible.Checked = _entrenadorSeleccionado.Activo;
+                }
+
+            }
+            else
+            {
+                LimpiarCampos();
             }
         }
 
@@ -144,13 +218,23 @@ namespace GymPresentacion
 
                 Entrenador nuevoAccesoEntrenador;
                 string areaSeleccionada = cmbAreaEntrenador.SelectedItem.ToString();
-                if (areaSeleccionada == "Pesas")
+                switch (areaSeleccionada)
                 {
-                    nuevoAccesoEntrenador = new EntrenadorPesas();
-                }
-                else
-                {
-                    nuevoAccesoEntrenador = new EntrenadorCardio();
+                    case "Pesas":
+                        nuevoAccesoEntrenador = new EntrenadorPesas();
+                        break;
+                    case "Cardio":
+                        nuevoAccesoEntrenador = new EntrenadorCardio();
+                        break;
+                    case "Pilates":
+                        nuevoAccesoEntrenador = new EntrenadorPilates();
+                        break;
+                    case "Yoga":
+                        nuevoAccesoEntrenador = new EntrenadorYoga();
+                        break;
+                    default:
+                        MessageBox.Show("Por favor, seleccione un Area .", "Area", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                 }
 
                 nuevoAccesoEntrenador.Nombre = txtNombreEntrenador.Text;
@@ -289,14 +373,26 @@ namespace GymPresentacion
 
         private void PicMem2_Click(object sender, EventArgs e)
         {
-            _formPrincipal.Show();
+            _isNavigating = true;
+            Form1 formMembresias = new Form1(_dashboard);
+            formMembresias.WindowState = this.WindowState;
+            formMembresias.Show();
             this.Close();
         }
 
         private void PicRutinaEntrenador_Click(object sender, EventArgs e)
         {
-            Form3Rutina formRutina = new Form3Rutina(_formPrincipal);
+            _isNavigating = true;
+            Form3Rutina formRutina = new Form3Rutina(_dashboard);
+            formRutina.WindowState = this.WindowState;
             formRutina.Show();
+            this.Close();
+        }
+
+        private void PicEntrenadorInicio_Click( object sender , EventArgs e)
+        {
+           _isNavigating = true;
+            _dashboard.Show();
             this.Close();
         }
 
@@ -310,7 +406,11 @@ namespace GymPresentacion
             nudDuracion.Value = 12;
             checkDisponible.Checked = true;
             _entrenadorSeleccionado = null;
-            dgvEntrenadores.ClearSelection();
+
+            if (dgvEntrenadores.SelectedRows.Count > 0)
+            {
+                dgvEntrenadores.ClearSelection();
+            }
         }
         private void lblGeneroEntrendor_Click(object sender, EventArgs e)
         {
@@ -341,5 +441,6 @@ namespace GymPresentacion
         {
 
         }
+
     }
 }

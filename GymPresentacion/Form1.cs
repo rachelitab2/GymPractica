@@ -16,14 +16,19 @@ namespace GymPresentacion // nombre importante
     public partial class Form1 : Form
     {
         public Servicio_Membresia _servicioMembresia;
-        public Form1()
+        private readonly Form _dashboard; // Para guardar la referencia al panel principal
+        private bool _isNavigating = false; // Para controlar el cierre
+
+        public Form1(Form dashboard)
         {
             InitializeComponent();
+            _dashboard = dashboard;
             _servicioMembresia = new Servicio_Membresia(); // instaciacion 
             ConfigurarDataGridView();// donde se muestra los datos
             ConfigurarComboBoxTipoMembresia(); // opciones para los tipos Mensual Y Anual
             ConfigurarMaskedTextBoxTelefono();//telefono y captura de error para el mismo 
             AsignarEventosBotones();//conctar los eventos de los botones con sus funciones 
+            this.FormClosing += Form1_FormClosing;
         }
 
 
@@ -479,21 +484,39 @@ namespace GymPresentacion // nombre importante
         {
 
         }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!_isNavigating)
+            {
+                _dashboard.Show();
+            }
+        }
 
         private void PicEntrenadores_Click(object sender, EventArgs e)
         {
-            Form2Entrenadores f2 = new Form2Entrenadores(this);
-            f2.Show();
-            this.Hide();
+            _isNavigating = true; // Avisamos que estamos navegando
+            Form2Entrenadores form2Entrenadores = new Form2Entrenadores(_dashboard); // Le pasamos el dashboard
+            form2Entrenadores.WindowState = this.WindowState;
+            form2Entrenadores.Show();
+            this.Close(); // Cerramos este formulario
+
 
         }
 
         private void PicRutinas_Click(object sender, EventArgs e)
         {
-            Form3Rutina formRutinas = new Form3Rutina(this);
+            _isNavigating = true; // Avisamos que estamos navegando
+            Form3Rutina formRutinas = new Form3Rutina(_dashboard); // Le pasamos el dashboard
+            formRutinas.WindowState = this.WindowState;
             formRutinas.Show();
-            this.Hide();
+            this.Close(); // Cerramos este formulario
+        }
 
+        private void PicMemInicio_Click(object sender, EventArgs e)
+        {
+            _isNavigating = true; // Avisamos que estamos navegando
+            _dashboard.Show();    // Mostramos el panel principal
+            this.Close();         // Cerramos la ventana actual
         }
     }
 

@@ -18,15 +18,17 @@ namespace GymPresentacion
         private readonly Servicio_Rutinas _servicioRutinas;
         private Rutina _rutinaSeleccionada;
         private readonly Form _formPrincipal;
-        public Form3Rutina(Form formPrincipal)
+        private bool _isNavigating = false;
+        private readonly Form _dashboard;
+        public Form3Rutina(Form dashboard)
         {
             InitializeComponent();
-            _formPrincipal = formPrincipal;
+            _dashboard = dashboard;
             _servicioRutinas = new Servicio_Rutinas();
             ConfigurarDataGridView();
             ConfigurarControles();
-            AsignarEventos();         
-            BtnConsultarRutina_Click(null, null);
+            AsignarEventos();
+            this.FormClosing += Form3Rutina_FormClosing;
         }
 
         private void ConfigurarControles()
@@ -51,52 +53,22 @@ namespace GymPresentacion
         private void AsignarEventos()
         {
 
+            btnAgregarRutina.Click += BtnAgregarRutina_Click;
+            btnEditarRutina.Click += BtnEditarRutina_Click;
+            btnEliminarRutina.Click += BtnEliminarRutina_Click;
+            btnConsultarRutina.Click += BtnConsultarRutina_Click;
+            dgvRutinas.SelectionChanged += DgvRutinas_SelectionChanged;
 
-            if(btnAgregarRutina != null) 
-            {
-                btnAgregarRutina.Click -= BtnAgregarRutina_Click;
-                btnAgregarRutina.Click += BtnAgregarRutina_Click;
-            }
+            PicMemRutina.Click += PicMemRutina_Click;
+            PicEntrenadorIr.Click += PicEntrenadorIr_Click;
 
-            if (btnEditarRutina != null)
-            {
-                btnEditarRutina.Click -= BtnEditarRutina_Click;
-                btnEditarRutina.Click += BtnEditarRutina_Click;               
-            }
-
-            if(btnEliminarRutina != null)
-            {
-                btnEliminarRutina.Click -= BtnEliminarRutina_Click;
-                btnEliminarRutina.Click += BtnEliminarRutina_Click;
-            }
-            if(btnConsultarRutina != null)
-            {
-                btnConsultarRutina.Click -= BtnConsultarRutina_Click;
-                btnConsultarRutina.Click += BtnConsultarRutina_Click;
-            }
-            if(dgvRutinas != null)
-            {
-                dgvRutinas.SelectionChanged -= DgvRutinas_SelectionChanged;
-                dgvRutinas.SelectionChanged += DgvRutinas_SelectionChanged;
-
-            }
-
-            if (PicMemRutina != null)
-            {
-                PicMemRutina.Click -= PicMemRutina_Click;
-                PicMemRutina.Click += PicMemRutina_Click;
-            }
-
-            if (PicEntrenadorIr != null)
-            {
-                PicEntrenadorIr.Click -= PicEntrenadorIr_Click;
-                PicEntrenadorIr.Click += PicEntrenadorIr_Click;
-            }
-        
-
-            
-           
+            PicRutinaInicio.Click += PicRutinaInicio_Click;
         }
+
+
+
+
+        
         private void ConfigurarDataGridView()
 
         {
@@ -106,9 +78,8 @@ namespace GymPresentacion
             dgvRutinas.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "Id",
-                HeaderText = "ID",
                 Name = "Id",
-                Width = 50,
+                Visible = false
 
             });
 
@@ -117,7 +88,7 @@ namespace GymPresentacion
                 DataPropertyName = "NombreRutina",
                 HeaderText = "Nombre",
                 Name = "NombreRutina",
-                Width = 150
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             });
 
             dgvRutinas.Columns.Add(new DataGridViewTextBoxColumn
@@ -144,31 +115,25 @@ namespace GymPresentacion
                 Width = 80
             });
 
-            dgvRutinas.Columns["Id"].Visible = false;
+            dgvRutinas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvRutinas.MultiSelect = false;
+            dgvRutinas.AllowUserToAddRows = false;
+            dgvRutinas.ReadOnly = true;
 
         }
 
-
-        private void CargarRutina()
+        private void Form3Rutina_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-            try
+            if (!_isNavigating)
             {
-
-                dgvRutinas.DataSource = null;
-                dgvRutinas.DataSource = _servicioRutinas.ObtenerTodasLasRutinas();
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al Caragr las Rutinas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _dashboard.Show();
             }
         }
+
 
         private void DgvRutinas_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvRutinas.SelectedRows.Count > 0 )
+            if (dgvRutinas.SelectedRows.Count > 0)
             {
 
                 _rutinaSeleccionada = dgvRutinas.SelectedRows[0].DataBoundItem as Rutina;
@@ -216,7 +181,7 @@ namespace GymPresentacion
                 _servicioRutinas.RegistrarRutina(nuevaRutina);
                 MessageBox.Show("Rutina Agregada exitosamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 BtnConsultarRutina_Click(sender, e);
-                
+
             }
             catch (Exception ex)
             {
@@ -235,7 +200,7 @@ namespace GymPresentacion
 
             try
             {
-                if (_servicioRutinas.ExisteRutina (txtNombreRutina.Text.Trim(), _rutinaSeleccionada.Id))
+                if (_servicioRutinas.ExisteRutina(txtNombreRutina.Text.Trim(), _rutinaSeleccionada.Id))
                 {
                     MessageBox.Show("Ya existe otra Rutina con este Nombre, Por favor, Elija Otro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -256,7 +221,7 @@ namespace GymPresentacion
                 MessageBox.Show($"Error al Actualizar Rutina: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
 
         private void BtnEliminarRutina_Click(object sender, EventArgs e)
         {
@@ -294,25 +259,29 @@ namespace GymPresentacion
 
                 LimpiarCampos();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Error al Cargar las Rutinas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
 
-        
+
         private void PicMemRutina_Click(object sender, EventArgs e)
         {
-            _formPrincipal.Show();
+            _isNavigating = true;
+            Form1 formMembresias = new Form1(_dashboard);
+            formMembresias.WindowState = this.WindowState;
+            formMembresias.Show();
             this.Close();
         }
         private void PicEntrenadorIr_Click(object sender, EventArgs e)
         {
-            // Abrimos el form de entrenadores, pasándole la referencia del Form1
-            Form2Entrenadores formEntrenadores = new Form2Entrenadores(_formPrincipal);
+            _isNavigating = true;
+            Form2Entrenadores formEntrenadores = new Form2Entrenadores(_dashboard);
+            formEntrenadores.WindowState = this.WindowState;
             formEntrenadores.Show();
-            this.Close(); // Cierra este formulario
+            this.Close();
         }
 
         private void LimpiarCampos()
@@ -322,7 +291,7 @@ namespace GymPresentacion
             cmbAreaRutina.SelectedIndex = -1;
             nudDuracion.Value = 60;
             _rutinaSeleccionada = null;
-           
+
         }
 
 
@@ -358,8 +327,20 @@ namespace GymPresentacion
 
         private void PicMem2_Load(object sender, EventArgs e)
         {
-            
 
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PicRutinaInicio_Click(object sender, EventArgs e)
+        {
+            _isNavigating = true; // Avisamos que estamos navegando
+            _dashboard.Show();    // Mostramos el panel principal
+            this.Close();         // Cerramos la ventana actual
         }
     }
 }

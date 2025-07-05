@@ -1,4 +1,4 @@
-namespace GymPresentacion
+namespace Form4_Principal
 {
     internal static class Program
     {
@@ -11,7 +11,7 @@ namespace GymPresentacion
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form4());
+            Application.Run(new Form4_Principal());
         }
     }
 }

@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgvEntrenadores = new DataGridView();
             btnConsultar = new Button();
             btnEditarEntrenador = new Button();
@@ -48,23 +51,51 @@
             PicRutinaEntrenador = new PictureBox();
             lblDuracion = new Label();
             nudDuracion = new NumericUpDown();
+            pictureBox1 = new PictureBox();
+            PicEntrenadorInicio = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvEntrenadores).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicMem2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicRutinaEntrenador).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudDuracion).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PicEntrenadorInicio).BeginInit();
             SuspendLayout();
             // 
             // dgvEntrenadores
             // 
             dgvEntrenadores.AllowUserToAddRows = false;
             dgvEntrenadores.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvEntrenadores.BackgroundColor = Color.WhiteSmoke;
+            dgvEntrenadores.BorderStyle = BorderStyle.None;
+            dgvEntrenadores.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.IndianRed;
+            dataGridViewCellStyle5.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvEntrenadores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEntrenadores.GridColor = SystemColors.ScrollBar;
-            dgvEntrenadores.Location = new Point(110, 107);
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.IndianRed;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle6;
+            dgvEntrenadores.EnableHeadersVisualStyles = false;
+            dgvEntrenadores.GridColor = Color.IndianRed;
+            dgvEntrenadores.Location = new Point(119, 170);
+            dgvEntrenadores.MultiSelect = false;
             dgvEntrenadores.Name = "dgvEntrenadores";
             dgvEntrenadores.ReadOnly = true;
+            dgvEntrenadores.RowHeadersVisible = false;
             dgvEntrenadores.RowHeadersWidth = 51;
+            dgvEntrenadores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEntrenadores.Size = new Size(841, 424);
             dgvEntrenadores.TabIndex = 5;
             dgvEntrenadores.CellContentClick += dgvEntrenadores_CellContentClick;
@@ -74,7 +105,7 @@
             btnConsultar.BackColor = Color.IndianRed;
             btnConsultar.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnConsultar.ForeColor = Color.White;
-            btnConsultar.Location = new Point(401, 570);
+            btnConsultar.Location = new Point(384, 617);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(167, 61);
             btnConsultar.TabIndex = 1;
@@ -86,7 +117,7 @@
             btnEditarEntrenador.BackColor = Color.IndianRed;
             btnEditarEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEditarEntrenador.ForeColor = Color.White;
-            btnEditarEntrenador.Location = new Point(603, 570);
+            btnEditarEntrenador.Location = new Point(586, 617);
             btnEditarEntrenador.Name = "btnEditarEntrenador";
             btnEditarEntrenador.Size = new Size(160, 61);
             btnEditarEntrenador.TabIndex = 2;
@@ -98,7 +129,7 @@
             btnEliminarEntrenador.BackColor = Color.IndianRed;
             btnEliminarEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarEntrenador.ForeColor = Color.White;
-            btnEliminarEntrenador.Location = new Point(791, 572);
+            btnEliminarEntrenador.Location = new Point(791, 617);
             btnEliminarEntrenador.Name = "btnEliminarEntrenador";
             btnEliminarEntrenador.Size = new Size(160, 59);
             btnEliminarEntrenador.TabIndex = 3;
@@ -111,7 +142,7 @@
             btnAgregarEntrenador.BackColor = Color.IndianRed;
             btnAgregarEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregarEntrenador.ForeColor = Color.White;
-            btnAgregarEntrenador.Location = new Point(1083, 570);
+            btnAgregarEntrenador.Location = new Point(1173, 616);
             btnAgregarEntrenador.Name = "btnAgregarEntrenador";
             btnAgregarEntrenador.Size = new Size(154, 60);
             btnAgregarEntrenador.TabIndex = 4;
@@ -121,7 +152,7 @@
             // checkDisponible
             // 
             checkDisponible.AutoSize = true;
-            checkDisponible.Location = new Point(1198, 483);
+            checkDisponible.Location = new Point(1198, 558);
             checkDisponible.Name = "checkDisponible";
             checkDisponible.Size = new Size(129, 24);
             checkDisponible.TabIndex = 5;
@@ -132,7 +163,7 @@
             // cmbGeneroEntrenador
             // 
             cmbGeneroEntrenador.FormattingEnabled = true;
-            cmbGeneroEntrenador.Location = new Point(1198, 201);
+            cmbGeneroEntrenador.Location = new Point(1198, 242);
             cmbGeneroEntrenador.Name = "cmbGeneroEntrenador";
             cmbGeneroEntrenador.Size = new Size(301, 28);
             cmbGeneroEntrenador.TabIndex = 6;
@@ -140,7 +171,7 @@
             // cmbAreaEntrenador
             // 
             cmbAreaEntrenador.FormattingEnabled = true;
-            cmbAreaEntrenador.Location = new Point(1198, 253);
+            cmbAreaEntrenador.Location = new Point(1198, 294);
             cmbAreaEntrenador.Name = "cmbAreaEntrenador";
             cmbAreaEntrenador.Size = new Size(301, 28);
             cmbAreaEntrenador.TabIndex = 7;
@@ -152,7 +183,7 @@
             lblNombreEntrenador.BackColor = Color.IndianRed;
             lblNombreEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNombreEntrenador.ForeColor = Color.White;
-            lblNombreEntrenador.Location = new Point(1009, 146);
+            lblNombreEntrenador.Location = new Point(1018, 189);
             lblNombreEntrenador.Name = "lblNombreEntrenador";
             lblNombreEntrenador.Size = new Size(100, 25);
             lblNombreEntrenador.TabIndex = 8;
@@ -164,7 +195,7 @@
             lblGeneroEntrendor.BackColor = Color.IndianRed;
             lblGeneroEntrendor.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblGeneroEntrendor.ForeColor = Color.White;
-            lblGeneroEntrendor.Location = new Point(1009, 200);
+            lblGeneroEntrendor.Location = new Point(1021, 241);
             lblGeneroEntrendor.Name = "lblGeneroEntrendor";
             lblGeneroEntrendor.Size = new Size(87, 25);
             lblGeneroEntrendor.TabIndex = 9;
@@ -177,7 +208,7 @@
             lblAreaEntrenador.BackColor = Color.IndianRed;
             lblAreaEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAreaEntrenador.ForeColor = Color.White;
-            lblAreaEntrenador.Location = new Point(1009, 252);
+            lblAreaEntrenador.Location = new Point(1021, 297);
             lblAreaEntrenador.Name = "lblAreaEntrenador";
             lblAreaEntrenador.Size = new Size(61, 25);
             lblAreaEntrenador.TabIndex = 10;
@@ -190,7 +221,7 @@
             lblTelefono.BackColor = Color.IndianRed;
             lblTelefono.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTelefono.ForeColor = Color.White;
-            lblTelefono.Location = new Point(1009, 311);
+            lblTelefono.Location = new Point(1021, 358);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(97, 25);
             lblTelefono.TabIndex = 11;
@@ -201,24 +232,24 @@
             PicMem2.BackColor = Color.Transparent;
             PicMem2.BackgroundImageLayout = ImageLayout.None;
             PicMem2.Cursor = Cursors.Hand;
-            PicMem2.Image = Properties.Resources._1;
-            PicMem2.Location = new Point(35, 25);
+            PicMem2.Image = Properties.Resources.Untitled_design__8_;
+            PicMem2.Location = new Point(210, 80);
             PicMem2.Name = "PicMem2";
-            PicMem2.Size = new Size(233, 76);
+            PicMem2.Size = new Size(100, 84);
             PicMem2.SizeMode = PictureBoxSizeMode.Zoom;
             PicMem2.TabIndex = 12;
             PicMem2.TabStop = false;
             // 
             // maskedTextBox1
             // 
-            maskedTextBox1.Location = new Point(1198, 312);
+            maskedTextBox1.Location = new Point(1198, 359);
             maskedTextBox1.Name = "maskedTextBox1";
             maskedTextBox1.Size = new Size(301, 27);
             maskedTextBox1.TabIndex = 13;
             // 
             // txtNombreEntrenador
             // 
-            txtNombreEntrenador.Location = new Point(1198, 147);
+            txtNombreEntrenador.Location = new Point(1198, 189);
             txtNombreEntrenador.Name = "txtNombreEntrenador";
             txtNombreEntrenador.Size = new Size(301, 27);
             txtNombreEntrenador.TabIndex = 14;
@@ -227,7 +258,7 @@
             // 
             dtpIngresoEntrenador.CalendarFont = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dtpIngresoEntrenador.Format = DateTimePickerFormat.Short;
-            dtpIngresoEntrenador.Location = new Point(1198, 378);
+            dtpIngresoEntrenador.Location = new Point(1198, 430);
             dtpIngresoEntrenador.Name = "dtpIngresoEntrenador";
             dtpIngresoEntrenador.Size = new Size(301, 27);
             dtpIngresoEntrenador.TabIndex = 15;
@@ -238,7 +269,7 @@
             lblIngresoEntrenador.BackColor = Color.IndianRed;
             lblIngresoEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblIngresoEntrenador.ForeColor = Color.White;
-            lblIngresoEntrenador.Location = new Point(1009, 380);
+            lblIngresoEntrenador.Location = new Point(1021, 432);
             lblIngresoEntrenador.Name = "lblIngresoEntrenador";
             lblIngresoEntrenador.Size = new Size(156, 25);
             lblIngresoEntrenador.TabIndex = 16;
@@ -249,10 +280,10 @@
             PicRutinaEntrenador.BackColor = Color.Transparent;
             PicRutinaEntrenador.BackgroundImageLayout = ImageLayout.None;
             PicRutinaEntrenador.Cursor = Cursors.Hand;
-            PicRutinaEntrenador.Image = Properties.Resources._41;
-            PicRutinaEntrenador.Location = new Point(209, 25);
+            PicRutinaEntrenador.Image = Properties.Resources._9;
+            PicRutinaEntrenador.Location = new Point(303, 80);
             PicRutinaEntrenador.Name = "PicRutinaEntrenador";
-            PicRutinaEntrenador.Size = new Size(132, 76);
+            PicRutinaEntrenador.Size = new Size(100, 84);
             PicRutinaEntrenador.SizeMode = PictureBoxSizeMode.Zoom;
             PicRutinaEntrenador.TabIndex = 17;
             PicRutinaEntrenador.TabStop = false;
@@ -263,7 +294,7 @@
             lblDuracion.BackColor = Color.IndianRed;
             lblDuracion.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDuracion.ForeColor = Color.White;
-            lblDuracion.Location = new Point(1009, 430);
+            lblDuracion.Location = new Point(1021, 486);
             lblDuracion.Name = "lblDuracion";
             lblDuracion.Size = new Size(105, 25);
             lblDuracion.TabIndex = 18;
@@ -271,7 +302,7 @@
             // 
             // nudDuracion
             // 
-            nudDuracion.Location = new Point(1198, 432);
+            nudDuracion.Location = new Point(1198, 484);
             nudDuracion.Maximum = new decimal(new int[] { 120, 0, 0, 0 });
             nudDuracion.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             nudDuracion.Name = "nudDuracion";
@@ -280,12 +311,38 @@
             nudDuracion.TabIndex = 19;
             nudDuracion.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = Properties.Resources.Untitled_design__7_;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(586, 2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(589, 162);
+            pictureBox1.TabIndex = 20;
+            pictureBox1.TabStop = false;
+            // 
+            // PicEntrenadorInicio
+            // 
+            PicEntrenadorInicio.BackColor = Color.Transparent;
+            PicEntrenadorInicio.BackgroundImage = Properties.Resources.Untitled_design__9_;
+            PicEntrenadorInicio.BackgroundImageLayout = ImageLayout.Zoom;
+            PicEntrenadorInicio.Cursor = Cursors.Hand;
+            PicEntrenadorInicio.Location = new Point(119, 80);
+            PicEntrenadorInicio.Name = "PicEntrenadorInicio";
+            PicEntrenadorInicio.Size = new Size(100, 84);
+            PicEntrenadorInicio.TabIndex = 21;
+            PicEntrenadorInicio.TabStop = false;
+            PicEntrenadorInicio.Click += PicEntrenadorInicio_Click;
+            // 
             // Form2Entrenadores
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources._4;
+            BackgroundImage = Properties.Resources.Untitled_design__6_;
             ClientSize = new Size(1539, 741);
+            Controls.Add(PicEntrenadorInicio);
+            Controls.Add(pictureBox1);
             Controls.Add(nudDuracion);
             Controls.Add(lblDuracion);
             Controls.Add(PicRutinaEntrenador);
@@ -313,6 +370,8 @@
             ((System.ComponentModel.ISupportInitialize)PicMem2).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicRutinaEntrenador).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudDuracion).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PicEntrenadorInicio).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -339,5 +398,7 @@
         private PictureBox PicRutinaEntrenador;
         private Label lblDuracion;
         private NumericUpDown nudDuracion;
+        private PictureBox pictureBox1;
+        private PictureBox PicEntrenadorInicio;
     }
 }
