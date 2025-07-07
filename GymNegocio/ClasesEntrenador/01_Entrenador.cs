@@ -17,6 +17,8 @@ namespace GymNegocio.ClasesEntrenador
         public int Duracion { get; set; } //Duracion del Contrato en Meses 
         public bool Activo { get; set; }
 
+        public decimal Salario { get; set; }
+
         //Constructor
         public Entrenador()
         {
@@ -25,14 +27,16 @@ namespace GymNegocio.ClasesEntrenador
         }
 
 
-    //Metodo Abstracto para las Clases Hijas 
-    public abstract decimal CalcularSalario();
 
 
-        public virtual string ObtenerInformacion()
-        {
-            return $"Entrenador: {Nombre}, Area:{Area}";
-        }
+
+
+
+
+
+
+
+
 
     }
 

@@ -13,9 +13,9 @@ namespace GymNegocio.ClasesEntrenador
             Area = "Pesas"; 
         }
 
-        public override decimal CalcularSalario()
+        public decimal CalcularSalario()
         {
-            return 25000;
+            return Salario;
         }
     }
 }

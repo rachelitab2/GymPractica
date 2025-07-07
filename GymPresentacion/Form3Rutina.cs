@@ -68,7 +68,7 @@ namespace GymPresentacion
 
 
 
-        
+
         private void ConfigurarDataGridView()
 
         {
@@ -115,10 +115,7 @@ namespace GymPresentacion
                 Width = 80
             });
 
-            dgvRutinas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvRutinas.MultiSelect = false;
-            dgvRutinas.AllowUserToAddRows = false;
-            dgvRutinas.ReadOnly = true;
+
 
         }
 

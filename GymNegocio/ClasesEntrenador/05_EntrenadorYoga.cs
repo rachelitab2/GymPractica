@@ -12,9 +12,9 @@ namespace GymNegocio.ClasesEntrenador
         {
             Area = "Yoga";
         }
-        public override decimal CalcularSalario()
+        public decimal CalcularSalario()
         {
-            return 24000;
+            return Salario;
         }
     }
 

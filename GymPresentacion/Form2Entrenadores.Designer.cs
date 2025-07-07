@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             dgvEntrenadores = new DataGridView();
             btnConsultar = new Button();
             btnEditarEntrenador = new Button();
@@ -53,40 +53,43 @@
             nudDuracion = new NumericUpDown();
             pictureBox1 = new PictureBox();
             PicEntrenadorInicio = new PictureBox();
+            lblSalario = new Label();
+            nudSalario = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dgvEntrenadores).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicMem2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicRutinaEntrenador).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudDuracion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicEntrenadorInicio).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudSalario).BeginInit();
             SuspendLayout();
             // 
             // dgvEntrenadores
             // 
             dgvEntrenadores.AllowUserToAddRows = false;
             dgvEntrenadores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvEntrenadores.BackgroundColor = Color.WhiteSmoke;
             dgvEntrenadores.BorderStyle = BorderStyle.None;
             dgvEntrenadores.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.IndianRed;
-            dataGridViewCellStyle5.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.IndianRed;
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvEntrenadores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.IndianRed;
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.IndianRed;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle3;
             dgvEntrenadores.EnableHeadersVisualStyles = false;
             dgvEntrenadores.GridColor = Color.IndianRed;
             dgvEntrenadores.Location = new Point(119, 170);
@@ -152,7 +155,7 @@
             // checkDisponible
             // 
             checkDisponible.AutoSize = true;
-            checkDisponible.Location = new Point(1198, 558);
+            checkDisponible.Location = new Point(1354, 536);
             checkDisponible.Name = "checkDisponible";
             checkDisponible.Size = new Size(129, 24);
             checkDisponible.TabIndex = 5;
@@ -230,9 +233,9 @@
             // PicMem2
             // 
             PicMem2.BackColor = Color.Transparent;
-            PicMem2.BackgroundImageLayout = ImageLayout.None;
+            PicMem2.BackgroundImage = Properties.Resources._10;
+            PicMem2.BackgroundImageLayout = ImageLayout.Zoom;
             PicMem2.Cursor = Cursors.Hand;
-            PicMem2.Image = Properties.Resources.Untitled_design__8_;
             PicMem2.Location = new Point(210, 80);
             PicMem2.Name = "PicMem2";
             PicMem2.Size = new Size(100, 84);
@@ -278,9 +281,9 @@
             // PicRutinaEntrenador
             // 
             PicRutinaEntrenador.BackColor = Color.Transparent;
-            PicRutinaEntrenador.BackgroundImageLayout = ImageLayout.None;
+            PicRutinaEntrenador.BackgroundImage = Properties.Resources._9__1_;
+            PicRutinaEntrenador.BackgroundImageLayout = ImageLayout.Zoom;
             PicRutinaEntrenador.Cursor = Cursors.Hand;
-            PicRutinaEntrenador.Image = Properties.Resources._9;
             PicRutinaEntrenador.Location = new Point(303, 80);
             PicRutinaEntrenador.Name = "PicRutinaEntrenador";
             PicRutinaEntrenador.Size = new Size(100, 84);
@@ -314,7 +317,7 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = Properties.Resources.Untitled_design__7_;
+            pictureBox1.BackgroundImage = Properties.Resources._7;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Location = new Point(586, 2);
             pictureBox1.Name = "pictureBox1";
@@ -325,7 +328,7 @@
             // PicEntrenadorInicio
             // 
             PicEntrenadorInicio.BackColor = Color.Transparent;
-            PicEntrenadorInicio.BackgroundImage = Properties.Resources.Untitled_design__9_;
+            PicEntrenadorInicio.BackgroundImage = Properties.Resources._12;
             PicEntrenadorInicio.BackgroundImageLayout = ImageLayout.Zoom;
             PicEntrenadorInicio.Cursor = Cursors.Hand;
             PicEntrenadorInicio.Location = new Point(119, 80);
@@ -335,12 +338,33 @@
             PicEntrenadorInicio.TabStop = false;
             PicEntrenadorInicio.Click += PicEntrenadorInicio_Click;
             // 
+            // lblSalario
+            // 
+            lblSalario.AutoSize = true;
+            lblSalario.BackColor = Color.IndianRed;
+            lblSalario.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSalario.ForeColor = Color.White;
+            lblSalario.Location = new Point(1022, 533);
+            lblSalario.Name = "lblSalario";
+            lblSalario.Size = new Size(81, 25);
+            lblSalario.TabIndex = 22;
+            lblSalario.Text = "Salario";
+            // 
+            // nudSalario
+            // 
+            nudSalario.Location = new Point(1198, 531);
+            nudSalario.Name = "nudSalario";
+            nudSalario.Size = new Size(150, 27);
+            nudSalario.TabIndex = 23;
+            // 
             // Form2Entrenadores
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Untitled_design__6_;
             ClientSize = new Size(1539, 741);
+            Controls.Add(nudSalario);
+            Controls.Add(lblSalario);
             Controls.Add(PicEntrenadorInicio);
             Controls.Add(pictureBox1);
             Controls.Add(nudDuracion);
@@ -372,6 +396,7 @@
             ((System.ComponentModel.ISupportInitialize)nudDuracion).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicEntrenadorInicio).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudSalario).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -400,5 +425,7 @@
         private NumericUpDown nudDuracion;
         private PictureBox pictureBox1;
         private PictureBox PicEntrenadorInicio;
+        private Label lblSalario;
+        private NumericUpDown nudSalario;
     }
 }

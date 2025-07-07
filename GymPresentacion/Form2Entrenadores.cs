@@ -95,11 +95,17 @@ namespace GymPresentacion
                 Width = 60
             });
 
+            dgvEntrenadores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Salario",
+                HeaderText = "Salario",
+                Name = "Salario",
+                Width = 100,
+                DefaultCellStyle= new DataGridViewCellStyle { Format = "C2" }
+            });
 
-            dgvEntrenadores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEntrenadores.MultiSelect = false;
-            dgvEntrenadores.AllowUserToAddRows = false;
-            dgvEntrenadores.ReadOnly = true;
+
+
         }
 
         private void ConfigurarComboBoxes()
@@ -215,6 +221,12 @@ namespace GymPresentacion
                     return;
                 }
 
+                if (nudSalario.Value < 0)
+                {
+                    MessageBox.Show("El Salario no puede ser negativo ", "Validacion ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
 
                 Entrenador nuevoAccesoEntrenador;
                 string areaSeleccionada = cmbAreaEntrenador.SelectedItem.ToString();
@@ -243,6 +255,7 @@ namespace GymPresentacion
                 nuevoAccesoEntrenador.FechaIngreso = dtpIngresoEntrenador.Value;
                 nuevoAccesoEntrenador.Duracion = (int)nudDuracion.Value;
                 nuevoAccesoEntrenador.Activo = checkDisponible.Checked;
+                nuevoAccesoEntrenador.Salario = nudSalario.Value;
 
                 _servicioEntrenadores.RegistrarEntrenador(nuevoAccesoEntrenador);
                 MessageBox.Show("Entrenador registrado exitosamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);

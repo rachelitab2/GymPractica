@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnAgregarRutina = new Button();
             btnConsultarRutina = new Button();
             btnEliminarRutina = new Button();
@@ -131,10 +131,9 @@
             // PicMemRutina
             // 
             PicMemRutina.BackColor = Color.Transparent;
-            PicMemRutina.BackgroundImage = Properties.Resources.Untitled_design__8_;
+            PicMemRutina.BackgroundImage = Properties.Resources._10;
             PicMemRutina.BackgroundImageLayout = ImageLayout.Zoom;
             PicMemRutina.Cursor = Cursors.Hand;
-            PicMemRutina.Image = Properties.Resources.Untitled_design__8_;
             PicMemRutina.Location = new Point(138, 64);
             PicMemRutina.Name = "PicMemRutina";
             PicMemRutina.Size = new Size(100, 84);
@@ -147,29 +146,29 @@
             // 
             dgvRutinas.AllowUserToAddRows = false;
             dgvRutinas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dgvRutinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dgvRutinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvRutinas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRutinas.BackgroundColor = Color.WhiteSmoke;
             dgvRutinas.BorderStyle = BorderStyle.None;
             dgvRutinas.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.IndianRed;
-            dataGridViewCellStyle5.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvRutinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.IndianRed;
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvRutinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvRutinas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.IndianRed;
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvRutinas.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.IndianRed;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvRutinas.DefaultCellStyle = dataGridViewCellStyle3;
             dgvRutinas.EnableHeadersVisualStyles = false;
             dgvRutinas.GridColor = Color.IndianRed;
             dgvRutinas.Location = new Point(42, 160);
@@ -250,8 +249,8 @@
             // PicEntrenadorIr
             // 
             PicEntrenadorIr.BackColor = Color.Transparent;
+            PicEntrenadorIr.BackgroundImage = Properties.Resources._8__1_;
             PicEntrenadorIr.BackgroundImageLayout = ImageLayout.Zoom;
-            PicEntrenadorIr.Image = Properties.Resources._8;
             PicEntrenadorIr.Location = new Point(234, 64);
             PicEntrenadorIr.Name = "PicEntrenadorIr";
             PicEntrenadorIr.Size = new Size(100, 84);
@@ -262,7 +261,7 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = Properties.Resources.Untitled_design__7_;
+            pictureBox1.BackgroundImage = Properties.Resources._7;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Location = new Point(514, -8);
             pictureBox1.Name = "pictureBox1";
@@ -274,7 +273,7 @@
             // PicRutinaInicio
             // 
             PicRutinaInicio.BackColor = Color.Transparent;
-            PicRutinaInicio.BackgroundImage = Properties.Resources.Untitled_design__9_;
+            PicRutinaInicio.BackgroundImage = Properties.Resources._12;
             PicRutinaInicio.BackgroundImageLayout = ImageLayout.Zoom;
             PicRutinaInicio.Location = new Point(42, 64);
             PicRutinaInicio.Name = "PicRutinaInicio";

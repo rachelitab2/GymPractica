@@ -15,9 +15,9 @@ namespace GymPresentacion // nombre importante
 {
     public partial class Form1 : Form
     {
-        public Servicio_Membresia _servicioMembresia;
+        public Servicio_Membresia _servicioMembresia;//inastancia del servicio de membresia
         private readonly Form _dashboard; // Para guardar la referencia al panel principal
-        private bool _isNavigating = false; // Para controlar el cierre
+        private bool _isNavigating = false; // Para controlar el cierre del formulario
 
         public Form1(Form dashboard)
         {

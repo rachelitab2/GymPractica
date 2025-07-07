@@ -66,7 +66,7 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = Properties.Resources.Untitled_design__7_;
+            pictureBox1.BackgroundImage = Properties.Resources._7;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Location = new Point(511, 35);
             pictureBox1.Name = "pictureBox1";
@@ -76,7 +76,7 @@
             // 
             // PanelMemebresia
             // 
-            PanelMemebresia.BackColor = Color.White;
+            PanelMemebresia.BackColor = Color.Transparent;
             PanelMemebresia.Controls.Add(PicPanelMemebresia);
             PanelMemebresia.Cursor = Cursors.Hand;
             PanelMemebresia.Location = new Point(97, 324);
@@ -86,9 +86,10 @@
             // 
             // PicPanelMemebresia
             // 
-            PicPanelMemebresia.BackgroundImage = Properties.Resources.Untitled_design__8_;
+            PicPanelMemebresia.BackColor = Color.Transparent;
+            PicPanelMemebresia.BackgroundImage = Properties.Resources._10;
             PicPanelMemebresia.BackgroundImageLayout = ImageLayout.Zoom;
-            PicPanelMemebresia.Location = new Point(-118, -31);
+            PicPanelMemebresia.Location = new Point(-112, -38);
             PicPanelMemebresia.Name = "PicPanelMemebresia";
             PicPanelMemebresia.Size = new Size(488, 247);
             PicPanelMemebresia.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -97,7 +98,7 @@
             // 
             // PanelEntrenador
             // 
-            PanelEntrenador.BackColor = Color.White;
+            PanelEntrenador.BackColor = Color.Transparent;
             PanelEntrenador.Controls.Add(PicPanelEntrenador);
             PanelEntrenador.Cursor = Cursors.Hand;
             PanelEntrenador.Location = new Point(542, 324);
@@ -107,10 +108,11 @@
             // 
             // PicPanelEntrenador
             // 
-            PicPanelEntrenador.BackgroundImage = Properties.Resources._8;
+            PicPanelEntrenador.BackColor = Color.Transparent;
+            PicPanelEntrenador.BackgroundImage = Properties.Resources._8__1_;
             PicPanelEntrenador.BackgroundImageLayout = ImageLayout.Zoom;
             PicPanelEntrenador.Cursor = Cursors.Hand;
-            PicPanelEntrenador.Location = new Point(-133, -31);
+            PicPanelEntrenador.Location = new Point(-120, -38);
             PicPanelEntrenador.Name = "PicPanelEntrenador";
             PicPanelEntrenador.Size = new Size(520, 254);
             PicPanelEntrenador.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -119,7 +121,7 @@
             // 
             // PanelRutina
             // 
-            PanelRutina.BackColor = Color.White;
+            PanelRutina.BackColor = Color.Transparent;
             PanelRutina.Controls.Add(PicPanelRutina);
             PanelRutina.Cursor = Cursors.Hand;
             PanelRutina.Location = new Point(989, 324);
@@ -129,14 +131,16 @@
             // 
             // PicPanelRutina
             // 
-            PicPanelRutina.BackgroundImage = Properties.Resources._9;
+            PicPanelRutina.BackColor = Color.Transparent;
+            PicPanelRutina.BackgroundImage = Properties.Resources._9__1_;
             PicPanelRutina.BackgroundImageLayout = ImageLayout.Zoom;
             PicPanelRutina.Cursor = Cursors.Hand;
-            PicPanelRutina.Location = new Point(-115, -38);
+            PicPanelRutina.Location = new Point(-116, -31);
             PicPanelRutina.Name = "PicPanelRutina";
             PicPanelRutina.Size = new Size(488, 261);
             PicPanelRutina.TabIndex = 6;
             PicPanelRutina.TabStop = false;
+            PicPanelRutina.Click += PicPanelRutina_Click;
             // 
             // lblTituloMem
             // 
@@ -230,7 +234,6 @@
             Name = "Form4";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
-            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             PanelMemebresia.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)PicPanelMemebresia).EndInit();

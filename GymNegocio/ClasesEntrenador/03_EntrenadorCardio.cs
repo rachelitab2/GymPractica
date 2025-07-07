@@ -13,10 +13,10 @@ namespace GymNegocio.ClasesEntrenador
             Area = " Cardio"; //area especifica
         }
 
-    public override decimal CalcularSalario()
+    public decimal CalcularSalario()
         {
-            // Salario base de 22,000 + bono por antigüedad
-            return 22000; // salario estimado
+            
+            return Salario;
         }
 
 

@@ -50,5 +50,10 @@ namespace GymPresentacion
         {
             Application.Exit();
         }
+
+        private void PicPanelRutina_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
