@@ -40,8 +40,8 @@ namespace GymNegocio.ClasesEntrenador
             {
                 conn.Open();
 
-                string query = "UPDATE Entrenador SET Nombre = @Nombre, Genero = @Genero, Area = @Area" +
-                    "Telefono = @Telefono, FechaIngreso = @FechaIngreso, Duracion = @Duracion, Activo = @Activo, Salario = @Salario" +
+                string query = "UPDATE Entrenador SET Nombre = @Nombre, Genero = @Genero, Area = @Area," +
+                    "Telefono = @Telefono, FechaIngreso = @FechaIngreso, Duracion = @Duracion, Activo = @Activo, Salario = @Salario " +
                     "WHERE Id = @Id";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -50,11 +50,11 @@ namespace GymNegocio.ClasesEntrenador
                     cmd.Parameters.AddWithValue("@Nombre", entrenador.Nombre);
                     cmd.Parameters.AddWithValue("@Genero", entrenador.Genero);
                     cmd.Parameters.AddWithValue("@Area", entrenador.Area);
-                    cmd.Parameters.AddWithValue("Telefono", entrenador.Telefono);
-                    cmd.Parameters.AddWithValue("FechaIngreso", entrenador.FechaIngreso);
-                    cmd.Parameters.AddWithValue("Duracion", entrenador.Duracion);
-                    cmd.Parameters.AddWithValue("Activo", entrenador.Activo);
-                    cmd.Parameters.AddWithValue("Salario", entrenador.Salario);
+                    cmd.Parameters.AddWithValue("@Telefono", entrenador.Telefono);
+                    cmd.Parameters.AddWithValue("@FechaIngreso", entrenador.FechaIngreso);
+                    cmd.Parameters.AddWithValue("@Duracion", entrenador.Duracion);
+                    cmd.Parameters.AddWithValue("@Activo", entrenador.Activo);
+                    cmd.Parameters.AddWithValue("@Salario", entrenador.Salario);
 
                     cmd.ExecuteNonQuery();
 
@@ -111,7 +111,7 @@ namespace GymNegocio.ClasesEntrenador
                             entrenador.FechaIngreso = Convert.ToDateTime(reader["FechaIngreso"]);
                             entrenador.Duracion = Convert.ToInt32(reader["Duracion"]);
                             entrenador.Activo = Convert.ToBoolean(reader["Activo"]);
-                            entrenador.Salario = Convert.ToDecimal(reader["Salario"]);
+                            entrenador.Salario = reader["Salario"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["Salario"]);
 
                             entrenadores.Add(entrenador);
                         }
@@ -158,7 +158,7 @@ namespace GymNegocio.ClasesEntrenador
                             entrenador.FechaIngreso = Convert.ToDateTime(reader["FechaIngreso"]);
                             entrenador.Duracion = Convert.ToInt32(reader["Duracion"]);
                             entrenador.Activo = Convert.ToBoolean(reader["Activo"]);
-                            entrenador.Salario = Convert.ToDecimal(reader["Salario"]);
+                            entrenador.Salario = reader["Salario"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["Salario"]);
                         }
                     }
                 }

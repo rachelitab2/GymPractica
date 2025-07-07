@@ -352,10 +352,13 @@
             // 
             // nudSalario
             // 
+            nudSalario.DecimalPlaces = 2;
             nudSalario.Location = new Point(1198, 531);
+            nudSalario.Maximum = new decimal(new int[] { 30000, 0, 0, 0 });
             nudSalario.Name = "nudSalario";
             nudSalario.Size = new Size(150, 27);
             nudSalario.TabIndex = 23;
+            nudSalario.ThousandsSeparator = true;
             // 
             // Form2Entrenadores
             // 

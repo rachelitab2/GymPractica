@@ -186,6 +186,7 @@ namespace GymPresentacion
                     dtpIngresoEntrenador.Value = _entrenadorSeleccionado.FechaIngreso;
                     nudDuracion.Value = _entrenadorSeleccionado.Duracion;
                     checkDisponible.Checked = _entrenadorSeleccionado.Activo;
+                    nudSalario.Value = _entrenadorSeleccionado.Salario;
                 }
 
             }
@@ -308,6 +309,7 @@ namespace GymPresentacion
                 _entrenadorSeleccionado.FechaIngreso = dtpIngresoEntrenador.Value;
                 _entrenadorSeleccionado.Duracion = (int)nudDuracion.Value;
                 _entrenadorSeleccionado.Activo = checkDisponible.Checked;
+                _entrenadorSeleccionado.Salario = nudSalario.Value;
 
                 _servicioEntrenadores.ActualizarEntrenador(_entrenadorSeleccionado);
 
@@ -419,6 +421,7 @@ namespace GymPresentacion
             nudDuracion.Value = 12;
             checkDisponible.Checked = true;
             _entrenadorSeleccionado = null;
+            nudSalario.Value = 0;
 
             if (dgvEntrenadores.SelectedRows.Count > 0)
             {
