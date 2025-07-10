@@ -55,7 +55,7 @@ namespace GymNegocio.ClasesMembresia
         protected Membresia()
         {
             FechaInicio = DateTime.Now;
-            Activa = true;
+            Activa = true;// esto se pone para que por default se considere una nueva membresia activa 
         }
     }
 }

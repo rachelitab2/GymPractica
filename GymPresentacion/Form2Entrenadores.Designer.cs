@@ -252,10 +252,13 @@
             // 
             // txtNombreEntrenador
             // 
+            txtNombreEntrenador.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNombreEntrenador.Location = new Point(1198, 189);
             txtNombreEntrenador.Name = "txtNombreEntrenador";
+            txtNombreEntrenador.ShortcutsEnabled = false;
             txtNombreEntrenador.Size = new Size(301, 27);
             txtNombreEntrenador.TabIndex = 14;
+            txtNombreEntrenador.KeyPress += txtNombreEntrenador_KeyPress;
             // 
             // dtpIngresoEntrenador
             // 

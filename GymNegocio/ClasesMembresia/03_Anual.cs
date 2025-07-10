@@ -23,11 +23,11 @@ namespace GymNegocio.ClasesMembresia
             : base(fechaInicio, 0, nombre, telefono)
 
         {
-            FechaFin = FechaInicio.AddYears(1);
-            CalcularCostoTotal();
+            FechaFin = FechaInicio.AddYears(1); // establece lo que es la fecha de fin para el ano de membresia 
+            CalcularCostoTotal();// calculamos el costo total
         }
 
-        public override void CalcularCostoTotal()
+        public override void CalcularCostoTotal()//sobreescribimos el metodo  para estabalecer el csoto
         {
             CostoTotal = CostoAnualBase;
         }

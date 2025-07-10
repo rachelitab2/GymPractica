@@ -15,6 +15,7 @@ namespace GymPresentacion
 {
     public partial class Form3Rutina : Form
     {
+
         private readonly Servicio_Rutinas _servicioRutinas;
         private Rutina _rutinaSeleccionada;
         private readonly Form _formPrincipal;
@@ -30,6 +31,8 @@ namespace GymPresentacion
             AsignarEventos();
             this.FormClosing += Form3Rutina_FormClosing;
         }
+
+
 
         private void ConfigurarControles()
         {
@@ -124,7 +127,9 @@ namespace GymPresentacion
             if (!_isNavigating)
             {
                 _dashboard.Show();
+
             }
+
         }
 
 
@@ -267,7 +272,7 @@ namespace GymPresentacion
         private void PicMemRutina_Click(object sender, EventArgs e)
         {
             _isNavigating = true;
-            Form1 formMembresias = new Form1(_dashboard);
+            Form1 formMembresias = Form1.ObtenerInstancia(_dashboard);
             formMembresias.WindowState = this.WindowState;
             formMembresias.Show();
             this.Close();
@@ -338,6 +343,16 @@ namespace GymPresentacion
             _isNavigating = true; // Avisamos que estamos navegando
             _dashboard.Show();    // Mostramos el panel principal
             this.Close();         // Cerramos la ventana actual
+        }
+
+        private void txtNombreRutina_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 32 && e.KeyChar <=64) || (e.KeyChar >= 91 && e.KeyChar <=96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo letras", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
     }
 }

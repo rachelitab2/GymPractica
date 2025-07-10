@@ -181,12 +181,15 @@ namespace GymPresentacion
             // txtNombreCliente
             // 
             txtNombreCliente.BackColor = Color.White;
+            txtNombreCliente.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNombreCliente.Location = new Point(1216, 222);
             txtNombreCliente.MaxLength = 30;
             txtNombreCliente.Name = "txtNombreCliente";
+            txtNombreCliente.ShortcutsEnabled = false;
             txtNombreCliente.Size = new Size(296, 27);
             txtNombreCliente.TabIndex = 6;
             txtNombreCliente.TextChanged += txtNombreCliente_TextChanged;
+            txtNombreCliente.KeyPress += txtNombreCliente_KeyPress;
             // 
             // btnAgregar
             // 

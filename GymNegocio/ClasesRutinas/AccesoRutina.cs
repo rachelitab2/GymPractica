@@ -38,7 +38,7 @@ namespace GymNegocio.ClasesRutinas
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
             {
                 conn.Open();
-                string query = "UPDATE Rutinas SET NombreRutina = @NombreRutina, Genero =@Genero, AreaCuerpo = @AreaCuerpo" +
+                string query = "UPDATE Rutinas SET NombreRutina = @NombreRutina, Genero = @Genero, AreaCuerpo = @AreaCuerpo," +
                     "DuracionMinutos = @DuracionMinutos WHERE Id = @Id";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {

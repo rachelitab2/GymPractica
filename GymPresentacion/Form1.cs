@@ -18,6 +18,7 @@ namespace GymPresentacion // nombre importante
         public Servicio_Membresia _servicioMembresia;//inastancia del servicio de membresia
         private readonly Form _dashboard; // Para guardar la referencia al panel principal
         private bool _isNavigating = false; // Para controlar el cierre del formulario
+        private static Form1 instancia;
 
         public Form1(Form dashboard)
         {
@@ -29,6 +30,15 @@ namespace GymPresentacion // nombre importante
             ConfigurarMaskedTextBoxTelefono();//telefono y captura de error para el mismo 
             AsignarEventosBotones();//conctar los eventos de los botones con sus funciones 
             this.FormClosing += Form1_FormClosing;
+            instancia = this;
+        }
+        public static Form1 ObtenerInstancia(Form dashboard)
+        {
+            if (instancia == null || instancia.IsDisposed)
+            {
+                instancia = new Form1(dashboard);
+            }
+            return instancia;
         }
 
 
@@ -490,6 +500,7 @@ namespace GymPresentacion // nombre importante
             {
                 _dashboard.Show();
             }
+            instancia = null;
         }
 
         private void PicEntrenadores_Click(object sender, EventArgs e)
@@ -509,7 +520,7 @@ namespace GymPresentacion // nombre importante
             Form3Rutina formRutinas = new Form3Rutina(_dashboard); // Le pasamos el dashboard
             formRutinas.WindowState = this.WindowState;
             formRutinas.Show();
-            this.Close(); // Cerramos este formulario
+            this.Hide(); // Cerramos este formulario
         }
 
         private void PicMemInicio_Click(object sender, EventArgs e)
@@ -517,6 +528,16 @@ namespace GymPresentacion // nombre importante
             _isNavigating = true; // Avisamos que estamos navegando
             _dashboard.Show();    // Mostramos el panel principal
             this.Close();         // Cerramos la ventana actual
+        }
+
+        private void txtNombreCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 32 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo letras", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
     }
 

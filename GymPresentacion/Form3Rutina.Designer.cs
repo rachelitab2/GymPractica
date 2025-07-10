@@ -195,11 +195,14 @@
             // 
             // txtNombreRutina
             // 
+            txtNombreRutina.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNombreRutina.Location = new Point(1174, 161);
             txtNombreRutina.Name = "txtNombreRutina";
+            txtNombreRutina.ShortcutsEnabled = false;
             txtNombreRutina.Size = new Size(296, 27);
             txtNombreRutina.TabIndex = 12;
             txtNombreRutina.TextChanged += txtNombreRutina_TextChanged;
+            txtNombreRutina.KeyPress += txtNombreRutina_KeyPress;
             // 
             // cmbAreaRutina
             // 

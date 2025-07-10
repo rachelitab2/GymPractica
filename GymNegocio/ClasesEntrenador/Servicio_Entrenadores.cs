@@ -8,17 +8,22 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GymNegocio.ClasesEntrenador
 {
+
+    //implementamos la logica de negocio
     public class Servicio_Entrenadores
+
     {
+        // Interactua con la capa de acceso a datos y aplica validaciones.
         private AccesoEntrenador _accesoEntrenador;
 
         public Servicio_Entrenadores()
         {
+            //Instancia de la clase de acceso a datos para interactuar con la base de datos de entrenadores 
             _accesoEntrenador = new AccesoEntrenador();
         }
         public void RegistrarEntrenador(Entrenador nuevoEntrenador )
         {
-            // Validaciones de negocio
+            // Validaciones de negocio: esto se asegura que los campos obligatorios no esten vacios.
             if (string.IsNullOrWhiteSpace(nuevoEntrenador.Nombre))
             {
                 throw new ArgumentException("El nombre del entrenador es obligatorio.");
@@ -43,12 +48,14 @@ namespace GymNegocio.ClasesEntrenador
             {
                 throw new ArgumentException("La duración de las sesiones debe ser mayor a 0 minutos.");
             }
-
+             
+            //Validar si ya existe un entrenador con el mismo numero de telefono para evitar duplicados de el mismo telefono 
             var entrenadoresExistentes = _accesoEntrenador.ListarEntrenadores();
             if (entrenadoresExistentes.Any(e => e.Telefono == nuevoEntrenador.Telefono))
             {
                 throw new ArgumentException("Ya existe un entrenador con ese numero de telefono.");
             }
+            // si todas las validaciones pasan, para proceder a insertar el entrenador en la base de datos 
             _accesoEntrenador.InsertarEntrenador(nuevoEntrenador);
         }
       
@@ -105,16 +112,21 @@ namespace GymNegocio.ClasesEntrenador
             _accesoEntrenador.EliminarEntrenador(idEntrenador);
         }
 
+
+       
         public List<Entrenador> ObtenerTodos()
         {
             return _accesoEntrenador.ListarEntrenadores();
         }
 
+        // Obtener entrendor por ID 
+        // el ID del entrenador a buscar
+        // el objeto entrendor si se encuentra, o es null el Id es invalido o no existe 
         public Entrenador ObtenerPorId(int idEntrenador)
         {
             if (idEntrenador <= 0)
             {
-                return null;
+                return null; // retorna null si el ID es invalido 
             }
 
             return _accesoEntrenador.ObtenerPorId(idEntrenador);

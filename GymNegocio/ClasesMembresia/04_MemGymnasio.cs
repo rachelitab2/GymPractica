@@ -16,7 +16,7 @@ namespace GymNegocio.ClasesMembresia
     //Usaremos ahora esto para insertar, actualizar y eliminar y listar nueva etapa del codigo
     public class MemGymnasio //Nombre de la clase 
     {
-        public void InsertarMembresia(Membresia membresia)  // INSERTA
+        public virtual void InsertarMembresia(Membresia membresia)  // INSERTA
         {
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
             {
@@ -38,12 +38,17 @@ namespace GymNegocio.ClasesMembresia
                     cmd.Parameters.AddWithValue("@CostoTotal", membresia.CostoTotal);
                     cmd.Parameters.AddWithValue("@Activa", membresia.Activa);
 
+                    var result = cmd.ExecuteNonQuery();
+                    if (result != null)
+                    {
+                        membresia.Id = Convert.ToInt32(result);
+                    }
                     membresia.Id = Convert.ToInt32(cmd.ExecuteScalar()); //Ejecuta el comando y obtiene el Id generado
                 }
             }
         }
 
-        public void Actualizar(Membresia membresia) //ACTUALIZAR
+        public virtual void Actualizar(Membresia membresia) //ACTUALIZAR
         {
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))// se debe repetir este paso una y otra vez para lla,r la conexion para actualizar 
             {

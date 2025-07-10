@@ -26,7 +26,7 @@ namespace GymPresentacion
             _dashboard = dashboard;
             _servicioEntrenadores = new Servicio_Entrenadores();
             AsignarEventos();
-           
+
         }
 
         private void Form2Entrenadores_Load(object sender, EventArgs e)
@@ -101,9 +101,25 @@ namespace GymPresentacion
                 HeaderText = "Salario",
                 Name = "Salario",
                 Width = 100,
-                DefaultCellStyle= new DataGridViewCellStyle { Format = "C2" }
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
             });
 
+            dgvEntrenadores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "SalarioTotal",
+                HeaderText = "Salario Total",
+                Name = "SalarioTotal",
+                Width = 120,
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
+            });
+
+            dgvEntrenadores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "EstadoContrato",
+                HeaderText = "Estado",
+                Name = "EstadoContrato",
+                Width = 80
+            });
 
 
         }
@@ -404,9 +420,9 @@ namespace GymPresentacion
             this.Close();
         }
 
-        private void PicEntrenadorInicio_Click( object sender , EventArgs e)
+        private void PicEntrenadorInicio_Click(object sender, EventArgs e)
         {
-           _isNavigating = true;
+            _isNavigating = true;
             _dashboard.Show();
             this.Close();
         }
@@ -458,5 +474,14 @@ namespace GymPresentacion
 
         }
 
+        private void txtNombreEntrenador_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 32 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo letras", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
     }
 }
