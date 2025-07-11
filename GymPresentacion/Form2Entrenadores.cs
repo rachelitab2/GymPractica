@@ -407,7 +407,7 @@ namespace GymPresentacion
             _isNavigating = true;
             Form1 formMembresias = new Form1(_dashboard);
             formMembresias.WindowState = this.WindowState;
-            formMembresias.Show();
+            formMembresias.Show(); //Navegacion entre formularios 
             this.Close();
         }
 

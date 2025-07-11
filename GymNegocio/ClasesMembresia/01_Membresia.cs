@@ -10,6 +10,7 @@ namespace GymNegocio.ClasesMembresia
 //el nombre es importante para la llamada correcta y demas...
 {
     public abstract class Membresia //Clase principal o clase padre, para poder heredar en otras clases hijas 
+        //clase abstracta
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -22,6 +23,7 @@ namespace GymNegocio.ClasesMembresia
 
         public abstract string TipoMembresia { get; }
         // esto va a forzar a la membresia a decir cual es su tipo, si es Mensual O Anual opciones 
+        //propiedad abstracta 
 
         public virtual void CalcularVencimiento()
         // void es que no devuelvo ningun valor, y aqui vamos a calcular la fecha de vencimiento de la membresia,
@@ -31,6 +33,7 @@ namespace GymNegocio.ClasesMembresia
             {
                 Activa = false; // si fecha actual sobrepasa a FechaFin es vencida osea callo la membresia 
             }
+            //metodo virtual implementado
             else
             {
                 Activa = true; // osea que si no ha vencido es que sigue activa 
@@ -40,6 +43,7 @@ namespace GymNegocio.ClasesMembresia
         public virtual void CalcularCostoTotal()
         {
             //Se puede quedar vacio es un metodo que usaremos mas adelante 
+            //metodo virtual
         }
 
         // haremos esto para la creacion de nuevas membresias

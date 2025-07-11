@@ -17,6 +17,8 @@ namespace GymNegocio.ClasesMembresia
     public class MemGymnasio //Nombre de la clase 
     {
         public virtual void InsertarMembresia(Membresia membresia)  // INSERTA
+            //metodo normal para insertar 
+
         {
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
             {

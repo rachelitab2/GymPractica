@@ -22,7 +22,7 @@ namespace GymNegocio.ClasesMembresia
 
         public int ContarMembresiaActivas()
         {
-            return ObtenerTodasLasMembresias().Count(m => m.Activa);
+            return ObtenerTodasLasMembresias().Count(m => m.Activa); //Metodos normal Implementados 
         }
 
         public virtual void RegistrarMembresia(Membresia nuevaMembresia)
@@ -104,7 +104,8 @@ namespace GymNegocio.ClasesMembresia
 
         public List<Membresia> ObtenerTodasLasMembresias()
         {
-            var membresias = _accesoDatos.Listar(); //Llama a los datos 
+            var membresias = _accesoDatos.Listar(); //Llama a los datos
+                                                    //Metodo normal implementado
             foreach (var m in membresias)
             {
                 m.CalcularVencimiento();

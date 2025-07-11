@@ -508,7 +508,7 @@ namespace GymPresentacion // nombre importante
             _isNavigating = true; // Avisamos que estamos navegando
             Form2Entrenadores form2Entrenadores = new Form2Entrenadores(_dashboard); // Le pasamos el dashboard
             form2Entrenadores.WindowState = this.WindowState;
-            form2Entrenadores.Show();
+            form2Entrenadores.Show(); //Navegacion entre formularios
             this.Close(); // Cerramos este formulario
 
 

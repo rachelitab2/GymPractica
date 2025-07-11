@@ -65,6 +65,7 @@ namespace GymNegocio.ClasesEntrenador
         {
             // Bonificación base del 5% del salario
             return Salario * 0.05m;
+            //metodo virtual implementado
         }
 
         // Método abstracto que debe implementar cada tipo de entrenador
