@@ -13,20 +13,20 @@ namespace GymNegocio.ClasesEntrenador
             Area = " Cardio"; //area especifica
         }
 
-        // Constructor con parámetros
+        // Constructor con parametros
         public EntrenadorCardio(string nombre, string genero, string telefono, decimal salario) 
             : base (nombre, genero, telefono, salario)
         {
             Area = "Cardio";
         }
 
-        // Implementación del método abstracto - SALARIO TOTAL CON BONIFICACIÓN
+     
         public override decimal CalcularSalarioTotal()
         {
-            // Los entrenadores de cardio tienen 8% de bonificación
+            // Los entrenadores de cardio tienen 8% de bonificacion
             return Salario + (Salario * 0.08m);
         }
-        // Override del método virtual para bonificación específica
+        // Override del metodo virtual para bonificacion especifica
         public override decimal CalcularBonificacion()
         {
             return Salario * 0.08m; // 8% para cardio

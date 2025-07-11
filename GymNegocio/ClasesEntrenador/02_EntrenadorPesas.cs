@@ -21,14 +21,14 @@ namespace GymNegocio.ClasesEntrenador
             Area = "Pesas";
         }
 
-        // Implementación del método abstracto - SALARIO TOTAL CON BONIFICACIÓN
+        
         public override decimal CalcularSalarioTotal()
         {
-            // Los entrenadores de pesas tienen 10% de bonificación
+            // Los entrenadores de pesas tienen 10% de bonificacion
             return Salario + (Salario * 0.10m);
         }
 
-        // Override del método virtual para bonificación específica
+        // Override del metodo virtual para bonificacion especifica
         public override decimal CalcularBonificacion()
         {
             return Salario * 0.10m; // 10% para pesas

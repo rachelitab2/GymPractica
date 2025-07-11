@@ -45,7 +45,7 @@ namespace GymNegocio.ClasesEntrenador
             Duracion = 12; // Duración por defecto
         }
 
-        // Método abstracto que debe implementar cada tipo de entrenador
+       
 
         public virtual bool ValidarDisponibilidad()
         {

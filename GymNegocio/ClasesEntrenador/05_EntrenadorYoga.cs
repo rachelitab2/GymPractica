@@ -14,21 +14,21 @@ namespace GymNegocio.ClasesEntrenador
         }
 
 
-    // Constructor con parámetros
+    // Constructor con parametros
     public EntrenadorYoga(string nombre, string genero, string telefono, decimal salario)
            : base(nombre, genero, telefono, salario)
         {
             Area = "Yoga";
         }
 
-        // Implementación del método abstracto - SALARIO TOTAL CON BONIFICACIÓN
+  
         public override decimal CalcularSalarioTotal()
         {
-            // Los entrenadores de Yoga tienen 6% de bonificación
+            // Los entrenadores de Yoga tienen 6% de bonificacion
             return Salario + (Salario * 0.06m);
         }
 
-        // Override del método virtual para bonificación específica
+        // Override del metodo virtual para bonificacion especifica
         public override decimal CalcularBonificacion()
         {
             return Salario * 0.06m; // 6% para yoga
