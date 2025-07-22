@@ -70,11 +70,11 @@
             dgvEntrenadores.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgvEntrenadores.BackgroundColor = Color.WhiteSmoke;
+            dgvEntrenadores.BackgroundColor = Color.Black;
             dgvEntrenadores.BorderStyle = BorderStyle.None;
             dgvEntrenadores.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.IndianRed;
+            dataGridViewCellStyle2.BackColor = Color.Black;
             dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
@@ -86,12 +86,12 @@
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.IndianRed;
+            dataGridViewCellStyle3.SelectionBackColor = Color.DodgerBlue;
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle3;
             dgvEntrenadores.EnableHeadersVisualStyles = false;
-            dgvEntrenadores.GridColor = Color.IndianRed;
+            dgvEntrenadores.GridColor = Color.DodgerBlue;
             dgvEntrenadores.Location = new Point(119, 170);
             dgvEntrenadores.MultiSelect = false;
             dgvEntrenadores.Name = "dgvEntrenadores";
@@ -105,9 +105,9 @@
             // 
             // btnConsultar
             // 
-            btnConsultar.BackColor = Color.IndianRed;
-            btnConsultar.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConsultar.ForeColor = Color.White;
+            btnConsultar.BackColor = Color.DodgerBlue;
+            btnConsultar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            btnConsultar.ForeColor = Color.Black;
             btnConsultar.Location = new Point(384, 617);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(167, 61);
@@ -117,9 +117,9 @@
             // 
             // btnEditarEntrenador
             // 
-            btnEditarEntrenador.BackColor = Color.IndianRed;
-            btnEditarEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEditarEntrenador.ForeColor = Color.White;
+            btnEditarEntrenador.BackColor = Color.DodgerBlue;
+            btnEditarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            btnEditarEntrenador.ForeColor = Color.Black;
             btnEditarEntrenador.Location = new Point(586, 617);
             btnEditarEntrenador.Name = "btnEditarEntrenador";
             btnEditarEntrenador.Size = new Size(160, 61);
@@ -129,9 +129,9 @@
             // 
             // btnEliminarEntrenador
             // 
-            btnEliminarEntrenador.BackColor = Color.IndianRed;
-            btnEliminarEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEliminarEntrenador.ForeColor = Color.White;
+            btnEliminarEntrenador.BackColor = Color.DodgerBlue;
+            btnEliminarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEliminarEntrenador.ForeColor = Color.Black;
             btnEliminarEntrenador.Location = new Point(791, 617);
             btnEliminarEntrenador.Name = "btnEliminarEntrenador";
             btnEliminarEntrenador.Size = new Size(160, 59);
@@ -142,9 +142,9 @@
             // 
             // btnAgregarEntrenador
             // 
-            btnAgregarEntrenador.BackColor = Color.IndianRed;
-            btnAgregarEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAgregarEntrenador.ForeColor = Color.White;
+            btnAgregarEntrenador.BackColor = Color.DodgerBlue;
+            btnAgregarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregarEntrenador.ForeColor = Color.Black;
             btnAgregarEntrenador.Location = new Point(1173, 616);
             btnAgregarEntrenador.Name = "btnAgregarEntrenador";
             btnAgregarEntrenador.Size = new Size(154, 60);
@@ -183,9 +183,9 @@
             // lblNombreEntrenador
             // 
             lblNombreEntrenador.AutoSize = true;
-            lblNombreEntrenador.BackColor = Color.IndianRed;
+            lblNombreEntrenador.BackColor = Color.Transparent;
             lblNombreEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNombreEntrenador.ForeColor = Color.White;
+            lblNombreEntrenador.ForeColor = Color.Lavender;
             lblNombreEntrenador.Location = new Point(1018, 189);
             lblNombreEntrenador.Name = "lblNombreEntrenador";
             lblNombreEntrenador.Size = new Size(100, 25);
@@ -195,9 +195,9 @@
             // lblGeneroEntrendor
             // 
             lblGeneroEntrendor.AutoSize = true;
-            lblGeneroEntrendor.BackColor = Color.IndianRed;
+            lblGeneroEntrendor.BackColor = Color.Transparent;
             lblGeneroEntrendor.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblGeneroEntrendor.ForeColor = Color.White;
+            lblGeneroEntrendor.ForeColor = Color.Lavender;
             lblGeneroEntrendor.Location = new Point(1021, 241);
             lblGeneroEntrendor.Name = "lblGeneroEntrendor";
             lblGeneroEntrendor.Size = new Size(87, 25);
@@ -208,9 +208,9 @@
             // lblAreaEntrenador
             // 
             lblAreaEntrenador.AutoSize = true;
-            lblAreaEntrenador.BackColor = Color.IndianRed;
+            lblAreaEntrenador.BackColor = Color.Transparent;
             lblAreaEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAreaEntrenador.ForeColor = Color.White;
+            lblAreaEntrenador.ForeColor = Color.Lavender;
             lblAreaEntrenador.Location = new Point(1021, 297);
             lblAreaEntrenador.Name = "lblAreaEntrenador";
             lblAreaEntrenador.Size = new Size(61, 25);
@@ -221,9 +221,9 @@
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
-            lblTelefono.BackColor = Color.IndianRed;
+            lblTelefono.BackColor = Color.Transparent;
             lblTelefono.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTelefono.ForeColor = Color.White;
+            lblTelefono.ForeColor = Color.Lavender;
             lblTelefono.Location = new Point(1021, 358);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(97, 25);
@@ -233,7 +233,7 @@
             // PicMem2
             // 
             PicMem2.BackColor = Color.Transparent;
-            PicMem2.BackgroundImage = Properties.Resources._10;
+            PicMem2.BackgroundImage = Properties.Resources.image_removebg_preview__3_;
             PicMem2.BackgroundImageLayout = ImageLayout.Zoom;
             PicMem2.Cursor = Cursors.Hand;
             PicMem2.Location = new Point(210, 80);
@@ -272,9 +272,9 @@
             // lblIngresoEntrenador
             // 
             lblIngresoEntrenador.AutoSize = true;
-            lblIngresoEntrenador.BackColor = Color.IndianRed;
+            lblIngresoEntrenador.BackColor = Color.Transparent;
             lblIngresoEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblIngresoEntrenador.ForeColor = Color.White;
+            lblIngresoEntrenador.ForeColor = Color.Lavender;
             lblIngresoEntrenador.Location = new Point(1021, 432);
             lblIngresoEntrenador.Name = "lblIngresoEntrenador";
             lblIngresoEntrenador.Size = new Size(156, 25);
@@ -284,7 +284,7 @@
             // PicRutinaEntrenador
             // 
             PicRutinaEntrenador.BackColor = Color.Transparent;
-            PicRutinaEntrenador.BackgroundImage = Properties.Resources._9__1_;
+            PicRutinaEntrenador.BackgroundImage = Properties.Resources.image_removebg_preview__5_;
             PicRutinaEntrenador.BackgroundImageLayout = ImageLayout.Zoom;
             PicRutinaEntrenador.Cursor = Cursors.Hand;
             PicRutinaEntrenador.Location = new Point(303, 80);
@@ -297,9 +297,9 @@
             // lblDuracion
             // 
             lblDuracion.AutoSize = true;
-            lblDuracion.BackColor = Color.IndianRed;
+            lblDuracion.BackColor = Color.Transparent;
             lblDuracion.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDuracion.ForeColor = Color.White;
+            lblDuracion.ForeColor = Color.Lavender;
             lblDuracion.Location = new Point(1021, 486);
             lblDuracion.Name = "lblDuracion";
             lblDuracion.Size = new Size(105, 25);
@@ -320,7 +320,7 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = Properties.Resources._7;
+            pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Location = new Point(586, 2);
             pictureBox1.Name = "pictureBox1";
@@ -331,7 +331,7 @@
             // PicEntrenadorInicio
             // 
             PicEntrenadorInicio.BackColor = Color.Transparent;
-            PicEntrenadorInicio.BackgroundImage = Properties.Resources._12;
+            PicEntrenadorInicio.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
             PicEntrenadorInicio.BackgroundImageLayout = ImageLayout.Zoom;
             PicEntrenadorInicio.Cursor = Cursors.Hand;
             PicEntrenadorInicio.Location = new Point(119, 80);
@@ -344,9 +344,9 @@
             // lblSalario
             // 
             lblSalario.AutoSize = true;
-            lblSalario.BackColor = Color.IndianRed;
+            lblSalario.BackColor = Color.Transparent;
             lblSalario.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSalario.ForeColor = Color.White;
+            lblSalario.ForeColor = Color.Lavender;
             lblSalario.Location = new Point(1022, 533);
             lblSalario.Name = "lblSalario";
             lblSalario.Size = new Size(81, 25);
@@ -367,7 +367,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__6_;
+            BackgroundImage = Properties.Resources.Untitled_design__13_;
             ClientSize = new Size(1539, 741);
             Controls.Add(nudSalario);
             Controls.Add(lblSalario);

@@ -40,10 +40,10 @@ namespace GymPresentacion
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             lblTitulo = new Label();
             lblName = new Label();
             lblCliente = new Label();
@@ -84,9 +84,9 @@ namespace GymPresentacion
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.BackColor = Color.IndianRed;
+            lblName.BackColor = Color.Transparent;
             lblName.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblName.ForeColor = Color.White;
+            lblName.ForeColor = Color.Lavender;
             lblName.Location = new Point(1071, 224);
             lblName.Name = "lblName";
             lblName.Size = new Size(94, 25);
@@ -96,9 +96,9 @@ namespace GymPresentacion
             // lblCliente
             // 
             lblCliente.AutoSize = true;
-            lblCliente.BackColor = Color.IndianRed;
+            lblCliente.BackColor = Color.Transparent;
             lblCliente.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCliente.ForeColor = Color.White;
+            lblCliente.ForeColor = Color.Lavender;
             lblCliente.Location = new Point(1071, 304);
             lblCliente.Name = "lblCliente";
             lblCliente.Size = new Size(82, 25);
@@ -108,9 +108,9 @@ namespace GymPresentacion
             // 
             // btnEditar
             // 
-            btnEditar.BackColor = Color.IndianRed;
-            btnEditar.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEditar.ForeColor = Color.White;
+            btnEditar.BackColor = Color.DodgerBlue;
+            btnEditar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            btnEditar.ForeColor = Color.Black;
             btnEditar.Location = new Point(607, 650);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(174, 62);
@@ -120,9 +120,9 @@ namespace GymPresentacion
             // 
             // btnEliminar
             // 
-            btnEliminar.BackColor = Color.IndianRed;
-            btnEliminar.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEliminar.ForeColor = Color.White;
+            btnEliminar.BackColor = Color.DodgerBlue;
+            btnEliminar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            btnEliminar.ForeColor = Color.Black;
             btnEliminar.Location = new Point(831, 650);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(174, 62);
@@ -135,42 +135,42 @@ namespace GymPresentacion
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.BackgroundColor = Color.WhiteSmoke;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridView1.BackgroundColor = Color.Black;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.IndianRed;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.Black;
+            dataGridViewCellStyle6.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.IndianRed;
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.White;
+            dataGridViewCellStyle7.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle7.SelectionForeColor = Color.White;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.GridColor = Color.IndianRed;
+            dataGridView1.GridColor = Color.DodgerBlue;
             dataGridView1.Location = new Point(41, 191);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -193,9 +193,9 @@ namespace GymPresentacion
             // 
             // btnAgregar
             // 
-            btnAgregar.BackColor = Color.IndianRed;
-            btnAgregar.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAgregar.ForeColor = Color.White;
+            btnAgregar.BackColor = Color.DodgerBlue;
+            btnAgregar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            btnAgregar.ForeColor = Color.Black;
             btnAgregar.Location = new Point(1224, 648);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(177, 62);
@@ -206,9 +206,9 @@ namespace GymPresentacion
             // lblFechaInicio
             // 
             lblFechaInicio.AutoSize = true;
-            lblFechaInicio.BackColor = Color.IndianRed;
+            lblFechaInicio.BackColor = Color.Transparent;
             lblFechaInicio.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFechaInicio.ForeColor = Color.White;
+            lblFechaInicio.ForeColor = Color.Lavender;
             lblFechaInicio.Location = new Point(1071, 389);
             lblFechaInicio.Name = "lblFechaInicio";
             lblFechaInicio.Size = new Size(129, 25);
@@ -229,9 +229,9 @@ namespace GymPresentacion
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
-            lblTelefono.BackColor = Color.IndianRed;
+            lblTelefono.BackColor = Color.Transparent;
             lblTelefono.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTelefono.ForeColor = Color.White;
+            lblTelefono.ForeColor = Color.Lavender;
             lblTelefono.Location = new Point(1071, 472);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(97, 25);
@@ -261,9 +261,9 @@ namespace GymPresentacion
             // 
             // btnConsultar
             // 
-            btnConsultar.BackColor = Color.IndianRed;
-            btnConsultar.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConsultar.ForeColor = Color.White;
+            btnConsultar.BackColor = Color.DodgerBlue;
+            btnConsultar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            btnConsultar.ForeColor = Color.Black;
             btnConsultar.Location = new Point(374, 648);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(174, 64);
@@ -274,7 +274,7 @@ namespace GymPresentacion
             // PicEntrenadores
             // 
             PicEntrenadores.BackColor = Color.Transparent;
-            PicEntrenadores.BackgroundImage = Properties.Resources._8__1_;
+            PicEntrenadores.BackgroundImage = Properties.Resources.image_removebg_preview__9_;
             PicEntrenadores.BackgroundImageLayout = ImageLayout.Zoom;
             PicEntrenadores.Cursor = Cursors.Hand;
             PicEntrenadores.Location = new Point(147, 101);
@@ -288,7 +288,7 @@ namespace GymPresentacion
             // PicRutinas
             // 
             PicRutinas.BackColor = Color.Transparent;
-            PicRutinas.BackgroundImage = Properties.Resources._9__1_;
+            PicRutinas.BackgroundImage = Properties.Resources.image_removebg_preview__5_;
             PicRutinas.BackgroundImageLayout = ImageLayout.Zoom;
             PicRutinas.Cursor = Cursors.Hand;
             PicRutinas.Location = new Point(249, 101);
@@ -302,7 +302,7 @@ namespace GymPresentacion
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = Properties.Resources._7;
+            pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Location = new Point(637, 24);
             pictureBox1.Name = "pictureBox1";
@@ -313,7 +313,7 @@ namespace GymPresentacion
             // PicMemInicio
             // 
             PicMemInicio.BackColor = Color.Transparent;
-            PicMemInicio.BackgroundImage = Properties.Resources._12;
+            PicMemInicio.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
             PicMemInicio.BackgroundImageLayout = ImageLayout.Zoom;
             PicMemInicio.Cursor = Cursors.Hand;
             PicMemInicio.Location = new Point(41, 101);
@@ -328,8 +328,8 @@ namespace GymPresentacion
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
-            BackgroundImage = Properties.Resources.Untitled_design__6_;
-            ClientSize = new Size(1615, 810);
+            BackgroundImage = Properties.Resources.Untitled_design__13_;
+            ClientSize = new Size(1567, 767);
             Controls.Add(PicMemInicio);
             Controls.Add(pictureBox1);
             Controls.Add(PicRutinas);

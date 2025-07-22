@@ -127,7 +127,7 @@
             PicPanelRutina.Cursor = Cursors.Hand;
             PicPanelRutina.Location = new Point(-116, -31);
             PicPanelRutina.Name = "PicPanelRutina";
-            PicPanelRutina.Size = new Size(488, 261);
+            PicPanelRutina.Size = new Size(488, 240);
             PicPanelRutina.TabIndex = 6;
             PicPanelRutina.TabStop = false;
             PicPanelRutina.Click += PicPanelRutina_Click;
@@ -148,11 +148,11 @@
             // 
             lblDescripcionMem.AutoSize = true;
             lblDescripcionMem.BackColor = Color.Transparent;
-            lblDescripcionMem.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDescripcionMem.Font = new Font("Verdana", 10.2F);
             lblDescripcionMem.ForeColor = Color.WhiteSmoke;
             lblDescripcionMem.Location = new Point(97, 543);
             lblDescripcionMem.Name = "lblDescripcionMem";
-            lblDescripcionMem.Size = new Size(260, 19);
+            lblDescripcionMem.Size = new Size(301, 20);
             lblDescripcionMem.TabIndex = 6;
             lblDescripcionMem.Text = "Gestionar membresías de clientes";
             // 
@@ -172,11 +172,11 @@
             // 
             lblDescripcionEntrenador.AutoSize = true;
             lblDescripcionEntrenador.BackColor = Color.Transparent;
-            lblDescripcionEntrenador.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDescripcionEntrenador.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDescripcionEntrenador.ForeColor = Color.WhiteSmoke;
-            lblDescripcionEntrenador.Location = new Point(578, 547);
+            lblDescripcionEntrenador.Location = new Point(575, 541);
             lblDescripcionEntrenador.Name = "lblDescripcionEntrenador";
-            lblDescripcionEntrenador.Size = new Size(198, 20);
+            lblDescripcionEntrenador.Size = new Size(217, 20);
             lblDescripcionEntrenador.TabIndex = 8;
             lblDescripcionEntrenador.Text = "Gestionar Entrenadores ";
             // 
@@ -196,11 +196,11 @@
             // 
             lblDescricionRutina.AutoSize = true;
             lblDescricionRutina.BackColor = Color.Transparent;
-            lblDescricionRutina.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDescricionRutina.Font = new Font("Verdana", 10.2F);
             lblDescricionRutina.ForeColor = Color.WhiteSmoke;
             lblDescricionRutina.Location = new Point(1049, 547);
             lblDescricionRutina.Name = "lblDescricionRutina";
-            lblDescricionRutina.Size = new Size(150, 20);
+            lblDescricionRutina.Size = new Size(162, 20);
             lblDescricionRutina.TabIndex = 10;
             lblDescricionRutina.Text = "Gestionar Rutinas";
             // 
