@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
@@ -11,9 +12,9 @@ using System.Windows.Forms;
 
 namespace GymPresentacion
 {
-    public partial class Form4 : Form
+    public partial class btnDespliegue : Form
     {
-        public Form4()
+        public btnDespliegue()
         {
             InitializeComponent();
             AsignarEventos();
@@ -52,6 +53,23 @@ namespace GymPresentacion
         }
 
         private void PicPanelRutina_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Despliegue_Click(object sender, EventArgs e)
+        {
+            if (MenuVertical.Width == 250)
+            {
+                MenuVertical.Width = 70;
+            }
+            else
+            {
+                MenuVertical.Width = 250;
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
