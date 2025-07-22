@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4));
             lblPanelPrinciapl = new Label();
-            pictureBox1 = new PictureBox();
             PanelMemebresia = new Panel();
             PicPanelMemebresia = new PictureBox();
             PanelEntrenador = new Panel();
@@ -42,37 +42,27 @@
             lblDescripcionEntrenador = new Label();
             lblTituloRutina = new Label();
             lblDescricionRutina = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            pictureBox1 = new PictureBox();
             PanelMemebresia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PicPanelMemebresia).BeginInit();
             PanelEntrenador.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PicPanelEntrenador).BeginInit();
             PanelRutina.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PicPanelRutina).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblPanelPrinciapl
             // 
             lblPanelPrinciapl.AutoSize = true;
             lblPanelPrinciapl.BackColor = Color.Transparent;
-            lblPanelPrinciapl.Font = new Font("Times New Roman", 28.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblPanelPrinciapl.ForeColor = Color.IndianRed;
-            lblPanelPrinciapl.Location = new Point(533, 236);
+            lblPanelPrinciapl.Font = new Font("Verdana", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPanelPrinciapl.ForeColor = Color.Lavender;
+            lblPanelPrinciapl.Location = new Point(435, 217);
             lblPanelPrinciapl.Name = "lblPanelPrinciapl";
-            lblPanelPrinciapl.Size = new Size(316, 52);
+            lblPanelPrinciapl.Size = new Size(517, 73);
             lblPanelPrinciapl.TabIndex = 0;
             lblPanelPrinciapl.Text = "PanelPrincipal";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = Properties.Resources._7;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(511, 35);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(342, 198);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
             // 
             // PanelMemebresia
             // 
@@ -87,7 +77,7 @@
             // PicPanelMemebresia
             // 
             PicPanelMemebresia.BackColor = Color.Transparent;
-            PicPanelMemebresia.BackgroundImage = Properties.Resources._10;
+            PicPanelMemebresia.BackgroundImage = Properties.Resources.image_removebg_preview__3_;
             PicPanelMemebresia.BackgroundImageLayout = ImageLayout.Zoom;
             PicPanelMemebresia.Location = new Point(-112, -38);
             PicPanelMemebresia.Name = "PicPanelMemebresia";
@@ -109,7 +99,7 @@
             // PicPanelEntrenador
             // 
             PicPanelEntrenador.BackColor = Color.Transparent;
-            PicPanelEntrenador.BackgroundImage = Properties.Resources._8__1_;
+            PicPanelEntrenador.BackgroundImage = (Image)resources.GetObject("PicPanelEntrenador.BackgroundImage");
             PicPanelEntrenador.BackgroundImageLayout = ImageLayout.Zoom;
             PicPanelEntrenador.Cursor = Cursors.Hand;
             PicPanelEntrenador.Location = new Point(-120, -38);
@@ -132,7 +122,7 @@
             // PicPanelRutina
             // 
             PicPanelRutina.BackColor = Color.Transparent;
-            PicPanelRutina.BackgroundImage = Properties.Resources._9__1_;
+            PicPanelRutina.BackgroundImage = Properties.Resources.image_removebg_preview__5_;
             PicPanelRutina.BackgroundImageLayout = ImageLayout.Zoom;
             PicPanelRutina.Cursor = Cursors.Hand;
             PicPanelRutina.Location = new Point(-116, -31);
@@ -146,11 +136,11 @@
             // 
             lblTituloMem.AutoSize = true;
             lblTituloMem.BackColor = Color.Transparent;
-            lblTituloMem.Font = new Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTituloMem.ForeColor = Color.IndianRed;
-            lblTituloMem.Location = new Point(152, 515);
+            lblTituloMem.Font = new Font("Verdana", 16.2F, FontStyle.Bold);
+            lblTituloMem.ForeColor = Color.Lavender;
+            lblTituloMem.Location = new Point(132, 507);
             lblTituloMem.Name = "lblTituloMem";
-            lblTituloMem.Size = new Size(146, 32);
+            lblTituloMem.Size = new Size(190, 34);
             lblTituloMem.TabIndex = 5;
             lblTituloMem.Text = "Membresia";
             // 
@@ -170,11 +160,11 @@
             // 
             lblTituloEntrenador.AutoSize = true;
             lblTituloEntrenador.BackColor = Color.Transparent;
-            lblTituloEntrenador.Font = new Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTituloEntrenador.ForeColor = Color.IndianRed;
-            lblTituloEntrenador.Location = new Point(595, 515);
+            lblTituloEntrenador.Font = new Font("Verdana", 16.2F, FontStyle.Bold);
+            lblTituloEntrenador.ForeColor = Color.Lavender;
+            lblTituloEntrenador.Location = new Point(564, 513);
             lblTituloEntrenador.Name = "lblTituloEntrenador";
-            lblTituloEntrenador.Size = new Size(175, 32);
+            lblTituloEntrenador.Size = new Size(228, 34);
             lblTituloEntrenador.TabIndex = 7;
             lblTituloEntrenador.Text = "Entrenadores";
             // 
@@ -194,11 +184,11 @@
             // 
             lblTituloRutina.AutoSize = true;
             lblTituloRutina.BackColor = Color.Transparent;
-            lblTituloRutina.Font = new Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTituloRutina.ForeColor = Color.IndianRed;
-            lblTituloRutina.Location = new Point(1071, 515);
+            lblTituloRutina.Font = new Font("Verdana", 16.2F, FontStyle.Bold);
+            lblTituloRutina.ForeColor = Color.Lavender;
+            lblTituloRutina.Location = new Point(1049, 513);
             lblTituloRutina.Name = "lblTituloRutina";
-            lblTituloRutina.Size = new Size(108, 32);
+            lblTituloRutina.Size = new Size(136, 34);
             lblTituloRutina.TabIndex = 9;
             lblTituloRutina.Text = "Rutinas";
             // 
@@ -208,18 +198,30 @@
             lblDescricionRutina.BackColor = Color.Transparent;
             lblDescricionRutina.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDescricionRutina.ForeColor = Color.WhiteSmoke;
-            lblDescricionRutina.Location = new Point(1049, 543);
+            lblDescricionRutina.Location = new Point(1049, 547);
             lblDescricionRutina.Name = "lblDescricionRutina";
             lblDescricionRutina.Size = new Size(150, 20);
             lblDescricionRutina.TabIndex = 10;
             lblDescricionRutina.Text = "Gestionar Rutinas";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(502, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(384, 217);
+            pictureBox1.TabIndex = 11;
+            pictureBox1.TabStop = false;
+            // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__6_;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1280, 646);
+            Controls.Add(pictureBox1);
             Controls.Add(lblDescricionRutina);
             Controls.Add(lblTituloRutina);
             Controls.Add(lblDescripcionEntrenador);
@@ -229,18 +231,17 @@
             Controls.Add(PanelRutina);
             Controls.Add(PanelEntrenador);
             Controls.Add(PanelMemebresia);
-            Controls.Add(pictureBox1);
             Controls.Add(lblPanelPrinciapl);
             Name = "Form4";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             PanelMemebresia.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)PicPanelMemebresia).EndInit();
             PanelEntrenador.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)PicPanelEntrenador).EndInit();
             PanelRutina.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)PicPanelRutina).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -248,7 +249,6 @@
         #endregion
 
         private Label lblPanelPrinciapl;
-        private PictureBox pictureBox1;
         private Panel PanelMemebresia;
         private Panel PanelEntrenador;
         private Panel PanelRutina;
@@ -261,5 +261,6 @@
         private Label lblDescripcionEntrenador;
         private Label lblTituloRutina;
         private Label lblDescricionRutina;
+        private PictureBox pictureBox1;
     }
 }
