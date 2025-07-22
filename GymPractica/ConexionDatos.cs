@@ -2,7 +2,9 @@
 using Microsoft.Data.SqlClient;
 
 namespace GymDatos
+
 {
+    // nuevos cambios 
     //Realizar conexion 
     public class ConexionDatos //Conexion a  BD
     {
