@@ -111,7 +111,7 @@ namespace GymPresentacion
             btnEditar.BackColor = Color.DodgerBlue;
             btnEditar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditar.ForeColor = Color.Black;
-            btnEditar.Location = new Point(607, 650);
+            btnEditar.Location = new Point(650, 659);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(174, 62);
             btnEditar.TabIndex = 3;
@@ -123,7 +123,7 @@ namespace GymPresentacion
             btnEliminar.BackColor = Color.DodgerBlue;
             btnEliminar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEliminar.ForeColor = Color.Black;
-            btnEliminar.Location = new Point(831, 650);
+            btnEliminar.Location = new Point(459, 658);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(174, 62);
             btnEliminar.TabIndex = 4;
@@ -264,7 +264,7 @@ namespace GymPresentacion
             btnConsultar.BackColor = Color.DodgerBlue;
             btnConsultar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultar.ForeColor = Color.Black;
-            btnConsultar.Location = new Point(374, 648);
+            btnConsultar.Location = new Point(841, 657);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(174, 64);
             btnConsultar.TabIndex = 20;
