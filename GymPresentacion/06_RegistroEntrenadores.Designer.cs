@@ -1,6 +1,6 @@
 ﻿namespace GymPresentacion
 {
-    partial class Form2Entrenadores
+    partial class RegistroEntrenadores
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgvEntrenadores = new DataGridView();
             btnConsultar = new Button();
             btnEditarEntrenador = new Button();
@@ -55,6 +55,9 @@
             PicEntrenadorInicio = new PictureBox();
             lblSalario = new Label();
             nudSalario = new NumericUpDown();
+            checkCorreoEntrenador = new CheckBox();
+            lblCorreoEntrenador = new Label();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvEntrenadores).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicMem2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicRutinaEntrenador).BeginInit();
@@ -68,38 +71,38 @@
             // 
             dgvEntrenadores.AllowUserToAddRows = false;
             dgvEntrenadores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvEntrenadores.BackgroundColor = Color.Black;
             dgvEntrenadores.BorderStyle = BorderStyle.None;
             dgvEntrenadores.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Black;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Black;
+            dataGridViewCellStyle5.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvEntrenadores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle6;
             dgvEntrenadores.EnableHeadersVisualStyles = false;
             dgvEntrenadores.GridColor = Color.DodgerBlue;
-            dgvEntrenadores.Location = new Point(119, 170);
+            dgvEntrenadores.Location = new Point(119, 180);
             dgvEntrenadores.MultiSelect = false;
             dgvEntrenadores.Name = "dgvEntrenadores";
             dgvEntrenadores.ReadOnly = true;
             dgvEntrenadores.RowHeadersVisible = false;
             dgvEntrenadores.RowHeadersWidth = 51;
             dgvEntrenadores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEntrenadores.Size = new Size(841, 424);
+            dgvEntrenadores.Size = new Size(841, 465);
             dgvEntrenadores.TabIndex = 5;
             dgvEntrenadores.CellContentClick += dgvEntrenadores_CellContentClick;
             // 
@@ -108,7 +111,7 @@
             btnConsultar.BackColor = Color.DodgerBlue;
             btnConsultar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultar.ForeColor = Color.Black;
-            btnConsultar.Location = new Point(384, 617);
+            btnConsultar.Location = new Point(303, 656);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(167, 61);
             btnConsultar.TabIndex = 1;
@@ -120,7 +123,7 @@
             btnEditarEntrenador.BackColor = Color.DodgerBlue;
             btnEditarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditarEntrenador.ForeColor = Color.Black;
-            btnEditarEntrenador.Location = new Point(586, 617);
+            btnEditarEntrenador.Location = new Point(475, 656);
             btnEditarEntrenador.Name = "btnEditarEntrenador";
             btnEditarEntrenador.Size = new Size(160, 61);
             btnEditarEntrenador.TabIndex = 2;
@@ -132,7 +135,7 @@
             btnEliminarEntrenador.BackColor = Color.DodgerBlue;
             btnEliminarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarEntrenador.ForeColor = Color.Black;
-            btnEliminarEntrenador.Location = new Point(791, 617);
+            btnEliminarEntrenador.Location = new Point(641, 656);
             btnEliminarEntrenador.Name = "btnEliminarEntrenador";
             btnEliminarEntrenador.Size = new Size(160, 59);
             btnEliminarEntrenador.TabIndex = 3;
@@ -145,7 +148,7 @@
             btnAgregarEntrenador.BackColor = Color.DodgerBlue;
             btnAgregarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregarEntrenador.ForeColor = Color.Black;
-            btnAgregarEntrenador.Location = new Point(1173, 616);
+            btnAgregarEntrenador.Location = new Point(806, 654);
             btnAgregarEntrenador.Name = "btnAgregarEntrenador";
             btnAgregarEntrenador.Size = new Size(154, 60);
             btnAgregarEntrenador.TabIndex = 4;
@@ -155,9 +158,10 @@
             // checkDisponible
             // 
             checkDisponible.AutoSize = true;
-            checkDisponible.Location = new Point(1354, 536);
+            checkDisponible.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
+            checkDisponible.Location = new Point(1046, 622);
             checkDisponible.Name = "checkDisponible";
-            checkDisponible.Size = new Size(129, 24);
+            checkDisponible.Size = new Size(171, 31);
             checkDisponible.TabIndex = 5;
             checkDisponible.Text = "Disponibilidad";
             checkDisponible.UseVisualStyleBackColor = true;
@@ -264,7 +268,7 @@
             // 
             dtpIngresoEntrenador.CalendarFont = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dtpIngresoEntrenador.Format = DateTimePickerFormat.Short;
-            dtpIngresoEntrenador.Location = new Point(1198, 430);
+            dtpIngresoEntrenador.Location = new Point(1197, 414);
             dtpIngresoEntrenador.Name = "dtpIngresoEntrenador";
             dtpIngresoEntrenador.Size = new Size(301, 27);
             dtpIngresoEntrenador.TabIndex = 15;
@@ -275,7 +279,7 @@
             lblIngresoEntrenador.BackColor = Color.Transparent;
             lblIngresoEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblIngresoEntrenador.ForeColor = Color.Lavender;
-            lblIngresoEntrenador.Location = new Point(1021, 432);
+            lblIngresoEntrenador.Location = new Point(1022, 414);
             lblIngresoEntrenador.Name = "lblIngresoEntrenador";
             lblIngresoEntrenador.Size = new Size(156, 25);
             lblIngresoEntrenador.TabIndex = 16;
@@ -300,7 +304,7 @@
             lblDuracion.BackColor = Color.Transparent;
             lblDuracion.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDuracion.ForeColor = Color.Lavender;
-            lblDuracion.Location = new Point(1021, 486);
+            lblDuracion.Location = new Point(1021, 461);
             lblDuracion.Name = "lblDuracion";
             lblDuracion.Size = new Size(105, 25);
             lblDuracion.TabIndex = 18;
@@ -308,7 +312,7 @@
             // 
             // nudDuracion
             // 
-            nudDuracion.Location = new Point(1198, 484);
+            nudDuracion.Location = new Point(1197, 463);
             nudDuracion.Maximum = new decimal(new int[] { 120, 0, 0, 0 });
             nudDuracion.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             nudDuracion.Name = "nudDuracion";
@@ -322,7 +326,7 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(586, 2);
+            pictureBox1.Location = new Point(637, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(589, 162);
             pictureBox1.TabIndex = 20;
@@ -347,7 +351,7 @@
             lblSalario.BackColor = Color.Transparent;
             lblSalario.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSalario.ForeColor = Color.Lavender;
-            lblSalario.Location = new Point(1022, 533);
+            lblSalario.Location = new Point(1018, 513);
             lblSalario.Name = "lblSalario";
             lblSalario.Size = new Size(81, 25);
             lblSalario.TabIndex = 22;
@@ -356,19 +360,53 @@
             // nudSalario
             // 
             nudSalario.DecimalPlaces = 2;
-            nudSalario.Location = new Point(1198, 531);
+            nudSalario.Location = new Point(1197, 515);
             nudSalario.Maximum = new decimal(new int[] { 30000, 0, 0, 0 });
             nudSalario.Name = "nudSalario";
             nudSalario.Size = new Size(150, 27);
             nudSalario.TabIndex = 23;
             nudSalario.ThousandsSeparator = true;
             // 
-            // Form2Entrenadores
+            // checkCorreoEntrenador
+            // 
+            checkCorreoEntrenador.AutoSize = true;
+            checkCorreoEntrenador.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
+            checkCorreoEntrenador.Location = new Point(1265, 622);
+            checkCorreoEntrenador.Name = "checkCorreoEntrenador";
+            checkCorreoEntrenador.Size = new Size(160, 31);
+            checkCorreoEntrenador.TabIndex = 24;
+            checkCorreoEntrenador.Text = "Enviar Correo";
+            checkCorreoEntrenador.UseVisualStyleBackColor = true;
+            // 
+            // lblCorreoEntrenador
+            // 
+            lblCorreoEntrenador.AutoSize = true;
+            lblCorreoEntrenador.BackColor = Color.Transparent;
+            lblCorreoEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
+            lblCorreoEntrenador.ForeColor = Color.Lavender;
+            lblCorreoEntrenador.Location = new Point(1015, 566);
+            lblCorreoEntrenador.Name = "lblCorreoEntrenador";
+            lblCorreoEntrenador.Size = new Size(84, 25);
+            lblCorreoEntrenador.TabIndex = 25;
+            lblCorreoEntrenador.Text = "Correo";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(1198, 567);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(302, 27);
+            textBox1.TabIndex = 26;
+            // 
+            // RegistroEntrenadores
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Untitled_design__13_;
-            ClientSize = new Size(1539, 741);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1647, 826);
+            Controls.Add(textBox1);
+            Controls.Add(lblCorreoEntrenador);
+            Controls.Add(checkCorreoEntrenador);
             Controls.Add(nudSalario);
             Controls.Add(lblSalario);
             Controls.Add(PicEntrenadorInicio);
@@ -393,7 +431,8 @@
             Controls.Add(btnEditarEntrenador);
             Controls.Add(btnConsultar);
             Controls.Add(dgvEntrenadores);
-            Name = "Form2Entrenadores";
+            DoubleBuffered = true;
+            Name = "RegistroEntrenadores";
             Text = "Form2";
             Load += Form2Entrenadores_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEntrenadores).EndInit();
@@ -433,5 +472,8 @@
         private PictureBox PicEntrenadorInicio;
         private Label lblSalario;
         private NumericUpDown nudSalario;
+        private CheckBox checkCorreoEntrenador;
+        private Label lblCorreoEntrenador;
+        private TextBox textBox1;
     }
 }

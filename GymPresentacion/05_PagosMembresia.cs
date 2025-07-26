@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GymPresentacion
 {
-    public partial class Form8PagoMembresia: Form
+    public partial class PagosMembresia: Form
     {
-        public Form8PagoMembresia()
+        public PagosMembresia()
         {
             InitializeComponent();
         }

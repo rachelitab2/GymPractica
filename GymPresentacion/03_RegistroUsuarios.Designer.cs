@@ -1,6 +1,6 @@
 ﻿namespace GymPresentacion
 {
-    partial class Form6Usuarios
+    partial class RegsitroUsuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -41,6 +41,7 @@
             btnConsultarUsuario = new Button();
             pictureBox1 = new PictureBox();
             PicUsuarios = new PictureBox();
+            checkActivoUsuario = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicUsuarios).BeginInit();
@@ -109,7 +110,7 @@
             dgvUsuarios.AllowUserToOrderColumns = true;
             dgvUsuarios.BackgroundColor = Color.Black;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Location = new Point(54, 170);
+            dgvUsuarios.Location = new Point(54, 185);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersWidth = 51;
             dgvUsuarios.Size = new Size(817, 423);
@@ -167,9 +168,9 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(675, 3);
+            pictureBox1.Location = new Point(637, 24);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(434, 161);
+            pictureBox1.Size = new Size(589, 162);
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
@@ -185,12 +186,24 @@
             PicUsuarios.TabStop = false;
             PicUsuarios.Click += PicUsuarios_Click;
             // 
-            // Form6Usuarios
+            // checkActivoUsuario
+            // 
+            checkActivoUsuario.AutoSize = true;
+            checkActivoUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
+            checkActivoUsuario.Location = new Point(1157, 448);
+            checkActivoUsuario.Name = "checkActivoUsuario";
+            checkActivoUsuario.Size = new Size(94, 31);
+            checkActivoUsuario.TabIndex = 13;
+            checkActivoUsuario.Text = "Activo";
+            checkActivoUsuario.UseVisualStyleBackColor = true;
+            // 
+            // RegsitroUsuarios
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Untitled_design__13_;
             ClientSize = new Size(1514, 736);
+            Controls.Add(checkActivoUsuario);
             Controls.Add(PicUsuarios);
             Controls.Add(pictureBox1);
             Controls.Add(btnConsultarUsuario);
@@ -204,8 +217,8 @@
             Controls.Add(lblRolUsuario);
             Controls.Add(lblContrasena);
             Controls.Add(lblNombreUusario);
-            Name = "Form6Usuarios";
-            Text = "Form6Usuarios";
+            Name = "RegsitroUsuarios";
+            Text = "RegsitroUsuarios";
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicUsuarios).EndInit();
@@ -228,5 +241,6 @@
         private Button btnConsultarUsuario;
         private PictureBox pictureBox1;
         private PictureBox PicUsuarios;
+        private CheckBox checkActivoUsuario;
     }
 }

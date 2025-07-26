@@ -13,7 +13,7 @@ using Microsoft.VisualBasic.ApplicationServices;
 
 namespace GymPresentacion
 {
-    public partial class Form3Rutina : Form
+    public partial class RegistroRutina : Form
     {
 
         private readonly Servicio_Rutinas _servicioRutinas;
@@ -21,7 +21,7 @@ namespace GymPresentacion
         private readonly Form _formPrincipal;
         private bool _isNavigating = false;
         private readonly Form _dashboard;
-        public Form3Rutina(Form dashboard)
+        public RegistroRutina(Form dashboard)
         {
             InitializeComponent();
             _dashboard = dashboard;
@@ -272,7 +272,7 @@ namespace GymPresentacion
         private void PicMemRutina_Click(object sender, EventArgs e)
         {
             _isNavigating = true;
-            Form1 formMembresias = Form1.ObtenerInstancia(_dashboard);
+            RegistroMembresias formMembresias = RegistroMembresias.ObtenerInstancia(_dashboard);
             formMembresias.WindowState = this.WindowState;
             formMembresias.Show();
             this.Close();
@@ -280,7 +280,7 @@ namespace GymPresentacion
         private void PicEntrenadorIr_Click(object sender, EventArgs e)
         {
             _isNavigating = true;
-            Form2Entrenadores formEntrenadores = new Form2Entrenadores(_dashboard);
+            RegistroEntrenadores formEntrenadores = new RegistroEntrenadores(_dashboard);
             formEntrenadores.WindowState = this.WindowState;
             formEntrenadores.Show();
             this.Close();

@@ -35,21 +35,25 @@
             PicPanelRutina = new PictureBox();
             pictureBox1 = new PictureBox();
             MenuVertical = new Panel();
+            PicPanelSeguimiento = new PictureBox();
+            PicPanelPagoMembresia = new PictureBox();
+            PicPanelUsuario = new PictureBox();
             pictureBox2 = new PictureBox();
             BarraTitular = new Panel();
             PicCerrarSesion = new PictureBox();
             Despliegue = new PictureBox();
-            PicPanelUsuario = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)PicPanelMemebresia).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicPanelEntrenador).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicPanelRutina).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             MenuVertical.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PicPanelSeguimiento).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PicPanelPagoMembresia).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PicPanelUsuario).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             BarraTitular.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PicCerrarSesion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Despliegue).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)PicPanelUsuario).BeginInit();
             SuspendLayout();
             // 
             // lblPanelPrinciapl
@@ -69,9 +73,9 @@
             PicPanelMemebresia.BackColor = Color.Transparent;
             PicPanelMemebresia.BackgroundImage = Properties.Resources.image_removebg_preview__3_;
             PicPanelMemebresia.BackgroundImageLayout = ImageLayout.Zoom;
-            PicPanelMemebresia.Location = new Point(81, 241);
+            PicPanelMemebresia.Location = new Point(102, 224);
             PicPanelMemebresia.Name = "PicPanelMemebresia";
-            PicPanelMemebresia.Size = new Size(169, 104);
+            PicPanelMemebresia.Size = new Size(148, 68);
             PicPanelMemebresia.SizeMode = PictureBoxSizeMode.CenterImage;
             PicPanelMemebresia.TabIndex = 5;
             PicPanelMemebresia.TabStop = false;
@@ -82,9 +86,9 @@
             PicPanelEntrenador.BackgroundImage = (Image)resources.GetObject("PicPanelEntrenador.BackgroundImage");
             PicPanelEntrenador.BackgroundImageLayout = ImageLayout.Zoom;
             PicPanelEntrenador.Cursor = Cursors.Hand;
-            PicPanelEntrenador.Location = new Point(81, 360);
+            PicPanelEntrenador.Location = new Point(102, 373);
             PicPanelEntrenador.Name = "PicPanelEntrenador";
-            PicPanelEntrenador.Size = new Size(169, 102);
+            PicPanelEntrenador.Size = new Size(148, 68);
             PicPanelEntrenador.SizeMode = PictureBoxSizeMode.CenterImage;
             PicPanelEntrenador.TabIndex = 7;
             PicPanelEntrenador.TabStop = false;
@@ -95,9 +99,9 @@
             PicPanelRutina.BackgroundImage = Properties.Resources.image_removebg_preview__5_;
             PicPanelRutina.BackgroundImageLayout = ImageLayout.Zoom;
             PicPanelRutina.Cursor = Cursors.Hand;
-            PicPanelRutina.Location = new Point(81, 468);
+            PicPanelRutina.Location = new Point(99, 447);
             PicPanelRutina.Name = "PicPanelRutina";
-            PicPanelRutina.Size = new Size(169, 103);
+            PicPanelRutina.Size = new Size(148, 68);
             PicPanelRutina.TabIndex = 6;
             PicPanelRutina.TabStop = false;
             PicPanelRutina.Click += PicPanelRutina_Click;
@@ -117,6 +121,8 @@
             // MenuVertical
             // 
             MenuVertical.BackgroundImage = Properties.Resources.Untitled_design__13_;
+            MenuVertical.Controls.Add(PicPanelSeguimiento);
+            MenuVertical.Controls.Add(PicPanelPagoMembresia);
             MenuVertical.Controls.Add(PicPanelUsuario);
             MenuVertical.Controls.Add(pictureBox2);
             MenuVertical.Controls.Add(PicPanelRutina);
@@ -128,14 +134,50 @@
             MenuVertical.Size = new Size(250, 650);
             MenuVertical.TabIndex = 12;
             // 
+            // PicPanelSeguimiento
+            // 
+            PicPanelSeguimiento.BackColor = Color.Transparent;
+            PicPanelSeguimiento.BackgroundImage = Properties.Resources.image_removebg_preview__15_;
+            PicPanelSeguimiento.BackgroundImageLayout = ImageLayout.Zoom;
+            PicPanelSeguimiento.Location = new Point(102, 521);
+            PicPanelSeguimiento.Name = "PicPanelSeguimiento";
+            PicPanelSeguimiento.Size = new Size(148, 68);
+            PicPanelSeguimiento.TabIndex = 17;
+            PicPanelSeguimiento.TabStop = false;
+            PicPanelSeguimiento.Click += this.PicPanelSeguimiento_Click;
+            // 
+            // PicPanelPagoMembresia
+            // 
+            PicPanelPagoMembresia.BackColor = Color.Transparent;
+            PicPanelPagoMembresia.BackgroundImage = Properties.Resources.image_removebg_preview__14_;
+            PicPanelPagoMembresia.BackgroundImageLayout = ImageLayout.Zoom;
+            PicPanelPagoMembresia.Location = new Point(102, 298);
+            PicPanelPagoMembresia.Name = "PicPanelPagoMembresia";
+            PicPanelPagoMembresia.Size = new Size(148, 68);
+            PicPanelPagoMembresia.TabIndex = 16;
+            PicPanelPagoMembresia.TabStop = false;
+            PicPanelPagoMembresia.Click += this.PicPanelPagoMembresia_Click;
+            // 
+            // PicPanelUsuario
+            // 
+            PicPanelUsuario.BackColor = Color.Transparent;
+            PicPanelUsuario.BackgroundImage = Properties.Resources.image_removebg_preview__13_;
+            PicPanelUsuario.BackgroundImageLayout = ImageLayout.Zoom;
+            PicPanelUsuario.Location = new Point(102, 150);
+            PicPanelUsuario.Name = "PicPanelUsuario";
+            PicPanelUsuario.Size = new Size(148, 68);
+            PicPanelUsuario.TabIndex = 15;
+            PicPanelUsuario.TabStop = false;
+            PicPanelUsuario.Click += PicPanelUsuario_Click;
+            // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox2.Location = new Point(92, 39);
+            pictureBox2.Location = new Point(81, 12);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(100, 62);
+            pictureBox2.Size = new Size(169, 92);
             pictureBox2.TabIndex = 14;
             pictureBox2.TabStop = false;
             // 
@@ -175,18 +217,6 @@
             Despliegue.TabStop = false;
             Despliegue.Click += Despliegue_Click;
             // 
-            // PicPanelUsuario
-            // 
-            PicPanelUsuario.BackColor = Color.Transparent;
-            PicPanelUsuario.BackgroundImage = Properties.Resources.image_removebg_preview__13_;
-            PicPanelUsuario.BackgroundImageLayout = ImageLayout.Zoom;
-            PicPanelUsuario.Location = new Point(82, 142);
-            PicPanelUsuario.Name = "PicPanelUsuario";
-            PicPanelUsuario.Size = new Size(168, 93);
-            PicPanelUsuario.TabIndex = 15;
-            PicPanelUsuario.TabStop = false;
-            PicPanelUsuario.Click += PicPanelUsuario_Click;
-            // 
             // btnDespliegue
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -200,17 +230,20 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "btnDespliegue";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form4";
+            Text = "PanelPrincipal";
+            Load += this.btnDespliegue_Load;
             ((System.ComponentModel.ISupportInitialize)PicPanelMemebresia).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicPanelEntrenador).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicPanelRutina).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             MenuVertical.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)PicPanelSeguimiento).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PicPanelPagoMembresia).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PicPanelUsuario).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             BarraTitular.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)PicCerrarSesion).EndInit();
             ((System.ComponentModel.ISupportInitialize)Despliegue).EndInit();
-            ((System.ComponentModel.ISupportInitialize)PicPanelUsuario).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -228,5 +261,7 @@
         private PictureBox pictureBox2;
         private PictureBox PicCerrarSesion;
         private PictureBox PicPanelUsuario;
+        private PictureBox PicPanelPagoMembresia;
+        private PictureBox PicPanelSeguimiento;
     }
 }

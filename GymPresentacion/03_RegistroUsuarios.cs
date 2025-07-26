@@ -15,12 +15,12 @@ using Microsoft.Data.SqlClient;
 
 namespace GymPresentacion
 {
-    public partial class Form6Usuarios : Form
+    public partial class RegsitroUsuarios : Form
     {
         private readonly AccesoUsuario accesoUsuario;
         private readonly UsuariosActivos _usuarioActivo;
         private bool _isNavigating = false;
-        public Form6Usuarios(UsuariosActivos usuarioActivo)
+        public RegsitroUsuarios(UsuariosActivos usuarioActivo)
         {
             InitializeComponent();
             accesoUsuario = new AccesoUsuario();

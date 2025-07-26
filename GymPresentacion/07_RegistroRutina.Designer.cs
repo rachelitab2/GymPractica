@@ -1,6 +1,6 @@
 ﻿namespace GymPresentacion
 {
-    partial class Form3Rutina
+    partial class RegistroRutina
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             btnAgregarRutina = new Button();
             btnConsultarRutina = new Button();
             btnEliminarRutina = new Button();
@@ -99,7 +99,7 @@
             lblGeneroRutina.BackColor = Color.Transparent;
             lblGeneroRutina.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblGeneroRutina.ForeColor = Color.Lavender;
-            lblGeneroRutina.Location = new Point(930, 237);
+            lblGeneroRutina.Location = new Point(925, 278);
             lblGeneroRutina.Name = "lblGeneroRutina";
             lblGeneroRutina.Size = new Size(163, 25);
             lblGeneroRutina.TabIndex = 4;
@@ -112,7 +112,7 @@
             lblZonaRutina.BackColor = Color.Transparent;
             lblZonaRutina.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblZonaRutina.ForeColor = Color.Lavender;
-            lblZonaRutina.Location = new Point(930, 317);
+            lblZonaRutina.Location = new Point(930, 343);
             lblZonaRutina.Name = "lblZonaRutina";
             lblZonaRutina.Size = new Size(135, 25);
             lblZonaRutina.TabIndex = 5;
@@ -122,7 +122,7 @@
             // 
             cmbGeneroRutina.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGeneroRutina.FormattingEnabled = true;
-            cmbGeneroRutina.Location = new Point(1174, 238);
+            cmbGeneroRutina.Location = new Point(1143, 278);
             cmbGeneroRutina.Name = "cmbGeneroRutina";
             cmbGeneroRutina.Size = new Size(296, 28);
             cmbGeneroRutina.TabIndex = 9;
@@ -146,29 +146,29 @@
             // 
             dgvRutinas.AllowUserToAddRows = false;
             dgvRutinas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dgvRutinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dgvRutinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvRutinas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRutinas.BackgroundColor = Color.Black;
             dgvRutinas.BorderStyle = BorderStyle.None;
             dgvRutinas.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Black;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvRutinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Black;
+            dataGridViewCellStyle5.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvRutinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvRutinas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.Black;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvRutinas.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.Black;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvRutinas.DefaultCellStyle = dataGridViewCellStyle6;
             dgvRutinas.EnableHeadersVisualStyles = false;
             dgvRutinas.GridColor = Color.DodgerBlue;
             dgvRutinas.Location = new Point(42, 160);
@@ -187,7 +187,7 @@
             lblNombreRutina.BackColor = Color.Transparent;
             lblNombreRutina.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNombreRutina.ForeColor = Color.Lavender;
-            lblNombreRutina.Location = new Point(930, 160);
+            lblNombreRutina.Location = new Point(925, 218);
             lblNombreRutina.Name = "lblNombreRutina";
             lblNombreRutina.Size = new Size(204, 25);
             lblNombreRutina.TabIndex = 11;
@@ -196,7 +196,7 @@
             // txtNombreRutina
             // 
             txtNombreRutina.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombreRutina.Location = new Point(1174, 161);
+            txtNombreRutina.Location = new Point(1143, 220);
             txtNombreRutina.Name = "txtNombreRutina";
             txtNombreRutina.ShortcutsEnabled = false;
             txtNombreRutina.Size = new Size(296, 27);
@@ -208,7 +208,7 @@
             // 
             cmbAreaRutina.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAreaRutina.FormattingEnabled = true;
-            cmbAreaRutina.Location = new Point(1174, 317);
+            cmbAreaRutina.Location = new Point(1143, 344);
             cmbAreaRutina.Name = "cmbAreaRutina";
             cmbAreaRutina.Size = new Size(296, 28);
             cmbAreaRutina.TabIndex = 13;
@@ -254,7 +254,7 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(514, -8);
+            pictureBox1.Location = new Point(637, 24);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(589, 162);
             pictureBox1.TabIndex = 20;
@@ -285,7 +285,7 @@
             PicEntrenadorIr.TabIndex = 19;
             PicEntrenadorIr.TabStop = false;
             // 
-            // Form3Rutina
+            // RegistroRutina
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -309,8 +309,8 @@
             Controls.Add(btnConsultarRutina);
             Controls.Add(btnAgregarRutina);
             Cursor = Cursors.Hand;
-            Name = "Form3Rutina";
-            Text = "Form3";
+            Name = "RegistroRutina";
+            Text = "RegistroRutina";
             Load += PicMem2_Load;
             ((System.ComponentModel.ISupportInitialize)PicMemRutina).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvRutinas).EndInit();

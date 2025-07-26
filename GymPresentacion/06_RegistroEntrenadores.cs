@@ -12,14 +12,14 @@ using GymNegocio.ClasesEntrenador;
 
 namespace GymPresentacion
 {
-    public partial class Form2Entrenadores : Form
+    public partial class RegistroEntrenadores : Form
     {
         private readonly Servicio_Entrenadores _servicioEntrenadores;
         private Entrenador _entrenadorSeleccionado;
         private readonly Form _formPrincipal;
         private bool _isNavigating = false;
         private readonly Form _dashboard;
-        public Form2Entrenadores(Form dashboard)
+        public RegistroEntrenadores(Form dashboard)
         {
 
             InitializeComponent();
@@ -405,7 +405,7 @@ namespace GymPresentacion
         private void PicMem2_Click(object sender, EventArgs e)
         {
             _isNavigating = true;
-            Form1 formMembresias = new Form1(_dashboard);
+            RegistroMembresias formMembresias = new RegistroMembresias(_dashboard);
             formMembresias.WindowState = this.WindowState;
             formMembresias.Show(); //Navegacion entre formularios 
             this.Close();
@@ -414,7 +414,7 @@ namespace GymPresentacion
         private void PicRutinaEntrenador_Click(object sender, EventArgs e)
         {
             _isNavigating = true;
-            Form3Rutina formRutina = new Form3Rutina(_dashboard);
+            RegistroRutina formRutina = new RegistroRutina(_dashboard);
             formRutina.WindowState = this.WindowState;
             formRutina.Show();
             this.Close();

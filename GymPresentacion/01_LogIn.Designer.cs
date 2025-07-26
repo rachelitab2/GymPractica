@@ -1,6 +1,6 @@
 ﻿namespace GymPresentacion
 {
-    partial class Form5LogIn
+    partial class LogIn
     {
         /// <summary>
         /// Required designer variable.
@@ -122,7 +122,7 @@
             lblTipoAcceso.TabIndex = 7;
             lblTipoAcceso.Text = "TipoAcceso";
             // 
-            // Form5LogIn
+            // LogIn
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -136,8 +136,8 @@
             Controls.Add(lblUsuario);
             Controls.Add(lblLogin);
             Controls.Add(pictureBox1);
-            Name = "Form5LogIn";
-            Text = "Form2";
+            Name = "LogIn";
+            Text = "LogIn";
             Load += Form5LogIn_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

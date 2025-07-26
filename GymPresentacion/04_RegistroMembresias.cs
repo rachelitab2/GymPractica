@@ -13,14 +13,14 @@ using GymNegocio.ClasesMembresia;
 
 namespace GymPresentacion // nombre importante
 {
-    public partial class Form1 : Form
+    public partial class RegistroMembresias : Form
     {
         public Servicio_Membresia _servicioMembresia;//inastancia del servicio de membresia
         private readonly Form _dashboard; // Para guardar la referencia al panel principal
         private bool _isNavigating = false; // Para controlar el cierre del formulario
-        private static Form1 instancia;
+        private static RegistroMembresias instancia;
 
-        public Form1(Form dashboard)
+        public RegistroMembresias(Form dashboard)
         {
             InitializeComponent();
             _dashboard = dashboard;
@@ -32,11 +32,11 @@ namespace GymPresentacion // nombre importante
             this.FormClosing += Form1_FormClosing;
             instancia = this;
         }
-        public static Form1 ObtenerInstancia(Form dashboard)
+        public static RegistroMembresias ObtenerInstancia(Form dashboard)
         {
             if (instancia == null || instancia.IsDisposed)
             {
-                instancia = new Form1(dashboard);
+                instancia = new RegistroMembresias(dashboard);
             }
             return instancia;
         }
@@ -506,7 +506,7 @@ namespace GymPresentacion // nombre importante
         private void PicEntrenadores_Click(object sender, EventArgs e)
         {
             _isNavigating = true; // Avisamos que estamos navegando
-            Form2Entrenadores form2Entrenadores = new Form2Entrenadores(_dashboard); // Le pasamos el dashboard
+            RegistroEntrenadores form2Entrenadores = new RegistroEntrenadores(_dashboard); // Le pasamos el dashboard
             form2Entrenadores.WindowState = this.WindowState;
             form2Entrenadores.Show(); //Navegacion entre formularios
             this.Close(); // Cerramos este formulario
@@ -517,7 +517,7 @@ namespace GymPresentacion // nombre importante
         private void PicRutinas_Click(object sender, EventArgs e)
         {
             _isNavigating = true; // Avisamos que estamos navegando
-            Form3Rutina formRutinas = new Form3Rutina(_dashboard); // Le pasamos el dashboard
+            RegistroRutina formRutinas = new RegistroRutina(_dashboard); // Le pasamos el dashboard
             formRutinas.WindowState = this.WindowState;
             formRutinas.Show();
             this.Hide(); // Cerramos este formulario
@@ -538,6 +538,11 @@ namespace GymPresentacion // nombre importante
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -12,7 +12,7 @@ using GymNegocio;
 namespace GymPresentacion
 
 {
-    partial class Form1
+    partial class RegistroMembresias
     {
         /// <summary>
         ///  Required designer variable.
@@ -62,6 +62,8 @@ namespace GymPresentacion
             PicRutinas = new PictureBox();
             pictureBox1 = new PictureBox();
             PicMemInicio = new PictureBox();
+            lblCorreo = new Label();
+            txtCorreo = new TextBox();
             ((ISupportInitialize)dataGridView1).BeginInit();
             ((ISupportInitialize)PicEntrenadores).BeginInit();
             ((ISupportInitialize)PicRutinas).BeginInit();
@@ -254,9 +256,9 @@ namespace GymPresentacion
             // mtxtTelefono
             // 
             mtxtTelefono.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            mtxtTelefono.Location = new Point(1224, 472);
+            mtxtTelefono.Location = new Point(1216, 472);
             mtxtTelefono.Name = "mtxtTelefono";
-            mtxtTelefono.Size = new Size(288, 25);
+            mtxtTelefono.Size = new Size(296, 25);
             mtxtTelefono.TabIndex = 19;
             // 
             // btnConsultar
@@ -323,13 +325,35 @@ namespace GymPresentacion
             PicMemInicio.TabStop = false;
             PicMemInicio.Click += PicMemInicio_Click;
             // 
-            // Form1
+            // lblCorreo
+            // 
+            lblCorreo.AutoSize = true;
+            lblCorreo.BackColor = Color.Transparent;
+            lblCorreo.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
+            lblCorreo.ForeColor = Color.Lavender;
+            lblCorreo.Location = new Point(1071, 536);
+            lblCorreo.Name = "lblCorreo";
+            lblCorreo.Size = new Size(209, 25);
+            lblCorreo.TabIndex = 25;
+            lblCorreo.Text = "Correo Electronico ";
+            // 
+            // txtCorreo
+            // 
+            txtCorreo.Location = new Point(1279, 534);
+            txtCorreo.Name = "txtCorreo";
+            txtCorreo.Size = new Size(233, 27);
+            txtCorreo.TabIndex = 27;
+            txtCorreo.TextChanged += textBox2_TextChanged;
+            // 
+            // RegistroMembresias
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
             BackgroundImage = Properties.Resources.Untitled_design__13_;
             ClientSize = new Size(1567, 767);
+            Controls.Add(txtCorreo);
+            Controls.Add(lblCorreo);
             Controls.Add(PicMemInicio);
             Controls.Add(pictureBox1);
             Controls.Add(PicRutinas);
@@ -349,8 +373,8 @@ namespace GymPresentacion
             Controls.Add(lblName);
             Controls.Add(lblTitulo);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Name = "Form1";
-            Text = "Form1";
+            Name = "RegistroMembresias";
+            Text = "RegistroMembresias";
             Load += Form1_Load;
             ((ISupportInitialize)dataGridView1).EndInit();
             ((ISupportInitialize)PicEntrenadores).EndInit();
@@ -382,6 +406,8 @@ namespace GymPresentacion
         private PictureBox PicRutinas;
         private PictureBox pictureBox1;
         private PictureBox PicMemInicio;
+        private Label lblCorreo;
+        private TextBox txtCorreo;
     }
 
  

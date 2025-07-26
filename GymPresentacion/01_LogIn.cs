@@ -16,9 +16,9 @@ using Microsoft.Data.SqlClient;
 
 namespace GymPresentacion
 {
-    public partial class Form5LogIn : Form
+    public partial class LogIn : Form
     {
-        public Form5LogIn()
+        public LogIn()
         {
             InitializeComponent();
             cmbRol.Items.AddRange(new string[] { "Administrador", "Secretaria", "Entrenador" });
@@ -49,6 +49,8 @@ namespace GymPresentacion
                         Usuario = usuario,
                         Rol = rolValidado
                     };
+
+                    MessageBox.Show($"¡Bienvenido, {usuariosActivos.Usuario}! Rol: {usuariosActivos.Rol}", "Acceso Permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //Abrir formulario principal pasado usuarioActivo para control de acceso 
                     btnDespliegue principal = new btnDespliegue(usuariosActivos);

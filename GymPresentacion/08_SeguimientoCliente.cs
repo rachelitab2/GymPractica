@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace GymPresentacion
 {
-    public partial class Form7SeguimientoCliente: Form
+    public partial class SeguimientoCliente : Form
     {
-        public Form7SeguimientoCliente()
+        public SeguimientoCliente()
         {
             InitializeComponent();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
