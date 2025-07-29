@@ -90,7 +90,7 @@
             // 
             dgvPagoMembresia.AllowUserToAddRows = false;
             dgvPagoMembresia.AllowUserToDeleteRows = false;
-            dgvPagoMembresia.BackgroundColor = Color.Black;
+            dgvPagoMembresia.BackgroundColor = Color.Lavender;
             dgvPagoMembresia.BorderStyle = BorderStyle.None;
             dgvPagoMembresia.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvPagoMembresia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -152,8 +152,9 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__13_;
+            BackColor = Color.Black;
             ClientSize = new Size(1420, 763);
+            Controls.Add(pictureBox1);
             Controls.Add(txtMonto);
             Controls.Add(btnPago);
             Controls.Add(txtFechaVencimientoPago);
@@ -163,7 +164,6 @@
             Controls.Add(PicPagoRegistroMembresia);
             Controls.Add(dtpPago);
             Controls.Add(PicPagoInicio);
-            Controls.Add(pictureBox1);
             Name = "PagosMembresia";
             Text = "PagosMembresia";
             Load += PagosMembresia_Load;

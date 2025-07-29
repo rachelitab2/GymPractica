@@ -73,7 +73,7 @@
             dgvEntrenadores.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgvEntrenadores.BackgroundColor = Color.Black;
+            dgvEntrenadores.BackgroundColor = Color.Lavender;
             dgvEntrenadores.BorderStyle = BorderStyle.None;
             dgvEntrenadores.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -158,13 +158,14 @@
             // checkDisponible
             // 
             checkDisponible.AutoSize = true;
+            checkDisponible.BackColor = Color.Lavender;
             checkDisponible.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
             checkDisponible.Location = new Point(1046, 622);
             checkDisponible.Name = "checkDisponible";
             checkDisponible.Size = new Size(171, 31);
             checkDisponible.TabIndex = 5;
             checkDisponible.Text = "Disponibilidad";
-            checkDisponible.UseVisualStyleBackColor = true;
+            checkDisponible.UseVisualStyleBackColor = false;
             checkDisponible.CheckedChanged += checkDisponible_CheckedChanged;
             // 
             // cmbGeneroEntrenador
@@ -370,13 +371,14 @@
             // checkCorreoEntrenador
             // 
             checkCorreoEntrenador.AutoSize = true;
+            checkCorreoEntrenador.BackColor = Color.Lavender;
             checkCorreoEntrenador.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
             checkCorreoEntrenador.Location = new Point(1265, 622);
             checkCorreoEntrenador.Name = "checkCorreoEntrenador";
             checkCorreoEntrenador.Size = new Size(160, 31);
             checkCorreoEntrenador.TabIndex = 24;
             checkCorreoEntrenador.Text = "Enviar Correo";
-            checkCorreoEntrenador.UseVisualStyleBackColor = true;
+            checkCorreoEntrenador.UseVisualStyleBackColor = false;
             // 
             // lblCorreoEntrenador
             // 
@@ -396,12 +398,13 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(302, 27);
             textBox1.TabIndex = 26;
+            textBox1.TextChanged += this.textBox1_TextChanged;
             // 
             // RegistroEntrenadores
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__13_;
+            BackColor = Color.Black;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1647, 826);
             Controls.Add(textBox1);

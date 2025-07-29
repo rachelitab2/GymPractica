@@ -108,7 +108,7 @@
             // dgvUsuarios
             // 
             dgvUsuarios.AllowUserToOrderColumns = true;
-            dgvUsuarios.BackgroundColor = Color.Black;
+            dgvUsuarios.BackgroundColor = Color.Lavender;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuarios.Location = new Point(54, 185);
             dgvUsuarios.Name = "dgvUsuarios";
@@ -189,19 +189,21 @@
             // checkActivoUsuario
             // 
             checkActivoUsuario.AutoSize = true;
+            checkActivoUsuario.BackColor = Color.Lavender;
             checkActivoUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
+            checkActivoUsuario.ForeColor = Color.Black;
             checkActivoUsuario.Location = new Point(1157, 448);
             checkActivoUsuario.Name = "checkActivoUsuario";
             checkActivoUsuario.Size = new Size(94, 31);
             checkActivoUsuario.TabIndex = 13;
             checkActivoUsuario.Text = "Activo";
-            checkActivoUsuario.UseVisualStyleBackColor = true;
+            checkActivoUsuario.UseVisualStyleBackColor = false;
             // 
             // RegsitroUsuarios
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__13_;
+            BackColor = Color.Black;
             ClientSize = new Size(1514, 736);
             Controls.Add(checkActivoUsuario);
             Controls.Add(PicUsuariosInicio);
@@ -219,7 +221,7 @@
             Controls.Add(lblNombreUusario);
             Name = "RegsitroUsuarios";
             Text = "RegsitroUsuarios";
-            Load += this.RegsitroUsuario_Load;
+            Load += RegsitroUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicUsuariosInicio).EndInit();

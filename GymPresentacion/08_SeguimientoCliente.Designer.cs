@@ -112,11 +112,12 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.BackgroundImageLayout = ImageLayout.None;
+            pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.Location = new Point(637, 24);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(589, 162);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
             // 
@@ -124,7 +125,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__13_;
+            BackColor = Color.Black;
             ClientSize = new Size(1567, 767);
             Controls.Add(pictureBox1);
             Controls.Add(lblGrasa);

@@ -65,7 +65,7 @@
             // 
             dgvEquipo.AllowUserToAddRows = false;
             dgvEquipo.AllowUserToDeleteRows = false;
-            dgvEquipo.BackgroundColor = Color.Black;
+            dgvEquipo.BackgroundColor = Color.Lavender;
             dgvEquipo.BorderStyle = BorderStyle.None;
             dgvEquipo.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvEquipo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -243,7 +243,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__13_;
+            BackColor = Color.Black;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1415, 741);
             Controls.Add(PicEquipoInicio);

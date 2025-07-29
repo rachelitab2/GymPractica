@@ -18,11 +18,13 @@ namespace GymPresentacion
 {
     public partial class PagosMembresia : Form
     {
+        private static PagosMembresia _instancia;
         private UsuariosActivos _usuariosActivos;
         private Servicio_Membresia _serviciosMembresia;
         private List<Membresia> _listaMembresias;
         private bool _isNavigating = false;
         private bool _isChangingSelection = false;
+
         public PagosMembresia(UsuariosActivos usuariosActivos)
         {
             InitializeComponent();
@@ -35,7 +37,15 @@ namespace GymPresentacion
 
             this.FormClosing += PagosMembresia_FormClosing;
         }
+        public static PagosMembresia ObtenerInstancia(UsuariosActivos usuarios)
+        {
+            if (_instancia == null || _instancia.IsDisposed)
+            {
+                _instancia = new PagosMembresia(usuarios);
+            }
+            return _instancia;
 
+        }      
         private void PagosMembresia_FormClosing(object sender , FormClosingEventArgs e)
         {
             if (!_isNavigating)
@@ -153,6 +163,7 @@ namespace GymPresentacion
                     cmbClientePago.SelectedItem = membresia.TipoMembresia;
                     cmbTipoClientePago.SelectedItem = membresia.TipoMembresia;
                     txtMonto.Text = membresia.CostoTotal.ToString("F2");
+
                     _isChangingSelection = false;
                 }
             }
@@ -162,20 +173,29 @@ namespace GymPresentacion
             if (_isChangingSelection) return;
             if (cmbClientePago.SelectedItem is Membresia membresia)
             {
+                _isChangingSelection = true;
+
                 txtFechaVencimientoPago.Text = membresia.FechaFin.ToShortDateString();
                 cmbTipoClientePago.SelectedItem = membresia.TipoMembresia;
                 txtMonto.Text = membresia.CostoTotal.ToString("F2");
 
-                foreach(DataGridViewRow row in dgvPagoMembresia.Rows)
-                {
-                    if (row.DataBoundItem is Membresia m && m.Id == membresia.Id)
-                    {
-                        row.Selected = true;
-                        dgvPagoMembresia.CurrentCell = row.Cells[1];
-                        break;
-                    }
-                }
-                _isChangingSelection = false;
+                 this.BeginInvoke(new Action(() =>
+                 {
+                     foreach (DataGridViewRow row in dgvPagoMembresia.Rows)
+                     {
+                         if (row.DataBoundItem is Membresia m && m.Id == membresia.Id)
+                         {
+                             dgvPagoMembresia.ClearSelection();
+                             row.Selected = true;
+                             if (row.Cells.Count > 0)
+                             {
+                                 dgvPagoMembresia.CurrentCell = row.Cells[0];
+                             }
+                             break;
+                         }
+                     }
+                     _isChangingSelection = false;
+                 }));
             }
 
         }
@@ -290,7 +310,7 @@ namespace GymPresentacion
             _isNavigating = true;
             btnDespliegue panelPrincipal = new btnDespliegue(_usuariosActivos);
             panelPrincipal.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void PicPagoRegistroMembresia_Click(object sender, EventArgs e)
@@ -298,7 +318,7 @@ namespace GymPresentacion
             _isNavigating= true;
             RegistroMembresias registroMembresias = new RegistroMembresias(_usuariosActivos);
             registroMembresias.Show();
-            this.Hide();
+            this.Close();
         }
         private void PagosMembresia_Load(object sender, EventArgs e)
         {
