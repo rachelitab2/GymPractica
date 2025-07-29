@@ -40,11 +40,11 @@
             btnAgregarUsuario = new Button();
             btnConsultarUsuario = new Button();
             pictureBox1 = new PictureBox();
-            PicUsuarios = new PictureBox();
+            PicUsuariosInicio = new PictureBox();
             checkActivoUsuario = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)PicUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PicUsuariosInicio).BeginInit();
             SuspendLayout();
             // 
             // lblNombreUusario
@@ -174,17 +174,17 @@
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
-            // PicUsuarios
+            // PicUsuariosInicio
             // 
-            PicUsuarios.BackColor = Color.Transparent;
-            PicUsuarios.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
-            PicUsuarios.BackgroundImageLayout = ImageLayout.Zoom;
-            PicUsuarios.Location = new Point(24, 102);
-            PicUsuarios.Name = "PicUsuarios";
-            PicUsuarios.Size = new Size(125, 62);
-            PicUsuarios.TabIndex = 12;
-            PicUsuarios.TabStop = false;
-            PicUsuarios.Click += PicUsuarios_Click;
+            PicUsuariosInicio.BackColor = Color.Transparent;
+            PicUsuariosInicio.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
+            PicUsuariosInicio.BackgroundImageLayout = ImageLayout.Zoom;
+            PicUsuariosInicio.Location = new Point(24, 102);
+            PicUsuariosInicio.Name = "PicUsuariosInicio";
+            PicUsuariosInicio.Size = new Size(125, 62);
+            PicUsuariosInicio.TabIndex = 12;
+            PicUsuariosInicio.TabStop = false;
+            PicUsuariosInicio.Click += PicUsuarios_Click;
             // 
             // checkActivoUsuario
             // 
@@ -204,7 +204,7 @@
             BackgroundImage = Properties.Resources.Untitled_design__13_;
             ClientSize = new Size(1514, 736);
             Controls.Add(checkActivoUsuario);
-            Controls.Add(PicUsuarios);
+            Controls.Add(PicUsuariosInicio);
             Controls.Add(pictureBox1);
             Controls.Add(btnConsultarUsuario);
             Controls.Add(btnAgregarUsuario);
@@ -219,9 +219,10 @@
             Controls.Add(lblNombreUusario);
             Name = "RegsitroUsuarios";
             Text = "RegsitroUsuarios";
+            Load += this.RegsitroUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)PicUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PicUsuariosInicio).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -240,7 +241,7 @@
         private Button btnAgregarUsuario;
         private Button btnConsultarUsuario;
         private PictureBox pictureBox1;
-        private PictureBox PicUsuarios;
+        private PictureBox PicUsuariosInicio;
         private CheckBox checkActivoUsuario;
     }
 }

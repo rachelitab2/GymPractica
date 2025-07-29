@@ -35,9 +35,13 @@ namespace GymPresentacion
             CargarUsuarios();
 
             this.FormClosing += Form6Usuarios_FormClosing;
-            PicUsuarios.Click += PicUsuarios_Click;
+            PicUsuariosInicio.Click += PicUsuarios_Click;
+            this.Load += RegsitroUsuario_Load;
         }
+        private void RegsitroUsuario_Load(object sender, EventArgs e)
+        {
 
+        }
         private void ConfigurarDataGridView()
         {
             dgvUsuarios.AutoGenerateColumns = false;
@@ -217,7 +221,6 @@ namespace GymPresentacion
         {
 
         }
-        // Agrega este método en la clase Form6Usuarios
 
 
 

@@ -8,6 +8,7 @@ namespace GymPresentacion
     {
         private readonly UsuariosActivos _usuarioActivo;
         private bool _isNavigating = false;
+        private UsuariosActivos _usuariosActivos;
 
         public btnDespliegue(UsuariosActivos usuarioActivo)
         {
@@ -19,8 +20,8 @@ namespace GymPresentacion
 
         private void AsignarEventos()
         {
-            PicPanelMemebresia.Click += AbrirRegistroMembresia;
-            PicPanelEntrenador.Click += AbrirRegistroEntrenadores;
+            PicPanelMemebresia.Click += PicPanelMembresia;
+            PicPanelEntrenador.Click += PicPanelEntrenadores;
             PicPanelRutina.Click += PicPanelRutina_Click;
             PicPanelPagoMembresia.Click += PicPanelPagoMembresia_Click;
             PicPanelSeguimiento.Click += PicPanelSeguimiento_Click;
@@ -46,14 +47,14 @@ namespace GymPresentacion
             }
         }
 
-        private void AbrirRegistroMembresia(object sender, EventArgs e)
+        private void PicPanelMembresia(object sender, EventArgs e)
         {
             RegistroMembresias registroMembresias = new RegistroMembresias(this);
             registroMembresias.Show();
             this.Hide();
         }
 
-        private void AbrirRegistroEntrenadores(object sender, EventArgs e)
+        private void PicPanelEntrenadores(object sender, EventArgs e)
         {
             RegistroEntrenadores registroEntrenadores = new RegistroEntrenadores(this);
             registroEntrenadores.Show();
@@ -69,7 +70,7 @@ namespace GymPresentacion
 
         private void PicPanelPagoMembresia_Click(object sender, EventArgs e)
         {
-            PagosMembresia pagoMembresia = new PagosMembresia();
+            PagosMembresia pagoMembresia = new PagosMembresia(_usuariosActivos);
             pagoMembresia.Show();
             this.Hide();
         }
@@ -95,6 +96,13 @@ namespace GymPresentacion
             login.Show();
             this.Close();
 
+        }
+        private void PicPanelEquipo_Click(object sender, EventArgs e)
+        {
+            _isNavigating = true;
+            RegistroEquipo equipo = new RegistroEquipo();
+            equipo.Show();
+            this.Close();
         }
         private void Despliegue_Click(object sender, EventArgs e)
         {
@@ -124,6 +132,7 @@ namespace GymPresentacion
                 Application.Exit();
             }
         }
+
     }
 }
 

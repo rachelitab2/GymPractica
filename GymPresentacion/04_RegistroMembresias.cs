@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GymNegocio;// ver 
 using GymNegocio.ClasesMembresia;
+using GymNegocio.Login;
 
 namespace GymPresentacion // nombre importante
 {
@@ -19,6 +20,7 @@ namespace GymPresentacion // nombre importante
         private readonly Form _dashboard; // Para guardar la referencia al panel principal
         private bool _isNavigating = false; // Para controlar el cierre del formulario
         private static RegistroMembresias instancia;
+        private UsuariosActivos usuariosActivos;
 
         public RegistroMembresias(Form dashboard)
         {
@@ -32,6 +34,12 @@ namespace GymPresentacion // nombre importante
             this.FormClosing += Form1_FormClosing;
             instancia = this;
         }
+
+        public RegistroMembresias(UsuariosActivos usuariosActivos)
+        {
+            this.usuariosActivos = usuariosActivos;
+        }
+
         public static RegistroMembresias ObtenerInstancia(Form dashboard)
         {
             if (instancia == null || instancia.IsDisposed)
