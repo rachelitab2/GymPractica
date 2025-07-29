@@ -47,6 +47,7 @@
             pictureBox1.Location = new Point(398, 50);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(628, 382);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -126,7 +127,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__13_;
+            BackColor = SystemColors.InactiveCaptionText;
             ClientSize = new Size(1286, 754);
             Controls.Add(lblTipoAcceso);
             Controls.Add(btnAcceder);

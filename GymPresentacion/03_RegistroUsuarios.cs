@@ -20,6 +20,10 @@ namespace GymPresentacion
         private readonly AccesoUsuario accesoUsuario;
         private readonly UsuariosActivos _usuarioActivo;
         private bool _isNavigating = false;
+        private CheckBox chkMostrarContrasena;
+
+
+
         public RegsitroUsuarios(UsuariosActivos usuarioActivo)
         {
             InitializeComponent();
@@ -38,10 +42,13 @@ namespace GymPresentacion
             PicUsuariosInicio.Click += PicUsuarios_Click;
             this.Load += RegsitroUsuario_Load;
         }
+
         private void RegsitroUsuario_Load(object sender, EventArgs e)
         {
 
         }
+
+
         private void ConfigurarDataGridView()
         {
             dgvUsuarios.AutoGenerateColumns = false;
@@ -94,15 +101,49 @@ namespace GymPresentacion
             try
             {
                 List<UsuariosActivos> usuarios = accesoUsuario.ListarUsuarios();
-                dgvUsuarios.DataSource = null;
+
+                dgvUsuarios.AutoGenerateColumns = false; // 👈 esto es clave
+                dgvUsuarios.Columns.Clear(); // Limpiamos columnas anteriores
+
+                // Añadimos columnas manualmente con nombres correctos
+                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Id", // nombre interno
+                    HeaderText = "ID", // lo que se ve en la tabla
+                    DataPropertyName = "Id", // el nombre de la propiedad en la clase
+                    Visible = false // si no quieres mostrar el ID
+                });
+
+                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Usuario",
+                    HeaderText = "Usuario",
+                    DataPropertyName = "Usuario"
+                });
+
+                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Rol",
+                    HeaderText = "Rol",
+                    DataPropertyName = "Rol"
+                });
+                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Contrasena", // 🔴 Este nombre es el que se usa luego en .Cells["Contrasena"]
+                    HeaderText = "Contraseña",
+                    DataPropertyName = "Contrasena",
+                    Visible = false // para que no se muestre en la tabla pero sí se use internamente
+                });
+
+
                 dgvUsuarios.DataSource = usuarios;
+
                 LimpiarCampos();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al Cargar Usuarios: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
 
@@ -113,9 +154,28 @@ namespace GymPresentacion
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNombreUsuario.Text) || string.IsNullOrWhiteSpace(txtContasena.Text))
+            // Validaciones antes de insertar
+            string usuario = txtNombreUsuario.Text.Trim();
+            string contrasena = txtContasena.Text.Trim();
+            string rol = cmbRolUsuario.SelectedItem?.ToString();
+
+            // Validar campos vacíos
+            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena) || string.IsNullOrEmpty(rol))
             {
-                MessageBox.Show("Por Favor, Complete todos los campos.", " Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Todos los campos son obligatorios.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar longitud máxima (ajusta según tu base de datos)
+            if (usuario.Length > 20)
+            {
+                MessageBox.Show("El nombre de usuario no puede tener más de 20 caracteres.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (contrasena.Length > 20)
+            {
+                MessageBox.Show("La contraseña no puede tener más de 20 caracteres.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -123,19 +183,32 @@ namespace GymPresentacion
             {
                 UsuariosActivos nuevoUsuario = new UsuariosActivos
                 {
-                    Usuario = txtNombreUsuario.Text.Trim(),
-                    Contrasena = txtContasena.Text.Trim(),
-                    Rol = cmbRolUsuario.SelectedItem.ToString()
+                    Usuario = usuario,
+                    Contrasena = contrasena,
+                    Rol = rol
                 };
 
-                accesoUsuario.InsertarUsuario(nuevoUsuario);
-                MessageBox.Show("Usuario Agregado Exitosamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarUsuarios();
+                accesoUsuario.InsertarUsuario(nuevoUsuario);  // Tu método de la capa de negocio
+                MessageBox.Show("Usuario agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarUsuarios(); // Refresca el DataGridView
+                LimpiarCampos();  // Limpia los TextBox
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Message.Contains("truncated"))
+                {
+                    MessageBox.Show("Uno de los campos excede el tamaño permitido en la base de datos.\nPor favor, reduce el texto.", "Error de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Error de base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al Agregar Usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)
@@ -206,9 +279,12 @@ namespace GymPresentacion
         {
             if (dgvUsuarios.SelectedRows.Count > 0)
             {
-                txtNombreUsuario.Text = dgvUsuarios.SelectedRows[0].Cells["Usuario"].Value.ToString();
-                //No mostramos la Contrasena por seguridad, se puede implementar cambio de contrasena aparte
-                cmbRolUsuario.SelectedItem = dgvUsuarios.SelectedRows[0].Cells["Rol"].Value.ToString();
+                var fila = dgvUsuarios.SelectedRows[0];
+                txtNombreUsuario.Text = fila.Cells["Usuario"].Value.ToString();
+                cmbRolUsuario.SelectedItem = fila.Cells["Rol"].Value.ToString();
+
+                // ⬇️ Agrega esta línea para que la contraseña se muestre
+                txtContasena.Text = fila.Cells["Contrasena"]?.Value?.ToString() ?? "";
             }
             else
             {
@@ -232,21 +308,60 @@ namespace GymPresentacion
         }
 
         private void PicUsuarios_Click(object sender, EventArgs e)
-        {
-            
+        { // Asegura que no se ejecuta más de una vez accidentalmente
+            if (_isNavigating) return;
             _isNavigating = true;
+
             btnDespliegue principal = new btnDespliegue(_usuarioActivo);
             principal.StartPosition = FormStartPosition.CenterScreen;
             principal.Show();
-            this.Close();
+
+            this.Close(); // Cierra RegsitroUsuarios
+        }
+        private void btnVolverAlMenu_Click(object sender, EventArgs e)
+        {
+            btnDespliegue principal = new btnDespliegue(_usuarioActivo);
+            principal.StartPosition = FormStartPosition.CenterScreen;
+            principal.Show();
+            this.Close(); // Cierra el formulario actual
         }
 
         private void Form6Usuarios_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!_isNavigating)
             {
-               Application.Exit();
+                Application.Exit();
             }
+        }
+
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnEditarUsuario_Click(object sender, EventArgs e)
+        {
+           
+
+
+        }
+
+
+        private void chkMostrarContrasena1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtContasena.UseSystemPasswordChar = !chkMostrarContrasena1.Checked;
+
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtNombreUsuario.Clear();
+            txtContasena.Clear();
+            cmbRolUsuario.SelectedIndex = 0; // o -1 si quieres que quede sin seleccionar
+
+            // Si tienes un CheckBox de mostrar contraseña, lo reseteas también:
+            chkMostrarContrasena1.Checked = false;
+
         }
     }
 }

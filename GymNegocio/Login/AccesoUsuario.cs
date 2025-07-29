@@ -31,10 +31,11 @@ namespace GymNegocio.Login
 
         public void ActualizarUsuario(UsuariosActivos usuarios)
         {
+
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
             {
                 conn.Open();
-                string query = "UPDATE Usuarios SET Usuarios = @Usuario, Contrasena = @Contrasena, Rol = @Rol WHERE Id = @Id";
+                string query = "UPDATE Usuarios SET Usuario = @Usuario, Contrasena = @Contrasena, Rol = @Rol WHERE Id = @Id";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Usuario", usuarios.Usuario);
@@ -138,7 +139,7 @@ namespace GymNegocio.Login
                             usuarios.Add(new UsuariosActivos
                             {
                                 Id = Convert.ToInt32(reader["Id"]),
-                                Usuario = reader["Usario"].ToString(),
+                                Usuario = reader["Usuario"].ToString(),
                                 Contrasena = reader["Contrasena"].ToString(),
                                 Rol = reader["Rol"].ToString()
                             });

@@ -84,9 +84,12 @@ namespace GymPresentacion
 
         private void PicPanelUsuario_Click(object sender, EventArgs e)
         {
-            RegsitroUsuarios registroUsuarios = new RegsitroUsuarios(_usuarioActivo);
-            registroUsuarios.Show();
-            this.Hide();
+            if (Application.OpenForms["RegsitroUsuarios"] == null)
+            {
+                RegsitroUsuarios registroUsuarios = new RegsitroUsuarios(_usuarioActivo);
+                registroUsuarios.Show();
+                this.Hide();
+            }
         }
 
         private void PicCerrarSesion_Click(object sender, EventArgs e)

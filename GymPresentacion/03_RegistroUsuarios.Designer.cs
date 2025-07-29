@@ -41,7 +41,8 @@
             btnConsultarUsuario = new Button();
             pictureBox1 = new PictureBox();
             PicUsuariosInicio = new PictureBox();
-            checkActivoUsuario = new CheckBox();
+            chkMostrarContrasena1 = new CheckBox();
+            btnLimpiar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicUsuariosInicio).BeginInit();
@@ -53,9 +54,9 @@
             lblNombreUusario.BackColor = Color.Transparent;
             lblNombreUusario.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNombreUusario.ForeColor = Color.Lavender;
-            lblNombreUusario.Location = new Point(1013, 242);
+            lblNombreUusario.Location = new Point(886, 182);
             lblNombreUusario.Name = "lblNombreUusario";
-            lblNombreUusario.Size = new Size(163, 20);
+            lblNombreUusario.Size = new Size(133, 17);
             lblNombreUusario.TabIndex = 0;
             lblNombreUusario.Text = "Nombre Usuario";
             // 
@@ -65,9 +66,9 @@
             lblContrasena.BackColor = Color.Transparent;
             lblContrasena.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblContrasena.ForeColor = Color.Lavender;
-            lblContrasena.Location = new Point(1013, 307);
+            lblContrasena.Location = new Point(886, 230);
             lblContrasena.Name = "lblContrasena";
-            lblContrasena.Size = new Size(122, 20);
+            lblContrasena.Size = new Size(102, 17);
             lblContrasena.TabIndex = 1;
             lblContrasena.Text = "Contrasena ";
             // 
@@ -77,77 +78,87 @@
             lblRolUsuario.BackColor = Color.Transparent;
             lblRolUsuario.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRolUsuario.ForeColor = Color.Lavender;
-            lblRolUsuario.Location = new Point(1013, 365);
+            lblRolUsuario.Location = new Point(886, 274);
             lblRolUsuario.Name = "lblRolUsuario";
-            lblRolUsuario.Size = new Size(119, 20);
+            lblRolUsuario.Size = new Size(97, 17);
             lblRolUsuario.TabIndex = 2;
             lblRolUsuario.Text = "Rol Usuario";
             // 
             // cmbRolUsuario
             // 
             cmbRolUsuario.FormattingEnabled = true;
-            cmbRolUsuario.Location = new Point(1157, 363);
+            cmbRolUsuario.Location = new Point(1012, 272);
+            cmbRolUsuario.Margin = new Padding(3, 2, 3, 2);
             cmbRolUsuario.Name = "cmbRolUsuario";
-            cmbRolUsuario.Size = new Size(293, 28);
+            cmbRolUsuario.Size = new Size(257, 23);
             cmbRolUsuario.TabIndex = 3;
             // 
             // txtNombreUsuario
             // 
-            txtNombreUsuario.Location = new Point(1198, 235);
+            txtNombreUsuario.Location = new Point(1048, 176);
+            txtNombreUsuario.Margin = new Padding(3, 2, 3, 2);
             txtNombreUsuario.Name = "txtNombreUsuario";
-            txtNombreUsuario.Size = new Size(252, 27);
+            txtNombreUsuario.Size = new Size(221, 23);
             txtNombreUsuario.TabIndex = 4;
             // 
             // txtContasena
             // 
-            txtContasena.Location = new Point(1157, 300);
+            txtContasena.Location = new Point(1012, 225);
+            txtContasena.Margin = new Padding(3, 2, 3, 2);
             txtContasena.Name = "txtContasena";
-            txtContasena.Size = new Size(293, 27);
+            txtContasena.Size = new Size(257, 23);
             txtContasena.TabIndex = 5;
+            txtContasena.UseSystemPasswordChar = true;
             // 
             // dgvUsuarios
             // 
             dgvUsuarios.AllowUserToOrderColumns = true;
             dgvUsuarios.BackgroundColor = Color.Black;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Location = new Point(54, 185);
+            dgvUsuarios.Location = new Point(298, 139);
+            dgvUsuarios.Margin = new Padding(3, 2, 3, 2);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersWidth = 51;
-            dgvUsuarios.Size = new Size(817, 423);
+            dgvUsuarios.Size = new Size(464, 317);
             dgvUsuarios.TabIndex = 6;
+            dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
             // 
             // btnEliminarUsuario
             // 
             btnEliminarUsuario.BackColor = Color.DodgerBlue;
             btnEliminarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarUsuario.ForeColor = Color.Black;
-            btnEliminarUsuario.Location = new Point(361, 614);
+            btnEliminarUsuario.Location = new Point(316, 460);
+            btnEliminarUsuario.Margin = new Padding(3, 2, 3, 2);
             btnEliminarUsuario.Name = "btnEliminarUsuario";
-            btnEliminarUsuario.Size = new Size(152, 52);
+            btnEliminarUsuario.Size = new Size(133, 39);
             btnEliminarUsuario.TabIndex = 7;
-            btnEliminarUsuario.Text = "Eliminar";
+            btnEliminarUsuario.Text = "🗑️ Eliminar";
             btnEliminarUsuario.UseVisualStyleBackColor = false;
             // 
             // btnEditarUsuario
             // 
             btnEditarUsuario.BackColor = Color.DodgerBlue;
             btnEditarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnEditarUsuario.Location = new Point(557, 614);
+            btnEditarUsuario.Location = new Point(487, 460);
+            btnEditarUsuario.Margin = new Padding(3, 2, 3, 2);
             btnEditarUsuario.Name = "btnEditarUsuario";
-            btnEditarUsuario.Size = new Size(144, 52);
+            btnEditarUsuario.Size = new Size(126, 39);
             btnEditarUsuario.TabIndex = 8;
-            btnEditarUsuario.Text = "Editar";
+            btnEditarUsuario.Text = "✏️ Editar";
             btnEditarUsuario.UseVisualStyleBackColor = false;
+            btnEditarUsuario.Click += btnEditarUsuario_Click;
             // 
             // btnAgregarUsuario
             // 
             btnAgregarUsuario.BackColor = Color.DodgerBlue;
             btnAgregarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnAgregarUsuario.Location = new Point(1194, 614);
+            btnAgregarUsuario.Location = new Point(1045, 460);
+            btnAgregarUsuario.Margin = new Padding(3, 2, 3, 2);
             btnAgregarUsuario.Name = "btnAgregarUsuario";
-            btnAgregarUsuario.Size = new Size(149, 52);
+            btnAgregarUsuario.Size = new Size(130, 39);
             btnAgregarUsuario.TabIndex = 9;
-            btnAgregarUsuario.Text = "Agregar";
+            btnAgregarUsuario.Text = "➕ Agregar";
             btnAgregarUsuario.UseVisualStyleBackColor = false;
             btnAgregarUsuario.Click += BtnAgregar_Click;
             // 
@@ -155,11 +166,12 @@
             // 
             btnConsultarUsuario.BackColor = Color.DodgerBlue;
             btnConsultarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnConsultarUsuario.Location = new Point(732, 614);
+            btnConsultarUsuario.Location = new Point(640, 460);
+            btnConsultarUsuario.Margin = new Padding(3, 2, 3, 2);
             btnConsultarUsuario.Name = "btnConsultarUsuario";
-            btnConsultarUsuario.Size = new Size(139, 52);
+            btnConsultarUsuario.Size = new Size(122, 39);
             btnConsultarUsuario.TabIndex = 10;
-            btnConsultarUsuario.Text = "Consultar";
+            btnConsultarUsuario.Text = "🔍 Consultar";
             btnConsultarUsuario.UseVisualStyleBackColor = false;
             btnConsultarUsuario.Click += button4_Click;
             // 
@@ -168,9 +180,10 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(637, 24);
+            pictureBox1.Location = new Point(316, 0);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(589, 162);
+            pictureBox1.Size = new Size(515, 122);
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
@@ -179,31 +192,47 @@
             PicUsuariosInicio.BackColor = Color.Transparent;
             PicUsuariosInicio.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
             PicUsuariosInicio.BackgroundImageLayout = ImageLayout.Zoom;
-            PicUsuariosInicio.Location = new Point(24, 102);
+            PicUsuariosInicio.Location = new Point(21, 76);
+            PicUsuariosInicio.Margin = new Padding(3, 2, 3, 2);
             PicUsuariosInicio.Name = "PicUsuariosInicio";
-            PicUsuariosInicio.Size = new Size(125, 62);
+            PicUsuariosInicio.Size = new Size(109, 46);
             PicUsuariosInicio.TabIndex = 12;
             PicUsuariosInicio.TabStop = false;
             PicUsuariosInicio.Click += PicUsuarios_Click;
             // 
-            // checkActivoUsuario
+            // chkMostrarContrasena1
             // 
-            checkActivoUsuario.AutoSize = true;
-            checkActivoUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            checkActivoUsuario.Location = new Point(1157, 448);
-            checkActivoUsuario.Name = "checkActivoUsuario";
-            checkActivoUsuario.Size = new Size(94, 31);
-            checkActivoUsuario.TabIndex = 13;
-            checkActivoUsuario.Text = "Activo";
-            checkActivoUsuario.UseVisualStyleBackColor = true;
+            chkMostrarContrasena1.AutoSize = true;
+            chkMostrarContrasena1.ForeColor = SystemColors.ButtonFace;
+            chkMostrarContrasena1.Location = new Point(886, 341);
+            chkMostrarContrasena1.Name = "chkMostrarContrasena1";
+            chkMostrarContrasena1.Size = new Size(128, 19);
+            chkMostrarContrasena1.TabIndex = 14;
+            chkMostrarContrasena1.Text = "Mostrar contraseña";
+            chkMostrarContrasena1.UseVisualStyleBackColor = true;
+            chkMostrarContrasena1.CheckedChanged += chkMostrarContrasena1_CheckedChanged;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.BackColor = Color.DodgerBlue;
+            btnLimpiar.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
+            btnLimpiar.Location = new Point(790, 460);
+            btnLimpiar.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(122, 39);
+            btnLimpiar.TabIndex = 15;
+            btnLimpiar.Text = "\U0001f9f9 Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // RegsitroUsuarios
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__13_;
-            ClientSize = new Size(1514, 736);
-            Controls.Add(checkActivoUsuario);
+            BackColor = SystemColors.ActiveCaptionText;
+            ClientSize = new Size(1325, 552);
+            Controls.Add(btnLimpiar);
+            Controls.Add(chkMostrarContrasena1);
             Controls.Add(PicUsuariosInicio);
             Controls.Add(pictureBox1);
             Controls.Add(btnConsultarUsuario);
@@ -217,9 +246,10 @@
             Controls.Add(lblRolUsuario);
             Controls.Add(lblContrasena);
             Controls.Add(lblNombreUusario);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "RegsitroUsuarios";
             Text = "RegsitroUsuarios";
-            Load += this.RegsitroUsuario_Load;
+            Load += RegsitroUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicUsuariosInicio).EndInit();
@@ -242,6 +272,7 @@
         private Button btnConsultarUsuario;
         private PictureBox pictureBox1;
         private PictureBox PicUsuariosInicio;
-        private CheckBox checkActivoUsuario;
+        private CheckBox chkMostrarContrasena1;
+        private Button btnLimpiar;
     }
 }
