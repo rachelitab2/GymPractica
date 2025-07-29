@@ -2,7 +2,7 @@
 using Microsoft.Data.SqlClient;
 
 namespace GymDatos
-
+    //paquetico claro
 {
     // nuevos cambios 
     //Realizar conexion 
