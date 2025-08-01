@@ -26,5 +26,19 @@ namespace GymPresentacion
         {
 
         }
+        private void lblClienteSeguimiento_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void lblPeso_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

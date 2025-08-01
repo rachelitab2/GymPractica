@@ -13,6 +13,7 @@ using iTextSharp.text.pdf;
 using GymNegocio.ClasesMembresia;
 using GymNegocio.Login;
 using System.Timers;
+using GymDatos;
 
 namespace GymPresentacion
 {
@@ -21,7 +22,9 @@ namespace GymPresentacion
         private static PagosMembresia _instancia;
         private UsuariosActivos _usuariosActivos;
         private Servicio_Membresia _serviciosMembresia;
+        private Servicio_PagoMembresia _servicioPagoMembresia;
         private List<Membresia> _listaMembresias;
+        private List<PagoMembresia> _listaPago;
         private bool _isNavigating = false;
         private bool _isChangingSelection = false;
 
@@ -30,6 +33,8 @@ namespace GymPresentacion
             InitializeComponent();
             _usuariosActivos = usuariosActivos;
             _serviciosMembresia = new Servicio_Membresia();
+            _servicioPagoMembresia = new Servicio_PagoMembresia();
+          
 
             ConfigurarDataGridView();
             CargarMembresias();
@@ -45,8 +50,9 @@ namespace GymPresentacion
             }
             return _instancia;
 
-        }      
-        private void PagosMembresia_FormClosing(object sender , FormClosingEventArgs e)
+        }
+
+        private void PagosMembresia_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!_isNavigating)
             {
@@ -69,46 +75,25 @@ namespace GymPresentacion
 
             dgvPagoMembresia.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "Nombre",
-                HeaderText = "Nombre",
-                Width = 150
+                DataPropertyName = "FechaPago",
+                HeaderText = "Fecha de Pago",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" },
+                Width = 120
             });
 
             dgvPagoMembresia.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "TipoMembresia",
-                HeaderText = "Tipo",
-                Width = 80
-            });
-
-            dgvPagoMembresia.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "FechaInicio",
-                HeaderText = "Inicio",
-                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
-            });
-
-            dgvPagoMembresia.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "FechaFin",
-                HeaderText = "Vencimiento",
-                Width = 100,
-                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
-            });
-
-            dgvPagoMembresia.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "CostoTotal",
-                HeaderText = "Costo",
+                DataPropertyName = "Monto",
+                HeaderText = "Monto",
                 Width = 100,
                 DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
             });
 
-            dgvPagoMembresia.Columns.Add(new DataGridViewCheckBoxColumn
+            dgvPagoMembresia.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "Activa",
-                HeaderText = "Activa",
-                Width = 60
+                DataPropertyName = "MetodoPago",
+                HeaderText = "Método de Pago",
+                Width = 150
             });
 
 
@@ -120,8 +105,7 @@ namespace GymPresentacion
             try
             {
                 _listaMembresias = _serviciosMembresia.ObtenerTodasLasMembresias();
-                dgvPagoMembresia.DataSource = null;
-                dgvPagoMembresia.DataSource = _listaMembresias;
+           
 
                 cmbClientePago.DataSource = null;
                 cmbClientePago.DataSource = _listaMembresias;
@@ -133,6 +117,8 @@ namespace GymPresentacion
                 cmbTipoClientePago.DropDownStyle = ComboBoxStyle.DropDownList;
                 cmbTipoClientePago.SelectedIndex = 0;
 
+                // El DataGridView mostrará solo los pagos
+
             }
             catch (Exception ex)
             {
@@ -140,6 +126,20 @@ namespace GymPresentacion
 
             }
 
+        }
+
+        private void CargarPagos(int membresiaId)
+        {
+            try
+            {
+                _listaPago = _servicioPagoMembresia.ObtenerPagosPorMembresia(membresiaId);
+                dgvPagoMembresia.DataSource = null;
+                dgvPagoMembresia.DataSource = _listaPago;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar pagos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void AsignarEventos()
@@ -150,19 +150,23 @@ namespace GymPresentacion
             btnPago.Click += BtnPago_Click;
             PicPagoRegistroMembresia.Click += PicPagoRegistroMembresia_Click;
             PicPagoInicio.Click += PicPagoInicio_Click;
+            ConsultaPago.Click += Consulta_Click;
+            EliminarPago.Click += EliminarPago_Click;
+            EditarPago.Click += EditarPago_Click;
+            GuardarPago.Click += GuardarDoc_Click;
         }
 
         private void DgvPagoMemebresias_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvPagoMembresia.SelectedRows.Count > 0)
             {
-                var membresia = dgvPagoMembresia.SelectedRows[0].DataBoundItem as Membresia;
-                if(membresia != null)
+                var pago = dgvPagoMembresia.SelectedRows[0].DataBoundItem as PagoMembresia;
+                if(pago != null)
                 {
-                    txtFechaVencimientoPago.Text = membresia.FechaFin.ToShortDateString();
-                    cmbClientePago.SelectedItem = membresia.TipoMembresia;
-                    cmbTipoClientePago.SelectedItem = membresia.TipoMembresia;
-                    txtMonto.Text = membresia.CostoTotal.ToString("F2");
+                    txtFechaVencimientoPago.Text = pago.FechaPago.ToShortDateString();
+                    cmbTipoClientePago.SelectedItem = pago.MetodoPago;
+                    txtMonto.Text = pago.Monto.ToString("F2");
+                
 
                     _isChangingSelection = false;
                 }
@@ -179,30 +183,17 @@ namespace GymPresentacion
                 cmbTipoClientePago.SelectedItem = membresia.TipoMembresia;
                 txtMonto.Text = membresia.CostoTotal.ToString("F2");
 
-                 this.BeginInvoke(new Action(() =>
-                 {
-                     foreach (DataGridViewRow row in dgvPagoMembresia.Rows)
-                     {
-                         if (row.DataBoundItem is Membresia m && m.Id == membresia.Id)
-                         {
-                             dgvPagoMembresia.ClearSelection();
-                             row.Selected = true;
-                             if (row.Cells.Count > 0)
-                             {
-                                 dgvPagoMembresia.CurrentCell = row.Cells[0];
-                             }
-                             break;
-                         }
-                     }
-                     _isChangingSelection = false;
-                 }));
+                this.BeginInvoke(new Action(() =>
+                {
+                    _isChangingSelection = false;
+                }));
             }
 
         }
 
         private void TipoMembresia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbTipoClientePago.SelectedItem != null)
+            if (cmbTipoClientePago.SelectedItem != null)
             {
                 string tipo = cmbTipoClientePago.SelectedItem.ToString();
                 if (tipo == "Mensua")
@@ -213,17 +204,135 @@ namespace GymPresentacion
                     txtMonto.Text = "0";
             }
         }
-
-        private void BtnPago_Click (object sender, EventArgs e)
+        private void Consulta_Click(object sender, EventArgs e)
         {
-           if (dgvPagoMembresia.SelectedRows.Count == 0)
-           {
+            if (cmbClientePago.SelectedItem is Membresia membresia)
+            {
+                try
+                {
+                    CargarPagos(membresia.Id);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar pagos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una membresía válida.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void EliminarPago_Click(object sender, EventArgs e)
+        {
+            if(dgvPagoMembresia.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un pago para eliminar.", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var pago = dgvPagoMembresia.SelectedRows[0].DataBoundItem as PagoMembresia;
+            if (pago == null)
+            {
+                MessageBox.Show("Pago invalido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                _servicioPagoMembresia.EliminarPago(pago.Id);
+                MessageBox.Show("Pago Eliminado Correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if(cmbClientePago.SelectedItem is Membresia membresia)
+                {
+                    CargarPagos(membresia.Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al Eliminar pago: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void EditarPago_Click (object sender, EventArgs e)
+        {
+            if (dgvPagoMembresia.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selccione un Pago para Editar.", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+
+            }
+            var pago = dgvPagoMembresia.SelectedRows[0].DataBoundItem as PagoMembresia;
+            if(pago == null)
+            {
+                MessageBox.Show("Pago Invalido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                pago.FechaPago = DateTime.Now;
+                if(decimal.TryParse(txtMonto.Text, out decimal monto))
+                {
+                    pago.Monto = monto;
+                }
+                else
+                {
+                    MessageBox.Show("Monto invalido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                pago.MetodoPago = cmbTipoClientePago.SelectedItem?.ToString() ?? "Efectivo";
+
+                _servicioPagoMembresia.ActualizarPago(pago);
+                MessageBox.Show("Pago Actualizado Correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if(cmbClientePago.SelectedItem is Membresia membresia)
+                {
+                    CargarPagos(membresia.Id);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al Actualizar Pago: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void GuardarDoc_Click(object sender, EventArgs e)
+        {
+            if (dgvPagoMembresia.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un pago para guardar el Documento.", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var pago = dgvPagoMembresia.SelectedRows[0].DataBoundItem as PagoMembresia;
+            if (pago == null)
+            {
+                MessageBox.Show("Pago Invalido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                GenerarReciboPDF(pago);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al Gaurdar el Documento: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GenerarReciboPDF(PagoMembresia pago)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnPago_Click(object sender, EventArgs e)
+        {
+            if (dgvPagoMembresia.SelectedRows.Count == 0)
+            {
                 MessageBox.Show("Seleccione una membresias para registrar el pago.", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-           }
+            }
 
             var membresia = dgvPagoMembresia.SelectedRows[0].DataBoundItem as Membresia;
-            if(membresia == null)
+            if (membresia == null)
             {
                 MessageBox.Show("Memebreias invalida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -234,12 +343,12 @@ namespace GymPresentacion
                 DateTime fechapago = DateTime.Now;
                 string tipoMembresia = membresia.TipoMembresia;
 
-                if(tipoMembresia == "Mensual")
+                if (tipoMembresia == "Mensual")
                 {
                     membresia.FechaFin = membresia.FechaFin > fechapago ? membresia.FechaFin.AddMonths(1) : fechapago.AddMonths(1);
 
                 }
-                else if(tipoMembresia == "Anual")
+                else if (tipoMembresia == "Anual")
                 {
                     membresia.FechaFin = membresia.FechaFin > fechapago ? fechapago = membresia.FechaFin.AddYears(1) : fechapago.AddYears(1);
                 }
@@ -249,6 +358,9 @@ namespace GymPresentacion
                 membresia.Activa = true;
 
                 _serviciosMembresia.ActualizarMembresia(membresia);
+
+                PagoMembresia pago = new PagoMembresia(membresia.Id, membresia.CostoTotal, "Efectivo");
+                _servicioPagoMembresia.RegistrarPago(pago);
 
                 MessageBox.Show("Pago resgistrdo y Fecha de vencimiento Actualizada.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -296,7 +408,7 @@ namespace GymPresentacion
 
                     }
                 }
-               
+
 
             }
             catch (Exception ex)
@@ -315,7 +427,7 @@ namespace GymPresentacion
 
         private void PicPagoRegistroMembresia_Click(object sender, EventArgs e)
         {
-            _isNavigating= true;
+            _isNavigating = true;
             RegistroMembresias registroMembresias = new RegistroMembresias(_usuariosActivos);
             registroMembresias.Show();
             this.Close();
@@ -325,6 +437,9 @@ namespace GymPresentacion
 
         }
 
-        
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -74,7 +74,7 @@ namespace GymPresentacion
 
         private void PicPanelPagoMembresia_Click(object sender, EventArgs e)
         {
-            PagosMembresia pagoMembresia = new PagosMembresia(_usuarioActivo);
+            PagosMembresia pagoMembresia = PagosMembresia.ObtenerInstancia(_usuarioActivo);
             pagoMembresia.Show();
             this.Hide();
         }
