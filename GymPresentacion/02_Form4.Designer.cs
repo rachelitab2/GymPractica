@@ -63,9 +63,10 @@
             lblPanelPrinciapl.BackColor = Color.Transparent;
             lblPanelPrinciapl.Font = new Font("Verdana", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblPanelPrinciapl.ForeColor = Color.Lavender;
-            lblPanelPrinciapl.Location = new Point(553, 96);
+            lblPanelPrinciapl.Location = new Point(691, 120);
+            lblPanelPrinciapl.Margin = new Padding(4, 0, 4, 0);
             lblPanelPrinciapl.Name = "lblPanelPrinciapl";
-            lblPanelPrinciapl.Size = new Size(517, 73);
+            lblPanelPrinciapl.Size = new Size(617, 86);
             lblPanelPrinciapl.TabIndex = 0;
             lblPanelPrinciapl.Text = "PanelPrincipal";
             // 
@@ -75,9 +76,10 @@
             PicPanelMemebresia.BackgroundImageLayout = ImageLayout.None;
             PicPanelMemebresia.Cursor = Cursors.Hand;
             PicPanelMemebresia.Image = Properties.Resources.image_removebg_preview__3_;
-            PicPanelMemebresia.Location = new Point(102, 177);
+            PicPanelMemebresia.Location = new Point(128, 221);
+            PicPanelMemebresia.Margin = new Padding(4, 4, 4, 4);
             PicPanelMemebresia.Name = "PicPanelMemebresia";
-            PicPanelMemebresia.Size = new Size(148, 68);
+            PicPanelMemebresia.Size = new Size(185, 85);
             PicPanelMemebresia.SizeMode = PictureBoxSizeMode.Zoom;
             PicPanelMemebresia.TabIndex = 5;
             PicPanelMemebresia.TabStop = false;
@@ -88,9 +90,10 @@
             PicPanelEntrenador.BackgroundImageLayout = ImageLayout.None;
             PicPanelEntrenador.Cursor = Cursors.Hand;
             PicPanelEntrenador.Image = Properties.Resources.image_removebg_preview__9_;
-            PicPanelEntrenador.Location = new Point(102, 306);
+            PicPanelEntrenador.Location = new Point(128, 382);
+            PicPanelEntrenador.Margin = new Padding(4, 4, 4, 4);
             PicPanelEntrenador.Name = "PicPanelEntrenador";
-            PicPanelEntrenador.Size = new Size(148, 68);
+            PicPanelEntrenador.Size = new Size(185, 85);
             PicPanelEntrenador.SizeMode = PictureBoxSizeMode.Zoom;
             PicPanelEntrenador.TabIndex = 7;
             PicPanelEntrenador.TabStop = false;
@@ -101,9 +104,10 @@
             PicPanelRutina.BackgroundImageLayout = ImageLayout.None;
             PicPanelRutina.Cursor = Cursors.Hand;
             PicPanelRutina.Image = Properties.Resources.image_removebg_preview__5_;
-            PicPanelRutina.Location = new Point(102, 368);
+            PicPanelRutina.Location = new Point(128, 460);
+            PicPanelRutina.Margin = new Padding(4, 4, 4, 4);
             PicPanelRutina.Name = "PicPanelRutina";
-            PicPanelRutina.Size = new Size(148, 68);
+            PicPanelRutina.Size = new Size(185, 85);
             PicPanelRutina.SizeMode = PictureBoxSizeMode.Zoom;
             PicPanelRutina.TabIndex = 6;
             PicPanelRutina.TabStop = false;
@@ -115,9 +119,10 @@
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.ErrorImage = null;
             pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
-            pictureBox1.Location = new Point(572, 177);
+            pictureBox1.Location = new Point(715, 221);
+            pictureBox1.Margin = new Padding(4, 4, 4, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(498, 436);
+            pictureBox1.Size = new Size(622, 545);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
@@ -135,8 +140,9 @@
             MenuVertical.Controls.Add(PicPanelMemebresia);
             MenuVertical.Dock = DockStyle.Left;
             MenuVertical.Location = new Point(0, 0);
+            MenuVertical.Margin = new Padding(4, 4, 4, 4);
             MenuVertical.Name = "MenuVertical";
-            MenuVertical.Size = new Size(250, 650);
+            MenuVertical.Size = new Size(323, 812);
             MenuVertical.TabIndex = 12;
             // 
             // PicPanelEquipo
@@ -145,9 +151,10 @@
             PicPanelEquipo.BackgroundImageLayout = ImageLayout.None;
             PicPanelEquipo.Cursor = Cursors.Hand;
             PicPanelEquipo.Image = Properties.Resources.image_removebg_preview__16_;
-            PicPanelEquipo.Location = new Point(102, 506);
+            PicPanelEquipo.Location = new Point(128, 632);
+            PicPanelEquipo.Margin = new Padding(4, 4, 4, 4);
             PicPanelEquipo.Name = "PicPanelEquipo";
-            PicPanelEquipo.Size = new Size(148, 68);
+            PicPanelEquipo.Size = new Size(185, 85);
             PicPanelEquipo.SizeMode = PictureBoxSizeMode.Zoom;
             PicPanelEquipo.TabIndex = 18;
             PicPanelEquipo.TabStop = false;
@@ -159,9 +166,10 @@
             PicPanelSeguimiento.BackgroundImageLayout = ImageLayout.None;
             PicPanelSeguimiento.Cursor = Cursors.Hand;
             PicPanelSeguimiento.Image = Properties.Resources.image_removebg_preview__15_;
-            PicPanelSeguimiento.Location = new Point(102, 432);
+            PicPanelSeguimiento.Location = new Point(128, 540);
+            PicPanelSeguimiento.Margin = new Padding(4, 4, 4, 4);
             PicPanelSeguimiento.Name = "PicPanelSeguimiento";
-            PicPanelSeguimiento.Size = new Size(148, 68);
+            PicPanelSeguimiento.Size = new Size(185, 85);
             PicPanelSeguimiento.SizeMode = PictureBoxSizeMode.Zoom;
             PicPanelSeguimiento.TabIndex = 17;
             PicPanelSeguimiento.TabStop = false;
@@ -173,9 +181,10 @@
             PicPanelPagoMembresia.BackgroundImageLayout = ImageLayout.None;
             PicPanelPagoMembresia.Cursor = Cursors.Hand;
             PicPanelPagoMembresia.Image = Properties.Resources.image_removebg_preview__14_;
-            PicPanelPagoMembresia.Location = new Point(102, 242);
+            PicPanelPagoMembresia.Location = new Point(128, 302);
+            PicPanelPagoMembresia.Margin = new Padding(4, 4, 4, 4);
             PicPanelPagoMembresia.Name = "PicPanelPagoMembresia";
-            PicPanelPagoMembresia.Size = new Size(148, 68);
+            PicPanelPagoMembresia.Size = new Size(185, 85);
             PicPanelPagoMembresia.SizeMode = PictureBoxSizeMode.Zoom;
             PicPanelPagoMembresia.TabIndex = 16;
             PicPanelPagoMembresia.TabStop = false;
@@ -187,9 +196,10 @@
             PicPanelUsuario.BackgroundImageLayout = ImageLayout.None;
             PicPanelUsuario.Cursor = Cursors.Hand;
             PicPanelUsuario.Image = Properties.Resources.image_removebg_preview__13_;
-            PicPanelUsuario.Location = new Point(102, 110);
+            PicPanelUsuario.Location = new Point(128, 138);
+            PicPanelUsuario.Margin = new Padding(4, 4, 4, 4);
             PicPanelUsuario.Name = "PicPanelUsuario";
-            PicPanelUsuario.Size = new Size(148, 68);
+            PicPanelUsuario.Size = new Size(185, 85);
             PicPanelUsuario.SizeMode = PictureBoxSizeMode.Zoom;
             PicPanelUsuario.TabIndex = 15;
             PicPanelUsuario.TabStop = false;
@@ -200,9 +210,10 @@
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.BackgroundImageLayout = ImageLayout.None;
             pictureBox2.Image = Properties.Resources.image_removebg_preview__4_;
-            pictureBox2.Location = new Point(81, 12);
+            pictureBox2.Location = new Point(101, 15);
+            pictureBox2.Margin = new Padding(4, 4, 4, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(169, 92);
+            pictureBox2.Size = new Size(211, 115);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 14;
             pictureBox2.TabStop = false;
@@ -212,9 +223,10 @@
             BarraTitular.Controls.Add(PicCerrarSesion);
             BarraTitular.Controls.Add(PicPanelDespliegue);
             BarraTitular.Dock = DockStyle.Top;
-            BarraTitular.Location = new Point(250, 0);
+            BarraTitular.Location = new Point(323, 0);
+            BarraTitular.Margin = new Padding(4, 4, 4, 4);
             BarraTitular.Name = "BarraTitular";
-            BarraTitular.Size = new Size(1050, 50);
+            BarraTitular.Size = new Size(1302, 62);
             BarraTitular.TabIndex = 13;
             // 
             // PicCerrarSesion
@@ -223,9 +235,10 @@
             PicCerrarSesion.BackgroundImageLayout = ImageLayout.None;
             PicCerrarSesion.Cursor = Cursors.Hand;
             PicCerrarSesion.Image = Properties.Resources.image_removebg_preview__12_;
-            PicCerrarSesion.Location = new Point(922, 0);
+            PicCerrarSesion.Location = new Point(1152, 0);
+            PicCerrarSesion.Margin = new Padding(4, 4, 4, 4);
             PicCerrarSesion.Name = "PicCerrarSesion";
-            PicCerrarSesion.Size = new Size(128, 50);
+            PicCerrarSesion.Size = new Size(160, 62);
             PicCerrarSesion.SizeMode = PictureBoxSizeMode.Zoom;
             PicCerrarSesion.TabIndex = 15;
             PicCerrarSesion.TabStop = false;
@@ -237,9 +250,10 @@
             PicPanelDespliegue.BackgroundImageLayout = ImageLayout.None;
             PicPanelDespliegue.Cursor = Cursors.Hand;
             PicPanelDespliegue.Image = Properties.Resources.image_removebg_preview__10_;
-            PicPanelDespliegue.Location = new Point(-3, 0);
+            PicPanelDespliegue.Location = new Point(-4, 0);
+            PicPanelDespliegue.Margin = new Padding(4, 4, 4, 4);
             PicPanelDespliegue.Name = "PicPanelDespliegue";
-            PicPanelDespliegue.Size = new Size(100, 50);
+            PicPanelDespliegue.Size = new Size(125, 62);
             PicPanelDespliegue.SizeMode = PictureBoxSizeMode.Zoom;
             PicPanelDespliegue.TabIndex = 14;
             PicPanelDespliegue.TabStop = false;
@@ -247,15 +261,16 @@
             // 
             // btnDespliegue
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(1300, 650);
+            ClientSize = new Size(1625, 812);
             Controls.Add(BarraTitular);
             Controls.Add(MenuVertical);
             Controls.Add(pictureBox1);
             Controls.Add(lblPanelPrinciapl);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(4, 4, 4, 4);
             Name = "btnDespliegue";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PanelPrincipal";
