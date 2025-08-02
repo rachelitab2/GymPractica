@@ -201,7 +201,7 @@
             // BotonSeguimin
             // 
             BotonSeguimin.Cursor = Cursors.Hand;
-            BotonSeguimin.Image = Properties.Resources.salvado;
+          //  BotonSeguimin.Image = Properties.Resources.salvado;
             BotonSeguimin.Location = new Point(1287, 673);
             BotonSeguimin.Name = "BotonSeguimin";
             BotonSeguimin.Size = new Size(149, 77);

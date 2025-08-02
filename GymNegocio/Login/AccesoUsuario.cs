@@ -40,7 +40,9 @@ namespace GymNegocio.Login
                 {
                     cmd.Parameters.AddWithValue("@Usuario", usuarios.Usuario);
                     cmd.Parameters.AddWithValue("@Contrasena", usuarios.Contrasena);
-                    cmd.Parameters.AddWithValue("@Rol", usuarios.Rol);
+                    cmd.Parameters.AddWithValue("@Rol", usuarios.Rol); 
+
+
                     cmd.Parameters.AddWithValue("@Id", usuarios.Id);
                     cmd.ExecuteNonQuery();
                 }
@@ -92,37 +94,40 @@ namespace GymNegocio.Login
 
         public string ValidarUsuario(string usuario, string contrasena, string tipoAcceso)
         {
-            try
             {
-                using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
+                try
                 {
-                    conn.Open();
-                    string query = "SELECT Rol FROM Usuarios WHERE Usuario = @Usuario AND Contrasena= @Contrasena AND Rol = @Rol";
-                    using(SqlCommand cmd = new SqlCommand(query, conn))
+                    using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
                     {
-                        cmd.Parameters.AddWithValue("@Usuario", usuario);
-                        cmd.Parameters.AddWithValue("@Contrasena", contrasena);
-                        cmd.Parameters.AddWithValue("@Rol", tipoAcceso);
+                        conn.Open();
+                        string query = "SELECT Rol FROM Usuarios WHERE Usuario = @Usuario AND Contrasena = @Contrasena AND Rol = @Rol";
 
-                        var result = cmd.ExecuteScalar();
-                        if(result != null)
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
                         {
-                            return result.ToString();
+                            cmd.Parameters.AddWithValue("@Usuario", usuario);
+                            cmd.Parameters.AddWithValue("@Contrasena", contrasena);
+                            cmd.Parameters.AddWithValue("@Rol", tipoAcceso);
 
-                        }
-                        else
-                        {
-                            return null;
+                            using (SqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    return reader["Rol"].ToString(); // Devuelve el rol correctamente
+                                }
+                                else
+                                {
+                                    return null;
+                                }
+                            }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al Validar usuario: " + ex.Message);
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al validar usuario: " + ex.Message);
+                }
             }
         }
-
         public List<UsuariosActivos> ListarUsuarios()
         {
             List<UsuariosActivos> usuarios = new List<UsuariosActivos>();

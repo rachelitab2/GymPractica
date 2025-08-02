@@ -92,16 +92,11 @@ namespace GymPresentacion
         private void PicPanelPagoMembresia_Click(object sender, EventArgs e)
         {
 
-            if (_pagosMembresiaForm == null || _pagosMembresiaForm.IsDisposed)
-            {
-                _pagosMembresiaForm = new PagosMembresia(_usuarioActivo);
-            }
-            _pagosMembresiaForm.Show();
-
+            // Usa solo el singleton
             PagosMembresia pagoMembresia = PagosMembresia.ObtenerInstancia(_usuarioActivo);
             pagoMembresia.Show();
 
-            this.Hide();
+            this.Hide(); // Oculta el formulario actual (menú principal u otro)
         }
 
         private void PicPanelSeguimiento_Click(object sender, EventArgs e)

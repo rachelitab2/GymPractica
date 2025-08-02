@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GymDatos;
+using GymNegocio.Login;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -9,9 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GymDatos;
-using GymNegocio.Login;
-using Microsoft.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace GymPresentacion
 {
@@ -20,7 +21,7 @@ namespace GymPresentacion
         private readonly AccesoUsuario accesoUsuario;
         private readonly UsuariosActivos _usuarioActivo;
         private bool _isNavigating = false;
-        private CheckBox chkMostrarContrasena;
+
 
 
 
@@ -208,7 +209,7 @@ namespace GymPresentacion
             {
                 MessageBox.Show("Error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        
+
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)
@@ -341,7 +342,7 @@ namespace GymPresentacion
 
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
-           
+
 
 
         }
@@ -362,6 +363,31 @@ namespace GymPresentacion
             // Si tienes un CheckBox de mostrar contraseña, lo reseteas también:
             chkMostrarContrasena1.Checked = false;
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+            txtContasena.UseSystemPasswordChar = !checkBox1.Checked;
+        }
+
+        private void btnLimpiar1_Click(object sender, EventArgs e)
+        {
+            // Limpiar campos de texto
+            txtNombreUsuario.Clear();
+            txtContasena.Clear();
+
+            // Reiniciar selección del ComboBox
+            cmbRolUsuario.SelectedIndex = 0; // o -1 si quieres que quede sin seleccionar
+
+            // Desmarcar el checkbox de mostrar contraseña
+            chkMostrarContrasena1.Checked = false;
+
+            // Volver a ocultar la contraseña si estaba visible
+            txtContasena.UseSystemPasswordChar = true;
+
+            // (Opcional) Establecer foco en el primer campo
+            txtNombreUsuario.Focus();
         }
     }
 }

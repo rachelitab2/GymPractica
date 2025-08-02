@@ -43,6 +43,8 @@
             PicUsuariosInicio = new PictureBox();
             chkMostrarContrasena1 = new CheckBox();
             btnLimpiar = new Button();
+            checkBox1 = new CheckBox();
+            btnLimpiar1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicUsuariosInicio).BeginInit();
@@ -103,7 +105,7 @@
             // 
             // txtContasena
             // 
-            txtContasena.Location = new Point(1012, 225);
+            txtContasena.Location = new Point(998, 229);
             txtContasena.Margin = new Padding(3, 2, 3, 2);
             txtContasena.Name = "txtContasena";
             txtContasena.Size = new Size(257, 23);
@@ -153,7 +155,7 @@
             // 
             btnAgregarUsuario.BackColor = Color.DodgerBlue;
             btnAgregarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnAgregarUsuario.Location = new Point(1045, 460);
+            btnAgregarUsuario.Location = new Point(1069, 460);
             btnAgregarUsuario.Margin = new Padding(3, 2, 3, 2);
             btnAgregarUsuario.Name = "btnAgregarUsuario";
             btnAgregarUsuario.Size = new Size(130, 39);
@@ -214,16 +216,37 @@
             // 
             // btnLimpiar
             // 
-            checkActivoUsuario.AutoSize = true;
-            checkActivoUsuario.BackColor = Color.Lavender;
-            checkActivoUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            checkActivoUsuario.ForeColor = Color.Black;
-            checkActivoUsuario.Location = new Point(1157, 448);
-            checkActivoUsuario.Name = "checkActivoUsuario";
-            checkActivoUsuario.Size = new Size(94, 31);
-            checkActivoUsuario.TabIndex = 13;
-            checkActivoUsuario.Text = "Activo";
-            checkActivoUsuario.UseVisualStyleBackColor = false;
+            btnLimpiar.Location = new Point(0, 0);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(75, 23);
+            btnLimpiar.TabIndex = 0;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.BackColor = Color.Black;
+            checkBox1.ForeColor = SystemColors.ButtonHighlight;
+            checkBox1.Location = new Point(897, 346);
+            checkBox1.Margin = new Padding(3, 2, 3, 2);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(42, 19);
+            checkBox1.TabIndex = 13;
+            checkBox1.Text = "Ver";
+            checkBox1.UseVisualStyleBackColor = false;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            // 
+            // btnLimpiar1
+            // 
+            btnLimpiar1.BackColor = Color.DodgerBlue;
+            btnLimpiar1.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
+            btnLimpiar1.Location = new Point(897, 460);
+            btnLimpiar1.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiar1.Name = "btnLimpiar1";
+            btnLimpiar1.Size = new Size(122, 39);
+            btnLimpiar1.TabIndex = 14;
+            btnLimpiar1.Text = "Limpiar";
+            btnLimpiar1.UseVisualStyleBackColor = false;
+            btnLimpiar1.Click += btnLimpiar1_Click;
             // 
             // RegsitroUsuarios
             // 
@@ -231,7 +254,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1514, 736);
-            Controls.Add(checkActivoUsuario);
+            Controls.Add(btnLimpiar1);
+            Controls.Add(checkBox1);
             Controls.Add(PicUsuariosInicio);
             Controls.Add(pictureBox1);
             Controls.Add(btnConsultarUsuario);
@@ -273,5 +297,7 @@
         private PictureBox PicUsuariosInicio;
         private CheckBox chkMostrarContrasena1;
         private Button btnLimpiar;
+        private CheckBox checkBox1;
+        private Button btnLimpiar1;
     }
 }
