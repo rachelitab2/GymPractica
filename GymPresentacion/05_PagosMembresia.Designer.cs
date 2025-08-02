@@ -42,6 +42,7 @@
             EditarPago = new Button();
             GuardarPago = new Button();
             ConsultaPago = new Button();
+            cmbMetodoPago = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicPagoInicio).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicPagoRegistroMembresia).BeginInit();
@@ -73,7 +74,7 @@
             // 
             // dtpPago
             // 
-            dtpPago.Location = new Point(1118, 491);
+            dtpPago.Location = new Point(1118, 441);
             dtpPago.Name = "dtpPago";
             dtpPago.Size = new Size(250, 27);
             dtpPago.TabIndex = 2;
@@ -98,6 +99,7 @@
             dgvPagoMembresia.BorderStyle = BorderStyle.None;
             dgvPagoMembresia.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvPagoMembresia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPagoMembresia.Cursor = Cursors.Hand;
             dgvPagoMembresia.EnableHeadersVisualStyles = false;
             dgvPagoMembresia.GridColor = Color.DodgerBlue;
             dgvPagoMembresia.Location = new Point(127, 234);
@@ -112,23 +114,25 @@
             // 
             // cmbClientePago
             // 
+            cmbClientePago.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbClientePago.FormattingEnabled = true;
-            cmbClientePago.Location = new Point(1118, 311);
+            cmbClientePago.Location = new Point(1118, 285);
             cmbClientePago.Name = "cmbClientePago";
             cmbClientePago.Size = new Size(250, 28);
             cmbClientePago.TabIndex = 5;
             // 
             // cmbTipoClientePago
             // 
+            cmbTipoClientePago.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoClientePago.FormattingEnabled = true;
-            cmbTipoClientePago.Location = new Point(1118, 427);
+            cmbTipoClientePago.Location = new Point(1118, 387);
             cmbTipoClientePago.Name = "cmbTipoClientePago";
             cmbTipoClientePago.Size = new Size(250, 28);
             cmbTipoClientePago.TabIndex = 6;
             // 
             // txtFechaVencimientoPago
             // 
-            txtFechaVencimientoPago.Location = new Point(1118, 372);
+            txtFechaVencimientoPago.Location = new Point(1118, 336);
             txtFechaVencimientoPago.Name = "txtFechaVencimientoPago";
             txtFechaVencimientoPago.ReadOnly = true;
             txtFechaVencimientoPago.Size = new Size(250, 27);
@@ -139,7 +143,7 @@
             btnPago.BackColor = Color.DodgerBlue;
             btnPago.Cursor = Cursors.Hand;
             btnPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            btnPago.Location = new Point(1118, 612);
+            btnPago.Location = new Point(1118, 631);
             btnPago.Name = "btnPago";
             btnPago.Size = new Size(155, 52);
             btnPago.TabIndex = 8;
@@ -148,8 +152,9 @@
             // 
             // txtMonto
             // 
-            txtMonto.Location = new Point(1118, 551);
+            txtMonto.Location = new Point(1118, 498);
             txtMonto.Name = "txtMonto";
+            txtMonto.ReadOnly = true;
             txtMonto.Size = new Size(250, 27);
             txtMonto.TabIndex = 9;
             // 
@@ -201,12 +206,22 @@
             ConsultaPago.Text = "Consulta";
             ConsultaPago.UseVisualStyleBackColor = false;
             // 
+            // cmbMetodoPago
+            // 
+            cmbMetodoPago.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMetodoPago.FormattingEnabled = true;
+            cmbMetodoPago.Location = new Point(1122, 548);
+            cmbMetodoPago.Name = "cmbMetodoPago";
+            cmbMetodoPago.Size = new Size(246, 28);
+            cmbMetodoPago.TabIndex = 14;
+            // 
             // PagosMembresia
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1420, 763);
+            Controls.Add(cmbMetodoPago);
             Controls.Add(ConsultaPago);
             Controls.Add(GuardarPago);
             Controls.Add(EditarPago);
@@ -248,5 +263,6 @@
         private Button EditarPago;
         private Button GuardarPago;
         private Button ConsultaPago;
+        private ComboBox cmbMetodoPago;
     }
 }

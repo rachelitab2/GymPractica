@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GymDatos;
 using GymNegocio.ClasesMembresia;
 using Microsoft.Data.SqlClient;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace GymNegocio.ClasesMembresia
@@ -28,7 +29,7 @@ namespace GymNegocio.ClasesMembresia
                     cmd.Parameters.AddWithValue("@Monto", pago.Monto);
                     cmd.Parameters.AddWithValue("@MetodoPago", pago.MetodoPago);
 
-                    pago.Id = Convert .ToInt32(cmd.ExecuteScalar());
+                    pago.Id = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
         }
@@ -76,7 +77,11 @@ namespace GymNegocio.ClasesMembresia
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
             {
                 conn.Open();
-                string query = "SELECT Id, MembresiaId, FechaPago, Monto, MetodoPago FROM PagoMembresia WHERE MembresiaId = @MembresiaId";
+                string query = @"
+                    SELECT p.Id, p.MembresiaId, p.FechaPago, p.Monto, p.MetodoPago, m.Nombre
+                    FROM PagoMembresia p
+                    INNER JOIN Membresia m ON p.MembresiaId = m.Id
+                    WHERE p.MembresiaId = @MembresiaId";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -92,7 +97,8 @@ namespace GymNegocio.ClasesMembresia
                                 MembresiaId = Convert.ToInt32(reader["MembresiaId"]),
                                 FechaPago = Convert.ToDateTime(reader["FechaPago"]),
                                 Monto = Convert.ToDecimal(reader["Monto"]),
-                                MetodoPago = reader["MetodoPago"].ToString()
+                                MetodoPago = reader["MetodoPago"].ToString(),
+                                Nombre = reader["Nombre"].ToString(),
                             };
                             pagos.Add(pago);
                         }
@@ -102,5 +108,49 @@ namespace GymNegocio.ClasesMembresia
 
             return pagos;
         }
+        public List<PagoMembresia> ObtenerTodosLosPagos()
+        {
+            List<PagoMembresia> listaPagos = new List<PagoMembresia>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
+                {
+                    conn.Open();
+                    string query = @"SELECT p.Id, p.MembresiaId, p.FechaPago, p.Monto, p.MetodoPago, m.NOMBRE
+                           FROM PagoMembresia p
+                           INNER JOIN Membresia m ON p.MembresiaId = m.Id
+                           ORDER BY p.FechaPago DESC";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                PagoMembresia pago = new PagoMembresia();
+
+                                pago.Id = Convert.ToInt32(reader["Id"]);
+                                pago.MembresiaId = Convert.ToInt32(reader["MembresiaId"]);
+                                pago.FechaPago = Convert.ToDateTime(reader["FechaPago"]);
+                                pago.Monto = Convert.ToDecimal(reader["Monto"]);
+                                pago.MetodoPago = reader["MetodoPago"].ToString();
+                                pago.Nombre = reader["Nombre"].ToString();
+
+                                listaPagos.Add(pago);
+                            }
+                            
+                        }
+
+                    }
+                }
+            }
+
+            catch(Exception ex)
+            {
+                throw new Exception("Error al obtener todos los pagos: " + ex.Message);
+
+            }
+            return listaPagos;
+        }
     }
 }
+

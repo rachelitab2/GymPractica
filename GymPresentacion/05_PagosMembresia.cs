@@ -39,6 +39,7 @@ namespace GymPresentacion
             ConfigurarDataGridView();
             CargarMembresias();
             AsignarEventos();
+            
 
             this.FormClosing += PagosMembresia_FormClosing;
         }
@@ -72,6 +73,15 @@ namespace GymPresentacion
                 Width = 50,
                 Visible = false
             });
+
+            dgvPagoMembresia.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Nombre",
+                HeaderText = "Nombre",
+                Width = 150,
+
+            });
+
 
             dgvPagoMembresia.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -112,6 +122,10 @@ namespace GymPresentacion
                 cmbClientePago.DisplayMember = "Nombre";
                 cmbClientePago.ValueMember = "Id";
 
+                cmbMetodoPago.Items.AddRange(new object[] { "Efectivo", "Transacción", "Tarjeta" });
+                cmbMetodoPago.DropDownStyle = ComboBoxStyle.DropDownList;
+                cmbMetodoPago.SelectedIndex = 0;
+
                 cmbTipoClientePago.Items.Clear();
                 cmbTipoClientePago.Items.AddRange(new object[] { "Mensual", "Anual" });
                 cmbTipoClientePago.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -122,7 +136,7 @@ namespace GymPresentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al Cargar Mmembresias: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al Cargar Membresias: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 
@@ -183,6 +197,8 @@ namespace GymPresentacion
                 cmbTipoClientePago.SelectedItem = membresia.TipoMembresia;
                 txtMonto.Text = membresia.CostoTotal.ToString("F2");
 
+                CargarPagos(membresia.Id);
+
                 this.BeginInvoke(new Action(() =>
                 {
                     _isChangingSelection = false;
@@ -196,7 +212,7 @@ namespace GymPresentacion
             if (cmbTipoClientePago.SelectedItem != null)
             {
                 string tipo = cmbTipoClientePago.SelectedItem.ToString();
-                if (tipo == "Mensua")
+                if (tipo == "Mensual")
                     txtMonto.Text = "1200";
                 else if (tipo == "Anual")
                     txtMonto.Text = "14400";
@@ -210,11 +226,15 @@ namespace GymPresentacion
             {
                 try
                 {
-                    CargarPagos(membresia.Id);
+                    _listaPago = _servicioPagoMembresia.ObtenerTodosLosPagos(); // Necesitarás crear este método en tu servicio
+                    dgvPagoMembresia.DataSource = null;
+                    dgvPagoMembresia.DataSource = _listaPago;
+
+                    MessageBox.Show("Todos los pagos cargados Correctamente.", "Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al cargar pagos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al cargar todos los pagos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -318,23 +338,11 @@ namespace GymPresentacion
             }
         }
 
-        private void GenerarReciboPDF(PagoMembresia pago)
-        {
-            throw new NotImplementedException();
-        }
-
         private void BtnPago_Click(object sender, EventArgs e)
         {
-            if (dgvPagoMembresia.SelectedRows.Count == 0)
+            if (cmbClientePago.SelectedItem is not Membresia membresia)
             {
                 MessageBox.Show("Seleccione una membresias para registrar el pago.", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            var membresia = dgvPagoMembresia.SelectedRows[0].DataBoundItem as Membresia;
-            if (membresia == null)
-            {
-                MessageBox.Show("Memebreias invalida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -342,6 +350,22 @@ namespace GymPresentacion
             {
                 DateTime fechapago = DateTime.Now;
                 string tipoMembresia = membresia.TipoMembresia;
+                string metodoPago = cmbMetodoPago.SelectedItem?.ToString() ?? "Efectivo";
+
+                if(metodoPago == "Transaccion" || metodoPago == "Tarjeta")
+                {
+                    string mensaje = metodoPago == "Transaccion"
+                        ? "¿Ha verificado que la transaccion bancaria se completo correctsamente?"
+                        : "¿Ha verificado que el pago con tarjeta se proceso exitosamente?";
+
+                    DialogResult resultado = MessageBox.Show(mensaje, "Validacion de " + metodoPago, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if(resultado == DialogResult.No)
+                    {
+                        MessageBox.Show("Complete la validacion del pago antes de continuar.", "Validacion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
 
                 if (tipoMembresia == "Mensual")
                 {
@@ -350,7 +374,7 @@ namespace GymPresentacion
                 }
                 else if (tipoMembresia == "Anual")
                 {
-                    membresia.FechaFin = membresia.FechaFin > fechapago ? fechapago = membresia.FechaFin.AddYears(1) : fechapago.AddYears(1);
+                    membresia.FechaFin = membresia.FechaFin > fechapago ? membresia.FechaFin.AddYears(1) : fechapago.AddYears(1);
                 }
 
                 membresia.FechaInicio = fechapago;
@@ -359,7 +383,7 @@ namespace GymPresentacion
 
                 _serviciosMembresia.ActualizarMembresia(membresia);
 
-                PagoMembresia pago = new PagoMembresia(membresia.Id, membresia.CostoTotal, "Efectivo");
+                PagoMembresia pago = new PagoMembresia(membresia.Id, membresia.CostoTotal, metodoPago);
                 _servicioPagoMembresia.RegistrarPago(pago);
 
                 MessageBox.Show("Pago resgistrdo y Fecha de vencimiento Actualizada.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -367,8 +391,8 @@ namespace GymPresentacion
                 txtFechaVencimientoPago.Text = membresia.FechaFin.ToShortDateString();
                 txtMonto.Text = membresia.CostoTotal.ToString("F2");
 
-                GenerarReciboPDF(membresia);
-                CargarMembresias();
+                GenerarReciboPDF(pago);
+                CargarPagos(membresia.Id);
             }
             catch (Exception ex)
             {
@@ -378,14 +402,14 @@ namespace GymPresentacion
 
         }
 
-        private void GenerarReciboPDF(Membresia membresia)
+        private void GenerarReciboPDF(PagoMembresia pago)
         {
             try
             {
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
                     saveFileDialog.Filter = "Archivo PDF (*.pdf)|*.pdf";
-                    saveFileDialog.FileName = $"ReciboPago_{membresia.Nombre}_{DateTime.Now:yyyyMMddHHmmss}.PDF";
+                    saveFileDialog.FileName = $"ReciboPago_{pago.Id}_{DateTime.Now:yyyyMMddHHmmss}.PDF";
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
@@ -395,12 +419,10 @@ namespace GymPresentacion
                         doc.Open();
 
                         doc.Add(new Paragraph("Recibo de Pago de Membresía"));
-                        doc.Add(new Paragraph($"Nombre: {membresia.Nombre}"));
-                        doc.Add(new Paragraph($"Tipo de Membresia: {membresia.TipoMembresia}"));
-                        doc.Add(new Paragraph($"Fecha de Inicio: {membresia.FechaInicio.ToShortDateString()}"));
-                        doc.Add(new Paragraph($"Fecha de Vencimiento: {membresia.FechaFin.ToShortDateString()}"));
-                        doc.Add(new Paragraph($"Monto Pagado: {membresia.CostoTotal:C}"));
-                        doc.Add(new Paragraph($"Fecha de Pago: {DateTime.Now.ToShortDateString()}"));
+                        doc.Add(new Paragraph($"ID Pago: {pago.Id}"));
+                        doc.Add(new Paragraph($"Fecha de Pago: {pago.FechaPago.ToShortDateString()}"));
+                        doc.Add(new Paragraph($"Monto: {pago.Monto:C}"));
+                        doc.Add(new Paragraph($"Método de Pago: {pago.MetodoPago}"));
 
                         doc.Close();
 
