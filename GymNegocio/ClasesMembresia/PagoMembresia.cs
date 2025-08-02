@@ -15,6 +15,8 @@ namespace GymNegocio.ClasesMembresia
         public decimal Monto { get; set; }
         public string MetodoPago { get; set; }
 
+        public string Nombre {  get; set; }
+
         public PagoMembresia()
         {
             FechaPago = DateTime.Now;
