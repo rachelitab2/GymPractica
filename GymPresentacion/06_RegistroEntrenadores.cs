@@ -163,6 +163,7 @@ namespace GymPresentacion
             PicMem2.Click += PicMem2_Click;
             PicRutinaEntrenador.Click += PicRutinaEntrenador_Click;
             PicEntrenadorInicio.Click += PicEntrenadorInicio_Click;
+            textBox1.TextChanged += this.textBox1_TextChanged;
         }
 
         private void Form2Entrenadores_FormClosing(object sender, FormClosingEventArgs e)
@@ -474,6 +475,10 @@ namespace GymPresentacion
 
         }
 
+        private void textBox1_TextChanged ( object sender, EventArgs e)
+        {
+
+        }
         private void txtNombreEntrenador_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= 32 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))

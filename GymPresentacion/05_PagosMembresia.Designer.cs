@@ -38,6 +38,10 @@
             txtFechaVencimientoPago = new TextBox();
             btnPago = new Button();
             txtMonto = new TextBox();
+            EliminarPago = new Button();
+            EditarPago = new Button();
+            GuardarPago = new Button();
+            ConsultaPago = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicPagoInicio).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicPagoRegistroMembresia).BeginInit();
@@ -90,20 +94,20 @@
             // 
             dgvPagoMembresia.AllowUserToAddRows = false;
             dgvPagoMembresia.AllowUserToDeleteRows = false;
-            dgvPagoMembresia.BackgroundColor = Color.Black;
+            dgvPagoMembresia.BackgroundColor = Color.Lavender;
             dgvPagoMembresia.BorderStyle = BorderStyle.None;
             dgvPagoMembresia.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvPagoMembresia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPagoMembresia.EnableHeadersVisualStyles = false;
             dgvPagoMembresia.GridColor = Color.DodgerBlue;
-            dgvPagoMembresia.Location = new Point(127, 258);
+            dgvPagoMembresia.Location = new Point(127, 234);
             dgvPagoMembresia.MultiSelect = false;
             dgvPagoMembresia.Name = "dgvPagoMembresia";
             dgvPagoMembresia.ReadOnly = true;
             dgvPagoMembresia.RowHeadersVisible = false;
             dgvPagoMembresia.RowHeadersWidth = 51;
             dgvPagoMembresia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPagoMembresia.Size = new Size(726, 448);
+            dgvPagoMembresia.Size = new Size(734, 382);
             dgvPagoMembresia.TabIndex = 4;
             // 
             // cmbClientePago
@@ -133,6 +137,7 @@
             // btnPago
             // 
             btnPago.BackColor = Color.DodgerBlue;
+            btnPago.Cursor = Cursors.Hand;
             btnPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnPago.Location = new Point(1118, 612);
             btnPago.Name = "btnPago";
@@ -148,12 +153,65 @@
             txtMonto.Size = new Size(250, 27);
             txtMonto.TabIndex = 9;
             // 
+            // EliminarPago
+            // 
+            EliminarPago.BackColor = Color.DodgerBlue;
+            EliminarPago.Cursor = Cursors.Hand;
+            EliminarPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            EliminarPago.Location = new Point(356, 631);
+            EliminarPago.Name = "EliminarPago";
+            EliminarPago.Size = new Size(153, 55);
+            EliminarPago.TabIndex = 10;
+            EliminarPago.Text = "Eliminar";
+            EliminarPago.UseVisualStyleBackColor = false;
+            // 
+            // EditarPago
+            // 
+            EditarPago.BackColor = Color.DodgerBlue;
+            EditarPago.Cursor = Cursors.Hand;
+            EditarPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            EditarPago.Location = new Point(532, 631);
+            EditarPago.Name = "EditarPago";
+            EditarPago.Size = new Size(145, 55);
+            EditarPago.TabIndex = 11;
+            EditarPago.Text = "Editar";
+            EditarPago.UseVisualStyleBackColor = false;
+            // 
+            // GuardarPago
+            // 
+            GuardarPago.BackColor = Color.DodgerBlue;
+            GuardarPago.Cursor = Cursors.Hand;
+            GuardarPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            GuardarPago.Location = new Point(697, 631);
+            GuardarPago.Name = "GuardarPago";
+            GuardarPago.Size = new Size(164, 55);
+            GuardarPago.TabIndex = 12;
+            GuardarPago.Text = "Guardar Doc ";
+            GuardarPago.UseVisualStyleBackColor = false;
+            // 
+            // ConsultaPago
+            // 
+            ConsultaPago.BackColor = Color.DodgerBlue;
+            ConsultaPago.Cursor = Cursors.Hand;
+            ConsultaPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            ConsultaPago.Location = new Point(181, 631);
+            ConsultaPago.Name = "ConsultaPago";
+            ConsultaPago.Size = new Size(150, 55);
+            ConsultaPago.TabIndex = 13;
+            ConsultaPago.Text = "Consulta";
+            ConsultaPago.UseVisualStyleBackColor = false;
+            // 
             // PagosMembresia
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__13_;
+            BackColor = Color.Black;
             ClientSize = new Size(1420, 763);
+            Controls.Add(ConsultaPago);
+            Controls.Add(GuardarPago);
+            Controls.Add(EditarPago);
+            Controls.Add(EliminarPago);
+            Controls.Add(pictureBox1);
             Controls.Add(txtMonto);
             Controls.Add(btnPago);
             Controls.Add(txtFechaVencimientoPago);
@@ -163,7 +221,6 @@
             Controls.Add(PicPagoRegistroMembresia);
             Controls.Add(dtpPago);
             Controls.Add(PicPagoInicio);
-            Controls.Add(pictureBox1);
             Name = "PagosMembresia";
             Text = "PagosMembresia";
             Load += PagosMembresia_Load;
@@ -187,5 +244,9 @@
         private TextBox txtFechaVencimientoPago;
         private Button btnPago;
         private TextBox txtMonto;
+        private Button EliminarPago;
+        private Button EditarPago;
+        private Button GuardarPago;
+        private Button ConsultaPago;
     }
 }

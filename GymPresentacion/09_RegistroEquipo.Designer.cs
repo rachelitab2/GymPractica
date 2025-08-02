@@ -53,11 +53,12 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.BackgroundImageLayout = ImageLayout.None;
+            pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.Location = new Point(470, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(589, 162);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -65,7 +66,7 @@
             // 
             dgvEquipo.AllowUserToAddRows = false;
             dgvEquipo.AllowUserToDeleteRows = false;
-            dgvEquipo.BackgroundColor = Color.Black;
+            dgvEquipo.BackgroundColor = Color.Lavender;
             dgvEquipo.BorderStyle = BorderStyle.None;
             dgvEquipo.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvEquipo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -146,6 +147,7 @@
             // 
             // textBox1
             // 
+            textBox1.Cursor = Cursors.Hand;
             textBox1.Location = new Point(1101, 279);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(199, 27);
@@ -153,6 +155,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.Cursor = Cursors.Hand;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(1048, 376);
             comboBox1.Name = "comboBox1";
@@ -161,6 +164,7 @@
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Cursor = Cursors.Hand;
             dateTimePicker1.Location = new Point(1051, 426);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(250, 27);
@@ -168,6 +172,7 @@
             // 
             // textBox2
             // 
+            textBox2.Cursor = Cursors.Hand;
             textBox2.Location = new Point(1048, 474);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(253, 27);
@@ -176,6 +181,7 @@
             // 
             // textBox3
             // 
+            textBox3.Cursor = Cursors.Hand;
             textBox3.Location = new Point(1032, 323);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(269, 27);
@@ -184,6 +190,7 @@
             // btnAgregarEquipo
             // 
             btnAgregarEquipo.BackColor = Color.DodgerBlue;
+            btnAgregarEquipo.Cursor = Cursors.Hand;
             btnAgregarEquipo.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnAgregarEquipo.ForeColor = Color.Black;
             btnAgregarEquipo.Location = new Point(703, 590);
@@ -196,6 +203,7 @@
             // btnEliminarEquipo
             // 
             btnEliminarEquipo.BackColor = Color.DodgerBlue;
+            btnEliminarEquipo.Cursor = Cursors.Hand;
             btnEliminarEquipo.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEliminarEquipo.ForeColor = Color.Black;
             btnEliminarEquipo.Location = new Point(536, 590);
@@ -208,6 +216,7 @@
             // btnEditarEquipo
             // 
             btnEditarEquipo.BackColor = Color.DodgerBlue;
+            btnEditarEquipo.Cursor = Cursors.Hand;
             btnEditarEquipo.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditarEquipo.Location = new Point(363, 590);
             btnEditarEquipo.Name = "btnEditarEquipo";
@@ -219,6 +228,7 @@
             // btnConsultarEquipo
             // 
             btnConsultarEquipo.BackColor = Color.DodgerBlue;
+            btnConsultarEquipo.Cursor = Cursors.Hand;
             btnConsultarEquipo.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultarEquipo.Location = new Point(195, 590);
             btnConsultarEquipo.Name = "btnConsultarEquipo";
@@ -230,11 +240,13 @@
             // PicEquipoInicio
             // 
             PicEquipoInicio.BackColor = Color.Transparent;
-            PicEquipoInicio.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
-            PicEquipoInicio.BackgroundImageLayout = ImageLayout.Zoom;
+            PicEquipoInicio.BackgroundImageLayout = ImageLayout.None;
+            PicEquipoInicio.Cursor = Cursors.Hand;
+            PicEquipoInicio.Image = Properties.Resources.image_removebg_preview__7_;
             PicEquipoInicio.Location = new Point(79, 130);
             PicEquipoInicio.Name = "PicEquipoInicio";
             PicEquipoInicio.Size = new Size(125, 62);
+            PicEquipoInicio.SizeMode = PictureBoxSizeMode.Zoom;
             PicEquipoInicio.TabIndex = 16;
             PicEquipoInicio.TabStop = false;
             PicEquipoInicio.Click += PicEquipoInicio_Click;
@@ -243,7 +255,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__13_;
+            BackColor = Color.Black;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1415, 741);
             Controls.Add(PicEquipoInicio);

@@ -113,7 +113,7 @@
             // dgvUsuarios
             // 
             dgvUsuarios.AllowUserToOrderColumns = true;
-            dgvUsuarios.BackgroundColor = Color.Black;
+            dgvUsuarios.BackgroundColor = Color.Lavender;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuarios.Location = new Point(298, 139);
             dgvUsuarios.Margin = new Padding(3, 2, 3, 2);
@@ -214,25 +214,24 @@
             // 
             // btnLimpiar
             // 
-            btnLimpiar.BackColor = Color.DodgerBlue;
-            btnLimpiar.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnLimpiar.Location = new Point(790, 460);
-            btnLimpiar.Margin = new Padding(3, 2, 3, 2);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(122, 39);
-            btnLimpiar.TabIndex = 15;
-            btnLimpiar.Text = "\U0001f9f9 Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = false;
-            btnLimpiar.Click += btnLimpiar_Click;
+            checkActivoUsuario.AutoSize = true;
+            checkActivoUsuario.BackColor = Color.Lavender;
+            checkActivoUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
+            checkActivoUsuario.ForeColor = Color.Black;
+            checkActivoUsuario.Location = new Point(1157, 448);
+            checkActivoUsuario.Name = "checkActivoUsuario";
+            checkActivoUsuario.Size = new Size(94, 31);
+            checkActivoUsuario.TabIndex = 13;
+            checkActivoUsuario.Text = "Activo";
+            checkActivoUsuario.UseVisualStyleBackColor = false;
             // 
             // RegsitroUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(1325, 552);
-            Controls.Add(btnLimpiar);
-            Controls.Add(chkMostrarContrasena1);
+            BackColor = Color.Black;
+            ClientSize = new Size(1514, 736);
+            Controls.Add(checkActivoUsuario);
             Controls.Add(PicUsuariosInicio);
             Controls.Add(pictureBox1);
             Controls.Add(btnConsultarUsuario);

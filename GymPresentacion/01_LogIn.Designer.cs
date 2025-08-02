@@ -42,8 +42,8 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.BackgroundImageLayout = ImageLayout.None;
+            pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.Location = new Point(398, 50);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(628, 382);
@@ -127,7 +127,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.InactiveCaptionText;
+            BackColor = Color.Black;
             ClientSize = new Size(1286, 754);
             Controls.Add(lblTipoAcceso);
             Controls.Add(btnAcceder);

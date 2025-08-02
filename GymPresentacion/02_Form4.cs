@@ -8,7 +8,7 @@ namespace GymPresentacion
     {
         private readonly UsuariosActivos _usuarioActivo;
         private bool _isNavigating = false;
-        private UsuariosActivos _usuariosActivos;
+       
 
         public btnDespliegue(UsuariosActivos usuarioActivo)
         {
@@ -26,9 +26,9 @@ namespace GymPresentacion
             PicPanelPagoMembresia.Click += PicPanelPagoMembresia_Click;
             PicPanelSeguimiento.Click += PicPanelSeguimiento_Click;
             PicPanelUsuario.Click += PicPanelUsuario_Click;
-            Despliegue.Click += Despliegue_Click;
+            PicPanelDespliegue.Click += Despliegue_Click;
             pictureBox1.Click += pictureBox1_Click;
-            this.FormClosing += btnDespliegue_Load;
+            this.FormClosing += btnDespliegue_FormClosing;
             this.Load += btnDespliegue_Load;
         }
 
@@ -39,58 +39,91 @@ namespace GymPresentacion
             if (rol == "Secretaria")
             {
                 PicPanelRutina.Visible = false;
+                PicPanelSeguimiento.Visible = false;
+              
             }
             else if (rol == "Entrenador")
             {
                 PicPanelMemebresia.Visible = false;
                 PicPanelEntrenador.Visible = false;
+                PicPanelPagoMembresia.Visible = false;
+                PicPanelUsuario.Visible = false;
             }
         }
 
+        private RegistroMembresias _registroMembresiasForm;
+        private RegistroEntrenadores _registroEntrenadoresForm;
+        private RegistroRutina _registroRutinaForm;
+        private PagosMembresia _pagosMembresiaForm;
+        private PesoSeguimien _seguimientoForm;
+        private RegsitroUsuarios _registroUsuariosForm;
+
+
         private void PicPanelMembresia(object sender, EventArgs e)
         {
-            RegistroMembresias registroMembresias = new RegistroMembresias(this);
-            registroMembresias.Show();
+            if (_registroMembresiasForm == null || _registroMembresiasForm.IsDisposed)
+            {
+                _registroMembresiasForm = new RegistroMembresias(this);
+            }
+            _registroMembresiasForm.Show();
             this.Hide();
         }
 
         private void PicPanelEntrenadores(object sender, EventArgs e)
         {
-            RegistroEntrenadores registroEntrenadores = new RegistroEntrenadores(this);
-            registroEntrenadores.Show();
+            if (_registroEntrenadoresForm == null || _registroEntrenadoresForm.IsDisposed)
+            {
+                _registroEntrenadoresForm = new RegistroEntrenadores(this);
+            }
+            _registroEntrenadoresForm.Show();
             this.Hide();
         }
 
         private void PicPanelRutina_Click(object sender, EventArgs e)
         {
-            RegistroRutina registroRutina = new RegistroRutina(this);
-            registroRutina.Show();
+            if (_registroRutinaForm == null || _registroRutinaForm.IsDisposed)
+            {
+                _registroRutinaForm = new RegistroRutina(this);
+            }
+            _registroRutinaForm.Show();
             this.Hide();
         }
 
         private void PicPanelPagoMembresia_Click(object sender, EventArgs e)
         {
-            PagosMembresia pagoMembresia = new PagosMembresia(_usuariosActivos);
+
+            if (_pagosMembresiaForm == null || _pagosMembresiaForm.IsDisposed)
+            {
+                _pagosMembresiaForm = new PagosMembresia(_usuarioActivo);
+            }
+            _pagosMembresiaForm.Show();
+
+            PagosMembresia pagoMembresia = PagosMembresia.ObtenerInstancia(_usuarioActivo);
             pagoMembresia.Show();
+
             this.Hide();
         }
 
         private void PicPanelSeguimiento_Click(object sender, EventArgs e)
         {
-            SeguimientoCliente Seguimiento = new SeguimientoCliente();
-            Seguimiento.Show();
+            if (_seguimientoForm == null || _seguimientoForm.IsDisposed)
+            {
+                _seguimientoForm = new PesoSeguimien(_usuarioActivo, this);
+            }
+            _seguimientoForm.Show();
             this.Hide();
         }
 
         private void PicPanelUsuario_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms["RegsitroUsuarios"] == null)
+            if (_registroUsuariosForm == null || _registroUsuariosForm.IsDisposed)
             {
-                RegsitroUsuarios registroUsuarios = new RegsitroUsuarios(_usuarioActivo);
-                registroUsuarios.Show();
-                this.Hide();
+                _registroUsuariosForm = new RegsitroUsuarios(_usuarioActivo);
             }
+            _registroUsuariosForm.Show();
+            this.Hide();
         }
+
 
         private void PicCerrarSesion_Click(object sender, EventArgs e)
         {
@@ -107,8 +140,18 @@ namespace GymPresentacion
             equipo.Show();
             this.Close();
         }
+
         private void Despliegue_Click(object sender, EventArgs e)
         {
+            /*  if (MenuVertical.Width ==250)
+              {
+                  MenuVertical.Width = 70;
+              }
+              else
+              {
+                  MenuVertical.Width = 250;
+              }*/
+
             if (MenuVertical.Width == 250)
             {
                 MenuVertical.Width = 70;
@@ -117,7 +160,11 @@ namespace GymPresentacion
             {
                 MenuVertical.Width = 250;
             }
+
+            // Forzar refresco por si Dock/Anchor está dando problema
+            MenuVertical.Refresh();
         }
+
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -128,7 +175,7 @@ namespace GymPresentacion
 
         }
 
-        private void btnDespliegue_Load(object sender, FormClosingEventArgs e)
+        private void btnDespliegue_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!_isNavigating)
             {

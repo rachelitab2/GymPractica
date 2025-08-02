@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnAgregarRutina = new Button();
             btnConsultarRutina = new Button();
             btnEliminarRutina = new Button();
@@ -131,9 +131,9 @@
             // PicMemRutina
             // 
             PicMemRutina.BackColor = Color.Transparent;
-            PicMemRutina.BackgroundImage = Properties.Resources.image_removebg_preview__3_;
             PicMemRutina.BackgroundImageLayout = ImageLayout.Zoom;
             PicMemRutina.Cursor = Cursors.Hand;
+            PicMemRutina.Image = Properties.Resources.image_removebg_preview__3_;
             PicMemRutina.Location = new Point(138, 64);
             PicMemRutina.Name = "PicMemRutina";
             PicMemRutina.Size = new Size(100, 84);
@@ -146,39 +146,39 @@
             // 
             dgvRutinas.AllowUserToAddRows = false;
             dgvRutinas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dgvRutinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dgvRutinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvRutinas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvRutinas.BackgroundColor = Color.Black;
+            dgvRutinas.BackgroundColor = Color.Lavender;
             dgvRutinas.BorderStyle = BorderStyle.None;
             dgvRutinas.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Black;
-            dataGridViewCellStyle5.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvRutinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Black;
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvRutinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvRutinas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.Black;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvRutinas.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Black;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvRutinas.DefaultCellStyle = dataGridViewCellStyle3;
             dgvRutinas.EnableHeadersVisualStyles = false;
             dgvRutinas.GridColor = Color.DodgerBlue;
-            dgvRutinas.Location = new Point(42, 160);
+            dgvRutinas.Location = new Point(42, 192);
             dgvRutinas.MultiSelect = false;
             dgvRutinas.Name = "dgvRutinas";
             dgvRutinas.ReadOnly = true;
             dgvRutinas.RowHeadersVisible = false;
             dgvRutinas.RowHeadersWidth = 51;
             dgvRutinas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvRutinas.Size = new Size(846, 388);
+            dgvRutinas.Size = new Size(807, 356);
             dgvRutinas.TabIndex = 5;
             // 
             // lblNombreRutina
@@ -252,11 +252,12 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.BackgroundImageLayout = ImageLayout.None;
+            pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.Location = new Point(637, 24);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(589, 162);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 20;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
@@ -264,11 +265,12 @@
             // PicRutinaInicio
             // 
             PicRutinaInicio.BackColor = Color.Transparent;
-            PicRutinaInicio.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
-            PicRutinaInicio.BackgroundImageLayout = ImageLayout.Zoom;
+            PicRutinaInicio.BackgroundImageLayout = ImageLayout.None;
+            PicRutinaInicio.Image = Properties.Resources.image_removebg_preview__7_;
             PicRutinaInicio.Location = new Point(42, 64);
             PicRutinaInicio.Name = "PicRutinaInicio";
             PicRutinaInicio.Size = new Size(100, 84);
+            PicRutinaInicio.SizeMode = PictureBoxSizeMode.Zoom;
             PicRutinaInicio.TabIndex = 21;
             PicRutinaInicio.TabStop = false;
             PicRutinaInicio.Click += PicRutinaInicio_Click;
@@ -276,12 +278,12 @@
             // PicEntrenadorIr
             // 
             PicEntrenadorIr.BackColor = Color.Transparent;
-            PicEntrenadorIr.BackgroundImage = Properties.Resources.image_removebg_preview__9_;
-            PicEntrenadorIr.BackgroundImageLayout = ImageLayout.Zoom;
+            PicEntrenadorIr.BackgroundImageLayout = ImageLayout.None;
+            PicEntrenadorIr.Image = Properties.Resources.image_removebg_preview__9_;
             PicEntrenadorIr.Location = new Point(234, 64);
             PicEntrenadorIr.Name = "PicEntrenadorIr";
             PicEntrenadorIr.Size = new Size(100, 84);
-            PicEntrenadorIr.SizeMode = PictureBoxSizeMode.StretchImage;
+            PicEntrenadorIr.SizeMode = PictureBoxSizeMode.Zoom;
             PicEntrenadorIr.TabIndex = 19;
             PicEntrenadorIr.TabStop = false;
             // 
@@ -289,7 +291,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__13_;
+            BackColor = Color.Black;
             ClientSize = new Size(1532, 667);
             Controls.Add(PicRutinaInicio);
             Controls.Add(pictureBox1);

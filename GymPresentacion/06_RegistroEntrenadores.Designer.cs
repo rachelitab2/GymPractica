@@ -73,7 +73,7 @@
             dgvEntrenadores.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgvEntrenadores.BackgroundColor = Color.Black;
+            dgvEntrenadores.BackgroundColor = Color.Lavender;
             dgvEntrenadores.BorderStyle = BorderStyle.None;
             dgvEntrenadores.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -158,13 +158,14 @@
             // checkDisponible
             // 
             checkDisponible.AutoSize = true;
+            checkDisponible.BackColor = Color.Lavender;
             checkDisponible.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
             checkDisponible.Location = new Point(1046, 622);
             checkDisponible.Name = "checkDisponible";
             checkDisponible.Size = new Size(171, 31);
             checkDisponible.TabIndex = 5;
             checkDisponible.Text = "Disponibilidad";
-            checkDisponible.UseVisualStyleBackColor = true;
+            checkDisponible.UseVisualStyleBackColor = false;
             checkDisponible.CheckedChanged += checkDisponible_CheckedChanged;
             // 
             // cmbGeneroEntrenador
@@ -237,9 +238,9 @@
             // PicMem2
             // 
             PicMem2.BackColor = Color.Transparent;
-            PicMem2.BackgroundImage = Properties.Resources.image_removebg_preview__3_;
-            PicMem2.BackgroundImageLayout = ImageLayout.Zoom;
+            PicMem2.BackgroundImageLayout = ImageLayout.None;
             PicMem2.Cursor = Cursors.Hand;
+            PicMem2.Image = Properties.Resources.image_removebg_preview__3_;
             PicMem2.Location = new Point(210, 80);
             PicMem2.Name = "PicMem2";
             PicMem2.Size = new Size(100, 84);
@@ -288,9 +289,9 @@
             // PicRutinaEntrenador
             // 
             PicRutinaEntrenador.BackColor = Color.Transparent;
-            PicRutinaEntrenador.BackgroundImage = Properties.Resources.image_removebg_preview__5_;
-            PicRutinaEntrenador.BackgroundImageLayout = ImageLayout.Zoom;
+            PicRutinaEntrenador.BackgroundImageLayout = ImageLayout.None;
             PicRutinaEntrenador.Cursor = Cursors.Hand;
+            PicRutinaEntrenador.Image = Properties.Resources.image_removebg_preview__5_;
             PicRutinaEntrenador.Location = new Point(303, 80);
             PicRutinaEntrenador.Name = "PicRutinaEntrenador";
             PicRutinaEntrenador.Size = new Size(100, 84);
@@ -324,20 +325,21 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.Location = new Point(637, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(589, 162);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 20;
             pictureBox1.TabStop = false;
             // 
             // PicEntrenadorInicio
             // 
             PicEntrenadorInicio.BackColor = Color.Transparent;
-            PicEntrenadorInicio.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
-            PicEntrenadorInicio.BackgroundImageLayout = ImageLayout.Zoom;
+            PicEntrenadorInicio.BackgroundImageLayout = ImageLayout.None;
             PicEntrenadorInicio.Cursor = Cursors.Hand;
+            PicEntrenadorInicio.Image = Properties.Resources.image_removebg_preview__7_;
             PicEntrenadorInicio.Location = new Point(119, 80);
             PicEntrenadorInicio.Name = "PicEntrenadorInicio";
             PicEntrenadorInicio.Size = new Size(100, 84);
@@ -370,13 +372,14 @@
             // checkCorreoEntrenador
             // 
             checkCorreoEntrenador.AutoSize = true;
+            checkCorreoEntrenador.BackColor = Color.Lavender;
             checkCorreoEntrenador.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
             checkCorreoEntrenador.Location = new Point(1265, 622);
             checkCorreoEntrenador.Name = "checkCorreoEntrenador";
             checkCorreoEntrenador.Size = new Size(160, 31);
             checkCorreoEntrenador.TabIndex = 24;
             checkCorreoEntrenador.Text = "Enviar Correo";
-            checkCorreoEntrenador.UseVisualStyleBackColor = true;
+            checkCorreoEntrenador.UseVisualStyleBackColor = false;
             // 
             // lblCorreoEntrenador
             // 
@@ -396,12 +399,13 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(302, 27);
             textBox1.TabIndex = 26;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // RegistroEntrenadores
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Untitled_design__13_;
+            BackColor = Color.Black;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1647, 826);
             Controls.Add(textBox1);
