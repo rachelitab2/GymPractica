@@ -15,15 +15,15 @@ using GymNegocio.Login;
 
 namespace GymPresentacion
 {
-    public partial class SeguimientoCliente : Form
+    public partial class PesoSeguimien : Form
     {
         private UsuariosActivos _usuarioActivo;
         private readonly Form _dashboard;  // <-- referencia al dashboard
         private bool _isNavigating = false; // Para controlar cierre
 
-        public SeguimientoCliente(UsuariosActivos usuarioActivo, Form dashboard)
+        public PesoSeguimien(UsuariosActivos usuarioActivo, Form dashboard)
         {
-             InitializeComponent();
+            InitializeComponent();
             _usuarioActivo = usuarioActivo;
             _dashboard = dashboard;
 
@@ -40,6 +40,7 @@ namespace GymPresentacion
         {
 
         }
+
 
         private void FormClientes_Load(object sender, EventArgs e)
         {
@@ -58,12 +59,24 @@ namespace GymPresentacion
 
             try
             {
+
+                if (string.IsNullOrWhiteSpace(ClienteSeguimiento.Text))
+                {
+                    MessageBox.Show("El nombre no puede estar vacío.");
+                    return;
+                }
+                if (ClienteSeguimiento.Text.Any(char.IsDigit))
+                {
+                    MessageBox.Show("El nombre no puede contener números.");
+                    return;
+                }
+
                 Cliente nuevoCliente = new Cliente
                 {
                     Nombre = ClienteSeguimiento.Text,
-                    Peso = decimal.Parse(PesoSeguimien.Text),
-                    Altura = decimal.Parse(AlturSeguemien.Text),
-                    Grasa = decimal.Parse(GrasaSeguimien.Text),
+                    Peso = decimal.Parse(PesoSeguimieto.Text),
+                    Altura = decimal.Parse(AlturSeguemiento.Text),
+                    Grasa = decimal.Parse(GrasaSeguimiento.Text),
                     FechaRegistro = FechaSeguimin.Value.Date
                 };
 
@@ -73,7 +86,15 @@ namespace GymPresentacion
                 if (exito)
                 {
                     MessageBox.Show("Cliente agregado correctamente");
-                    DatosdelClienteP.DataSource = clientesGym.Listar(); // Refrescar DataGridView
+                    DatosdelClienteP.DataSource = clientesGym.Listar();
+
+                    // Limpiar campos
+                    ClienteSeguimiento.Clear();
+                    PesoSeguimieto.Text = "";
+                    AlturSeguemiento.Text = "";
+                    GrasaSeguimiento.Text = "";
+                    FechaSeguimin.Value = DateTime.Today;
+
                 }
                 else
                 {
@@ -85,8 +106,10 @@ namespace GymPresentacion
                 MessageBox.Show("Error: " + ex.Message);
             }
 
-
+            
         }
+
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -147,6 +170,42 @@ namespace GymPresentacion
             _isNavigating = true;  // Avisamos que vamos a navegar (volver atrás)
             _dashboard.Show();     // Mostramos el formulario principal
             this.Close();          // Cerramos este formulario actual
+        }
+
+        private void lblClienteSeguimiento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPeso_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void FechaSeguimin_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClienteSeguimiento_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PesoSeguimiento_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -238,9 +238,9 @@
             // PicMem2
             // 
             PicMem2.BackColor = Color.Transparent;
-            PicMem2.BackgroundImage = Properties.Resources.image_removebg_preview__3_;
-            PicMem2.BackgroundImageLayout = ImageLayout.Zoom;
+            PicMem2.BackgroundImageLayout = ImageLayout.None;
             PicMem2.Cursor = Cursors.Hand;
+            PicMem2.Image = Properties.Resources.image_removebg_preview__3_;
             PicMem2.Location = new Point(210, 80);
             PicMem2.Name = "PicMem2";
             PicMem2.Size = new Size(100, 84);
@@ -289,9 +289,9 @@
             // PicRutinaEntrenador
             // 
             PicRutinaEntrenador.BackColor = Color.Transparent;
-            PicRutinaEntrenador.BackgroundImage = Properties.Resources.image_removebg_preview__5_;
-            PicRutinaEntrenador.BackgroundImageLayout = ImageLayout.Zoom;
+            PicRutinaEntrenador.BackgroundImageLayout = ImageLayout.None;
             PicRutinaEntrenador.Cursor = Cursors.Hand;
+            PicRutinaEntrenador.Image = Properties.Resources.image_removebg_preview__5_;
             PicRutinaEntrenador.Location = new Point(303, 80);
             PicRutinaEntrenador.Name = "PicRutinaEntrenador";
             PicRutinaEntrenador.Size = new Size(100, 84);
@@ -325,20 +325,21 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.Location = new Point(637, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(589, 162);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 20;
             pictureBox1.TabStop = false;
             // 
             // PicEntrenadorInicio
             // 
             PicEntrenadorInicio.BackColor = Color.Transparent;
-            PicEntrenadorInicio.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
-            PicEntrenadorInicio.BackgroundImageLayout = ImageLayout.Zoom;
+            PicEntrenadorInicio.BackgroundImageLayout = ImageLayout.None;
             PicEntrenadorInicio.Cursor = Cursors.Hand;
+            PicEntrenadorInicio.Image = Properties.Resources.image_removebg_preview__7_;
             PicEntrenadorInicio.Location = new Point(119, 80);
             PicEntrenadorInicio.Name = "PicEntrenadorInicio";
             PicEntrenadorInicio.Size = new Size(100, 84);
@@ -398,7 +399,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(302, 27);
             textBox1.TabIndex = 26;
-            textBox1.TextChanged += this.textBox1_TextChanged;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // RegistroEntrenadores
             // 

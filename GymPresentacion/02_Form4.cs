@@ -55,7 +55,7 @@ namespace GymPresentacion
         private RegistroEntrenadores _registroEntrenadoresForm;
         private RegistroRutina _registroRutinaForm;
         private PagosMembresia _pagosMembresiaForm;
-        private SeguimientoCliente _seguimientoForm;
+        private PesoSeguimien _seguimientoForm;
         private RegsitroUsuarios _registroUsuariosForm;
 
 
@@ -91,11 +91,16 @@ namespace GymPresentacion
 
         private void PicPanelPagoMembresia_Click(object sender, EventArgs e)
         {
+
             if (_pagosMembresiaForm == null || _pagosMembresiaForm.IsDisposed)
             {
                 _pagosMembresiaForm = new PagosMembresia(_usuarioActivo);
             }
             _pagosMembresiaForm.Show();
+
+            PagosMembresia pagoMembresia = PagosMembresia.ObtenerInstancia(_usuarioActivo);
+            pagoMembresia.Show();
+
             this.Hide();
         }
 
@@ -103,7 +108,7 @@ namespace GymPresentacion
         {
             if (_seguimientoForm == null || _seguimientoForm.IsDisposed)
             {
-                _seguimientoForm = new SeguimientoCliente(_usuarioActivo, this);
+                _seguimientoForm = new PesoSeguimien(_usuarioActivo, this);
             }
             _seguimientoForm.Show();
             this.Hide();
