@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgvEntrenadores = new DataGridView();
             btnConsultar = new Button();
             btnEditarEntrenador = new Button();
@@ -71,28 +71,28 @@
             // 
             dgvEntrenadores.AllowUserToAddRows = false;
             dgvEntrenadores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvEntrenadores.BackgroundColor = Color.Lavender;
             dgvEntrenadores.BorderStyle = BorderStyle.None;
             dgvEntrenadores.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Black;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Black;
+            dataGridViewCellStyle5.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvEntrenadores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle6;
             dgvEntrenadores.EnableHeadersVisualStyles = false;
             dgvEntrenadores.GridColor = Color.DodgerBlue;
             dgvEntrenadores.Location = new Point(119, 180);
@@ -109,6 +109,7 @@
             // btnConsultar
             // 
             btnConsultar.BackColor = Color.DodgerBlue;
+            btnConsultar.Cursor = Cursors.Hand;
             btnConsultar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultar.ForeColor = Color.Black;
             btnConsultar.Location = new Point(303, 656);
@@ -121,6 +122,7 @@
             // btnEditarEntrenador
             // 
             btnEditarEntrenador.BackColor = Color.DodgerBlue;
+            btnEditarEntrenador.Cursor = Cursors.Hand;
             btnEditarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditarEntrenador.ForeColor = Color.Black;
             btnEditarEntrenador.Location = new Point(475, 656);
@@ -133,6 +135,7 @@
             // btnEliminarEntrenador
             // 
             btnEliminarEntrenador.BackColor = Color.DodgerBlue;
+            btnEliminarEntrenador.Cursor = Cursors.Hand;
             btnEliminarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarEntrenador.ForeColor = Color.Black;
             btnEliminarEntrenador.Location = new Point(641, 656);
@@ -146,6 +149,7 @@
             // btnAgregarEntrenador
             // 
             btnAgregarEntrenador.BackColor = Color.DodgerBlue;
+            btnAgregarEntrenador.Cursor = Cursors.Hand;
             btnAgregarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregarEntrenador.ForeColor = Color.Black;
             btnAgregarEntrenador.Location = new Point(806, 654);
@@ -250,6 +254,7 @@
             // 
             // maskedTextBox1
             // 
+            maskedTextBox1.Cursor = Cursors.Hand;
             maskedTextBox1.Location = new Point(1198, 359);
             maskedTextBox1.Name = "maskedTextBox1";
             maskedTextBox1.Size = new Size(301, 27);
@@ -257,6 +262,7 @@
             // 
             // txtNombreEntrenador
             // 
+            txtNombreEntrenador.Cursor = Cursors.Hand;
             txtNombreEntrenador.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNombreEntrenador.Location = new Point(1198, 189);
             txtNombreEntrenador.Name = "txtNombreEntrenador";
@@ -373,6 +379,7 @@
             // 
             checkCorreoEntrenador.AutoSize = true;
             checkCorreoEntrenador.BackColor = Color.Lavender;
+            checkCorreoEntrenador.Cursor = Cursors.Hand;
             checkCorreoEntrenador.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
             checkCorreoEntrenador.Location = new Point(1265, 622);
             checkCorreoEntrenador.Name = "checkCorreoEntrenador";
@@ -395,6 +402,7 @@
             // 
             // textBox1
             // 
+            textBox1.Cursor = Cursors.IBeam;
             textBox1.Location = new Point(1198, 567);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(302, 27);

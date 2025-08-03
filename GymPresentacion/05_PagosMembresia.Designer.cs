@@ -65,6 +65,7 @@
             PicPagoInicio.BackColor = Color.Transparent;
             PicPagoInicio.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
             PicPagoInicio.BackgroundImageLayout = ImageLayout.Zoom;
+            PicPagoInicio.Cursor = Cursors.Hand;
             PicPagoInicio.Location = new Point(127, 166);
             PicPagoInicio.Name = "PicPagoInicio";
             PicPagoInicio.Size = new Size(125, 62);
@@ -84,6 +85,7 @@
             PicPagoRegistroMembresia.BackColor = Color.Transparent;
             PicPagoRegistroMembresia.BackgroundImage = Properties.Resources.image_removebg_preview__3_;
             PicPagoRegistroMembresia.BackgroundImageLayout = ImageLayout.Zoom;
+            PicPagoRegistroMembresia.Cursor = Cursors.Hand;
             PicPagoRegistroMembresia.Location = new Point(284, 166);
             PicPagoRegistroMembresia.Name = "PicPagoRegistroMembresia";
             PicPagoRegistroMembresia.Size = new Size(125, 62);
@@ -132,6 +134,7 @@
             // 
             // txtFechaVencimientoPago
             // 
+            txtFechaVencimientoPago.Cursor = Cursors.IBeam;
             txtFechaVencimientoPago.Location = new Point(1118, 336);
             txtFechaVencimientoPago.Name = "txtFechaVencimientoPago";
             txtFechaVencimientoPago.ReadOnly = true;
@@ -152,6 +155,7 @@
             // 
             // txtMonto
             // 
+            txtMonto.Cursor = Cursors.IBeam;
             txtMonto.Location = new Point(1118, 498);
             txtMonto.Name = "txtMonto";
             txtMonto.ReadOnly = true;

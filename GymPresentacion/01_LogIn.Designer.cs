@@ -44,10 +44,9 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
             pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
-            pictureBox1.Location = new Point(348, 38);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(398, 51);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(550, 286);
+            pictureBox1.Size = new Size(629, 381);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -58,11 +57,12 @@
             lblLogin.BackColor = Color.Transparent;
             lblLogin.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblLogin.ForeColor = Color.Lavender;
-            lblLogin.Location = new Point(434, 394);
+            lblLogin.Location = new Point(494, 526);
             lblLogin.Name = "lblLogin";
-            lblLogin.Size = new Size(110, 18);
+            lblLogin.Size = new Size(138, 25);
             lblLogin.TabIndex = 1;
             lblLogin.Text = "Contraseña";
+            lblLogin.Click += lblLogin_Click;
             // 
             // lblUsuario
             // 
@@ -70,26 +70,24 @@
             lblUsuario.BackColor = Color.Transparent;
             lblUsuario.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblUsuario.ForeColor = Color.Lavender;
-            lblUsuario.Location = new Point(443, 356);
+            lblUsuario.Location = new Point(494, 475);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(75, 18);
+            lblUsuario.Size = new Size(98, 25);
             lblUsuario.TabIndex = 2;
             lblUsuario.Text = "Usuario";
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(582, 358);
-            txtUsuario.Margin = new Padding(3, 2, 3, 2);
+            txtUsuario.Location = new Point(665, 477);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(213, 23);
+            txtUsuario.Size = new Size(243, 27);
             txtUsuario.TabIndex = 3;
             // 
             // txtContrasena
             // 
-            txtContrasena.Location = new Point(582, 396);
-            txtContrasena.Margin = new Padding(3, 2, 3, 2);
+            txtContrasena.Location = new Point(665, 528);
             txtContrasena.Name = "txtContrasena";
-            txtContrasena.Size = new Size(213, 23);
+            txtContrasena.Size = new Size(243, 27);
             txtContrasena.TabIndex = 4;
             txtContrasena.UseSystemPasswordChar = true;
             // 
@@ -97,10 +95,9 @@
             // 
             cmbRol.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRol.FormattingEnabled = true;
-            cmbRol.Location = new Point(564, 435);
-            cmbRol.Margin = new Padding(3, 2, 3, 2);
+            cmbRol.Location = new Point(665, 580);
             cmbRol.Name = "cmbRol";
-            cmbRol.Size = new Size(231, 23);
+            cmbRol.Size = new Size(243, 28);
             cmbRol.TabIndex = 5;
             cmbRol.SelectedIndexChanged += cmbRol_SelectedIndexChanged;
             // 
@@ -108,10 +105,9 @@
             // 
             btnAcceder.BackColor = Color.DodgerBlue;
             btnAcceder.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAcceder.Location = new Point(582, 484);
-            btnAcceder.Margin = new Padding(3, 2, 3, 2);
+            btnAcceder.Location = new Point(665, 645);
             btnAcceder.Name = "btnAcceder";
-            btnAcceder.Size = new Size(116, 31);
+            btnAcceder.Size = new Size(133, 41);
             btnAcceder.TabIndex = 6;
             btnAcceder.Text = "Acceder";
             btnAcceder.UseVisualStyleBackColor = false;
@@ -123,18 +119,19 @@
             lblTipoAcceso.BackColor = Color.Transparent;
             lblTipoAcceso.Font = new Font("Verdana", 12F, FontStyle.Bold);
             lblTipoAcceso.ForeColor = Color.Lavender;
-            lblTipoAcceso.Location = new Point(432, 434);
+            lblTipoAcceso.Location = new Point(494, 578);
             lblTipoAcceso.Name = "lblTipoAcceso";
-            lblTipoAcceso.Size = new Size(107, 18);
+            lblTipoAcceso.Size = new Size(140, 25);
             lblTipoAcceso.TabIndex = 7;
             lblTipoAcceso.Text = "TipoAcceso";
+            lblTipoAcceso.Click += lblTipoAcceso_Click;
             // 
             // LogIn
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(1125, 566);
+            ClientSize = new Size(1286, 755);
             Controls.Add(lblTipoAcceso);
             Controls.Add(btnAcceder);
             Controls.Add(cmbRol);
@@ -143,7 +140,6 @@
             Controls.Add(lblUsuario);
             Controls.Add(lblLogin);
             Controls.Add(pictureBox1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "LogIn";
             Text = "LogIn";
             Load += Form5LogIn_Load;

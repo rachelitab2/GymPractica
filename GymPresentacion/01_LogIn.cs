@@ -85,5 +85,15 @@ namespace GymPresentacion
         {
 
         }
+
+        private void lblLogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTipoAcceso_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

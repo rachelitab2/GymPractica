@@ -75,11 +75,11 @@ namespace GymPresentacion
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.BackColor = Color.IndianRed;
-            lblTitulo.Font = new Font("Perpetua Titling MT", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.Font = new Font("Microsoft Sans Serif", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitulo.ForeColor = Color.White;
             lblTitulo.Location = new Point(701, 24);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(304, 56);
+            lblTitulo.Size = new Size(284, 54);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "GYMNASIO";
             // 
@@ -111,6 +111,7 @@ namespace GymPresentacion
             // btnEditar
             // 
             btnEditar.BackColor = Color.DodgerBlue;
+            btnEditar.Cursor = Cursors.Hand;
             btnEditar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditar.ForeColor = Color.Black;
             btnEditar.Location = new Point(650, 659);
@@ -123,6 +124,7 @@ namespace GymPresentacion
             // btnEliminar
             // 
             btnEliminar.BackColor = Color.DodgerBlue;
+            btnEliminar.Cursor = Cursors.Hand;
             btnEliminar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEliminar.ForeColor = Color.Black;
             btnEliminar.Location = new Point(459, 658);
@@ -183,6 +185,7 @@ namespace GymPresentacion
             // txtNombreCliente
             // 
             txtNombreCliente.BackColor = Color.White;
+            txtNombreCliente.Cursor = Cursors.IBeam;
             txtNombreCliente.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNombreCliente.Location = new Point(1216, 222);
             txtNombreCliente.MaxLength = 30;
@@ -196,6 +199,7 @@ namespace GymPresentacion
             // btnAgregar
             // 
             btnAgregar.BackColor = Color.DodgerBlue;
+            btnAgregar.Cursor = Cursors.Hand;
             btnAgregar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnAgregar.ForeColor = Color.Black;
             btnAgregar.Location = new Point(1224, 648);
@@ -255,6 +259,7 @@ namespace GymPresentacion
             // 
             // mtxtTelefono
             // 
+            mtxtTelefono.Cursor = Cursors.IBeam;
             mtxtTelefono.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             mtxtTelefono.Location = new Point(1216, 472);
             mtxtTelefono.Name = "mtxtTelefono";
@@ -264,6 +269,7 @@ namespace GymPresentacion
             // btnConsultar
             // 
             btnConsultar.BackColor = Color.DodgerBlue;
+            btnConsultar.Cursor = Cursors.Hand;
             btnConsultar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultar.ForeColor = Color.Black;
             btnConsultar.Location = new Point(841, 657);
@@ -340,6 +346,7 @@ namespace GymPresentacion
             // 
             // txtCorreo
             // 
+            txtCorreo.Cursor = Cursors.IBeam;
             txtCorreo.Location = new Point(1279, 534);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.Size = new Size(233, 27);
