@@ -178,7 +178,7 @@ namespace GymNegocio.ClasesMembresia
 
                 using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
                 {
-                    string query = "SELECT Id, Nombre, Peso, Altura, Grasa, FechaRegistro FROM Cliente ORDER BY Id";
+                    string query = "SELECT Id, Nombre, Peso, Altura, Grasa, FechaRegistro FROM Clientes ORDER BY Id";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         conn.Open();
