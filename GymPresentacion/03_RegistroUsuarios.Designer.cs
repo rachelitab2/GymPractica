@@ -56,9 +56,9 @@
             lblNombreUusario.BackColor = Color.Transparent;
             lblNombreUusario.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNombreUusario.ForeColor = Color.Lavender;
-            lblNombreUusario.Location = new Point(1013, 243);
+            lblNombreUusario.Location = new Point(886, 182);
             lblNombreUusario.Name = "lblNombreUusario";
-            lblNombreUusario.Size = new Size(163, 20);
+            lblNombreUusario.Size = new Size(133, 17);
             lblNombreUusario.TabIndex = 0;
             lblNombreUusario.Text = "Nombre Usuario";
             // 
@@ -68,9 +68,9 @@
             lblContrasena.BackColor = Color.Transparent;
             lblContrasena.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblContrasena.ForeColor = Color.Lavender;
-            lblContrasena.Location = new Point(1013, 307);
+            lblContrasena.Location = new Point(886, 230);
             lblContrasena.Name = "lblContrasena";
-            lblContrasena.Size = new Size(122, 20);
+            lblContrasena.Size = new Size(102, 17);
             lblContrasena.TabIndex = 1;
             lblContrasena.Text = "Contrasena ";
             // 
@@ -80,32 +80,35 @@
             lblRolUsuario.BackColor = Color.Transparent;
             lblRolUsuario.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRolUsuario.ForeColor = Color.Lavender;
-            lblRolUsuario.Location = new Point(1013, 365);
+            lblRolUsuario.Location = new Point(886, 274);
             lblRolUsuario.Name = "lblRolUsuario";
-            lblRolUsuario.Size = new Size(119, 20);
+            lblRolUsuario.Size = new Size(97, 17);
             lblRolUsuario.TabIndex = 2;
             lblRolUsuario.Text = "Rol Usuario";
             // 
             // cmbRolUsuario
             // 
             cmbRolUsuario.FormattingEnabled = true;
-            cmbRolUsuario.Location = new Point(1157, 363);
+            cmbRolUsuario.Location = new Point(1012, 272);
+            cmbRolUsuario.Margin = new Padding(3, 2, 3, 2);
             cmbRolUsuario.Name = "cmbRolUsuario";
-            cmbRolUsuario.Size = new Size(293, 28);
+            cmbRolUsuario.Size = new Size(257, 23);
             cmbRolUsuario.TabIndex = 3;
             // 
             // txtNombreUsuario
             // 
-            txtNombreUsuario.Location = new Point(1198, 235);
+            txtNombreUsuario.Location = new Point(1048, 176);
+            txtNombreUsuario.Margin = new Padding(3, 2, 3, 2);
             txtNombreUsuario.Name = "txtNombreUsuario";
-            txtNombreUsuario.Size = new Size(252, 27);
+            txtNombreUsuario.Size = new Size(221, 23);
             txtNombreUsuario.TabIndex = 4;
             // 
             // txtContasena
             // 
-            txtContasena.Location = new Point(1141, 305);
+            txtContasena.Location = new Point(998, 229);
+            txtContasena.Margin = new Padding(3, 2, 3, 2);
             txtContasena.Name = "txtContasena";
-            txtContasena.Size = new Size(293, 27);
+            txtContasena.Size = new Size(257, 23);
             txtContasena.TabIndex = 5;
             txtContasena.UseSystemPasswordChar = true;
             // 
@@ -114,10 +117,11 @@
             dgvUsuarios.AllowUserToOrderColumns = true;
             dgvUsuarios.BackgroundColor = Color.Lavender;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Location = new Point(341, 185);
+            dgvUsuarios.Location = new Point(298, 139);
+            dgvUsuarios.Margin = new Padding(3, 2, 3, 2);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersWidth = 51;
-            dgvUsuarios.Size = new Size(530, 423);
+            dgvUsuarios.Size = new Size(464, 317);
             dgvUsuarios.TabIndex = 6;
             dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
             // 
@@ -126,9 +130,10 @@
             btnEliminarUsuario.BackColor = Color.DodgerBlue;
             btnEliminarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarUsuario.ForeColor = Color.Black;
-            btnEliminarUsuario.Location = new Point(361, 613);
+            btnEliminarUsuario.Location = new Point(316, 460);
+            btnEliminarUsuario.Margin = new Padding(3, 2, 3, 2);
             btnEliminarUsuario.Name = "btnEliminarUsuario";
-            btnEliminarUsuario.Size = new Size(152, 52);
+            btnEliminarUsuario.Size = new Size(133, 39);
             btnEliminarUsuario.TabIndex = 7;
             btnEliminarUsuario.Text = "🗑️ Eliminar";
             btnEliminarUsuario.UseVisualStyleBackColor = false;
@@ -137,9 +142,10 @@
             // 
             btnEditarUsuario.BackColor = Color.DodgerBlue;
             btnEditarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnEditarUsuario.Location = new Point(547, 613);
+            btnEditarUsuario.Location = new Point(487, 460);
+            btnEditarUsuario.Margin = new Padding(3, 2, 3, 2);
             btnEditarUsuario.Name = "btnEditarUsuario";
-            btnEditarUsuario.Size = new Size(144, 52);
+            btnEditarUsuario.Size = new Size(126, 39);
             btnEditarUsuario.TabIndex = 8;
             btnEditarUsuario.Text = "✏️ Editar";
             btnEditarUsuario.UseVisualStyleBackColor = false;
@@ -149,9 +155,10 @@
             // 
             btnAgregarUsuario.BackColor = Color.DodgerBlue;
             btnAgregarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnAgregarUsuario.Location = new Point(1222, 613);
+            btnAgregarUsuario.Location = new Point(1069, 460);
+            btnAgregarUsuario.Margin = new Padding(3, 2, 3, 2);
             btnAgregarUsuario.Name = "btnAgregarUsuario";
-            btnAgregarUsuario.Size = new Size(149, 52);
+            btnAgregarUsuario.Size = new Size(130, 39);
             btnAgregarUsuario.TabIndex = 9;
             btnAgregarUsuario.Text = "➕ Agregar";
             btnAgregarUsuario.UseVisualStyleBackColor = false;
@@ -161,9 +168,10 @@
             // 
             btnConsultarUsuario.BackColor = Color.DodgerBlue;
             btnConsultarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnConsultarUsuario.Location = new Point(721, 613);
+            btnConsultarUsuario.Location = new Point(640, 460);
+            btnConsultarUsuario.Margin = new Padding(3, 2, 3, 2);
             btnConsultarUsuario.Name = "btnConsultarUsuario";
-            btnConsultarUsuario.Size = new Size(150, 52);
+            btnConsultarUsuario.Size = new Size(122, 39);
             btnConsultarUsuario.TabIndex = 10;
             btnConsultarUsuario.Text = "🔍 Consultar";
             btnConsultarUsuario.UseVisualStyleBackColor = false;
@@ -174,9 +182,10 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(361, 0);
+            pictureBox1.Location = new Point(316, 0);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(589, 163);
+            pictureBox1.Size = new Size(515, 122);
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
@@ -185,9 +194,10 @@
             PicUsuariosInicio.BackColor = Color.Transparent;
             PicUsuariosInicio.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
             PicUsuariosInicio.BackgroundImageLayout = ImageLayout.Zoom;
-            PicUsuariosInicio.Location = new Point(24, 101);
+            PicUsuariosInicio.Location = new Point(21, 76);
+            PicUsuariosInicio.Margin = new Padding(3, 2, 3, 2);
             PicUsuariosInicio.Name = "PicUsuariosInicio";
-            PicUsuariosInicio.Size = new Size(125, 61);
+            PicUsuariosInicio.Size = new Size(109, 46);
             PicUsuariosInicio.TabIndex = 12;
             PicUsuariosInicio.TabStop = false;
             PicUsuariosInicio.Click += PicUsuarios_Click;
@@ -216,9 +226,10 @@
             checkBox1.AutoSize = true;
             checkBox1.BackColor = Color.Black;
             checkBox1.ForeColor = SystemColors.ButtonHighlight;
-            checkBox1.Location = new Point(1025, 461);
+            checkBox1.Location = new Point(897, 346);
+            checkBox1.Margin = new Padding(3, 2, 3, 2);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(52, 24);
+            checkBox1.Size = new Size(42, 19);
             checkBox1.TabIndex = 13;
             checkBox1.Text = "Ver";
             checkBox1.UseVisualStyleBackColor = false;
@@ -228,9 +239,10 @@
             // 
             btnLimpiar1.BackColor = Color.DodgerBlue;
             btnLimpiar1.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnLimpiar1.Location = new Point(1025, 613);
+            btnLimpiar1.Location = new Point(897, 460);
+            btnLimpiar1.Margin = new Padding(3, 2, 3, 2);
             btnLimpiar1.Name = "btnLimpiar1";
-            btnLimpiar1.Size = new Size(139, 52);
+            btnLimpiar1.Size = new Size(122, 39);
             btnLimpiar1.TabIndex = 14;
             btnLimpiar1.Text = "Limpiar";
             btnLimpiar1.UseVisualStyleBackColor = false;
@@ -238,10 +250,10 @@
             // 
             // RegsitroUsuarios
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(1730, 981);
+            ClientSize = new Size(1514, 736);
             Controls.Add(btnLimpiar1);
             Controls.Add(checkBox1);
             Controls.Add(PicUsuariosInicio);
@@ -257,6 +269,7 @@
             Controls.Add(lblRolUsuario);
             Controls.Add(lblContrasena);
             Controls.Add(lblNombreUusario);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "RegsitroUsuarios";
             Text = "RegsitroUsuarios";
             Load += RegsitroUsuario_Load;

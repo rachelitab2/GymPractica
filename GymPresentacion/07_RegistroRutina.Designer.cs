@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnAgregarRutina = new Button();
             btnConsultarRutina = new Button();
             btnEliminarRutina = new Button();
@@ -61,11 +61,11 @@
             btnAgregarRutina.BackColor = Color.DodgerBlue;
             btnAgregarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnAgregarRutina.ForeColor = Color.Black;
-            btnAgregarRutina.Location = new Point(1143, 565);
+            btnAgregarRutina.Location = new Point(1185, 565);
             btnAgregarRutina.Name = "btnAgregarRutina";
-            btnAgregarRutina.Size = new Size(152, 52);
+            btnAgregarRutina.Size = new Size(145, 52);
             btnAgregarRutina.TabIndex = 0;
-            btnAgregarRutina.Text = "➕ Agregar";
+            btnAgregarRutina.Text = "Agregar";
             btnAgregarRutina.UseVisualStyleBackColor = false;
             // 
             // btnConsultarRutina
@@ -73,11 +73,11 @@
             btnConsultarRutina.BackColor = Color.DodgerBlue;
             btnConsultarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultarRutina.ForeColor = Color.Black;
-            btnConsultarRutina.Location = new Point(335, 565);
+            btnConsultarRutina.Location = new Point(369, 565);
             btnConsultarRutina.Name = "btnConsultarRutina";
-            btnConsultarRutina.Size = new Size(170, 52);
+            btnConsultarRutina.Size = new Size(136, 52);
             btnConsultarRutina.TabIndex = 1;
-            btnConsultarRutina.Text = "🔍 Consultar";
+            btnConsultarRutina.Text = "Consultar";
             btnConsultarRutina.UseVisualStyleBackColor = false;
             // 
             // btnEliminarRutina
@@ -85,11 +85,11 @@
             btnEliminarRutina.BackColor = Color.DodgerBlue;
             btnEliminarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEliminarRutina.ForeColor = Color.Black;
-            btnEliminarRutina.Location = new Point(531, 565);
+            btnEliminarRutina.Location = new Point(553, 565);
             btnEliminarRutina.Name = "btnEliminarRutina";
-            btnEliminarRutina.Size = new Size(155, 52);
+            btnEliminarRutina.Size = new Size(139, 52);
             btnEliminarRutina.TabIndex = 2;
-            btnEliminarRutina.Text = "🗑️ Eliminar";
+            btnEliminarRutina.Text = "Eliminar";
             btnEliminarRutina.UseVisualStyleBackColor = false;
             btnEliminarRutina.Click += btnEliminarRutina_Click;
             // 
@@ -146,29 +146,29 @@
             // 
             dgvRutinas.AllowUserToAddRows = false;
             dgvRutinas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.BackColor = Color.White;
-            dgvRutinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dgvRutinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvRutinas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRutinas.BackgroundColor = Color.Lavender;
             dgvRutinas.BorderStyle = BorderStyle.None;
             dgvRutinas.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.Black;
-            dataGridViewCellStyle11.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle11.ForeColor = Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            dgvRutinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Black;
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvRutinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvRutinas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.Black;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle12.ForeColor = Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle12.SelectionForeColor = Color.White;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            dgvRutinas.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Black;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvRutinas.DefaultCellStyle = dataGridViewCellStyle3;
             dgvRutinas.EnableHeadersVisualStyles = false;
             dgvRutinas.GridColor = Color.DodgerBlue;
             dgvRutinas.Location = new Point(42, 192);
@@ -242,11 +242,11 @@
             btnEditarRutina.BackColor = Color.DodgerBlue;
             btnEditarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditarRutina.ForeColor = Color.Black;
-            btnEditarRutina.Location = new Point(706, 565);
+            btnEditarRutina.Location = new Point(745, 565);
             btnEditarRutina.Name = "btnEditarRutina";
             btnEditarRutina.Size = new Size(143, 52);
             btnEditarRutina.TabIndex = 16;
-            btnEditarRutina.Text = "✏️ Editar";
+            btnEditarRutina.Text = "Editar";
             btnEditarRutina.UseVisualStyleBackColor = false;
             // 
             // pictureBox1

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesoSeguimien));
             lblSEGUIMIENTO = new Label();
             lblClienteSeguimiento = new Label();
             label3 = new Label();
@@ -57,9 +58,10 @@
             lblSEGUIMIENTO.BackColor = Color.Transparent;
             lblSEGUIMIENTO.Font = new Font("Times New Roman", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSEGUIMIENTO.ForeColor = Color.Lavender;
-            lblSEGUIMIENTO.Location = new Point(261, 160);
+            lblSEGUIMIENTO.Location = new Point(326, 200);
+            lblSEGUIMIENTO.Margin = new Padding(4, 0, 4, 0);
             lblSEGUIMIENTO.Name = "lblSEGUIMIENTO";
-            lblSEGUIMIENTO.Size = new Size(420, 45);
+            lblSEGUIMIENTO.Size = new Size(506, 55);
             lblSEGUIMIENTO.TabIndex = 0;
             lblSEGUIMIENTO.Text = "Seguimiento de Proceso";
             lblSEGUIMIENTO.Click += label1_Click;
@@ -70,9 +72,10 @@
             lblClienteSeguimiento.BackColor = Color.Transparent;
             lblClienteSeguimiento.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             lblClienteSeguimiento.ForeColor = Color.Lavender;
-            lblClienteSeguimiento.Location = new Point(882, 236);
+            lblClienteSeguimiento.Location = new Point(1102, 295);
+            lblClienteSeguimiento.Margin = new Padding(4, 0, 4, 0);
             lblClienteSeguimiento.Name = "lblClienteSeguimiento";
-            lblClienteSeguimiento.Size = new Size(90, 25);
+            lblClienteSeguimiento.Size = new Size(108, 32);
             lblClienteSeguimiento.TabIndex = 1;
             lblClienteSeguimiento.Text = "Cliente:";
             lblClienteSeguimiento.Click += lblClienteSeguimiento_Click;
@@ -80,9 +83,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(1061, 403);
+            label3.Location = new Point(1326, 504);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(50, 20);
+            label3.Size = new Size(59, 25);
             label3.TabIndex = 2;
             label3.Text = "label3";
             label3.Click += label3_Click;
@@ -93,9 +97,10 @@
             lblPeso.BackColor = Color.Transparent;
             lblPeso.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             lblPeso.ForeColor = Color.Lavender;
-            lblPeso.Location = new Point(866, 293);
+            lblPeso.Location = new Point(1082, 366);
+            lblPeso.Margin = new Padding(4, 0, 4, 0);
             lblPeso.Name = "lblPeso";
-            lblPeso.Size = new Size(119, 25);
+            lblPeso.Size = new Size(140, 32);
             lblPeso.TabIndex = 3;
             lblPeso.Text = "Peso (Kg):";
             lblPeso.Click += lblPeso_Click;
@@ -106,9 +111,10 @@
             lblAltura.BackColor = Color.Transparent;
             lblAltura.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             lblAltura.ForeColor = Color.Lavender;
-            lblAltura.Location = new Point(849, 354);
+            lblAltura.Location = new Point(1061, 443);
+            lblAltura.Margin = new Padding(4, 0, 4, 0);
             lblAltura.Name = "lblAltura";
-            lblAltura.Size = new Size(136, 25);
+            lblAltura.Size = new Size(161, 32);
             lblAltura.TabIndex = 4;
             lblAltura.Text = "Altura (cm):";
             // 
@@ -118,9 +124,10 @@
             lblGrasa.BackColor = Color.Transparent;
             lblGrasa.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             lblGrasa.ForeColor = Color.Lavender;
-            lblGrasa.Location = new Point(799, 418);
+            lblGrasa.Location = new Point(999, 522);
+            lblGrasa.Margin = new Padding(4, 0, 4, 0);
             lblGrasa.Name = "lblGrasa";
-            lblGrasa.Size = new Size(218, 25);
+            lblGrasa.Size = new Size(257, 32);
             lblGrasa.TabIndex = 5;
             lblGrasa.Text = "Grasa Corporal(%):";
             // 
@@ -129,9 +136,10 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
             pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
-            pictureBox1.Location = new Point(495, 10);
+            pictureBox1.Location = new Point(619, 13);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(415, 131);
+            pictureBox1.Size = new Size(519, 164);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
@@ -140,34 +148,27 @@
             // 
             DatosdelClienteP.AllowUserToAddRows = false;
             DatosdelClienteP.AllowUserToDeleteRows = false;
-            DatosdelClienteP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DatosdelClienteP.BackgroundColor = Color.Lavender;
-            DatosdelClienteP.BorderStyle = BorderStyle.None;
-            DatosdelClienteP.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            DatosdelClienteP.AllowUserToResizeColumns = false;
+            DatosdelClienteP.AllowUserToResizeRows = false;
             DatosdelClienteP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DatosdelClienteP.Cursor = Cursors.Hand;
-            DatosdelClienteP.EnableHeadersVisualStyles = false;
-            DatosdelClienteP.GridColor = Color.DodgerBlue;
-            DatosdelClienteP.Location = new Point(22, 223);
-            DatosdelClienteP.Margin = new Padding(2, 2, 2, 2);
-            DatosdelClienteP.MultiSelect = false;
+            DatosdelClienteP.GridColor = SystemColors.MenuHighlight;
+            DatosdelClienteP.Location = new Point(28, 279);
             DatosdelClienteP.Name = "DatosdelClienteP";
             DatosdelClienteP.ReadOnly = true;
-            DatosdelClienteP.RowHeadersVisible = false;
             DatosdelClienteP.RowHeadersWidth = 62;
-            DatosdelClienteP.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DatosdelClienteP.Size = new Size(758, 344);
+            DatosdelClienteP.Size = new Size(948, 373);
             DatosdelClienteP.TabIndex = 7;
             // 
             // AlturSeguemiento
             // 
             AlturSeguemiento.BackColor = Color.White;
             AlturSeguemiento.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            AlturSeguemiento.Location = new Point(994, 356);
+            AlturSeguemiento.Location = new Point(1230, 449);
+            AlturSeguemiento.Margin = new Padding(4);
             AlturSeguemiento.MaxLength = 30;
             AlturSeguemiento.Name = "AlturSeguemiento";
             AlturSeguemiento.ShortcutsEnabled = false;
-            AlturSeguemiento.Size = new Size(296, 27);
+            AlturSeguemiento.Size = new Size(369, 31);
             AlturSeguemiento.TabIndex = 8;
             AlturSeguemiento.TextChanged += dd_TextChanged;
             // 
@@ -175,11 +176,12 @@
             // 
             ClienteSeguimiento.BackColor = Color.White;
             ClienteSeguimiento.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ClienteSeguimiento.Location = new Point(988, 236);
+            ClienteSeguimiento.Location = new Point(1221, 295);
+            ClienteSeguimiento.Margin = new Padding(4);
             ClienteSeguimiento.MaxLength = 30;
             ClienteSeguimiento.Name = "ClienteSeguimiento";
             ClienteSeguimiento.ShortcutsEnabled = false;
-            ClienteSeguimiento.Size = new Size(302, 27);
+            ClienteSeguimiento.Size = new Size(376, 31);
             ClienteSeguimiento.TabIndex = 10;
             ClienteSeguimiento.TextChanged += ClienteSeguimiento_TextChanged;
             // 
@@ -187,26 +189,24 @@
             // 
             PesoSeguimieto.BackColor = Color.White;
             PesoSeguimieto.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            PesoSeguimieto.Location = new Point(994, 298);
+            PesoSeguimieto.Location = new Point(1243, 372);
+            PesoSeguimieto.Margin = new Padding(4);
             PesoSeguimieto.MaxLength = 30;
             PesoSeguimieto.Name = "PesoSeguimieto";
             PesoSeguimieto.ShortcutsEnabled = false;
-            PesoSeguimieto.Size = new Size(296, 27);
+            PesoSeguimieto.Size = new Size(369, 31);
             PesoSeguimieto.TabIndex = 11;
             PesoSeguimieto.TextChanged += PesoSeguimiento_TextChanged;
             // 
             // BotonSeguimin
             // 
-            BotonSeguimin.BackColor = Color.DodgerBlue;
             BotonSeguimin.Cursor = Cursors.Hand;
-            BotonSeguimin.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            BotonSeguimin.Location = new Point(1020, 585);
-            BotonSeguimin.Margin = new Padding(2, 2, 2, 2);
+          //  BotonSeguimin.Image = Properties.Resources.salvado;
+            BotonSeguimin.Location = new Point(1287, 673);
             BotonSeguimin.Name = "BotonSeguimin";
-            BotonSeguimin.Size = new Size(194, 62);
+            BotonSeguimin.Size = new Size(149, 77);
             BotonSeguimin.TabIndex = 12;
-            BotonSeguimin.Text = "Guardar ";
-            BotonSeguimin.UseVisualStyleBackColor = false;
+            BotonSeguimin.UseVisualStyleBackColor = true;
             BotonSeguimin.Click += BotonSeguimin_Click;
             // 
             // sqlCommand1
@@ -216,9 +216,10 @@
             // 
             // FechaSeguimin
             // 
-            FechaSeguimin.Location = new Point(994, 482);
+            FechaSeguimin.Location = new Point(1243, 603);
+            FechaSeguimin.Margin = new Padding(4);
             FechaSeguimin.Name = "FechaSeguimin";
-            FechaSeguimin.Size = new Size(296, 27);
+            FechaSeguimin.Size = new Size(369, 31);
             FechaSeguimin.TabIndex = 13;
             FechaSeguimin.ValueChanged += FechaSeguimin_ValueChanged;
             // 
@@ -228,24 +229,22 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label1.ForeColor = Color.Lavender;
-            label1.Location = new Point(909, 482);
+            label1.Location = new Point(1136, 602);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(82, 25);
+            label1.Size = new Size(95, 32);
             label1.TabIndex = 14;
             label1.Text = "Fecha:";
             // 
             // button1
             // 
-            button1.BackColor = Color.DodgerBlue;
             button1.Cursor = Cursors.Hand;
-            button1.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            button1.Location = new Point(22, 585);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.Location = new Point(28, 673);
             button1.Name = "button1";
-            button1.Size = new Size(165, 62);
+            button1.Size = new Size(126, 77);
             button1.TabIndex = 15;
-            button1.Text = "🗑️ Eliminar";
-            button1.UseVisualStyleBackColor = false;
+            button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // AtrasInicio
@@ -254,9 +253,10 @@
             AtrasInicio.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
             AtrasInicio.BackgroundImageLayout = ImageLayout.Zoom;
             AtrasInicio.Cursor = Cursors.Hand;
-            AtrasInicio.Location = new Point(22, 155);
+            AtrasInicio.Location = new Point(28, 194);
+            AtrasInicio.Margin = new Padding(4);
             AtrasInicio.Name = "AtrasInicio";
-            AtrasInicio.Size = new Size(125, 62);
+            AtrasInicio.Size = new Size(156, 78);
             AtrasInicio.TabIndex = 16;
             AtrasInicio.TabStop = false;
             AtrasInicio.Click += AtrasInicio_Click;
@@ -265,19 +265,20 @@
             // 
             GrasaSeguimiento.BackColor = Color.White;
             GrasaSeguimiento.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            GrasaSeguimiento.Location = new Point(1020, 416);
+            GrasaSeguimiento.Location = new Point(1261, 523);
+            GrasaSeguimiento.Margin = new Padding(4);
             GrasaSeguimiento.MaxLength = 30;
             GrasaSeguimiento.Name = "GrasaSeguimiento";
             GrasaSeguimiento.ShortcutsEnabled = false;
-            GrasaSeguimiento.Size = new Size(270, 27);
+            GrasaSeguimiento.Size = new Size(336, 31);
             GrasaSeguimiento.TabIndex = 9;
             // 
             // PesoSeguimien
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(1350, 698);
+            ClientSize = new Size(1625, 770);
             Controls.Add(AtrasInicio);
             Controls.Add(button1);
             Controls.Add(label1);
@@ -296,6 +297,7 @@
             Controls.Add(lblClienteSeguimiento);
             Controls.Add(lblSEGUIMIENTO);
             DoubleBuffered = true;
+            Margin = new Padding(4);
             Name = "PesoSeguimien";
             Text = "SeguimientoCliente";
             Load += SeguimientoCliente_Load;

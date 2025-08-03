@@ -163,11 +163,11 @@
             EliminarPago.BackColor = Color.DodgerBlue;
             EliminarPago.Cursor = Cursors.Hand;
             EliminarPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            EliminarPago.Location = new Point(370, 631);
+            EliminarPago.Location = new Point(356, 631);
             EliminarPago.Name = "EliminarPago";
             EliminarPago.Size = new Size(153, 55);
             EliminarPago.TabIndex = 10;
-            EliminarPago.Text = "🗑️ Eliminar";
+            EliminarPago.Text = "Eliminar";
             EliminarPago.UseVisualStyleBackColor = false;
             // 
             // EditarPago
@@ -175,11 +175,11 @@
             EditarPago.BackColor = Color.DodgerBlue;
             EditarPago.Cursor = Cursors.Hand;
             EditarPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            EditarPago.Location = new Point(529, 631);
+            EditarPago.Location = new Point(532, 631);
             EditarPago.Name = "EditarPago";
-            EditarPago.Size = new Size(162, 55);
+            EditarPago.Size = new Size(145, 55);
             EditarPago.TabIndex = 11;
-            EditarPago.Text = "✏️ Editar";
+            EditarPago.Text = "Editar";
             EditarPago.UseVisualStyleBackColor = false;
             // 
             // GuardarPago
@@ -199,11 +199,11 @@
             ConsultaPago.BackColor = Color.DodgerBlue;
             ConsultaPago.Cursor = Cursors.Hand;
             ConsultaPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            ConsultaPago.Location = new Point(194, 631);
+            ConsultaPago.Location = new Point(181, 631);
             ConsultaPago.Name = "ConsultaPago";
-            ConsultaPago.Size = new Size(170, 55);
+            ConsultaPago.Size = new Size(150, 55);
             ConsultaPago.TabIndex = 13;
-            ConsultaPago.Text = "🔍 Consultar";
+            ConsultaPago.Text = "Consulta";
             ConsultaPago.UseVisualStyleBackColor = false;
             // 
             // cmbMetodoPago
