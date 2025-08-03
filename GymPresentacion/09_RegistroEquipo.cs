@@ -19,9 +19,18 @@ namespace GymPresentacion
 
         int contadorId = 1;
 
+        //al no tener parametro el parametro este daba error a la hora de salir de form
         public RegistroEquipo()
         {
             InitializeComponent();
+        }
+        //cambio agregado
+        //Constructor del formulario, recibe el usuario activo como parámetro y lo guarda
+        //para usarlo dentro del formulario.
+        public RegistroEquipo(UsuariosActivos usuarioActivo)
+        {
+            InitializeComponent();
+            _usuarioActivo = usuarioActivo;
         }
 
         private void lblDescripcionEquipo_Click(object sender, EventArgs e)

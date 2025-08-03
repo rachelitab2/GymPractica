@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             btnAgregarRutina = new Button();
             btnConsultarRutina = new Button();
             btnEliminarRutina = new Button();
@@ -59,6 +59,7 @@
             // btnAgregarRutina
             // 
             btnAgregarRutina.BackColor = Color.DodgerBlue;
+            btnAgregarRutina.Cursor = Cursors.Hand;
             btnAgregarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnAgregarRutina.ForeColor = Color.Black;
             btnAgregarRutina.Location = new Point(1185, 565);
@@ -71,6 +72,7 @@
             // btnConsultarRutina
             // 
             btnConsultarRutina.BackColor = Color.DodgerBlue;
+            btnConsultarRutina.Cursor = Cursors.Hand;
             btnConsultarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultarRutina.ForeColor = Color.Black;
             btnConsultarRutina.Location = new Point(369, 565);
@@ -83,6 +85,7 @@
             // btnEliminarRutina
             // 
             btnEliminarRutina.BackColor = Color.DodgerBlue;
+            btnEliminarRutina.Cursor = Cursors.Hand;
             btnEliminarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEliminarRutina.ForeColor = Color.Black;
             btnEliminarRutina.Location = new Point(553, 565);
@@ -146,29 +149,29 @@
             // 
             dgvRutinas.AllowUserToAddRows = false;
             dgvRutinas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dgvRutinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dgvRutinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvRutinas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRutinas.BackgroundColor = Color.Lavender;
             dgvRutinas.BorderStyle = BorderStyle.None;
             dgvRutinas.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Black;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvRutinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Black;
+            dataGridViewCellStyle5.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvRutinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvRutinas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.Black;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvRutinas.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.Black;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvRutinas.DefaultCellStyle = dataGridViewCellStyle6;
             dgvRutinas.EnableHeadersVisualStyles = false;
             dgvRutinas.GridColor = Color.DodgerBlue;
             dgvRutinas.Location = new Point(42, 192);
@@ -195,6 +198,7 @@
             // 
             // txtNombreRutina
             // 
+            txtNombreRutina.Cursor = Cursors.Hand;
             txtNombreRutina.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNombreRutina.Location = new Point(1143, 220);
             txtNombreRutina.Name = "txtNombreRutina";
@@ -240,6 +244,7 @@
             // btnEditarRutina
             // 
             btnEditarRutina.BackColor = Color.DodgerBlue;
+            btnEditarRutina.Cursor = Cursors.Hand;
             btnEditarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditarRutina.ForeColor = Color.Black;
             btnEditarRutina.Location = new Point(745, 565);
@@ -266,6 +271,7 @@
             // 
             PicRutinaInicio.BackColor = Color.Transparent;
             PicRutinaInicio.BackgroundImageLayout = ImageLayout.None;
+            PicRutinaInicio.Cursor = Cursors.Hand;
             PicRutinaInicio.Image = Properties.Resources.image_removebg_preview__7_;
             PicRutinaInicio.Location = new Point(42, 64);
             PicRutinaInicio.Name = "PicRutinaInicio";
@@ -279,6 +285,7 @@
             // 
             PicEntrenadorIr.BackColor = Color.Transparent;
             PicEntrenadorIr.BackgroundImageLayout = ImageLayout.None;
+            PicEntrenadorIr.Cursor = Cursors.Hand;
             PicEntrenadorIr.Image = Properties.Resources.image_removebg_preview__9_;
             PicEntrenadorIr.Location = new Point(234, 64);
             PicEntrenadorIr.Name = "PicEntrenadorIr";
@@ -310,7 +317,7 @@
             Controls.Add(btnEliminarRutina);
             Controls.Add(btnConsultarRutina);
             Controls.Add(btnAgregarRutina);
-            Cursor = Cursors.Hand;
+            Cursor = Cursors.Default;
             Name = "RegistroRutina";
             Text = "RegistroRutina";
             Load += PicMem2_Load;

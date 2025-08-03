@@ -131,7 +131,9 @@ namespace GymPresentacion
         private void PicPanelEquipo_Click(object sender, EventArgs e)
         {
             _isNavigating = true;
-            RegistroEquipo equipo = new RegistroEquipo();
+           // RegistroEquipo equipo = new RegistroEquipo();
+           //ahora se llama con el parametro
+            RegistroEquipo equipo = new RegistroEquipo(_usuarioActivo);
             equipo.Show();
             this.Close();
         }

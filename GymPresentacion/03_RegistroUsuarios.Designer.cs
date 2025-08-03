@@ -56,7 +56,7 @@
             lblNombreUusario.BackColor = Color.Transparent;
             lblNombreUusario.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNombreUusario.ForeColor = Color.Lavender;
-            lblNombreUusario.Location = new Point(1013, 243);
+            lblNombreUusario.Location = new Point(947, 190);
             lblNombreUusario.Name = "lblNombreUusario";
             lblNombreUusario.Size = new Size(163, 20);
             lblNombreUusario.TabIndex = 0;
@@ -68,7 +68,7 @@
             lblContrasena.BackColor = Color.Transparent;
             lblContrasena.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblContrasena.ForeColor = Color.Lavender;
-            lblContrasena.Location = new Point(1013, 307);
+            lblContrasena.Location = new Point(947, 254);
             lblContrasena.Name = "lblContrasena";
             lblContrasena.Size = new Size(122, 20);
             lblContrasena.TabIndex = 1;
@@ -80,7 +80,7 @@
             lblRolUsuario.BackColor = Color.Transparent;
             lblRolUsuario.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRolUsuario.ForeColor = Color.Lavender;
-            lblRolUsuario.Location = new Point(1013, 365);
+            lblRolUsuario.Location = new Point(947, 312);
             lblRolUsuario.Name = "lblRolUsuario";
             lblRolUsuario.Size = new Size(119, 20);
             lblRolUsuario.TabIndex = 2;
@@ -89,21 +89,23 @@
             // cmbRolUsuario
             // 
             cmbRolUsuario.FormattingEnabled = true;
-            cmbRolUsuario.Location = new Point(1157, 363);
+            cmbRolUsuario.Location = new Point(1141, 310);
             cmbRolUsuario.Name = "cmbRolUsuario";
             cmbRolUsuario.Size = new Size(293, 28);
             cmbRolUsuario.TabIndex = 3;
             // 
             // txtNombreUsuario
             // 
-            txtNombreUsuario.Location = new Point(1198, 235);
+            txtNombreUsuario.Cursor = Cursors.IBeam;
+            txtNombreUsuario.Location = new Point(1141, 188);
             txtNombreUsuario.Name = "txtNombreUsuario";
             txtNombreUsuario.Size = new Size(252, 27);
             txtNombreUsuario.TabIndex = 4;
             // 
             // txtContasena
             // 
-            txtContasena.Location = new Point(1141, 305);
+            txtContasena.Cursor = Cursors.IBeam;
+            txtContasena.Location = new Point(1141, 252);
             txtContasena.Name = "txtContasena";
             txtContasena.Size = new Size(293, 27);
             txtContasena.TabIndex = 5;
@@ -124,6 +126,7 @@
             // btnEliminarUsuario
             // 
             btnEliminarUsuario.BackColor = Color.DodgerBlue;
+            btnEliminarUsuario.Cursor = Cursors.Hand;
             btnEliminarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarUsuario.ForeColor = Color.Black;
             btnEliminarUsuario.Location = new Point(361, 613);
@@ -136,6 +139,7 @@
             // btnEditarUsuario
             // 
             btnEditarUsuario.BackColor = Color.DodgerBlue;
+            btnEditarUsuario.Cursor = Cursors.Hand;
             btnEditarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
             btnEditarUsuario.Location = new Point(557, 613);
             btnEditarUsuario.Name = "btnEditarUsuario";
@@ -148,8 +152,9 @@
             // btnAgregarUsuario
             // 
             btnAgregarUsuario.BackColor = Color.DodgerBlue;
+            btnAgregarUsuario.Cursor = Cursors.Hand;
             btnAgregarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnAgregarUsuario.Location = new Point(1222, 613);
+            btnAgregarUsuario.Location = new Point(1198, 613);
             btnAgregarUsuario.Name = "btnAgregarUsuario";
             btnAgregarUsuario.Size = new Size(149, 52);
             btnAgregarUsuario.TabIndex = 9;
@@ -160,6 +165,7 @@
             // btnConsultarUsuario
             // 
             btnConsultarUsuario.BackColor = Color.DodgerBlue;
+            btnConsultarUsuario.Cursor = Cursors.Hand;
             btnConsultarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
             btnConsultarUsuario.Location = new Point(731, 613);
             btnConsultarUsuario.Name = "btnConsultarUsuario";
@@ -217,7 +223,7 @@
             checkBox1.AutoSize = true;
             checkBox1.BackColor = Color.Black;
             checkBox1.ForeColor = SystemColors.ButtonHighlight;
-            checkBox1.Location = new Point(1025, 461);
+            checkBox1.Location = new Point(966, 386);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(52, 24);
             checkBox1.TabIndex = 13;
@@ -228,8 +234,9 @@
             // btnLimpiar1
             // 
             btnLimpiar1.BackColor = Color.DodgerBlue;
+            btnLimpiar1.Cursor = Cursors.Hand;
             btnLimpiar1.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnLimpiar1.Location = new Point(1025, 613);
+            btnLimpiar1.Location = new Point(996, 613);
             btnLimpiar1.Name = "btnLimpiar1";
             btnLimpiar1.Size = new Size(139, 52);
             btnLimpiar1.TabIndex = 14;
