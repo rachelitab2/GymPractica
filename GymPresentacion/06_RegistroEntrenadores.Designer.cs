@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             dgvEntrenadores = new DataGridView();
             btnConsultar = new Button();
             btnEditarEntrenador = new Button();
@@ -43,12 +43,10 @@
             lblGeneroEntrendor = new Label();
             lblAreaEntrenador = new Label();
             lblTelefono = new Label();
-            PicMem2 = new PictureBox();
             maskedTextBox1 = new MaskedTextBox();
             txtNombreEntrenador = new TextBox();
             dtpIngresoEntrenador = new DateTimePicker();
             lblIngresoEntrenador = new Label();
-            PicRutinaEntrenador = new PictureBox();
             lblDuracion = new Label();
             nudDuracion = new NumericUpDown();
             pictureBox1 = new PictureBox();
@@ -59,8 +57,6 @@
             lblCorreoEntrenador = new Label();
             textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvEntrenadores).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)PicMem2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)PicRutinaEntrenador).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudDuracion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicEntrenadorInicio).BeginInit();
@@ -71,92 +67,88 @@
             // 
             dgvEntrenadores.AllowUserToAddRows = false;
             dgvEntrenadores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvEntrenadores.BackgroundColor = Color.Lavender;
             dgvEntrenadores.BorderStyle = BorderStyle.None;
             dgvEntrenadores.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Black;
-            dataGridViewCellStyle5.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Black;
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvEntrenadores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle3;
             dgvEntrenadores.EnableHeadersVisualStyles = false;
             dgvEntrenadores.GridColor = Color.DodgerBlue;
-            dgvEntrenadores.Location = new Point(119, 180);
+            dgvEntrenadores.Location = new Point(119, 189);
             dgvEntrenadores.MultiSelect = false;
             dgvEntrenadores.Name = "dgvEntrenadores";
             dgvEntrenadores.ReadOnly = true;
             dgvEntrenadores.RowHeadersVisible = false;
             dgvEntrenadores.RowHeadersWidth = 51;
             dgvEntrenadores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEntrenadores.Size = new Size(841, 465);
+            dgvEntrenadores.Size = new Size(841, 433);
             dgvEntrenadores.TabIndex = 5;
             dgvEntrenadores.CellContentClick += dgvEntrenadores_CellContentClick;
             // 
             // btnConsultar
             // 
             btnConsultar.BackColor = Color.DodgerBlue;
-            btnConsultar.Cursor = Cursors.Hand;
             btnConsultar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultar.ForeColor = Color.Black;
             btnConsultar.Location = new Point(303, 656);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(167, 61);
             btnConsultar.TabIndex = 1;
-            btnConsultar.Text = "Consultar";
+            btnConsultar.Text = "🔍 Consultar";
             btnConsultar.UseVisualStyleBackColor = false;
             // 
             // btnEditarEntrenador
             // 
             btnEditarEntrenador.BackColor = Color.DodgerBlue;
-            btnEditarEntrenador.Cursor = Cursors.Hand;
             btnEditarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditarEntrenador.ForeColor = Color.Black;
             btnEditarEntrenador.Location = new Point(475, 656);
             btnEditarEntrenador.Name = "btnEditarEntrenador";
             btnEditarEntrenador.Size = new Size(160, 61);
             btnEditarEntrenador.TabIndex = 2;
-            btnEditarEntrenador.Text = "Editar";
+            btnEditarEntrenador.Text = "✏️ Editar";
             btnEditarEntrenador.UseVisualStyleBackColor = false;
             // 
             // btnEliminarEntrenador
             // 
             btnEliminarEntrenador.BackColor = Color.DodgerBlue;
-            btnEliminarEntrenador.Cursor = Cursors.Hand;
             btnEliminarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarEntrenador.ForeColor = Color.Black;
             btnEliminarEntrenador.Location = new Point(641, 656);
             btnEliminarEntrenador.Name = "btnEliminarEntrenador";
             btnEliminarEntrenador.Size = new Size(160, 59);
             btnEliminarEntrenador.TabIndex = 3;
-            btnEliminarEntrenador.Text = "Eliminar";
+            btnEliminarEntrenador.Text = "🗑️ Eliminar";
             btnEliminarEntrenador.UseVisualStyleBackColor = false;
             btnEliminarEntrenador.Click += button3_Click;
             // 
             // btnAgregarEntrenador
             // 
             btnAgregarEntrenador.BackColor = Color.DodgerBlue;
-            btnAgregarEntrenador.Cursor = Cursors.Hand;
             btnAgregarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregarEntrenador.ForeColor = Color.Black;
             btnAgregarEntrenador.Location = new Point(806, 654);
             btnAgregarEntrenador.Name = "btnAgregarEntrenador";
             btnAgregarEntrenador.Size = new Size(154, 60);
             btnAgregarEntrenador.TabIndex = 4;
-            btnAgregarEntrenador.Text = "Agregar";
+            btnAgregarEntrenador.Text = "➕ Agregar";
             btnAgregarEntrenador.UseVisualStyleBackColor = false;
             // 
             // checkDisponible
@@ -174,6 +166,10 @@
             // 
             // cmbGeneroEntrenador
             // 
+            cmbGeneroEntrenador.BackColor = Color.DodgerBlue;
+            cmbGeneroEntrenador.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbGeneroEntrenador.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
+            cmbGeneroEntrenador.ForeColor = Color.Black;
             cmbGeneroEntrenador.FormattingEnabled = true;
             cmbGeneroEntrenador.Location = new Point(1198, 242);
             cmbGeneroEntrenador.Name = "cmbGeneroEntrenador";
@@ -182,6 +178,9 @@
             // 
             // cmbAreaEntrenador
             // 
+            cmbAreaEntrenador.BackColor = Color.DodgerBlue;
+            cmbAreaEntrenador.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbAreaEntrenador.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbAreaEntrenador.FormattingEnabled = true;
             cmbAreaEntrenador.Location = new Point(1198, 294);
             cmbAreaEntrenador.Name = "cmbAreaEntrenador";
@@ -239,41 +238,27 @@
             lblTelefono.TabIndex = 11;
             lblTelefono.Text = "Telefono";
             // 
-            // PicMem2
-            // 
-            PicMem2.BackColor = Color.Transparent;
-            PicMem2.BackgroundImageLayout = ImageLayout.None;
-            PicMem2.Cursor = Cursors.Hand;
-            PicMem2.Image = Properties.Resources.image_removebg_preview__3_;
-            PicMem2.Location = new Point(210, 80);
-            PicMem2.Name = "PicMem2";
-            PicMem2.Size = new Size(100, 84);
-            PicMem2.SizeMode = PictureBoxSizeMode.Zoom;
-            PicMem2.TabIndex = 12;
-            PicMem2.TabStop = false;
-            // 
             // maskedTextBox1
             // 
-            maskedTextBox1.Cursor = Cursors.Hand;
+            maskedTextBox1.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             maskedTextBox1.Location = new Point(1198, 359);
             maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(301, 27);
+            maskedTextBox1.Size = new Size(301, 28);
             maskedTextBox1.TabIndex = 13;
             // 
             // txtNombreEntrenador
             // 
-            txtNombreEntrenador.Cursor = Cursors.Hand;
-            txtNombreEntrenador.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNombreEntrenador.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             txtNombreEntrenador.Location = new Point(1198, 189);
             txtNombreEntrenador.Name = "txtNombreEntrenador";
             txtNombreEntrenador.ShortcutsEnabled = false;
-            txtNombreEntrenador.Size = new Size(301, 27);
+            txtNombreEntrenador.Size = new Size(301, 28);
             txtNombreEntrenador.TabIndex = 14;
             txtNombreEntrenador.KeyPress += txtNombreEntrenador_KeyPress;
             // 
             // dtpIngresoEntrenador
             // 
-            dtpIngresoEntrenador.CalendarFont = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dtpIngresoEntrenador.CalendarFont = new Font("Verdana", 10.2F, FontStyle.Bold);
             dtpIngresoEntrenador.Format = DateTimePickerFormat.Short;
             dtpIngresoEntrenador.Location = new Point(1197, 414);
             dtpIngresoEntrenador.Name = "dtpIngresoEntrenador";
@@ -292,19 +277,6 @@
             lblIngresoEntrenador.TabIndex = 16;
             lblIngresoEntrenador.Text = "Fecha Ingreso";
             // 
-            // PicRutinaEntrenador
-            // 
-            PicRutinaEntrenador.BackColor = Color.Transparent;
-            PicRutinaEntrenador.BackgroundImageLayout = ImageLayout.None;
-            PicRutinaEntrenador.Cursor = Cursors.Hand;
-            PicRutinaEntrenador.Image = Properties.Resources.image_removebg_preview__5_;
-            PicRutinaEntrenador.Location = new Point(303, 80);
-            PicRutinaEntrenador.Name = "PicRutinaEntrenador";
-            PicRutinaEntrenador.Size = new Size(100, 84);
-            PicRutinaEntrenador.SizeMode = PictureBoxSizeMode.Zoom;
-            PicRutinaEntrenador.TabIndex = 17;
-            PicRutinaEntrenador.TabStop = false;
-            // 
             // lblDuracion
             // 
             lblDuracion.AutoSize = true;
@@ -319,12 +291,14 @@
             // 
             // nudDuracion
             // 
+            nudDuracion.Cursor = Cursors.Hand;
+            nudDuracion.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
             nudDuracion.Location = new Point(1197, 463);
             nudDuracion.Maximum = new decimal(new int[] { 120, 0, 0, 0 });
             nudDuracion.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             nudDuracion.Name = "nudDuracion";
             nudDuracion.ReadOnly = true;
-            nudDuracion.Size = new Size(301, 27);
+            nudDuracion.Size = new Size(301, 34);
             nudDuracion.TabIndex = 19;
             nudDuracion.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
@@ -349,6 +323,7 @@
             PicEntrenadorInicio.Location = new Point(119, 80);
             PicEntrenadorInicio.Name = "PicEntrenadorInicio";
             PicEntrenadorInicio.Size = new Size(100, 84);
+            PicEntrenadorInicio.SizeMode = PictureBoxSizeMode.Zoom;
             PicEntrenadorInicio.TabIndex = 21;
             PicEntrenadorInicio.TabStop = false;
             PicEntrenadorInicio.Click += PicEntrenadorInicio_Click;
@@ -367,11 +342,13 @@
             // 
             // nudSalario
             // 
+            nudSalario.Cursor = Cursors.SizeAll;
             nudSalario.DecimalPlaces = 2;
+            nudSalario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
             nudSalario.Location = new Point(1197, 515);
             nudSalario.Maximum = new decimal(new int[] { 30000, 0, 0, 0 });
             nudSalario.Name = "nudSalario";
-            nudSalario.Size = new Size(150, 27);
+            nudSalario.Size = new Size(150, 34);
             nudSalario.TabIndex = 23;
             nudSalario.ThousandsSeparator = true;
             // 
@@ -379,7 +356,6 @@
             // 
             checkCorreoEntrenador.AutoSize = true;
             checkCorreoEntrenador.BackColor = Color.Lavender;
-            checkCorreoEntrenador.Cursor = Cursors.Hand;
             checkCorreoEntrenador.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
             checkCorreoEntrenador.Location = new Point(1265, 622);
             checkCorreoEntrenador.Name = "checkCorreoEntrenador";
@@ -402,10 +378,10 @@
             // 
             // textBox1
             // 
-            textBox1.Cursor = Cursors.IBeam;
+            textBox1.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             textBox1.Location = new Point(1198, 567);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(302, 27);
+            textBox1.Size = new Size(302, 28);
             textBox1.TabIndex = 26;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
@@ -425,12 +401,10 @@
             Controls.Add(pictureBox1);
             Controls.Add(nudDuracion);
             Controls.Add(lblDuracion);
-            Controls.Add(PicRutinaEntrenador);
             Controls.Add(lblIngresoEntrenador);
             Controls.Add(dtpIngresoEntrenador);
             Controls.Add(txtNombreEntrenador);
             Controls.Add(maskedTextBox1);
-            Controls.Add(PicMem2);
             Controls.Add(lblTelefono);
             Controls.Add(lblAreaEntrenador);
             Controls.Add(lblGeneroEntrendor);
@@ -445,11 +419,9 @@
             Controls.Add(dgvEntrenadores);
             DoubleBuffered = true;
             Name = "RegistroEntrenadores";
-            Text = "Form2";
+            Text = "RegistroEntrenadores";
             Load += Form2Entrenadores_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEntrenadores).EndInit();
-            ((System.ComponentModel.ISupportInitialize)PicMem2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)PicRutinaEntrenador).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudDuracion).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicEntrenadorInicio).EndInit();
@@ -472,12 +444,10 @@
         private Label lblGeneroEntrendor;
         private Label lblAreaEntrenador;
         private Label lblTelefono;
-        private PictureBox PicMem2;
         private MaskedTextBox maskedTextBox1;
         private TextBox txtNombreEntrenador;
         private DateTimePicker dtpIngresoEntrenador;
         private Label lblIngresoEntrenador;
-        private PictureBox PicRutinaEntrenador;
         private Label lblDuracion;
         private NumericUpDown nudDuracion;
         private PictureBox pictureBox1;

@@ -178,7 +178,7 @@ namespace GymPresentacion
                 if(pago != null)
                 {
                     txtFechaVencimientoPago.Text = pago.FechaPago.ToShortDateString();
-                    cmbTipoClientePago.SelectedItem = pago.MetodoPago;
+                    cmbMetodoPago.SelectedItem = pago.MetodoPago;
                     txtMonto.Text = pago.Monto.ToString("F2");
                 
 
@@ -298,7 +298,7 @@ namespace GymPresentacion
                     MessageBox.Show("Monto invalido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                pago.MetodoPago = cmbTipoClientePago.SelectedItem?.ToString() ?? "Efectivo";
+                pago.MetodoPago = cmbMetodoPago.SelectedItem?.ToString() ?? "Efectivo";
 
                 _servicioPagoMembresia.ActualizarPago(pago);
                 MessageBox.Show("Pago Actualizado Correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);

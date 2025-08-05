@@ -344,7 +344,7 @@
             DoubleBuffered = true;
             Margin = new Padding(3, 2, 3, 2);
             Name = "RegistroEquipo";
-            Text = "Form1";
+            Text = "RegistroEquipo";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvEquipos).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicEquipoInicio).EndInit();

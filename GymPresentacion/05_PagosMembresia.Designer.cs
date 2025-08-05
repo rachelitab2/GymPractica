@@ -75,9 +75,12 @@
             // 
             // dtpPago
             // 
-            dtpPago.Location = new Point(1118, 441);
+            dtpPago.CalendarFont = new Font("Verdana", 10.2F, FontStyle.Bold);
+            dtpPago.CalendarMonthBackground = Color.Lavender;
+            dtpPago.CalendarTitleBackColor = Color.DodgerBlue;
+            dtpPago.Location = new Point(997, 441);
             dtpPago.Name = "dtpPago";
-            dtpPago.Size = new Size(250, 27);
+            dtpPago.Size = new Size(371, 27);
             dtpPago.TabIndex = 2;
             // 
             // PicPagoRegistroMembresia
@@ -117,28 +120,31 @@
             // cmbClientePago
             // 
             cmbClientePago.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbClientePago.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbClientePago.FormattingEnabled = true;
-            cmbClientePago.Location = new Point(1118, 285);
+            cmbClientePago.Location = new Point(997, 285);
             cmbClientePago.Name = "cmbClientePago";
-            cmbClientePago.Size = new Size(250, 28);
+            cmbClientePago.Size = new Size(371, 28);
             cmbClientePago.TabIndex = 5;
             // 
             // cmbTipoClientePago
             // 
             cmbTipoClientePago.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipoClientePago.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbTipoClientePago.FormattingEnabled = true;
-            cmbTipoClientePago.Location = new Point(1118, 387);
+            cmbTipoClientePago.Location = new Point(997, 387);
             cmbTipoClientePago.Name = "cmbTipoClientePago";
-            cmbTipoClientePago.Size = new Size(250, 28);
+            cmbTipoClientePago.Size = new Size(371, 28);
             cmbTipoClientePago.TabIndex = 6;
             // 
             // txtFechaVencimientoPago
             // 
-            txtFechaVencimientoPago.Cursor = Cursors.IBeam;
-            txtFechaVencimientoPago.Location = new Point(1118, 336);
+            txtFechaVencimientoPago.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
+            txtFechaVencimientoPago.ForeColor = Color.Black;
+            txtFechaVencimientoPago.Location = new Point(997, 336);
             txtFechaVencimientoPago.Name = "txtFechaVencimientoPago";
             txtFechaVencimientoPago.ReadOnly = true;
-            txtFechaVencimientoPago.Size = new Size(250, 27);
+            txtFechaVencimientoPago.Size = new Size(371, 28);
             txtFechaVencimientoPago.TabIndex = 7;
             // 
             // btnPago
@@ -155,11 +161,11 @@
             // 
             // txtMonto
             // 
-            txtMonto.Cursor = Cursors.IBeam;
-            txtMonto.Location = new Point(1118, 498);
+            txtMonto.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
+            txtMonto.Location = new Point(997, 498);
             txtMonto.Name = "txtMonto";
             txtMonto.ReadOnly = true;
-            txtMonto.Size = new Size(250, 27);
+            txtMonto.Size = new Size(371, 28);
             txtMonto.TabIndex = 9;
             // 
             // EliminarPago
@@ -167,11 +173,11 @@
             EliminarPago.BackColor = Color.DodgerBlue;
             EliminarPago.Cursor = Cursors.Hand;
             EliminarPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            EliminarPago.Location = new Point(356, 631);
+            EliminarPago.Location = new Point(370, 631);
             EliminarPago.Name = "EliminarPago";
             EliminarPago.Size = new Size(153, 55);
             EliminarPago.TabIndex = 10;
-            EliminarPago.Text = "Eliminar";
+            EliminarPago.Text = "🗑️ Eliminar";
             EliminarPago.UseVisualStyleBackColor = false;
             // 
             // EditarPago
@@ -179,11 +185,11 @@
             EditarPago.BackColor = Color.DodgerBlue;
             EditarPago.Cursor = Cursors.Hand;
             EditarPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            EditarPago.Location = new Point(532, 631);
+            EditarPago.Location = new Point(529, 631);
             EditarPago.Name = "EditarPago";
-            EditarPago.Size = new Size(145, 55);
+            EditarPago.Size = new Size(162, 55);
             EditarPago.TabIndex = 11;
-            EditarPago.Text = "Editar";
+            EditarPago.Text = "✏️ Editar";
             EditarPago.UseVisualStyleBackColor = false;
             // 
             // GuardarPago
@@ -203,20 +209,22 @@
             ConsultaPago.BackColor = Color.DodgerBlue;
             ConsultaPago.Cursor = Cursors.Hand;
             ConsultaPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            ConsultaPago.Location = new Point(181, 631);
+            ConsultaPago.Location = new Point(194, 631);
             ConsultaPago.Name = "ConsultaPago";
-            ConsultaPago.Size = new Size(150, 55);
+            ConsultaPago.Size = new Size(170, 55);
             ConsultaPago.TabIndex = 13;
-            ConsultaPago.Text = "Consulta";
+            ConsultaPago.Text = "🔍 Consultar";
             ConsultaPago.UseVisualStyleBackColor = false;
             // 
             // cmbMetodoPago
             // 
+            cmbMetodoPago.Cursor = Cursors.Hand;
             cmbMetodoPago.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMetodoPago.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbMetodoPago.FormattingEnabled = true;
-            cmbMetodoPago.Location = new Point(1122, 548);
+            cmbMetodoPago.Location = new Point(997, 550);
             cmbMetodoPago.Name = "cmbMetodoPago";
-            cmbMetodoPago.Size = new Size(246, 28);
+            cmbMetodoPago.Size = new Size(367, 28);
             cmbMetodoPago.TabIndex = 14;
             // 
             // PagosMembresia

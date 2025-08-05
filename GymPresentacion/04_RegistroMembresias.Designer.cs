@@ -58,15 +58,11 @@ namespace GymPresentacion
             cmbTipoMembresia = new ComboBox();
             mtxtTelefono = new MaskedTextBox();
             btnConsultar = new Button();
-            PicEntrenadores = new PictureBox();
-            PicRutinas = new PictureBox();
             pictureBox1 = new PictureBox();
             PicMemInicio = new PictureBox();
             lblCorreo = new Label();
             txtCorreo = new TextBox();
             ((ISupportInitialize)dataGridView1).BeginInit();
-            ((ISupportInitialize)PicEntrenadores).BeginInit();
-            ((ISupportInitialize)PicRutinas).BeginInit();
             ((ISupportInitialize)pictureBox1).BeginInit();
             ((ISupportInitialize)PicMemInicio).BeginInit();
             SuspendLayout();
@@ -75,11 +71,11 @@ namespace GymPresentacion
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.BackColor = Color.IndianRed;
-            lblTitulo.Font = new Font("Microsoft Sans Serif", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.Font = new Font("Perpetua Titling MT", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitulo.ForeColor = Color.White;
             lblTitulo.Location = new Point(701, 24);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(284, 54);
+            lblTitulo.Size = new Size(304, 56);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "GYMNASIO";
             // 
@@ -118,7 +114,7 @@ namespace GymPresentacion
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(174, 62);
             btnEditar.TabIndex = 3;
-            btnEditar.Text = "Editar";
+            btnEditar.Text = "✏️ Editar";
             btnEditar.UseVisualStyleBackColor = false;
             // 
             // btnEliminar
@@ -131,7 +127,7 @@ namespace GymPresentacion
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(174, 62);
             btnEliminar.TabIndex = 4;
-            btnEliminar.Text = "Eliminar";
+            btnEliminar.Text = "🗑️ Eliminar";
             btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += button2_Click;
             // 
@@ -185,13 +181,13 @@ namespace GymPresentacion
             // txtNombreCliente
             // 
             txtNombreCliente.BackColor = Color.White;
-            txtNombreCliente.Cursor = Cursors.IBeam;
-            txtNombreCliente.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNombreCliente.Cursor = Cursors.Hand;
+            txtNombreCliente.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             txtNombreCliente.Location = new Point(1216, 222);
             txtNombreCliente.MaxLength = 30;
             txtNombreCliente.Name = "txtNombreCliente";
             txtNombreCliente.ShortcutsEnabled = false;
-            txtNombreCliente.Size = new Size(296, 27);
+            txtNombreCliente.Size = new Size(296, 28);
             txtNombreCliente.TabIndex = 6;
             txtNombreCliente.TextChanged += txtNombreCliente_TextChanged;
             txtNombreCliente.KeyPress += txtNombreCliente_KeyPress;
@@ -206,7 +202,7 @@ namespace GymPresentacion
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(177, 62);
             btnAgregar.TabIndex = 9;
-            btnAgregar.Text = "Agregar";
+            btnAgregar.Text = "➕ Agregar";
             btnAgregar.UseVisualStyleBackColor = false;
             // 
             // lblFechaInicio
@@ -224,8 +220,8 @@ namespace GymPresentacion
             // 
             // dateTimePickerInicio
             // 
-            dateTimePickerInicio.CalendarFont = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dateTimePickerInicio.CalendarMonthBackground = SystemColors.ActiveBorder;
+            dateTimePickerInicio.CalendarFont = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dateTimePickerInicio.CalendarMonthBackground = Color.DodgerBlue;
             dateTimePickerInicio.Format = DateTimePickerFormat.Short;
             dateTimePickerInicio.Location = new Point(1216, 387);
             dateTimePickerInicio.Name = "dateTimePickerInicio";
@@ -247,23 +243,24 @@ namespace GymPresentacion
             // 
             // cmbTipoMembresia
             // 
-            cmbTipoMembresia.BackColor = Color.RosyBrown;
+            cmbTipoMembresia.BackColor = Color.Lavender;
+            cmbTipoMembresia.Cursor = Cursors.Hand;
             cmbTipoMembresia.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTipoMembresia.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cmbTipoMembresia.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbTipoMembresia.FormattingEnabled = true;
             cmbTipoMembresia.Location = new Point(1216, 304);
             cmbTipoMembresia.Name = "cmbTipoMembresia";
-            cmbTipoMembresia.Size = new Size(296, 25);
+            cmbTipoMembresia.Size = new Size(296, 28);
             cmbTipoMembresia.TabIndex = 18;
             cmbTipoMembresia.SelectedIndexChanged += cmbTipoMembresia_SelectedIndexChanged;
             // 
             // mtxtTelefono
             // 
-            mtxtTelefono.Cursor = Cursors.IBeam;
-            mtxtTelefono.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            mtxtTelefono.Cursor = Cursors.Hand;
+            mtxtTelefono.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             mtxtTelefono.Location = new Point(1216, 472);
             mtxtTelefono.Name = "mtxtTelefono";
-            mtxtTelefono.Size = new Size(296, 25);
+            mtxtTelefono.Size = new Size(296, 28);
             mtxtTelefono.TabIndex = 19;
             // 
             // btnConsultar
@@ -276,36 +273,8 @@ namespace GymPresentacion
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(174, 64);
             btnConsultar.TabIndex = 20;
-            btnConsultar.Text = "Consulta ";
+            btnConsultar.Text = "🔍 Consultar";
             btnConsultar.UseVisualStyleBackColor = false;
-            // 
-            // PicEntrenadores
-            // 
-            PicEntrenadores.BackColor = Color.Transparent;
-            PicEntrenadores.BackgroundImage = Properties.Resources.image_removebg_preview__9_;
-            PicEntrenadores.BackgroundImageLayout = ImageLayout.Zoom;
-            PicEntrenadores.Cursor = Cursors.Hand;
-            PicEntrenadores.Location = new Point(147, 101);
-            PicEntrenadores.Name = "PicEntrenadores";
-            PicEntrenadores.Size = new Size(96, 84);
-            PicEntrenadores.SizeMode = PictureBoxSizeMode.Zoom;
-            PicEntrenadores.TabIndex = 21;
-            PicEntrenadores.TabStop = false;
-            PicEntrenadores.Click += PicEntrenadores_Click;
-            // 
-            // PicRutinas
-            // 
-            PicRutinas.BackColor = Color.Transparent;
-            PicRutinas.BackgroundImage = Properties.Resources.image_removebg_preview__5_;
-            PicRutinas.BackgroundImageLayout = ImageLayout.Zoom;
-            PicRutinas.Cursor = Cursors.Hand;
-            PicRutinas.Location = new Point(249, 101);
-            PicRutinas.Name = "PicRutinas";
-            PicRutinas.Size = new Size(96, 84);
-            PicRutinas.SizeMode = PictureBoxSizeMode.Zoom;
-            PicRutinas.TabIndex = 22;
-            PicRutinas.TabStop = false;
-            PicRutinas.Click += PicRutinas_Click;
             // 
             // pictureBox1
             // 
@@ -346,10 +315,12 @@ namespace GymPresentacion
             // 
             // txtCorreo
             // 
-            txtCorreo.Cursor = Cursors.IBeam;
+            txtCorreo.BorderStyle = BorderStyle.FixedSingle;
+            txtCorreo.Cursor = Cursors.Hand;
+            txtCorreo.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             txtCorreo.Location = new Point(1279, 534);
             txtCorreo.Name = "txtCorreo";
-            txtCorreo.Size = new Size(233, 27);
+            txtCorreo.Size = new Size(233, 28);
             txtCorreo.TabIndex = 27;
             txtCorreo.TextChanged += textBox2_TextChanged;
             // 
@@ -363,8 +334,6 @@ namespace GymPresentacion
             Controls.Add(lblCorreo);
             Controls.Add(PicMemInicio);
             Controls.Add(pictureBox1);
-            Controls.Add(PicRutinas);
-            Controls.Add(PicEntrenadores);
             Controls.Add(btnConsultar);
             Controls.Add(mtxtTelefono);
             Controls.Add(cmbTipoMembresia);
@@ -384,8 +353,6 @@ namespace GymPresentacion
             Text = "RegistroMembresias";
             Load += Form1_Load;
             ((ISupportInitialize)dataGridView1).EndInit();
-            ((ISupportInitialize)PicEntrenadores).EndInit();
-            ((ISupportInitialize)PicRutinas).EndInit();
             ((ISupportInitialize)pictureBox1).EndInit();
             ((ISupportInitialize)PicMemInicio).EndInit();
             ResumeLayout(false);
@@ -409,8 +376,6 @@ namespace GymPresentacion
         private ComboBox cmbTipoMembresia;
         private MaskedTextBox mtxtTelefono;
         private Button btnConsultar;
-        private PictureBox PicEntrenadores;
-        private PictureBox PicRutinas;
         private PictureBox pictureBox1;
         private PictureBox PicMemInicio;
         private Label lblCorreo;

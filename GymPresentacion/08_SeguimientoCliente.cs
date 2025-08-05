@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GymNegocio.ClasesRutinas;
 using static GymNegocio.ClasesMembresia.MemGymnasio;
+using GymNegocio.ClaseSegumiento;
 using GymNegocio.ClasesMembresia;
 using GymNegocio.Login;
 

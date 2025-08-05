@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnAgregarRutina = new Button();
             btnConsultarRutina = new Button();
             btnEliminarRutina = new Button();
             lblGeneroRutina = new Label();
             lblZonaRutina = new Label();
             cmbGeneroRutina = new ComboBox();
-            PicMemRutina = new PictureBox();
             dgvRutinas = new DataGridView();
             lblNombreRutina = new Label();
             txtNombreRutina = new TextBox();
@@ -47,52 +46,46 @@
             btnEditarRutina = new Button();
             pictureBox1 = new PictureBox();
             PicRutinaInicio = new PictureBox();
-            PicEntrenadorIr = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)PicMemRutina).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvRutinas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudDuracion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicRutinaInicio).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)PicEntrenadorIr).BeginInit();
             SuspendLayout();
             // 
             // btnAgregarRutina
             // 
             btnAgregarRutina.BackColor = Color.DodgerBlue;
-            btnAgregarRutina.Cursor = Cursors.Hand;
             btnAgregarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnAgregarRutina.ForeColor = Color.Black;
-            btnAgregarRutina.Location = new Point(1185, 565);
+            btnAgregarRutina.Location = new Point(1143, 565);
             btnAgregarRutina.Name = "btnAgregarRutina";
-            btnAgregarRutina.Size = new Size(145, 52);
+            btnAgregarRutina.Size = new Size(152, 52);
             btnAgregarRutina.TabIndex = 0;
-            btnAgregarRutina.Text = "Agregar";
+            btnAgregarRutina.Text = "➕ Agregar";
             btnAgregarRutina.UseVisualStyleBackColor = false;
             // 
             // btnConsultarRutina
             // 
             btnConsultarRutina.BackColor = Color.DodgerBlue;
-            btnConsultarRutina.Cursor = Cursors.Hand;
             btnConsultarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultarRutina.ForeColor = Color.Black;
-            btnConsultarRutina.Location = new Point(369, 565);
+            btnConsultarRutina.Location = new Point(335, 565);
             btnConsultarRutina.Name = "btnConsultarRutina";
-            btnConsultarRutina.Size = new Size(136, 52);
+            btnConsultarRutina.Size = new Size(170, 52);
             btnConsultarRutina.TabIndex = 1;
-            btnConsultarRutina.Text = "Consultar";
+            btnConsultarRutina.Text = "🔍 Consultar";
             btnConsultarRutina.UseVisualStyleBackColor = false;
             // 
             // btnEliminarRutina
             // 
             btnEliminarRutina.BackColor = Color.DodgerBlue;
-            btnEliminarRutina.Cursor = Cursors.Hand;
             btnEliminarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEliminarRutina.ForeColor = Color.Black;
-            btnEliminarRutina.Location = new Point(553, 565);
+            btnEliminarRutina.Location = new Point(531, 565);
             btnEliminarRutina.Name = "btnEliminarRutina";
-            btnEliminarRutina.Size = new Size(139, 52);
+            btnEliminarRutina.Size = new Size(155, 52);
             btnEliminarRutina.TabIndex = 2;
-            btnEliminarRutina.Text = "Eliminar";
+            btnEliminarRutina.Text = "🗑️ Eliminar";
             btnEliminarRutina.UseVisualStyleBackColor = false;
             btnEliminarRutina.Click += btnEliminarRutina_Click;
             // 
@@ -123,7 +116,9 @@
             // 
             // cmbGeneroRutina
             // 
+            cmbGeneroRutina.BackColor = Color.DodgerBlue;
             cmbGeneroRutina.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbGeneroRutina.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbGeneroRutina.FormattingEnabled = true;
             cmbGeneroRutina.Location = new Point(1143, 278);
             cmbGeneroRutina.Name = "cmbGeneroRutina";
@@ -131,47 +126,33 @@
             cmbGeneroRutina.TabIndex = 9;
             cmbGeneroRutina.SelectedIndexChanged += cmbGeneroRutina_SelectedIndexChanged;
             // 
-            // PicMemRutina
-            // 
-            PicMemRutina.BackColor = Color.Transparent;
-            PicMemRutina.BackgroundImageLayout = ImageLayout.Zoom;
-            PicMemRutina.Cursor = Cursors.Hand;
-            PicMemRutina.Image = Properties.Resources.image_removebg_preview__3_;
-            PicMemRutina.Location = new Point(138, 64);
-            PicMemRutina.Name = "PicMemRutina";
-            PicMemRutina.Size = new Size(100, 84);
-            PicMemRutina.SizeMode = PictureBoxSizeMode.Zoom;
-            PicMemRutina.TabIndex = 10;
-            PicMemRutina.TabStop = false;
-            PicMemRutina.Click += PicMemRutina_Click;
-            // 
             // dgvRutinas
             // 
             dgvRutinas.AllowUserToAddRows = false;
             dgvRutinas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dgvRutinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dgvRutinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvRutinas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRutinas.BackgroundColor = Color.Lavender;
             dgvRutinas.BorderStyle = BorderStyle.None;
             dgvRutinas.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Black;
-            dataGridViewCellStyle5.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvRutinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Black;
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvRutinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvRutinas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.Black;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvRutinas.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Black;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvRutinas.DefaultCellStyle = dataGridViewCellStyle3;
             dgvRutinas.EnableHeadersVisualStyles = false;
             dgvRutinas.GridColor = Color.DodgerBlue;
             dgvRutinas.Location = new Point(42, 192);
@@ -198,19 +179,20 @@
             // 
             // txtNombreRutina
             // 
-            txtNombreRutina.Cursor = Cursors.Hand;
-            txtNombreRutina.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNombreRutina.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             txtNombreRutina.Location = new Point(1143, 220);
             txtNombreRutina.Name = "txtNombreRutina";
             txtNombreRutina.ShortcutsEnabled = false;
-            txtNombreRutina.Size = new Size(296, 27);
+            txtNombreRutina.Size = new Size(296, 28);
             txtNombreRutina.TabIndex = 12;
             txtNombreRutina.TextChanged += txtNombreRutina_TextChanged;
             txtNombreRutina.KeyPress += txtNombreRutina_KeyPress;
             // 
             // cmbAreaRutina
             // 
+            cmbAreaRutina.BackColor = Color.DodgerBlue;
             cmbAreaRutina.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbAreaRutina.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbAreaRutina.FormattingEnabled = true;
             cmbAreaRutina.Location = new Point(1143, 344);
             cmbAreaRutina.Name = "cmbAreaRutina";
@@ -244,14 +226,13 @@
             // btnEditarRutina
             // 
             btnEditarRutina.BackColor = Color.DodgerBlue;
-            btnEditarRutina.Cursor = Cursors.Hand;
             btnEditarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditarRutina.ForeColor = Color.Black;
-            btnEditarRutina.Location = new Point(745, 565);
+            btnEditarRutina.Location = new Point(706, 565);
             btnEditarRutina.Name = "btnEditarRutina";
             btnEditarRutina.Size = new Size(143, 52);
             btnEditarRutina.TabIndex = 16;
-            btnEditarRutina.Text = "Editar";
+            btnEditarRutina.Text = "✏️ Editar";
             btnEditarRutina.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
@@ -271,28 +252,14 @@
             // 
             PicRutinaInicio.BackColor = Color.Transparent;
             PicRutinaInicio.BackgroundImageLayout = ImageLayout.None;
-            PicRutinaInicio.Cursor = Cursors.Hand;
             PicRutinaInicio.Image = Properties.Resources.image_removebg_preview__7_;
-            PicRutinaInicio.Location = new Point(42, 64);
+            PicRutinaInicio.Location = new Point(42, 102);
             PicRutinaInicio.Name = "PicRutinaInicio";
             PicRutinaInicio.Size = new Size(100, 84);
             PicRutinaInicio.SizeMode = PictureBoxSizeMode.Zoom;
             PicRutinaInicio.TabIndex = 21;
             PicRutinaInicio.TabStop = false;
             PicRutinaInicio.Click += PicRutinaInicio_Click;
-            // 
-            // PicEntrenadorIr
-            // 
-            PicEntrenadorIr.BackColor = Color.Transparent;
-            PicEntrenadorIr.BackgroundImageLayout = ImageLayout.None;
-            PicEntrenadorIr.Cursor = Cursors.Hand;
-            PicEntrenadorIr.Image = Properties.Resources.image_removebg_preview__9_;
-            PicEntrenadorIr.Location = new Point(234, 64);
-            PicEntrenadorIr.Name = "PicEntrenadorIr";
-            PicEntrenadorIr.Size = new Size(100, 84);
-            PicEntrenadorIr.SizeMode = PictureBoxSizeMode.Zoom;
-            PicEntrenadorIr.TabIndex = 19;
-            PicEntrenadorIr.TabStop = false;
             // 
             // RegistroRutina
             // 
@@ -302,7 +269,6 @@
             ClientSize = new Size(1532, 667);
             Controls.Add(PicRutinaInicio);
             Controls.Add(pictureBox1);
-            Controls.Add(PicEntrenadorIr);
             Controls.Add(btnEditarRutina);
             Controls.Add(nudDuracion);
             Controls.Add(lblDuracion);
@@ -310,23 +276,20 @@
             Controls.Add(txtNombreRutina);
             Controls.Add(lblNombreRutina);
             Controls.Add(dgvRutinas);
-            Controls.Add(PicMemRutina);
             Controls.Add(cmbGeneroRutina);
             Controls.Add(lblZonaRutina);
             Controls.Add(lblGeneroRutina);
             Controls.Add(btnEliminarRutina);
             Controls.Add(btnConsultarRutina);
             Controls.Add(btnAgregarRutina);
-            Cursor = Cursors.Default;
+            Cursor = Cursors.Hand;
             Name = "RegistroRutina";
             Text = "RegistroRutina";
             Load += PicMem2_Load;
-            ((System.ComponentModel.ISupportInitialize)PicMemRutina).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvRutinas).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudDuracion).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicRutinaInicio).EndInit();
-            ((System.ComponentModel.ISupportInitialize)PicEntrenadorIr).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -339,7 +302,6 @@
         private Label lblGeneroRutina;
         private Label lblZonaRutina;
         private ComboBox cmbGeneroRutina;
-        private PictureBox PicMemRutina;
         private DataGridView dgvRutinas;
         private Label lblNombreRutina;
         private TextBox txtNombreRutina;
@@ -351,6 +313,5 @@
         private ComboBox cmbEntrenador;
         private PictureBox pictureBox1;
         private PictureBox PicRutinaInicio;
-        private PictureBox PicEntrenadorIr;
     }
 }

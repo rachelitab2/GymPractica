@@ -521,7 +521,6 @@ namespace GymPresentacion // nombre importante
 
 
         }
-
         private void PicRutinas_Click(object sender, EventArgs e)
         {
             _isNavigating = true; // Avisamos que estamos navegando
