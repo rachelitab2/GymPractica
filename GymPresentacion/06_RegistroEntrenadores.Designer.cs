@@ -69,6 +69,7 @@
             dgvEntrenadores.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvEntrenadores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEntrenadores.BackgroundColor = Color.Lavender;
             dgvEntrenadores.BorderStyle = BorderStyle.None;
             dgvEntrenadores.CellBorderStyle = DataGridViewCellBorderStyle.None;

@@ -143,10 +143,11 @@
             DatosdelClienteP.AllowUserToDeleteRows = false;
             DatosdelClienteP.AllowUserToResizeColumns = false;
             DatosdelClienteP.AllowUserToResizeRows = false;
+            DatosdelClienteP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DatosdelClienteP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DatosdelClienteP.GridColor = SystemColors.MenuHighlight;
             DatosdelClienteP.Location = new Point(22, 223);
-            DatosdelClienteP.Margin = new Padding(2, 2, 2, 2);
+            DatosdelClienteP.Margin = new Padding(2);
             DatosdelClienteP.Name = "DatosdelClienteP";
             DatosdelClienteP.ReadOnly = true;
             DatosdelClienteP.RowHeadersWidth = 62;
@@ -196,7 +197,7 @@
             // 
             BotonSeguimin.Cursor = Cursors.Hand;
             BotonSeguimin.Location = new Point(1030, 538);
-            BotonSeguimin.Margin = new Padding(2, 2, 2, 2);
+            BotonSeguimin.Margin = new Padding(2);
             BotonSeguimin.Name = "BotonSeguimin";
             BotonSeguimin.Size = new Size(119, 62);
             BotonSeguimin.TabIndex = 12;
@@ -233,7 +234,7 @@
             button1.Cursor = Cursors.Hand;
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.Location = new Point(22, 538);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(101, 62);
             button1.TabIndex = 15;

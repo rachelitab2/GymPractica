@@ -121,6 +121,7 @@
             // 
             dgvUsuarios.AllowUserToAddRows = false;
             dgvUsuarios.AllowUserToDeleteRows = false;
+            dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvUsuarios.BackgroundColor = Color.Lavender;
             dgvUsuarios.BorderStyle = BorderStyle.None;
             dgvUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.None;
