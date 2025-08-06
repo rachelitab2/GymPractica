@@ -30,6 +30,12 @@
         {
             pictureBox1 = new PictureBox();
             dgvEquipos = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            AreaUso = new DataGridViewTextBoxColumn();
+            FechaEntrega = new DataGridViewTextBoxColumn();
             lblNombreEquipo = new Label();
             lblDescripcionEquipo = new Label();
             lblAreaUsoEquipo = new Label();
@@ -45,12 +51,6 @@
             btnEditarEquipo = new Button();
             btnConsultarEquipo = new Button();
             PicEquipoInicio = new PictureBox();
-            Id = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            AreaUso = new DataGridViewTextBoxColumn();
-            FechaEntrega = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEquipos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicEquipoInicio).BeginInit();
@@ -61,10 +61,9 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
             pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
-            pictureBox1.Location = new Point(411, 9);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(470, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(515, 122);
+            pictureBox1.Size = new Size(589, 163);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -73,6 +72,7 @@
             // 
             dgvEquipos.AllowUserToAddRows = false;
             dgvEquipos.AllowUserToDeleteRows = false;
+            dgvEquipos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEquipos.BackgroundColor = Color.Lavender;
             dgvEquipos.BorderStyle = BorderStyle.None;
             dgvEquipos.CellBorderStyle = DataGridViewCellBorderStyle.None;
@@ -80,17 +80,58 @@
             dgvEquipos.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Descripcion, Precio, AreaUso, FechaEntrega });
             dgvEquipos.EnableHeadersVisualStyles = false;
             dgvEquipos.GridColor = Color.DodgerBlue;
-            dgvEquipos.Location = new Point(66, 151);
-            dgvEquipos.Margin = new Padding(3, 2, 3, 2);
+            dgvEquipos.Location = new Point(75, 201);
             dgvEquipos.MultiSelect = false;
             dgvEquipos.Name = "dgvEquipos";
             dgvEquipos.ReadOnly = true;
             dgvEquipos.RowHeadersVisible = false;
             dgvEquipos.RowHeadersWidth = 51;
             dgvEquipos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEquipos.Size = new Size(672, 279);
+            dgvEquipos.Size = new Size(768, 372);
             dgvEquipos.TabIndex = 1;
             dgvEquipos.CellContentClick += dgvEquipos_CellContentClick;
+            // 
+            // Id
+            // 
+            Id.HeaderText = "ID";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 6;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            Descripcion.HeaderText = "Descripción\n";
+            Descripcion.MinimumWidth = 6;
+            Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 6;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            // 
+            // AreaUso
+            // 
+            AreaUso.HeaderText = "Área de Uso\n";
+            AreaUso.MinimumWidth = 6;
+            AreaUso.Name = "AreaUso";
+            AreaUso.ReadOnly = true;
+            // 
+            // FechaEntrega
+            // 
+            FechaEntrega.HeaderText = "Fecha de Entrega\n\n";
+            FechaEntrega.MinimumWidth = 6;
+            FechaEntrega.Name = "FechaEntrega";
+            FechaEntrega.ReadOnly = true;
             // 
             // lblNombreEquipo
             // 
@@ -98,9 +139,9 @@
             lblNombreEquipo.BackColor = Color.Transparent;
             lblNombreEquipo.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             lblNombreEquipo.ForeColor = Color.Lavender;
-            lblNombreEquipo.Location = new Point(778, 211);
+            lblNombreEquipo.Location = new Point(889, 281);
             lblNombreEquipo.Name = "lblNombreEquipo";
-            lblNombreEquipo.Size = new Size(168, 22);
+            lblNombreEquipo.Size = new Size(206, 25);
             lblNombreEquipo.TabIndex = 2;
             lblNombreEquipo.Text = "Nombre del Equipo";
             // 
@@ -110,9 +151,9 @@
             lblDescripcionEquipo.BackColor = Color.Transparent;
             lblDescripcionEquipo.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             lblDescripcionEquipo.ForeColor = Color.Lavender;
-            lblDescripcionEquipo.Location = new Point(778, 244);
+            lblDescripcionEquipo.Location = new Point(889, 325);
             lblDescripcionEquipo.Name = "lblDescripcionEquipo";
-            lblDescripcionEquipo.Size = new Size(107, 22);
+            lblDescripcionEquipo.Size = new Size(129, 25);
             lblDescripcionEquipo.TabIndex = 3;
             lblDescripcionEquipo.Text = "Descripcion";
             // 
@@ -122,9 +163,9 @@
             lblAreaUsoEquipo.BackColor = Color.Transparent;
             lblAreaUsoEquipo.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             lblAreaUsoEquipo.ForeColor = Color.Lavender;
-            lblAreaUsoEquipo.Location = new Point(778, 282);
+            lblAreaUsoEquipo.Location = new Point(889, 376);
             lblAreaUsoEquipo.Name = "lblAreaUsoEquipo";
-            lblAreaUsoEquipo.Size = new Size(110, 22);
+            lblAreaUsoEquipo.Size = new Size(135, 25);
             lblAreaUsoEquipo.TabIndex = 4;
             lblAreaUsoEquipo.Text = "Area de Uso";
             lblAreaUsoEquipo.Click += lblAreaUsoEquipo_Click;
@@ -135,9 +176,9 @@
             lblFechaEntrega.BackColor = Color.Transparent;
             lblFechaEntrega.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             lblFechaEntrega.ForeColor = Color.Lavender;
-            lblFechaEntrega.Location = new Point(778, 321);
+            lblFechaEntrega.Location = new Point(889, 428);
             lblFechaEntrega.Name = "lblFechaEntrega";
-            lblFechaEntrega.Size = new Size(126, 22);
+            lblFechaEntrega.Size = new Size(155, 25);
             lblFechaEntrega.TabIndex = 5;
             lblFechaEntrega.Text = "FechaEntrega";
             // 
@@ -147,9 +188,9 @@
             lblPrecioEquipo.BackColor = Color.Transparent;
             lblPrecioEquipo.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             lblPrecioEquipo.ForeColor = Color.Lavender;
-            lblPrecioEquipo.Location = new Point(778, 357);
+            lblPrecioEquipo.Location = new Point(889, 476);
             lblPrecioEquipo.Name = "lblPrecioEquipo";
-            lblPrecioEquipo.Size = new Size(126, 22);
+            lblPrecioEquipo.Size = new Size(153, 25);
             lblPrecioEquipo.TabIndex = 6;
             lblPrecioEquipo.Text = "Precio Equipo";
             lblPrecioEquipo.Click += lblPrecioEquipo_Click;
@@ -157,10 +198,9 @@
             // txtNombreEquipo
             // 
             txtNombreEquipo.Cursor = Cursors.Hand;
-            txtNombreEquipo.Location = new Point(963, 209);
-            txtNombreEquipo.Margin = new Padding(3, 2, 3, 2);
+            txtNombreEquipo.Location = new Point(1101, 279);
             txtNombreEquipo.Name = "txtNombreEquipo";
-            txtNombreEquipo.Size = new Size(175, 23);
+            txtNombreEquipo.Size = new Size(199, 27);
             txtNombreEquipo.TabIndex = 7;
             txtNombreEquipo.TextChanged += txtNombreEquipo_TextChanged;
             // 
@@ -170,30 +210,27 @@
             cmbAreaUso.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAreaUso.FormattingEnabled = true;
             cmbAreaUso.Items.AddRange(new object[] { "Área de Pesas Libres", "Máquinas de Musculación", "Cardio", "Sala de Spinning", "Zona Funcional", "Área de Estiramiento", "Salón de Clases Grupales", "Yoga / Pilates", "Piscina", "Sanitario / Baños" });
-            cmbAreaUso.Location = new Point(917, 282);
-            cmbAreaUso.Margin = new Padding(3, 2, 3, 2);
+            cmbAreaUso.Location = new Point(1048, 376);
             cmbAreaUso.Name = "cmbAreaUso";
-            cmbAreaUso.Size = new Size(222, 23);
+            cmbAreaUso.Size = new Size(253, 28);
             cmbAreaUso.TabIndex = 8;
             cmbAreaUso.SelectedIndexChanged += cmbAreaUso_SelectedIndexChanged;
             // 
             // dtpFechaEntrega
             // 
             dtpFechaEntrega.Cursor = Cursors.Hand;
-            dtpFechaEntrega.Location = new Point(920, 320);
-            dtpFechaEntrega.Margin = new Padding(3, 2, 3, 2);
+            dtpFechaEntrega.Location = new Point(1051, 427);
             dtpFechaEntrega.Name = "dtpFechaEntrega";
-            dtpFechaEntrega.Size = new Size(219, 23);
+            dtpFechaEntrega.Size = new Size(250, 27);
             dtpFechaEntrega.TabIndex = 9;
             dtpFechaEntrega.ValueChanged += dtpFechaEntrega_ValueChanged;
             // 
             // txtPrecioEquipo
             // 
             txtPrecioEquipo.Cursor = Cursors.Hand;
-            txtPrecioEquipo.Location = new Point(917, 356);
-            txtPrecioEquipo.Margin = new Padding(3, 2, 3, 2);
+            txtPrecioEquipo.Location = new Point(1048, 475);
             txtPrecioEquipo.Name = "txtPrecioEquipo";
-            txtPrecioEquipo.Size = new Size(222, 23);
+            txtPrecioEquipo.Size = new Size(253, 27);
             txtPrecioEquipo.TabIndex = 10;
             txtPrecioEquipo.TextChanged += textBox2_TextChanged;
             txtPrecioEquipo.KeyPress += textBox2_KeyPress;
@@ -201,10 +238,9 @@
             // txtDescripcion
             // 
             txtDescripcion.Cursor = Cursors.Hand;
-            txtDescripcion.Location = new Point(903, 242);
-            txtDescripcion.Margin = new Padding(3, 2, 3, 2);
+            txtDescripcion.Location = new Point(1032, 323);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(236, 23);
+            txtDescripcion.Size = new Size(269, 27);
             txtDescripcion.TabIndex = 11;
             txtDescripcion.TextChanged += txtDescripcion_TextChanged;
             // 
@@ -214,10 +250,9 @@
             btnAgregarEquipo.Cursor = Cursors.Hand;
             btnAgregarEquipo.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnAgregarEquipo.ForeColor = Color.Black;
-            btnAgregarEquipo.Location = new Point(615, 442);
-            btnAgregarEquipo.Margin = new Padding(3, 2, 3, 2);
+            btnAgregarEquipo.Location = new Point(703, 589);
             btnAgregarEquipo.Name = "btnAgregarEquipo";
-            btnAgregarEquipo.Size = new Size(123, 44);
+            btnAgregarEquipo.Size = new Size(141, 59);
             btnAgregarEquipo.TabIndex = 12;
             btnAgregarEquipo.Text = "Agregar";
             btnAgregarEquipo.UseVisualStyleBackColor = false;
@@ -229,10 +264,9 @@
             btnEliminarEquipo.Cursor = Cursors.Hand;
             btnEliminarEquipo.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEliminarEquipo.ForeColor = Color.Black;
-            btnEliminarEquipo.Location = new Point(469, 442);
-            btnEliminarEquipo.Margin = new Padding(3, 2, 3, 2);
+            btnEliminarEquipo.Location = new Point(536, 589);
             btnEliminarEquipo.Name = "btnEliminarEquipo";
-            btnEliminarEquipo.Size = new Size(130, 42);
+            btnEliminarEquipo.Size = new Size(149, 56);
             btnEliminarEquipo.TabIndex = 13;
             btnEliminarEquipo.Text = "Eliminar";
             btnEliminarEquipo.UseVisualStyleBackColor = false;
@@ -243,10 +277,9 @@
             btnEditarEquipo.BackColor = Color.DodgerBlue;
             btnEditarEquipo.Cursor = Cursors.Hand;
             btnEditarEquipo.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            btnEditarEquipo.Location = new Point(318, 442);
-            btnEditarEquipo.Margin = new Padding(3, 2, 3, 2);
+            btnEditarEquipo.Location = new Point(363, 589);
             btnEditarEquipo.Name = "btnEditarEquipo";
-            btnEditarEquipo.Size = new Size(134, 42);
+            btnEditarEquipo.Size = new Size(153, 56);
             btnEditarEquipo.TabIndex = 14;
             btnEditarEquipo.Text = "Editar";
             btnEditarEquipo.UseVisualStyleBackColor = false;
@@ -257,10 +290,9 @@
             btnConsultarEquipo.BackColor = Color.DodgerBlue;
             btnConsultarEquipo.Cursor = Cursors.Hand;
             btnConsultarEquipo.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            btnConsultarEquipo.Location = new Point(171, 442);
-            btnConsultarEquipo.Margin = new Padding(3, 2, 3, 2);
+            btnConsultarEquipo.Location = new Point(195, 589);
             btnConsultarEquipo.Name = "btnConsultarEquipo";
-            btnConsultarEquipo.Size = new Size(129, 42);
+            btnConsultarEquipo.Size = new Size(147, 56);
             btnConsultarEquipo.TabIndex = 15;
             btnConsultarEquipo.Text = "Consultar";
             btnConsultarEquipo.UseVisualStyleBackColor = false;
@@ -272,58 +304,21 @@
             PicEquipoInicio.BackgroundImageLayout = ImageLayout.None;
             PicEquipoInicio.Cursor = Cursors.Hand;
             PicEquipoInicio.Image = Properties.Resources.image_removebg_preview__7_;
-            PicEquipoInicio.Location = new Point(69, 98);
-            PicEquipoInicio.Margin = new Padding(3, 2, 3, 2);
+            PicEquipoInicio.Location = new Point(79, 131);
             PicEquipoInicio.Name = "PicEquipoInicio";
-            PicEquipoInicio.Size = new Size(109, 46);
+            PicEquipoInicio.Size = new Size(125, 61);
             PicEquipoInicio.SizeMode = PictureBoxSizeMode.Zoom;
             PicEquipoInicio.TabIndex = 16;
             PicEquipoInicio.TabStop = false;
             PicEquipoInicio.Click += PicEquipoInicio_Click;
             // 
-            // Id
-            // 
-            Id.HeaderText = "ID";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            Descripcion.HeaderText = "Descripción\n";
-            Descripcion.Name = "Descripcion";
-            Descripcion.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            Precio.HeaderText = "Precio";
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            // 
-            // AreaUso
-            // 
-            AreaUso.HeaderText = "Área de Uso\n";
-            AreaUso.Name = "AreaUso";
-            AreaUso.ReadOnly = true;
-            // 
-            // FechaEntrega
-            // 
-            FechaEntrega.HeaderText = "Fecha de Entrega\n\n";
-            FechaEntrega.Name = "FechaEntrega";
-            FechaEntrega.ReadOnly = true;
-            // 
             // RegistroEquipo
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1238, 556);
+            ClientSize = new Size(1415, 741);
             Controls.Add(PicEquipoInicio);
             Controls.Add(btnConsultarEquipo);
             Controls.Add(btnEditarEquipo);
@@ -342,7 +337,6 @@
             Controls.Add(dgvEquipos);
             Controls.Add(pictureBox1);
             DoubleBuffered = true;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "RegistroEquipo";
             Text = "RegistroEquipo";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

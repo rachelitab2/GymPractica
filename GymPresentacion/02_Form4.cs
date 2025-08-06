@@ -140,27 +140,28 @@ namespace GymPresentacion
 
         private void Despliegue_Click(object sender, EventArgs e)
         {
-            /*  if (MenuVertical.Width ==250)
-              {
-                  MenuVertical.Width = 70;
-              }
-              else
-              {
-                  MenuVertical.Width = 250;
-              }*/
+            Console.WriteLine($"Visible: {MenuVertical.Visible}, Width: {MenuVertical.Width}");
 
-            if (MenuVertical.Width == 250)
+            if (!MenuVertical.Visible)
+            {
+                MenuVertical.Visible = true;
+                Console.WriteLine("Panel estaba oculto. Ahora visible.");
+            }
+
+            if (MenuVertical.Width >= 200)
             {
                 MenuVertical.Width = 70;
+                Console.WriteLine("Panel contraído.");
             }
             else
             {
                 MenuVertical.Width = 250;
+                Console.WriteLine("Panel expandido.");
             }
 
-            // Forzar refresco por si Dock/Anchor está dando problema
             MenuVertical.Refresh();
         }
+
 
 
         private void pictureBox1_Click(object sender, EventArgs e)

@@ -100,6 +100,7 @@
             // 
             dgvPagoMembresia.AllowUserToAddRows = false;
             dgvPagoMembresia.AllowUserToDeleteRows = false;
+            dgvPagoMembresia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPagoMembresia.BackgroundColor = Color.Lavender;
             dgvPagoMembresia.BorderStyle = BorderStyle.None;
             dgvPagoMembresia.CellBorderStyle = DataGridViewCellBorderStyle.None;

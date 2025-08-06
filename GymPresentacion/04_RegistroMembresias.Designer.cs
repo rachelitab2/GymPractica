@@ -71,11 +71,11 @@ namespace GymPresentacion
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.BackColor = Color.IndianRed;
-            lblTitulo.Font = new Font("Perpetua Titling MT", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.Font = new Font("Microsoft Sans Serif", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitulo.ForeColor = Color.White;
             lblTitulo.Location = new Point(701, 24);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(304, 56);
+            lblTitulo.Size = new Size(284, 54);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "GYMNASIO";
             // 
@@ -137,6 +137,7 @@ namespace GymPresentacion
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = Color.Lavender;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
