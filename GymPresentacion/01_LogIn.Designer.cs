@@ -43,10 +43,11 @@
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
+            pictureBox1.Dock = DockStyle.Top;
             pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
-            pictureBox1.Location = new Point(398, 51);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(629, 381);
+            pictureBox1.Size = new Size(1348, 285);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -57,7 +58,7 @@
             lblLogin.BackColor = Color.Transparent;
             lblLogin.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblLogin.ForeColor = Color.Lavender;
-            lblLogin.Location = new Point(494, 526);
+            lblLogin.Location = new Point(615, 423);
             lblLogin.Name = "lblLogin";
             lblLogin.Size = new Size(138, 25);
             lblLogin.TabIndex = 1;
@@ -70,7 +71,7 @@
             lblUsuario.BackColor = Color.Transparent;
             lblUsuario.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblUsuario.ForeColor = Color.Lavender;
-            lblUsuario.Location = new Point(494, 475);
+            lblUsuario.Location = new Point(630, 329);
             lblUsuario.Name = "lblUsuario";
             lblUsuario.Size = new Size(98, 25);
             lblUsuario.TabIndex = 2;
@@ -78,14 +79,14 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(665, 477);
+            txtUsuario.Location = new Point(564, 367);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(243, 27);
             txtUsuario.TabIndex = 3;
             // 
             // txtContrasena
             // 
-            txtContrasena.Location = new Point(665, 528);
+            txtContrasena.Location = new Point(564, 451);
             txtContrasena.Name = "txtContrasena";
             txtContrasena.Size = new Size(243, 27);
             txtContrasena.TabIndex = 4;
@@ -95,7 +96,7 @@
             // 
             cmbRol.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRol.FormattingEnabled = true;
-            cmbRol.Location = new Point(665, 580);
+            cmbRol.Location = new Point(564, 557);
             cmbRol.Name = "cmbRol";
             cmbRol.Size = new Size(243, 28);
             cmbRol.TabIndex = 5;
@@ -105,7 +106,7 @@
             // 
             btnAcceder.BackColor = Color.DodgerBlue;
             btnAcceder.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAcceder.Location = new Point(665, 645);
+            btnAcceder.Location = new Point(620, 618);
             btnAcceder.Name = "btnAcceder";
             btnAcceder.Size = new Size(133, 41);
             btnAcceder.TabIndex = 6;
@@ -119,7 +120,7 @@
             lblTipoAcceso.BackColor = Color.Transparent;
             lblTipoAcceso.Font = new Font("Verdana", 12F, FontStyle.Bold);
             lblTipoAcceso.ForeColor = Color.Lavender;
-            lblTipoAcceso.Location = new Point(494, 578);
+            lblTipoAcceso.Location = new Point(607, 518);
             lblTipoAcceso.Name = "lblTipoAcceso";
             lblTipoAcceso.Size = new Size(140, 25);
             lblTipoAcceso.TabIndex = 7;
@@ -131,7 +132,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(1286, 755);
+            ClientSize = new Size(1348, 719);
             Controls.Add(lblTipoAcceso);
             Controls.Add(btnAcceder);
             Controls.Add(cmbRol);

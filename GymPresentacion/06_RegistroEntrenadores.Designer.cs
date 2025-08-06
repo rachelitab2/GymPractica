@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             dgvEntrenadores = new DataGridView();
             btnConsultar = new Button();
             btnEditarEntrenador = new Button();
@@ -56,43 +56,45 @@
             checkCorreoEntrenador = new CheckBox();
             lblCorreoEntrenador = new Label();
             textBox1 = new TextBox();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvEntrenadores).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudDuracion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicEntrenadorInicio).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudSalario).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // dgvEntrenadores
             // 
             dgvEntrenadores.AllowUserToAddRows = false;
             dgvEntrenadores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = Color.White;
+            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             dgvEntrenadores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEntrenadores.BackgroundColor = Color.Lavender;
             dgvEntrenadores.BorderStyle = BorderStyle.None;
             dgvEntrenadores.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Black;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.Black;
+            dataGridViewCellStyle8.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvEntrenadores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle9.SelectionForeColor = Color.White;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle9;
             dgvEntrenadores.EnableHeadersVisualStyles = false;
             dgvEntrenadores.GridColor = Color.DodgerBlue;
-            dgvEntrenadores.Location = new Point(119, 189);
+            dgvEntrenadores.Location = new Point(43, 116);
             dgvEntrenadores.MultiSelect = false;
             dgvEntrenadores.Name = "dgvEntrenadores";
             dgvEntrenadores.ReadOnly = true;
@@ -108,7 +110,7 @@
             btnConsultar.BackColor = Color.DodgerBlue;
             btnConsultar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultar.ForeColor = Color.Black;
-            btnConsultar.Location = new Point(303, 656);
+            btnConsultar.Location = new Point(43, 567);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(167, 61);
             btnConsultar.TabIndex = 1;
@@ -120,7 +122,7 @@
             btnEditarEntrenador.BackColor = Color.DodgerBlue;
             btnEditarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditarEntrenador.ForeColor = Color.Black;
-            btnEditarEntrenador.Location = new Point(475, 656);
+            btnEditarEntrenador.Location = new Point(229, 567);
             btnEditarEntrenador.Name = "btnEditarEntrenador";
             btnEditarEntrenador.Size = new Size(160, 61);
             btnEditarEntrenador.TabIndex = 2;
@@ -132,7 +134,7 @@
             btnEliminarEntrenador.BackColor = Color.DodgerBlue;
             btnEliminarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarEntrenador.ForeColor = Color.Black;
-            btnEliminarEntrenador.Location = new Point(641, 656);
+            btnEliminarEntrenador.Location = new Point(419, 569);
             btnEliminarEntrenador.Name = "btnEliminarEntrenador";
             btnEliminarEntrenador.Size = new Size(160, 59);
             btnEliminarEntrenador.TabIndex = 3;
@@ -145,7 +147,7 @@
             btnAgregarEntrenador.BackColor = Color.DodgerBlue;
             btnAgregarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregarEntrenador.ForeColor = Color.Black;
-            btnAgregarEntrenador.Location = new Point(806, 654);
+            btnAgregarEntrenador.Location = new Point(617, 566);
             btnAgregarEntrenador.Name = "btnAgregarEntrenador";
             btnAgregarEntrenador.Size = new Size(154, 60);
             btnAgregarEntrenador.TabIndex = 4;
@@ -157,7 +159,7 @@
             checkDisponible.AutoSize = true;
             checkDisponible.BackColor = Color.Lavender;
             checkDisponible.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            checkDisponible.Location = new Point(1046, 622);
+            checkDisponible.Location = new Point(914, 518);
             checkDisponible.Name = "checkDisponible";
             checkDisponible.Size = new Size(171, 31);
             checkDisponible.TabIndex = 5;
@@ -172,7 +174,8 @@
             cmbGeneroEntrenador.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbGeneroEntrenador.ForeColor = Color.Black;
             cmbGeneroEntrenador.FormattingEnabled = true;
-            cmbGeneroEntrenador.Location = new Point(1198, 242);
+            cmbGeneroEntrenador.Location = new Point(1101, 160);
+            cmbGeneroEntrenador.Margin = new Padding(3, 3, 10, 3);
             cmbGeneroEntrenador.Name = "cmbGeneroEntrenador";
             cmbGeneroEntrenador.Size = new Size(301, 28);
             cmbGeneroEntrenador.TabIndex = 6;
@@ -183,7 +186,8 @@
             cmbAreaEntrenador.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAreaEntrenador.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbAreaEntrenador.FormattingEnabled = true;
-            cmbAreaEntrenador.Location = new Point(1198, 294);
+            cmbAreaEntrenador.Location = new Point(1103, 204);
+            cmbAreaEntrenador.Margin = new Padding(3, 3, 10, 3);
             cmbAreaEntrenador.Name = "cmbAreaEntrenador";
             cmbAreaEntrenador.Size = new Size(301, 28);
             cmbAreaEntrenador.TabIndex = 7;
@@ -195,7 +199,7 @@
             lblNombreEntrenador.BackColor = Color.Transparent;
             lblNombreEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNombreEntrenador.ForeColor = Color.Lavender;
-            lblNombreEntrenador.Location = new Point(1018, 189);
+            lblNombreEntrenador.Location = new Point(914, 116);
             lblNombreEntrenador.Name = "lblNombreEntrenador";
             lblNombreEntrenador.Size = new Size(100, 25);
             lblNombreEntrenador.TabIndex = 8;
@@ -207,7 +211,7 @@
             lblGeneroEntrendor.BackColor = Color.Transparent;
             lblGeneroEntrendor.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblGeneroEntrendor.ForeColor = Color.Lavender;
-            lblGeneroEntrendor.Location = new Point(1021, 241);
+            lblGeneroEntrendor.Location = new Point(914, 163);
             lblGeneroEntrendor.Name = "lblGeneroEntrendor";
             lblGeneroEntrendor.Size = new Size(87, 25);
             lblGeneroEntrendor.TabIndex = 9;
@@ -220,7 +224,7 @@
             lblAreaEntrenador.BackColor = Color.Transparent;
             lblAreaEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAreaEntrenador.ForeColor = Color.Lavender;
-            lblAreaEntrenador.Location = new Point(1021, 297);
+            lblAreaEntrenador.Location = new Point(914, 207);
             lblAreaEntrenador.Name = "lblAreaEntrenador";
             lblAreaEntrenador.Size = new Size(61, 25);
             lblAreaEntrenador.TabIndex = 10;
@@ -233,7 +237,7 @@
             lblTelefono.BackColor = Color.Transparent;
             lblTelefono.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTelefono.ForeColor = Color.Lavender;
-            lblTelefono.Location = new Point(1021, 358);
+            lblTelefono.Location = new Point(914, 256);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(97, 25);
             lblTelefono.TabIndex = 11;
@@ -242,7 +246,8 @@
             // maskedTextBox1
             // 
             maskedTextBox1.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
-            maskedTextBox1.Location = new Point(1198, 359);
+            maskedTextBox1.Location = new Point(1102, 256);
+            maskedTextBox1.Margin = new Padding(3, 3, 10, 3);
             maskedTextBox1.Name = "maskedTextBox1";
             maskedTextBox1.Size = new Size(301, 28);
             maskedTextBox1.TabIndex = 13;
@@ -250,7 +255,8 @@
             // txtNombreEntrenador
             // 
             txtNombreEntrenador.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
-            txtNombreEntrenador.Location = new Point(1198, 189);
+            txtNombreEntrenador.Location = new Point(1103, 113);
+            txtNombreEntrenador.Margin = new Padding(3, 3, 10, 3);
             txtNombreEntrenador.Name = "txtNombreEntrenador";
             txtNombreEntrenador.ShortcutsEnabled = false;
             txtNombreEntrenador.Size = new Size(301, 28);
@@ -261,7 +267,8 @@
             // 
             dtpIngresoEntrenador.CalendarFont = new Font("Verdana", 10.2F, FontStyle.Bold);
             dtpIngresoEntrenador.Format = DateTimePickerFormat.Short;
-            dtpIngresoEntrenador.Location = new Point(1197, 414);
+            dtpIngresoEntrenador.Location = new Point(1102, 307);
+            dtpIngresoEntrenador.Margin = new Padding(3, 3, 10, 3);
             dtpIngresoEntrenador.Name = "dtpIngresoEntrenador";
             dtpIngresoEntrenador.Size = new Size(301, 27);
             dtpIngresoEntrenador.TabIndex = 15;
@@ -272,7 +279,7 @@
             lblIngresoEntrenador.BackColor = Color.Transparent;
             lblIngresoEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblIngresoEntrenador.ForeColor = Color.Lavender;
-            lblIngresoEntrenador.Location = new Point(1022, 414);
+            lblIngresoEntrenador.Location = new Point(914, 307);
             lblIngresoEntrenador.Name = "lblIngresoEntrenador";
             lblIngresoEntrenador.Size = new Size(156, 25);
             lblIngresoEntrenador.TabIndex = 16;
@@ -284,7 +291,7 @@
             lblDuracion.BackColor = Color.Transparent;
             lblDuracion.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDuracion.ForeColor = Color.Lavender;
-            lblDuracion.Location = new Point(1021, 461);
+            lblDuracion.Location = new Point(914, 348);
             lblDuracion.Name = "lblDuracion";
             lblDuracion.Size = new Size(105, 25);
             lblDuracion.TabIndex = 18;
@@ -294,7 +301,8 @@
             // 
             nudDuracion.Cursor = Cursors.Hand;
             nudDuracion.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            nudDuracion.Location = new Point(1197, 463);
+            nudDuracion.Location = new Point(1102, 348);
+            nudDuracion.Margin = new Padding(3, 3, 10, 3);
             nudDuracion.Maximum = new decimal(new int[] { 120, 0, 0, 0 });
             nudDuracion.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             nudDuracion.Name = "nudDuracion";
@@ -308,9 +316,9 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
-            pictureBox1.Location = new Point(637, 2);
+            pictureBox1.Location = new Point(528, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(589, 162);
+            pictureBox1.Size = new Size(310, 105);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 20;
             pictureBox1.TabStop = false;
@@ -321,9 +329,9 @@
             PicEntrenadorInicio.BackgroundImageLayout = ImageLayout.None;
             PicEntrenadorInicio.Cursor = Cursors.Hand;
             PicEntrenadorInicio.Image = Properties.Resources.image_removebg_preview__7_;
-            PicEntrenadorInicio.Location = new Point(119, 80);
+            PicEntrenadorInicio.Location = new Point(43, 0);
             PicEntrenadorInicio.Name = "PicEntrenadorInicio";
-            PicEntrenadorInicio.Size = new Size(100, 84);
+            PicEntrenadorInicio.Size = new Size(123, 105);
             PicEntrenadorInicio.SizeMode = PictureBoxSizeMode.Zoom;
             PicEntrenadorInicio.TabIndex = 21;
             PicEntrenadorInicio.TabStop = false;
@@ -335,7 +343,7 @@
             lblSalario.BackColor = Color.Transparent;
             lblSalario.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSalario.ForeColor = Color.Lavender;
-            lblSalario.Location = new Point(1018, 513);
+            lblSalario.Location = new Point(914, 403);
             lblSalario.Name = "lblSalario";
             lblSalario.Size = new Size(81, 25);
             lblSalario.TabIndex = 22;
@@ -346,7 +354,8 @@
             nudSalario.Cursor = Cursors.SizeAll;
             nudSalario.DecimalPlaces = 2;
             nudSalario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            nudSalario.Location = new Point(1197, 515);
+            nudSalario.Location = new Point(1102, 403);
+            nudSalario.Margin = new Padding(3, 3, 10, 3);
             nudSalario.Maximum = new decimal(new int[] { 30000, 0, 0, 0 });
             nudSalario.Name = "nudSalario";
             nudSalario.Size = new Size(150, 34);
@@ -358,7 +367,7 @@
             checkCorreoEntrenador.AutoSize = true;
             checkCorreoEntrenador.BackColor = Color.Lavender;
             checkCorreoEntrenador.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            checkCorreoEntrenador.Location = new Point(1265, 622);
+            checkCorreoEntrenador.Location = new Point(1103, 518);
             checkCorreoEntrenador.Name = "checkCorreoEntrenador";
             checkCorreoEntrenador.Size = new Size(160, 31);
             checkCorreoEntrenador.TabIndex = 24;
@@ -371,7 +380,7 @@
             lblCorreoEntrenador.BackColor = Color.Transparent;
             lblCorreoEntrenador.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             lblCorreoEntrenador.ForeColor = Color.Lavender;
-            lblCorreoEntrenador.Location = new Point(1015, 566);
+            lblCorreoEntrenador.Location = new Point(914, 450);
             lblCorreoEntrenador.Name = "lblCorreoEntrenador";
             lblCorreoEntrenador.Size = new Size(84, 25);
             lblCorreoEntrenador.TabIndex = 25;
@@ -380,11 +389,23 @@
             // textBox1
             // 
             textBox1.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
-            textBox1.Location = new Point(1198, 567);
+            textBox1.Location = new Point(1101, 450);
+            textBox1.Margin = new Padding(3, 3, 10, 3);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(302, 28);
             textBox1.TabIndex = 26;
             textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // panel1
+            // 
+            panel1.AutoScroll = true;
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(PicEntrenadorInicio);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1427, 110);
+            panel1.TabIndex = 27;
             // 
             // RegistroEntrenadores
             // 
@@ -392,14 +413,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1647, 826);
+            ClientSize = new Size(1427, 721);
+            Controls.Add(panel1);
             Controls.Add(textBox1);
             Controls.Add(lblCorreoEntrenador);
             Controls.Add(checkCorreoEntrenador);
             Controls.Add(nudSalario);
             Controls.Add(lblSalario);
-            Controls.Add(PicEntrenadorInicio);
-            Controls.Add(pictureBox1);
             Controls.Add(nudDuracion);
             Controls.Add(lblDuracion);
             Controls.Add(lblIngresoEntrenador);
@@ -427,6 +447,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicEntrenadorInicio).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudSalario).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -458,5 +479,6 @@
         private CheckBox checkCorreoEntrenador;
         private Label lblCorreoEntrenador;
         private TextBox textBox1;
+        private Panel panel1;
     }
 }
