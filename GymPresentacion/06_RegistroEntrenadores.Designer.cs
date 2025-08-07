@@ -151,6 +151,7 @@
             btnAgregarEntrenador.TabIndex = 4;
             btnAgregarEntrenador.Text = "➕ Agregar";
             btnAgregarEntrenador.UseVisualStyleBackColor = false;
+            btnAgregarEntrenador.Click += btnAgregarEntrenador_Click_1;
             // 
             // checkDisponible
             // 
