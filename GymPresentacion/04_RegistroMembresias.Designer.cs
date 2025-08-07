@@ -205,6 +205,7 @@ namespace GymPresentacion
             btnAgregar.TabIndex = 9;
             btnAgregar.Text = "➕ Agregar";
             btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnAgregar_Click_1;
             // 
             // lblFechaInicio
             // 
@@ -329,7 +330,7 @@ namespace GymPresentacion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Black;
+            BackColor = Color.FromArgb(28, 27, 27);
             ClientSize = new Size(1567, 767);
             Controls.Add(txtCorreo);
             Controls.Add(lblCorreo);

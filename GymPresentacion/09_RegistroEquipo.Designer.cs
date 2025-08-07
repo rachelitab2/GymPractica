@@ -316,7 +316,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Black;
+            BackColor = Color.FromArgb(28, 27, 27);
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1415, 741);
             Controls.Add(PicEquipoInicio);

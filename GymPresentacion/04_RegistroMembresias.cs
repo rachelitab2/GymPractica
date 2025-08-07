@@ -638,6 +638,11 @@ namespace GymPresentacion // nombre importante
         {
 
         }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
