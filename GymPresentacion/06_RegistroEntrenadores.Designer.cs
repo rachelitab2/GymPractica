@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgvEntrenadores = new DataGridView();
             btnConsultar = new Button();
             btnEditarEntrenador = new Button();
@@ -53,9 +53,9 @@
             PicEntrenadorInicio = new PictureBox();
             lblSalario = new Label();
             nudSalario = new NumericUpDown();
-            checkCorreoEntrenador = new CheckBox();
+            chkEnviarCorreo = new CheckBox();
             lblCorreoEntrenador = new Label();
-            textBox1 = new TextBox();
+            txtCorreoEntrenador = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvEntrenadores).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudDuracion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -67,29 +67,29 @@
             // 
             dgvEntrenadores.AllowUserToAddRows = false;
             dgvEntrenadores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dgvEntrenadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvEntrenadores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEntrenadores.BackgroundColor = Color.Lavender;
             dgvEntrenadores.BorderStyle = BorderStyle.None;
             dgvEntrenadores.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Black;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Black;
+            dataGridViewCellStyle5.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvEntrenadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvEntrenadores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.DodgerBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvEntrenadores.DefaultCellStyle = dataGridViewCellStyle6;
             dgvEntrenadores.EnableHeadersVisualStyles = false;
             dgvEntrenadores.GridColor = Color.DodgerBlue;
             dgvEntrenadores.Location = new Point(119, 189);
@@ -108,7 +108,7 @@
             btnConsultar.BackColor = Color.DodgerBlue;
             btnConsultar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultar.ForeColor = Color.Black;
-            btnConsultar.Location = new Point(303, 656);
+            btnConsultar.Location = new Point(270, 638);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(167, 61);
             btnConsultar.TabIndex = 1;
@@ -120,7 +120,7 @@
             btnEditarEntrenador.BackColor = Color.DodgerBlue;
             btnEditarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditarEntrenador.ForeColor = Color.Black;
-            btnEditarEntrenador.Location = new Point(475, 656);
+            btnEditarEntrenador.Location = new Point(637, 637);
             btnEditarEntrenador.Name = "btnEditarEntrenador";
             btnEditarEntrenador.Size = new Size(160, 61);
             btnEditarEntrenador.TabIndex = 2;
@@ -132,7 +132,7 @@
             btnEliminarEntrenador.BackColor = Color.DodgerBlue;
             btnEliminarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarEntrenador.ForeColor = Color.Black;
-            btnEliminarEntrenador.Location = new Point(641, 656);
+            btnEliminarEntrenador.Location = new Point(456, 638);
             btnEliminarEntrenador.Name = "btnEliminarEntrenador";
             btnEliminarEntrenador.Size = new Size(160, 59);
             btnEliminarEntrenador.TabIndex = 3;
@@ -145,7 +145,7 @@
             btnAgregarEntrenador.BackColor = Color.DodgerBlue;
             btnAgregarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregarEntrenador.ForeColor = Color.Black;
-            btnAgregarEntrenador.Location = new Point(806, 654);
+            btnAgregarEntrenador.Location = new Point(806, 638);
             btnAgregarEntrenador.Name = "btnAgregarEntrenador";
             btnAgregarEntrenador.Size = new Size(154, 60);
             btnAgregarEntrenador.TabIndex = 4;
@@ -354,17 +354,17 @@
             nudSalario.TabIndex = 23;
             nudSalario.ThousandsSeparator = true;
             // 
-            // checkCorreoEntrenador
+            // chkEnviarCorreo
             // 
-            checkCorreoEntrenador.AutoSize = true;
-            checkCorreoEntrenador.BackColor = Color.Lavender;
-            checkCorreoEntrenador.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            checkCorreoEntrenador.Location = new Point(1265, 622);
-            checkCorreoEntrenador.Name = "checkCorreoEntrenador";
-            checkCorreoEntrenador.Size = new Size(160, 31);
-            checkCorreoEntrenador.TabIndex = 24;
-            checkCorreoEntrenador.Text = "Enviar Correo";
-            checkCorreoEntrenador.UseVisualStyleBackColor = false;
+            chkEnviarCorreo.AutoSize = true;
+            chkEnviarCorreo.BackColor = Color.Lavender;
+            chkEnviarCorreo.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
+            chkEnviarCorreo.Location = new Point(1265, 622);
+            chkEnviarCorreo.Name = "chkEnviarCorreo";
+            chkEnviarCorreo.Size = new Size(160, 31);
+            chkEnviarCorreo.TabIndex = 24;
+            chkEnviarCorreo.Text = "Enviar Correo";
+            chkEnviarCorreo.UseVisualStyleBackColor = false;
             // 
             // lblCorreoEntrenador
             // 
@@ -378,14 +378,14 @@
             lblCorreoEntrenador.TabIndex = 25;
             lblCorreoEntrenador.Text = "Correo";
             // 
-            // textBox1
+            // txtCorreoEntrenador
             // 
-            textBox1.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
-            textBox1.Location = new Point(1198, 567);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(302, 28);
-            textBox1.TabIndex = 26;
-            textBox1.TextChanged += textBox1_TextChanged;
+            txtCorreoEntrenador.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
+            txtCorreoEntrenador.Location = new Point(1198, 567);
+            txtCorreoEntrenador.Name = "txtCorreoEntrenador";
+            txtCorreoEntrenador.Size = new Size(302, 28);
+            txtCorreoEntrenador.TabIndex = 26;
+            txtCorreoEntrenador.TextChanged += textBox1_TextChanged;
             // 
             // RegistroEntrenadores
             // 
@@ -394,9 +394,9 @@
             BackColor = Color.FromArgb(28, 27, 27);
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1647, 826);
-            Controls.Add(textBox1);
+            Controls.Add(txtCorreoEntrenador);
             Controls.Add(lblCorreoEntrenador);
-            Controls.Add(checkCorreoEntrenador);
+            Controls.Add(chkEnviarCorreo);
             Controls.Add(nudSalario);
             Controls.Add(lblSalario);
             Controls.Add(PicEntrenadorInicio);
@@ -421,6 +421,7 @@
             Controls.Add(dgvEntrenadores);
             DoubleBuffered = true;
             Name = "RegistroEntrenadores";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistroEntrenadores";
             Load += Form2Entrenadores_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEntrenadores).EndInit();
@@ -456,8 +457,8 @@
         private PictureBox PicEntrenadorInicio;
         private Label lblSalario;
         private NumericUpDown nudSalario;
-        private CheckBox checkCorreoEntrenador;
+        private CheckBox chkEnviarCorreo;
         private Label lblCorreoEntrenador;
-        private TextBox textBox1;
+        private TextBox txtCorreoEntrenador;
     }
 }

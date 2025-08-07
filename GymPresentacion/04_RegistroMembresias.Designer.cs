@@ -110,7 +110,7 @@ namespace GymPresentacion
             btnEditar.Cursor = Cursors.Hand;
             btnEditar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditar.ForeColor = Color.Black;
-            btnEditar.Location = new Point(650, 659);
+            btnEditar.Location = new Point(841, 659);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(174, 62);
             btnEditar.TabIndex = 3;
@@ -123,7 +123,7 @@ namespace GymPresentacion
             btnEliminar.Cursor = Cursors.Hand;
             btnEliminar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEliminar.ForeColor = Color.Black;
-            btnEliminar.Location = new Point(459, 658);
+            btnEliminar.Location = new Point(649, 659);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(174, 62);
             btnEliminar.TabIndex = 4;
@@ -271,7 +271,7 @@ namespace GymPresentacion
             btnConsultar.Cursor = Cursors.Hand;
             btnConsultar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultar.ForeColor = Color.Black;
-            btnConsultar.Location = new Point(841, 657);
+            btnConsultar.Location = new Point(454, 659);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(174, 64);
             btnConsultar.TabIndex = 20;
@@ -352,6 +352,7 @@ namespace GymPresentacion
             Controls.Add(lblTitulo);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "RegistroMembresias";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistroMembresias";
             Load += Form1_Load;
             ((ISupportInitialize)dataGridView1).EndInit();

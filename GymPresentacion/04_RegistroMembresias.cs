@@ -1,3 +1,6 @@
+Ôªøusing GymNegocio;// ver 
+using GymNegocio.ClasesMembresia;
+using GymNegocio.Login;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -5,17 +8,17 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GymNegocio;// ver 
-using GymNegocio.ClasesMembresia;
-using GymNegocio.Login;
 
 namespace GymPresentacion // nombre importante
 {
     public partial class RegistroMembresias : Form
     {
+
         public Servicio_Membresia _servicioMembresia;//inastancia del servicio de membresia
         private readonly Form _dashboard; // Para guardar la referencia al panel principal
         private bool _isNavigating = false; // Para controlar el cierre del formulario
@@ -25,8 +28,8 @@ namespace GymPresentacion // nombre importante
         public RegistroMembresias(Form dashboard)
         {
             InitializeComponent();
-            _dashboard = dashboard;
-            _servicioMembresia = new Servicio_Membresia(); // instaciacion 
+            _dashboard = dashboard ?? throw new ArgumentNullException(nameof(dashboard));
+            _servicioMembresia = new Servicio_Membresia(new MemGymnasio());
             ConfigurarDataGridView();// donde se muestra los datos
             ConfigurarComboBoxTipoMembresia(); // opciones para los tipos Mensual Y Anual
             ConfigurarMaskedTextBoxTelefono();//telefono y captura de error para el mismo 
@@ -107,6 +110,7 @@ namespace GymPresentacion // nombre importante
                 HeaderText = "Activa",
                 Width = 60
             });
+            dataGridView1.ClearSelection();
         }
 
         //EVENTOS PARA LOS BOTONES 
@@ -144,13 +148,13 @@ namespace GymPresentacion // nombre importante
             }
         }
 
-        public void BtnConsultar_Click(object sender, EventArgs e)
+        public async void BtnConsultar_Click(object sender, EventArgs e)
         {
             try
             {
                 LimpiarCampos();
 
-                List<Membresia> membresias = _servicioMembresia.ObtenerTodasLasMembresias();
+                List<Membresia> membresias = await _servicioMembresia.ObtenerTodasLasMembresiasAsync();
 
                 if (membresias != null && membresias.Count > 0)
                 {
@@ -169,6 +173,7 @@ namespace GymPresentacion // nombre importante
             {
                 MessageBox.Show($"Error al Consultar las membresias: {ex.Message}", "Error de Consultar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            dataGridView1.ClearSelection();
         }
 
 
@@ -190,16 +195,16 @@ namespace GymPresentacion // nombre importante
 
                 if (!mtxtTelefono.MaskCompleted)
                 {
-                    MessageBox.Show("Por favor, complete el n˙mero de telÈfono.",
-                                  "TelÈfono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor, complete el n√∫mero de tel√©fono.",
+                                  "Tel√©fono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     mtxtTelefono.Focus();
                     return;
                 }
 
                 if (!ValidarTelefono(mtxtTelefono.Text))
                 {
-                    MessageBox.Show("El n˙mero de telÈfono no es v·lido. Debe usar un cÛdigo de ·rea v·lido (809, 829, 849).",
-                                  "TelÈfono Inv·lido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El n√∫mero de tel√©fono no es v√°lido. Debe usar un c√≥digo de √°rea v√°lido (809, 829, 849).",
+                                  "Tel√©fono Inv√°lido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     mtxtTelefono.Focus();
                     return;
                 }
@@ -223,22 +228,103 @@ namespace GymPresentacion // nombre importante
                 }
                 else
                 {
-                    MessageBox.Show("Tipo de membresÌa no v·lido. Debe ser 'Mensual' o 'Anual'.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tipo de membres√≠a no v√°lido. Debe ser 'Mensual' o 'Anual'.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                _servicioMembresia.RegistrarMembresia(nuevaMembresia);
+                _servicioMembresia.RegistrarMembresiaAsync(nuevaMembresia);
                 MessageBox.Show("Membresia agregada con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                LimpiarCampos();
+                
                 //recargar los datos automaticamente despues de agregar una nueva membresia 
-                BtnConsultar_Click(sender, e);
+                //BtnConsultar_Click(sender, e);
 
             }
             catch (Exception ex) //Captura de error 
             {
                 MessageBox.Show($"Error al agregar la membresia: {ex.Message} ", " Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
+                                                  //logica para enviar correo de confirmacion
+           
+
+
+            //Enviar correo de confirmaci√≥n
+            try
+            {
+                string correoDestino = txtCorreo.Text.Trim();
+                string nombre = txtNombreCliente.Text.Trim();
+                string tipo = cmbTipoMembresia.Text.Trim();
+                string telefono = mtxtTelefono.Text.Trim();
+                DateTime fechaInicio = dateTimePickerInicio.Value;
+                DateTime fechaVencimiento;
+                decimal costo = 0m;
+
+                // Determinar vencimiento y costo seg√∫n el tipo de membres√≠a
+                switch (tipo.ToLower())
+                {
+                    case "mensual":
+                        fechaVencimiento = fechaInicio.AddMonths(1);
+                        costo = 1200m;
+                        break;
+                    case "anual":
+                        fechaVencimiento = fechaInicio.AddYears(1);
+                        costo = 13000m;
+                        break;
+                    default:
+                        fechaVencimiento = fechaInicio.AddMonths(1);
+                        costo = 1200m;
+                        break;
+                }
+
+                // Cuerpo del mensaje con los datos
+                string cuerpo = $@"
+    <h2>¬°Bienvenido a PowerFit!</h2>
+    <p>Hola <strong>{nombre}</strong>,</p>
+    <p>Gracias por registrarte. Aqu√≠ est√°n los detalles de tu membres√≠a:</p>
+    <table border='1' cellpadding='5' cellspacing='0'>
+        <tr><td><strong>Nombre:</strong></td><td>{nombre}</td></tr>
+        <tr><td><strong>Tipo de Membres√≠a:</strong></td><td>{tipo}</td></tr>
+        <tr><td><strong>Fecha de Inicio:</strong></td><td>{fechaInicio:dd/MM/yyyy}</td></tr>
+        <tr><td><strong>Fecha de Vencimiento:</strong></td><td>{fechaVencimiento:dd/MM/yyyy}</td></tr>
+        <tr><td><strong>Costo:</strong></td><td>{costo.ToString("C")}</td></tr>
+        <tr><td><strong>Tel√©fono:</strong></td><td>{telefono}</td></tr>
+    </table>
+    <p>Te esperamos para entrenar duro.</p>
+    <p><em>PowerFit - Train Hard üí™</em></p>
+    ";
+
+                // Preparar el correo
+                MailMessage mensaje = new MailMessage();
+                mensaje.From = new MailAddress("gympowerfit98@gmail.com\r\n");
+                mensaje.To.Add(correoDestino);
+                mensaje.Subject = "Confirmaci√≥n de Membres√≠a - PowerFit";
+                mensaje.Body = cuerpo;
+                mensaje.IsBodyHtml = true;
+
+                // Configurar el SMTP
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential("gympowerfit98@gmail.com\r\n", "rlvc ynha atwf wzic"); // ¬°Protege esta clave!
+                smtp.EnableSsl = true;
+
+                // Enviar el correo
+                smtp.Send(mensaje);
+
+                MessageBox.Show("La membres√≠a fue registrada y el correo se envi√≥ con √©xito.", "PowerFit", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpiar campos 
+                txtCorreo.Clear();
+                txtNombreCliente.Clear();
+                mtxtTelefono.Clear();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al enviar el correo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)//EDITAR MEMBRESIAS QUE YA EXISTEN O FUERON CREADAS 
@@ -258,7 +344,7 @@ namespace GymPresentacion // nombre importante
                     return;
 
                 }
-                // Agrega validaciÛn para el costo
+                // Agrega validaci√≥n para el costo
                 if (string.IsNullOrWhiteSpace(txtNombreCliente.Text) ||
                     cmbTipoMembresia.SelectedItem == null ||
                     string.IsNullOrWhiteSpace(mtxtTelefono.Text))
@@ -270,27 +356,27 @@ namespace GymPresentacion // nombre importante
 
                 if (!mtxtTelefono.MaskCompleted)
                 {
-                    MessageBox.Show("Por favor, complete el n˙mero de telÈfono.",
-                                  "TelÈfono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor, complete el n√∫mero de tel√©fono.",
+                                  "Tel√©fono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     mtxtTelefono.Focus();
                     return;
                 }
 
                 if (!ValidarTelefono(mtxtTelefono.Text))
                 {
-                    MessageBox.Show("El n˙mero de telÈfono no es v·lido.",
-                                  "TelÈfono Inv·lido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El n√∫mero de tel√©fono no es v√°lido.",
+                                  "Tel√©fono Inv√°lido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     mtxtTelefono.Focus();
                     return;
                 }
 
                 DateTime fechaInicioActualizada = dateTimePickerInicio.Value.Date;
                 DateTime fechaFinActualizada;
-                string tipoMembresiaLower = cmbTipoMembresia.SelectedItem.ToString().ToLower(); // Convertir a min˙sculas para comparar
+                string tipoMembresiaLower = cmbTipoMembresia.SelectedItem.ToString().ToLower(); // Convertir a min√∫sculas para comparar
 
                 if (tipoMembresiaLower == "anual")
                 {
-                    fechaFinActualizada = fechaInicioActualizada.AddYears(1); // Suma 1 aÒo si es anual
+                    fechaFinActualizada = fechaInicioActualizada.AddYears(1); // Suma 1 a√±o si es anual
                 }
                 else if (tipoMembresiaLower == "mensual")
                 {
@@ -298,9 +384,9 @@ namespace GymPresentacion // nombre importante
                 }
                 else
                 {
-                    // Si el tipo de membresÌa no es reconocido, podrÌas mantener la fecha de fin actual
+                    // Si el tipo de membres√≠a no es reconocido, podr√≠as mantener la fecha de fin actual
                     // o mostrar una advertencia. Para este ejemplo, la mantendremos o puedes elegir asignarle un valor por defecto.
-                    MessageBox.Show("Tipo de membresÌa no v·lido. La Fecha Fin no se actualizar· correctamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tipo de membres√≠a no v√°lido. La Fecha Fin no se actualizar√° correctamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     fechaFinActualizada = membresiaAEditar.FechaFin; // Mantener la fecha de fin existente
                 }
 
@@ -309,7 +395,7 @@ namespace GymPresentacion // nombre importante
                 membresiaAEditar.Telefono = mtxtTelefono.Text.Trim();
                 membresiaAEditar.FechaFin = fechaFinActualizada;
 
-                _servicioMembresia.ActualizarMembresia(membresiaAEditar);
+                _servicioMembresia.ActualizarMembresiaAsync(membresiaAEditar);
                 MessageBox.Show("Membresia Actualizada exitosamente.", " Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarCampos();
                 BtnConsultar_Click(sender, e);
@@ -320,6 +406,7 @@ namespace GymPresentacion // nombre importante
                 MessageBox.Show($" Error al Actualizar la membresia: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+            dataGridView1.ClearSelection();
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)//ELIMINAR MEMEBRESIAS QUE ESTAN CREADAS 
@@ -347,7 +434,7 @@ namespace GymPresentacion // nombre importante
 
                 if (resultado == DialogResult.Yes)
                 {
-                    _servicioMembresia.EliminarMembresia(membresiaAEliminar.Id);
+                   _servicioMembresia.EliminarMembresiaAsync(membresiaAEliminar.Id);
                     MessageBox.Show("Membresia Eliminada exitosamente.", " Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarCampos();
                     BtnConsultar_Click(sender, e);
@@ -415,8 +502,8 @@ namespace GymPresentacion // nombre importante
 
             if (!mtxt.MaskCompleted && !string.IsNullOrWhiteSpace(mtxt.Text))
             {
-                MessageBox.Show("Por favor, complete el n˙mero de telÈfono correctamente.",
-                               "TelÈfono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, complete el n√∫mero de tel√©fono correctamente.",
+                               "Tel√©fono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 mtxt.Focus();
             }
         }

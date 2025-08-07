@@ -284,6 +284,7 @@
             Controls.Add(btnAgregarRutina);
             Cursor = Cursors.Hand;
             Name = "RegistroRutina";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistroRutina";
             Load += PicMem2_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRutinas).EndInit();

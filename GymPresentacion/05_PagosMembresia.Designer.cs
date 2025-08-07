@@ -31,7 +31,6 @@
             pictureBox1 = new PictureBox();
             PicPagoInicio = new PictureBox();
             dtpPago = new DateTimePicker();
-            PicPagoRegistroMembresia = new PictureBox();
             dgvPagoMembresia = new DataGridView();
             cmbClientePago = new ComboBox();
             cmbTipoClientePago = new ComboBox();
@@ -45,7 +44,6 @@
             cmbMetodoPago = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicPagoInicio).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)PicPagoRegistroMembresia).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvPagoMembresia).BeginInit();
             SuspendLayout();
             // 
@@ -82,19 +80,6 @@
             dtpPago.Name = "dtpPago";
             dtpPago.Size = new Size(371, 27);
             dtpPago.TabIndex = 2;
-            // 
-            // PicPagoRegistroMembresia
-            // 
-            PicPagoRegistroMembresia.BackColor = Color.Transparent;
-            PicPagoRegistroMembresia.BackgroundImage = Properties.Resources.image_removebg_preview__3_;
-            PicPagoRegistroMembresia.BackgroundImageLayout = ImageLayout.Zoom;
-            PicPagoRegistroMembresia.Cursor = Cursors.Hand;
-            PicPagoRegistroMembresia.Location = new Point(284, 166);
-            PicPagoRegistroMembresia.Name = "PicPagoRegistroMembresia";
-            PicPagoRegistroMembresia.Size = new Size(125, 62);
-            PicPagoRegistroMembresia.TabIndex = 3;
-            PicPagoRegistroMembresia.TabStop = false;
-            PicPagoRegistroMembresia.Click += PicPagoRegistroMembresia_Click;
             // 
             // dgvPagoMembresia
             // 
@@ -246,15 +231,14 @@
             Controls.Add(cmbTipoClientePago);
             Controls.Add(cmbClientePago);
             Controls.Add(dgvPagoMembresia);
-            Controls.Add(PicPagoRegistroMembresia);
             Controls.Add(dtpPago);
             Controls.Add(PicPagoInicio);
             Name = "PagosMembresia";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PagosMembresia";
             Load += PagosMembresia_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicPagoInicio).EndInit();
-            ((System.ComponentModel.ISupportInitialize)PicPagoRegistroMembresia).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvPagoMembresia).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -265,7 +249,6 @@
         private PictureBox pictureBox1;
         private PictureBox PicPagoInicio;
         private DateTimePicker dtpPago;
-        private PictureBox PicPagoRegistroMembresia;
         private DataGridView dgvPagoMembresia;
         private ComboBox cmbClientePago;
         private ComboBox cmbTipoClientePago;

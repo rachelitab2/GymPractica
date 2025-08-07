@@ -52,31 +52,43 @@ namespace GymPresentacion
 
         private void ConfigurarDataGridView()
         {
-            dgvUsuarios.AutoGenerateColumns = false;
-            dgvUsuarios.Columns.Clear();
-
-            dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "Id",
-                HeaderText = "ID",
-                Width = 50,
-            });
+                dgvUsuarios.AutoGenerateColumns = false;
+                dgvUsuarios.Columns.Clear();
 
-            dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Usuario",
-                HeaderText = "Usuario",
-                Width = 150,
+                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Id",
+                    HeaderText = "ID",
+                    DataPropertyName = "Id",
+                    Visible = false
+                });
+                            
+                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Usuario",
+                    HeaderText = "Usuario",
+                    DataPropertyName = "Usuario",
+                    Width = 150
+                });
 
-            });
+                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Rol",
+                    HeaderText = "Rol",
+                    DataPropertyName = "Rol",
+                    Width = 100
+                });
 
-            dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Rol",
-                HeaderText = "Rol",
-                Width = 100,
-            });
+                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Contrasena",
+                    HeaderText = "Contraseña",
+                    DataPropertyName = "Contrasena",
+                    Visible = false
+                });
 
+            }
         }
 
         private void AsignarEventosBotones()
@@ -103,40 +115,7 @@ namespace GymPresentacion
             {
                 List<UsuariosActivos> usuarios = accesoUsuario.ListarUsuarios();
 
-                dgvUsuarios.AutoGenerateColumns = false; // 👈 esto es clave
-                dgvUsuarios.Columns.Clear(); // Limpiamos columnas anteriores
-
-                // Añadimos columnas manualmente con nombres correctos
-                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
-                {
-                    Name = "Id", // nombre interno
-                    HeaderText = "ID", // lo que se ve en la tabla
-                    DataPropertyName = "Id", // el nombre de la propiedad en la clase
-                    Visible = false // si no quieres mostrar el ID
-                });
-
-                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
-                {
-                    Name = "Usuario",
-                    HeaderText = "Usuario",
-                    DataPropertyName = "Usuario"
-                });
-
-                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
-                {
-                    Name = "Rol",
-                    HeaderText = "Rol",
-                    DataPropertyName = "Rol"
-                });
-                dgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
-                {
-                    Name = "Contrasena", // 🔴 Este nombre es el que se usa luego en .Cells["Contrasena"]
-                    HeaderText = "Contraseña",
-                    DataPropertyName = "Contrasena",
-                    Visible = false // para que no se muestre en la tabla pero sí se use internamente
-                });
-
-
+                dgvUsuarios.DataSource = null;
                 dgvUsuarios.DataSource = usuarios;
 
                 LimpiarCampos();

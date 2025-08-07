@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GymNegocio.ClasesEntrenador;
+using System.Net;
+using System.Net.Mail;
 
 namespace GymPresentacion
 {
@@ -160,7 +162,7 @@ namespace GymPresentacion
             btnEditarEntrenador.Click += btnEditar_Click;
             btnEliminarEntrenador.Click += btnEliminar_Click;
             btnConsultar.Click += (s, e) => CargarEntrenadores();
-            textBox1.TextChanged += this.textBox1_TextChanged;
+            txtCorreoEntrenador.TextChanged += this.textBox1_TextChanged;
         }
 
         private void Form2Entrenadores_FormClosing(object sender, FormClosingEventArgs e)
@@ -218,33 +220,48 @@ namespace GymPresentacion
             {
                 if (string.IsNullOrWhiteSpace(txtNombreEntrenador.Text) || cmbAreaEntrenador.SelectedItem == null)
                 {
-                    MessageBox.Show("El Nombre y el Area son Obligatorio.", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El Nombre y el Área son obligatorios.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 if (!maskedTextBox1.MaskCompleted)
                 {
-                    MessageBox.Show("Por Favor, Complete el numero de telefono.", "Telefono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor, complete el número de teléfono.", "Teléfono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     maskedTextBox1.Focus();
                     return;
                 }
 
                 if (!ValidarTelefono(maskedTextBox1.Text))
                 {
-                    MessageBox.Show("El numero de Telefono no es valido. Debe tener 10 digitos.", "Telefono Invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El número de teléfono no es válido. Debe tener 10 dígitos.", "Teléfono Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     maskedTextBox1.Focus();
                     return;
                 }
 
                 if (nudSalario.Value < 0)
                 {
-                    MessageBox.Show("El Salario no puede ser negativo ", "Validacion ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El salario no puede ser negativo.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                if (chkEnviarCorreo.Checked)
+                {
+                    if (string.IsNullOrWhiteSpace(txtCorreoEntrenador.Text))
+                    {
+                        MessageBox.Show("El correo es obligatorio si se desea enviar confirmación.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (!txtCorreoEntrenador.Text.Contains("@") || !txtCorreoEntrenador.Text.Contains("."))
+                    {
+                        MessageBox.Show("El correo no tiene un formato válido.", "Correo Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
 
                 Entrenador nuevoAccesoEntrenador;
                 string areaSeleccionada = cmbAreaEntrenador.SelectedItem.ToString();
+
                 switch (areaSeleccionada)
                 {
                     case "Pesas":
@@ -260,12 +277,13 @@ namespace GymPresentacion
                         nuevoAccesoEntrenador = new EntrenadorYoga();
                         break;
                     default:
-                        MessageBox.Show("Por favor, seleccione un Area .", "Area", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Por favor, seleccione un área válida.", "Área", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                 }
 
-                nuevoAccesoEntrenador.Nombre = txtNombreEntrenador.Text;
-                nuevoAccesoEntrenador.Telefono = maskedTextBox1.Text;
+                // Asignar datos
+                nuevoAccesoEntrenador.Nombre = txtNombreEntrenador.Text.Trim();
+                nuevoAccesoEntrenador.Telefono = maskedTextBox1.Text.Trim();
                 nuevoAccesoEntrenador.Genero = cmbGeneroEntrenador.SelectedItem?.ToString();
                 nuevoAccesoEntrenador.FechaIngreso = dtpIngresoEntrenador.Value;
                 nuevoAccesoEntrenador.Duracion = (int)nudDuracion.Value;
@@ -273,14 +291,110 @@ namespace GymPresentacion
                 nuevoAccesoEntrenador.Salario = nudSalario.Value;
 
                 _servicioEntrenadores.RegistrarEntrenador(nuevoAccesoEntrenador);
-                MessageBox.Show("Entrenador registrado exitosamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Entrenador registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // ENVÍO DE CORREO (solo si checkbox está marcado)
+                if (chkEnviarCorreo.Checked)
+                {
+                    try
+                    {
+                        string correoDestino = txtCorreoEntrenador.Text.Trim();
+                        string nombre = nuevoAccesoEntrenador.Nombre;
+                        string genero = nuevoAccesoEntrenador.Genero;
+                        string telefono = nuevoAccesoEntrenador.Telefono;
+                        DateTime ingreso = nuevoAccesoEntrenador.FechaIngreso;
+                        string area = areaSeleccionada;
+                        decimal salario = nuevoAccesoEntrenador.Salario;
+
+                        MailMessage correo = new MailMessage();
+                        correo.From = new MailAddress("tugimnasio@gmail.com", "PowerFit");
+                        correo.To.Add(correoDestino);
+                        correo.Subject = "Bienvenido a PowerFit - Confirmación de Registro";
+                        correo.IsBodyHtml = true;
+
+                        correo.Body = $@"
+            <html>
+            <head>
+                <style>
+                    body {{
+                        font-family: 'Segoe UI', sans-serif;
+                        background-color: #f5f5f5;
+                        padding: 20px;
+                        color: #333;
+                    }}
+                    .container {{
+                        background-color: #ffffff;
+                        padding: 25px;
+                        border-radius: 10px;
+                        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                    }}
+                    h2 {{
+                        color: #0066cc;
+                        text-align: center;
+                    }}
+                    table {{
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                    }}
+                    th, td {{
+                        border: 1px solid #cccccc;
+                        padding: 10px;
+                        text-align: left;
+                    }}
+                    th {{
+                        background-color: #e6f2ff;
+                    }}
+                    .footer {{
+                        margin-top: 30px;
+                        text-align: center;
+                        color: #555;
+                    }}
+                </style>
+            </head>
+            <body>
+                <div class='container'>
+                    <h2>¡Bienvenido al equipo de PowerFit!</h2>
+                    <p>Hola <strong>{nombre}</strong>, gracias por unirte como entrenador. Aquí están tus datos registrados:</p>
+
+                    <table>
+                        <tr><th>Nombre:</th><td>{nombre}</td></tr>
+                        <tr><th>Género:</th><td>{genero}</td></tr>
+                        <tr><th>Área:</th><td>{area}</td></tr>
+                        <tr><th>Teléfono:</th><td>{telefono}</td></tr>
+                        <tr><th>Fecha de Ingreso:</th><td>{ingreso:dd/MM/yyyy}</td></tr>
+                        <tr><th>Salario:</th><td>{salario.ToString("C2", new System.Globalization.CultureInfo("es-DO"))}</td></tr>
+                    </table>
+
+                    <div class='footer'>
+                        <p><i><b>PowerFit - Train Hard 💪</b></i></p>
+                    </div>
+                </div>
+            </body>
+            </html>";
+
+                        SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                        smtp.Credentials = new NetworkCredential("gympowerfit98@gmail.com", "rlvcynhaatwfwzic"); // REEMPLAZAR
+                        smtp.EnableSsl = true;
+
+                        smtp.Send(correo);
+                        MessageBox.Show("Correo enviado al entrenador.", "Correo Enviado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception exCorreo)
+                    {
+                        MessageBox.Show("Error al enviar el correo: " + exCorreo.Message, "Correo Fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
                 CargarEntrenadores();
                 LimpiarCampos();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al Agregar el Entrenador: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al agregar el entrenador: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
 
         }
 

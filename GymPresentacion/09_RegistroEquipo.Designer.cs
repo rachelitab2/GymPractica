@@ -250,11 +250,11 @@
             btnAgregarEquipo.Cursor = Cursors.Hand;
             btnAgregarEquipo.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnAgregarEquipo.ForeColor = Color.Black;
-            btnAgregarEquipo.Location = new Point(703, 589);
+            btnAgregarEquipo.Location = new Point(1151, 586);
             btnAgregarEquipo.Name = "btnAgregarEquipo";
-            btnAgregarEquipo.Size = new Size(141, 59);
+            btnAgregarEquipo.Size = new Size(150, 59);
             btnAgregarEquipo.TabIndex = 12;
-            btnAgregarEquipo.Text = "Agregar";
+            btnAgregarEquipo.Text = "➕ Agregar";
             btnAgregarEquipo.UseVisualStyleBackColor = false;
             btnAgregarEquipo.Click += btnAgregarEquipo_Click;
             // 
@@ -264,11 +264,11 @@
             btnEliminarEquipo.Cursor = Cursors.Hand;
             btnEliminarEquipo.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEliminarEquipo.ForeColor = Color.Black;
-            btnEliminarEquipo.Location = new Point(536, 589);
+            btnEliminarEquipo.Location = new Point(508, 589);
             btnEliminarEquipo.Name = "btnEliminarEquipo";
-            btnEliminarEquipo.Size = new Size(149, 56);
+            btnEliminarEquipo.Size = new Size(163, 56);
             btnEliminarEquipo.TabIndex = 13;
-            btnEliminarEquipo.Text = "Eliminar";
+            btnEliminarEquipo.Text = "🗑️ Eliminar";
             btnEliminarEquipo.UseVisualStyleBackColor = false;
             btnEliminarEquipo.Click += btnEliminarEquipo_Click;
             // 
@@ -277,11 +277,11 @@
             btnEditarEquipo.BackColor = Color.DodgerBlue;
             btnEditarEquipo.Cursor = Cursors.Hand;
             btnEditarEquipo.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            btnEditarEquipo.Location = new Point(363, 589);
+            btnEditarEquipo.Location = new Point(690, 589);
             btnEditarEquipo.Name = "btnEditarEquipo";
             btnEditarEquipo.Size = new Size(153, 56);
             btnEditarEquipo.TabIndex = 14;
-            btnEditarEquipo.Text = "Editar";
+            btnEditarEquipo.Text = "✏️ Editar";
             btnEditarEquipo.UseVisualStyleBackColor = false;
             btnEditarEquipo.Click += btnEditarEquipo_Click;
             // 
@@ -290,11 +290,11 @@
             btnConsultarEquipo.BackColor = Color.DodgerBlue;
             btnConsultarEquipo.Cursor = Cursors.Hand;
             btnConsultarEquipo.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            btnConsultarEquipo.Location = new Point(195, 589);
+            btnConsultarEquipo.Location = new Point(311, 589);
             btnConsultarEquipo.Name = "btnConsultarEquipo";
-            btnConsultarEquipo.Size = new Size(147, 56);
+            btnConsultarEquipo.Size = new Size(166, 56);
             btnConsultarEquipo.TabIndex = 15;
-            btnConsultarEquipo.Text = "Consultar";
+            btnConsultarEquipo.Text = "🔍 Consultar";
             btnConsultarEquipo.UseVisualStyleBackColor = false;
             btnConsultarEquipo.Click += btnConsultarEquipo_Click;
             // 
@@ -338,6 +338,7 @@
             Controls.Add(pictureBox1);
             DoubleBuffered = true;
             Name = "RegistroEquipo";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistroEquipo";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvEquipos).EndInit();

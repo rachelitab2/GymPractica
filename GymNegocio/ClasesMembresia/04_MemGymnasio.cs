@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using GymDatos;
 using GymNegocio.ClasesMembresia;
 using GymNegocio.ClasesRutinas;
+using GymNegocio.Interfaces;
 using Microsoft.Data.SqlClient;
 
 
@@ -15,15 +16,15 @@ namespace GymNegocio.ClasesMembresia
 {
     //Clase Acceso
     //Usaremos ahora esto para insertar, actualizar y eliminar y listar nueva etapa del codigo
-    public class MemGymnasio //Nombre de la clase 
+    public class MemGymnasio : IRepositorio<Membresia> //Nombre de la clase 
     {
-        public virtual void InsertarMembresia(Membresia membresia)  // INSERTA
-                                                                    //metodo normal para insertar 
+        public async Task InsertarAsync(Membresia membresia)  // INSERTA
+                                                              //metodo normal para insertar 
 
         {
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
             {
-                conn.Open(); //Abre la conexion, esto abre la conexion para hacer lo que falta de la conexion de la CapaConexionDatos
+                await conn.OpenAsync(); //Abre la conexion, esto abre la conexion para hacer lo que falta de la conexion de la CapaConexionDatos
                 //a esta capa
 
                 //Consulta SQL para insertar. Esto tiene que ver con la conexion SQL y demas 
@@ -41,7 +42,7 @@ namespace GymNegocio.ClasesMembresia
                     cmd.Parameters.AddWithValue("@CostoTotal", membresia.CostoTotal);
                     cmd.Parameters.AddWithValue("@Activa", membresia.Activa);
 
-                    var result = cmd.ExecuteNonQuery();
+                    var result = await cmd.ExecuteNonQueryAsync();
                     if (result != null)
                     {
                         membresia.Id = Convert.ToInt32(result);
@@ -51,11 +52,11 @@ namespace GymNegocio.ClasesMembresia
             }
         }
 
-        public virtual void Actualizar(Membresia membresia) //ACTUALIZAR
+        public async Task ActualizarAsync(Membresia membresia) //ACTUALIZAR
         {
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))// se debe repetir este paso una y otra vez para lla,r la conexion para actualizar 
             {
-                conn.Open(); //Abre la conexion 
+                await conn.OpenAsync(); //Abre la conexion 
                 //Consulta SQL para actualizar. 
                 string query = "UPDATE Membresia SET NOMBRE = @Nombre, TELEFONO = @Telefono, TIPO = @Tipo, " +
                                "FECHAINICIO = @FechaInicio, FECHAFIN = @FechaFin, COSTOTOTAL = @CostoTotal, Activa = @Activa " +
@@ -70,38 +71,38 @@ namespace GymNegocio.ClasesMembresia
                     cmd.Parameters.AddWithValue("@FechaFin", membresia.FechaFin);
                     cmd.Parameters.AddWithValue("@CostoTotal", membresia.CostoTotal);
                     cmd.Parameters.AddWithValue("@Activa", membresia.Activa);
-                    cmd.ExecuteNonQuery(); //Ejecuta el comando de actualización
+                    await cmd.ExecuteNonQueryAsync(); //Ejecuta el comando de actualización
                 }
             }
         }
 
-        public void Eliminar(int IdMembresia) //Eliminar 
+        public async Task EliminarAsync(int IdMembresia) //Eliminar 
         {
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))//SAME
             {
-                conn.Open();
+                await conn.OpenAsync();
                 string query = "DELETE FROM Membresia WHERE Id = @IdMembresia";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@IdMembresia", IdMembresia);
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
         }
 
-        public List<Membresia> Listar() // Aqui estamos listando las membresias de la base de datos 
+        public async Task<List<Membresia>> ListarAsync() // Aqui estamos listando las membresias de la base de datos 
         {
-            List<Membresia> membresias = new List<Membresia>();// creamos lista vacia para guardar memebresias encontadas
+            var membresias = new List<Membresia>();// creamos lista vacia para guardar memebresias encontadas
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion)) // conexion nuevamente
             {
                 string query = "SELECT Id, NOMBRE, TELEFONO, TIPO, FECHAINICIO, FECHAFIN, COSTOTOTAL, Activa FROM Membresia ORDER BY Id";
                 //Consultamos los registros de la tabla 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    conn.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    await conn.OpenAsync();
+                    using (SqlDataReader reader =await cmd.ExecuteReaderAsync())
                     {
-                        while (reader.Read())
+                        while ( await reader.ReadAsync())
                         {
                             Membresia membresia;
                             string tipo = reader["TIPO"].ToString(); // lee el tipo de membresia 
@@ -132,7 +133,7 @@ namespace GymNegocio.ClasesMembresia
             return membresias;//devolver lista de membresias 
         }
 
-        public Membresia ObtenerPorId(int IdMembresia)//Lectura por Id
+        public async Task <Membresia> ObtenerPorIdAsync(int IdMembresia)//Lectura por Id
         {
             Membresia membresia = null;
             using (SqlConnection conn = new SqlConnection(ConexionDatos.Conexion))
@@ -141,10 +142,10 @@ namespace GymNegocio.ClasesMembresia
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@IdMembresia", IdMembresia);
-                    conn.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    await conn.OpenAsync();
+                    using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                     {
-                        if (reader.Read())
+                        if (await reader.ReadAsync())
                         {
                             string tipo = reader["TIPO"].ToString();
                             if (tipo == "Mensual")

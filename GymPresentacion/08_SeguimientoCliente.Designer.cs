@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesoSeguimien));
             lblSEGUIMIENTO = new Label();
             lblClienteSeguimiento = new Label();
             label3 = new Label();
@@ -47,6 +46,7 @@
             button1 = new Button();
             AtrasInicio = new PictureBox();
             GrasaSeguimiento = new TextBox();
+            sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DatosdelClienteP).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AtrasInicio).BeginInit();
@@ -83,9 +83,8 @@
             label3.AutoSize = true;
             label3.Location = new Point(1061, 403);
             label3.Name = "label3";
-            label3.Size = new Size(50, 20);
+            label3.Size = new Size(0, 20);
             label3.TabIndex = 2;
-            label3.Text = "label3";
             label3.Click += label3_Click;
             // 
             // lblPeso
@@ -119,7 +118,7 @@
             lblGrasa.BackColor = Color.Transparent;
             lblGrasa.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             lblGrasa.ForeColor = Color.Lavender;
-            lblGrasa.Location = new Point(799, 418);
+            lblGrasa.Location = new Point(796, 418);
             lblGrasa.Name = "lblGrasa";
             lblGrasa.Size = new Size(218, 25);
             lblGrasa.TabIndex = 5;
@@ -141,16 +140,22 @@
             // 
             DatosdelClienteP.AllowUserToAddRows = false;
             DatosdelClienteP.AllowUserToDeleteRows = false;
-            DatosdelClienteP.AllowUserToResizeColumns = false;
-            DatosdelClienteP.AllowUserToResizeRows = false;
             DatosdelClienteP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DatosdelClienteP.BackgroundColor = Color.Lavender;
+            DatosdelClienteP.BorderStyle = BorderStyle.None;
+            DatosdelClienteP.CellBorderStyle = DataGridViewCellBorderStyle.None;
             DatosdelClienteP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DatosdelClienteP.GridColor = SystemColors.MenuHighlight;
+            DatosdelClienteP.Cursor = Cursors.Hand;
+            DatosdelClienteP.EnableHeadersVisualStyles = false;
+            DatosdelClienteP.GridColor = Color.DodgerBlue;
             DatosdelClienteP.Location = new Point(22, 223);
             DatosdelClienteP.Margin = new Padding(2);
+            DatosdelClienteP.MultiSelect = false;
             DatosdelClienteP.Name = "DatosdelClienteP";
             DatosdelClienteP.ReadOnly = true;
+            DatosdelClienteP.RowHeadersVisible = false;
             DatosdelClienteP.RowHeadersWidth = 62;
+            DatosdelClienteP.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DatosdelClienteP.Size = new Size(758, 298);
             DatosdelClienteP.TabIndex = 7;
             // 
@@ -185,7 +190,7 @@
             PesoSeguimieto.BackColor = Color.White;
             PesoSeguimieto.Cursor = Cursors.IBeam;
             PesoSeguimieto.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            PesoSeguimieto.Location = new Point(994, 298);
+            PesoSeguimieto.Location = new Point(984, 291);
             PesoSeguimieto.MaxLength = 30;
             PesoSeguimieto.Name = "PesoSeguimieto";
             PesoSeguimieto.ShortcutsEnabled = false;
@@ -195,13 +200,16 @@
             // 
             // BotonSeguimin
             // 
+            BotonSeguimin.BackColor = Color.DodgerBlue;
             BotonSeguimin.Cursor = Cursors.Hand;
-            BotonSeguimin.Location = new Point(1030, 538);
+            BotonSeguimin.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            BotonSeguimin.Location = new Point(607, 538);
             BotonSeguimin.Margin = new Padding(2);
             BotonSeguimin.Name = "BotonSeguimin";
-            BotonSeguimin.Size = new Size(119, 62);
+            BotonSeguimin.Size = new Size(173, 62);
             BotonSeguimin.TabIndex = 12;
-            BotonSeguimin.UseVisualStyleBackColor = true;
+            BotonSeguimin.Text = "Guardar Doc ";
+            BotonSeguimin.UseVisualStyleBackColor = false;
             BotonSeguimin.Click += BotonSeguimin_Click;
             // 
             // sqlCommand1
@@ -231,14 +239,16 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.DodgerBlue;
             button1.Cursor = Cursors.Hand;
-            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             button1.Location = new Point(22, 538);
             button1.Margin = new Padding(2);
             button1.Name = "button1";
-            button1.Size = new Size(101, 62);
+            button1.Size = new Size(168, 62);
             button1.TabIndex = 15;
-            button1.UseVisualStyleBackColor = true;
+            button1.Text = "🗑️ Eliminar";
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // AtrasInicio
@@ -259,7 +269,7 @@
             GrasaSeguimiento.BackColor = Color.White;
             GrasaSeguimiento.Cursor = Cursors.IBeam;
             GrasaSeguimiento.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            GrasaSeguimiento.Location = new Point(1009, 418);
+            GrasaSeguimiento.Location = new Point(1010, 416);
             GrasaSeguimiento.MaxLength = 30;
             GrasaSeguimiento.Name = "GrasaSeguimiento";
             GrasaSeguimiento.ShortcutsEnabled = false;
@@ -291,6 +301,7 @@
             Controls.Add(lblSEGUIMIENTO);
             DoubleBuffered = true;
             Name = "PesoSeguimien";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "SeguimientoCliente";
             Load += SeguimientoCliente_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -322,5 +333,6 @@
         private Button button1;
         private PictureBox AtrasInicio;
         private TextBox GrasaSeguimiento;
+        private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
     }
 }
