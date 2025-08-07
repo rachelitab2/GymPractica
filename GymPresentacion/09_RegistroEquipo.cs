@@ -31,6 +31,10 @@ namespace GymPresentacion
         {
             InitializeComponent();
             _usuarioActivo = usuarioActivo;
+            txtPrecioEquipo.KeyPress += txtPrecioEquipo_KeyPress;
+            txtPrecioEquipo.TextChanged += txtPrecioEquipo_TextChanged;
+            this.FormClosing += RegistroEquipo_FormClosing;
+
         }
 
         private void lblDescripcionEquipo_Click(object sender, EventArgs e)
@@ -91,7 +95,57 @@ namespace GymPresentacion
             }
 
         }
+        private void txtPrecioEquipo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox txt = sender as TextBox;
 
+            // Permitir solo números, coma, punto y teclas de control (como Backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            // Solo un separador decimal permitido (coma o punto, pero no ambos)
+            if ((e.KeyChar == ',' || e.KeyChar == '.') && (txt.Text.Contains(',') || txt.Text.Contains('.')))
+            {
+                e.Handled = true;
+            }
+
+            // No permitir que empiece con cero si no es decimal
+            if (txt.Text.Length == 0 && (e.KeyChar == '0'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrecioEquipo_TextChanged(object sender, EventArgs e)
+        {
+            int maxCaracteres = 10;
+            TextBox txt = sender as TextBox;
+
+            // Limitar longitud
+            if (txt.Text.Length > maxCaracteres)
+            {
+                MessageBox.Show($"Máximo {maxCaracteres} caracteres permitidos para el precio.", "Límite de caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt.Text = txt.Text.Substring(0, maxCaracteres);
+                txt.SelectionStart = txt.Text.Length;
+            }
+
+            // Validación: no permitir solo "0" o "0.00"
+            if (txt.Text == "0" || txt.Text == "0,00" || txt.Text == "0.00")
+            {
+                MessageBox.Show("El precio no puede ser cero.", "Precio inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt.Clear();
+            }
+
+            // Validación: evitar precios absurdos
+            if (decimal.TryParse(txt.Text.Replace('.', ','), out decimal valor) && valor > 1000000)
+            {
+                MessageBox.Show("El precio no puede ser mayor a 1,000,000.", "Precio fuera de rango", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt.Text = "1000000";
+                txt.SelectionStart = txt.Text.Length;
+            }
+        }
         private void cmbAreaUso_SelectedIndexChanged(object sender, EventArgs e)
         {
             string? areaSeleccionada = cmbAreaUso.SelectedItem as string;
@@ -129,9 +183,9 @@ namespace GymPresentacion
             }
 
             // Validar que el precio sea un número válido decimal positivo
-            if (!decimal.TryParse(txtPrecioEquipo.Text, out decimal precio) || precio <= 0)
+            if (!decimal.TryParse(txtPrecioEquipo.Text.Replace('.', ','), out decimal precio) || precio <= 0 || precio > 1000000)
             {
-                MessageBox.Show("Ingresa un precio válido mayor que cero.", "Precio inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ingresa un precio válido mayor que cero y menor a 1,000,000.", "Precio inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -262,6 +316,10 @@ namespace GymPresentacion
 
             // Si ya definiste columnas manualmente desde el diseñador, no necesitas crearlas aquí
             dgvEquipos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+        private void RegistroEquipo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit(); // Esto cierra toda la aplicación al cerrar este formulario
         }
     }
 }

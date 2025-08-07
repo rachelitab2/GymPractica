@@ -146,7 +146,7 @@
             btnEliminarUsuario.Cursor = Cursors.Hand;
             btnEliminarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarUsuario.ForeColor = Color.Black;
-            btnEliminarUsuario.Location = new Point(354, 706);
+            btnEliminarUsuario.Location = new Point(546, 706);
             btnEliminarUsuario.Name = "btnEliminarUsuario";
             btnEliminarUsuario.Size = new Size(152, 52);
             btnEliminarUsuario.TabIndex = 7;
@@ -158,7 +158,7 @@
             btnEditarUsuario.BackColor = Color.DodgerBlue;
             btnEditarUsuario.Cursor = Cursors.Hand;
             btnEditarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnEditarUsuario.Location = new Point(538, 706);
+            btnEditarUsuario.Location = new Point(727, 706);
             btnEditarUsuario.Name = "btnEditarUsuario";
             btnEditarUsuario.Size = new Size(144, 52);
             btnEditarUsuario.TabIndex = 8;
@@ -184,7 +184,7 @@
             btnConsultarUsuario.BackColor = Color.DodgerBlue;
             btnConsultarUsuario.Cursor = Cursors.Hand;
             btnConsultarUsuario.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
-            btnConsultarUsuario.Location = new Point(721, 706);
+            btnConsultarUsuario.Location = new Point(354, 706);
             btnConsultarUsuario.Name = "btnConsultarUsuario";
             btnConsultarUsuario.Size = new Size(150, 52);
             btnConsultarUsuario.TabIndex = 10;
@@ -284,6 +284,7 @@
             Controls.Add(lblContrasena);
             Controls.Add(lblNombreUusario);
             Name = "RegsitroUsuarios";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RegsitroUsuarios";
             Load += RegsitroUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();

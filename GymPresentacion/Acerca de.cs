@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace GymPresentacion
 {
-    public partial class Form1: Form
+    public partial class acceso : Form
     {
-        public Form1()
+        public acceso()
         {
             InitializeComponent();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

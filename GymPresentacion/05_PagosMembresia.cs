@@ -32,7 +32,7 @@ namespace GymPresentacion
         {
             InitializeComponent();
             _usuariosActivos = usuariosActivos;
-            _serviciosMembresia = new Servicio_Membresia();
+            _serviciosMembresia = new Servicio_Membresia(new MemGymnasio());
             _servicioPagoMembresia = new Servicio_PagoMembresia();
           
 
@@ -110,11 +110,11 @@ namespace GymPresentacion
         }
 
 
-        private void CargarMembresias()
+        private async void CargarMembresias()
         {
             try
             {
-                _listaMembresias = _serviciosMembresia.ObtenerTodasLasMembresias();
+                _listaMembresias = await _serviciosMembresia.ObtenerTodasLasMembresiasAsync();
            
 
                 cmbClientePago.DataSource = null;
@@ -162,7 +162,7 @@ namespace GymPresentacion
             cmbClientePago.SelectedIndexChanged += ClientePago_SelectedIndexChanged;
             cmbTipoClientePago.SelectedIndexChanged += TipoMembresia_SelectedIndexChanged;
             btnPago.Click += BtnPago_Click;
-            PicPagoRegistroMembresia.Click += PicPagoRegistroMembresia_Click;
+            //PicPagoRegistroMembresia.Click += PicPagoRegistroMembresia_Click;
             PicPagoInicio.Click += PicPagoInicio_Click;
             ConsultaPago.Click += Consulta_Click;
             EliminarPago.Click += EliminarPago_Click;
@@ -381,7 +381,7 @@ namespace GymPresentacion
                 membresia.CalcularCostoTotal();
                 membresia.Activa = true;
 
-                _serviciosMembresia.ActualizarMembresia(membresia);
+                _serviciosMembresia.ActualizarMembresiaAsync(membresia);
 
                 PagoMembresia pago = new PagoMembresia(membresia.Id, membresia.CostoTotal, metodoPago);
                 _servicioPagoMembresia.RegistrarPago(pago);
@@ -408,21 +408,80 @@ namespace GymPresentacion
             {
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
+                    string nombreCliente = "";
+                    if (cmbClientePago.SelectedItem is Membresia membresia)
+                        nombreCliente = membresia.Nombre;
+                    foreach (char c in Path.GetInvalidFileNameChars())
+                        nombreCliente = nombreCliente.Replace(c, '_');
+
+
+                    string fechaActual = DateTime.Now.ToString("yyyyMMddHHmmss");
                     saveFileDialog.Filter = "Archivo PDF (*.pdf)|*.pdf";
-                    saveFileDialog.FileName = $"ReciboPago_{pago.Id}_{DateTime.Now:yyyyMMddHHmmss}.PDF";
+                    saveFileDialog.FileName = $"ReciboPago_{nombreCliente}_{pago.Id}_{fechaActual}.PDF";
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         string fileName = saveFileDialog.FileName;
-                        Document doc = new Document();
+                        Document doc = new Document(PageSize.A4, 40, 40, 40, 40 );
                         PdfWriter.GetInstance(doc, new FileStream(fileName, FileMode.Create));
                         doc.Open();
 
-                        doc.Add(new Paragraph("Recibo de Pago de Membresía"));
-                        doc.Add(new Paragraph($"ID Pago: {pago.Id}"));
-                        doc.Add(new Paragraph($"Fecha de Pago: {pago.FechaPago.ToShortDateString()}"));
-                        doc.Add(new Paragraph($"Monto: {pago.Monto:C}"));
-                        doc.Add(new Paragraph($"Método de Pago: {pago.MetodoPago}"));
+                        string logoPath = @"C:\Users\madeg\Source\Repos\GymPractica21\GymPresentacion\Resources\image-removebg-preview (4).png"; // Cambia esta ruta
+                        if (File.Exists(logoPath))
+                        {
+                            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(logoPath);
+                            logo.ScaleToFit(120f, 120f);
+                            logo.Alignment = Element.ALIGN_LEFT;
+                            doc.Add(logo);
+                        }
+
+                        // Espacio
+                        doc.Add(new Paragraph("\n"));
+
+                        var tituloFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 22);
+                        var headerFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE);
+                        var cellFont = FontFactory.GetFont(FontFactory.HELVETICA, 12);
+                        var mensajeFont = FontFactory.GetFont(FontFactory.HELVETICA_OBLIQUE, 10);
+
+                        //TITULO 
+                        Paragraph titulo = new Paragraph("Recibo de pago de Membresia", tituloFont);
+                        titulo.Alignment = Element.ALIGN_CENTER;
+                        doc.Add(titulo);
+                        doc.Add(new Paragraph("\n"));
+
+                        // Tabla
+                        PdfPTable tabla = new PdfPTable(2);
+                        tabla.WidthPercentage = 80;
+                        tabla.HorizontalAlignment = Element.ALIGN_CENTER;
+
+                        // Cabecera
+                        PdfPCell celdaCampo = new PdfPCell(new Phrase("Campo", headerFont));
+                        celdaCampo.BackgroundColor = new BaseColor(0, 123, 194);
+                        celdaCampo.HorizontalAlignment = Element.ALIGN_CENTER;
+                        tabla.AddCell(celdaCampo);
+
+
+                        PdfPCell celdaDetalle = new PdfPCell(new Phrase("Detalle", headerFont));
+                        celdaDetalle.BackgroundColor = new BaseColor(0, 123, 194);
+                        celdaDetalle.HorizontalAlignment = Element.ALIGN_CENTER;
+                        tabla.AddCell(celdaDetalle);
+
+
+                        // FILAS DE DATOS
+                        tabla.AddCell(new Phrase("ID Pago", cellFont));
+                        tabla.AddCell(new Phrase(pago.Id.ToString(), cellFont));
+                        tabla.AddCell(new Phrase("Fecha de Pago", cellFont));
+                        tabla.AddCell(new Phrase(pago.FechaPago.ToShortDateString(), cellFont));
+                        tabla.AddCell(new Phrase("Monto", cellFont));
+                        tabla.AddCell(new Phrase(pago.Monto.ToString("C"), cellFont));
+                        tabla.AddCell(new Phrase("Método de Pago", cellFont));
+                        tabla.AddCell(new Phrase(pago.MetodoPago, cellFont));
+
+
+                        doc.Add(tabla);
+
+                        // MENSAJE FINAL
+                        doc.Add(new Paragraph("\nPor favor, realice el pago antes de la fecha de vencimiento para evitar la suspensión de la membresía.", mensajeFont));
 
                         doc.Close();
 
@@ -439,6 +498,19 @@ namespace GymPresentacion
             }
         }
 
+       public void LimpiarCampos()// limpia los campos de las cjas de textos
+       {
+            cmbClientePago.SelectedIndex = -1;
+            cmbMetodoPago.SelectedIndex = 0;
+            cmbTipoClientePago.SelectedIndex = 0;
+            txtFechaVencimientoPago.Clear();
+            txtMonto.Clear();
+            dgvPagoMembresia.ClearSelection();
+
+
+            
+
+       }
         private void PicPagoInicio_Click(object sender, EventArgs e)
         {
             _isNavigating = true;

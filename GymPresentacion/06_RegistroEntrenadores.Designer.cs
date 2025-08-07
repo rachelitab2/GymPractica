@@ -108,7 +108,7 @@
             btnConsultar.BackColor = Color.DodgerBlue;
             btnConsultar.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultar.ForeColor = Color.Black;
-            btnConsultar.Location = new Point(303, 656);
+            btnConsultar.Location = new Point(270, 638);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(167, 61);
             btnConsultar.TabIndex = 1;
@@ -120,7 +120,7 @@
             btnEditarEntrenador.BackColor = Color.DodgerBlue;
             btnEditarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditarEntrenador.ForeColor = Color.Black;
-            btnEditarEntrenador.Location = new Point(475, 656);
+            btnEditarEntrenador.Location = new Point(637, 637);
             btnEditarEntrenador.Name = "btnEditarEntrenador";
             btnEditarEntrenador.Size = new Size(160, 61);
             btnEditarEntrenador.TabIndex = 2;
@@ -132,7 +132,7 @@
             btnEliminarEntrenador.BackColor = Color.DodgerBlue;
             btnEliminarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarEntrenador.ForeColor = Color.Black;
-            btnEliminarEntrenador.Location = new Point(641, 656);
+            btnEliminarEntrenador.Location = new Point(456, 638);
             btnEliminarEntrenador.Name = "btnEliminarEntrenador";
             btnEliminarEntrenador.Size = new Size(160, 59);
             btnEliminarEntrenador.TabIndex = 3;
@@ -145,7 +145,7 @@
             btnAgregarEntrenador.BackColor = Color.DodgerBlue;
             btnAgregarEntrenador.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregarEntrenador.ForeColor = Color.Black;
-            btnAgregarEntrenador.Location = new Point(806, 654);
+            btnAgregarEntrenador.Location = new Point(806, 638);
             btnAgregarEntrenador.Name = "btnAgregarEntrenador";
             btnAgregarEntrenador.Size = new Size(154, 60);
             btnAgregarEntrenador.TabIndex = 4;
@@ -421,6 +421,7 @@
             Controls.Add(dgvEntrenadores);
             DoubleBuffered = true;
             Name = "RegistroEntrenadores";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistroEntrenadores";
             Load += Form2Entrenadores_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEntrenadores).EndInit();

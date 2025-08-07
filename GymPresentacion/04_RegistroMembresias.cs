@@ -28,8 +28,8 @@ namespace GymPresentacion // nombre importante
         public RegistroMembresias(Form dashboard)
         {
             InitializeComponent();
-            _dashboard = dashboard;
-            _servicioMembresia = new Servicio_Membresia(); // instaciacion 
+            _dashboard = dashboard ?? throw new ArgumentNullException(nameof(dashboard));
+            _servicioMembresia = new Servicio_Membresia(new MemGymnasio());
             ConfigurarDataGridView();// donde se muestra los datos
             ConfigurarComboBoxTipoMembresia(); // opciones para los tipos Mensual Y Anual
             ConfigurarMaskedTextBoxTelefono();//telefono y captura de error para el mismo 
@@ -148,13 +148,13 @@ namespace GymPresentacion // nombre importante
             }
         }
 
-        public void BtnConsultar_Click(object sender, EventArgs e)
+        public async void BtnConsultar_Click(object sender, EventArgs e)
         {
             try
             {
                 LimpiarCampos();
 
-                List<Membresia> membresias = _servicioMembresia.ObtenerTodasLasMembresias();
+                List<Membresia> membresias = await _servicioMembresia.ObtenerTodasLasMembresiasAsync();
 
                 if (membresias != null && membresias.Count > 0)
                 {
@@ -232,7 +232,7 @@ namespace GymPresentacion // nombre importante
                     return;
                 }
 
-                _servicioMembresia.RegistrarMembresia(nuevaMembresia);
+                _servicioMembresia.RegistrarMembresiaAsync(nuevaMembresia);
                 MessageBox.Show("Membresia agregada con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 
@@ -395,7 +395,7 @@ namespace GymPresentacion // nombre importante
                 membresiaAEditar.Telefono = mtxtTelefono.Text.Trim();
                 membresiaAEditar.FechaFin = fechaFinActualizada;
 
-                _servicioMembresia.ActualizarMembresia(membresiaAEditar);
+                _servicioMembresia.ActualizarMembresiaAsync(membresiaAEditar);
                 MessageBox.Show("Membresia Actualizada exitosamente.", " Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarCampos();
                 BtnConsultar_Click(sender, e);
@@ -434,7 +434,7 @@ namespace GymPresentacion // nombre importante
 
                 if (resultado == DialogResult.Yes)
                 {
-                    _servicioMembresia.EliminarMembresia(membresiaAEliminar.Id);
+                   _servicioMembresia.EliminarMembresiaAsync(membresiaAEliminar.Id);
                     MessageBox.Show("Membresia Eliminada exitosamente.", " Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarCampos();
                     BtnConsultar_Click(sender, e);

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GymDatos;
 using Microsoft.Data.SqlClient; // verificacion de push
 using GymNegocio.ClasesMembresia;
+using GymNegocio.Interfaces;
 
 namespace GymNegocio.ClasesMembresia
 {
@@ -13,19 +14,22 @@ namespace GymNegocio.ClasesMembresia
     //Implementamos aqui lo que es la logica de negocio
     public class Servicio_Membresia
     {
-        public MemGymnasio _accesoDatos;
+        private readonly IRepositorio<Membresia> _accesoDatos;
 
-        public Servicio_Membresia()
+
+        public Servicio_Membresia(IRepositorio<Membresia> accesoDatos)
         {
-            _accesoDatos = new MemGymnasio();
+            _accesoDatos = accesoDatos;
         }
 
-        public int ContarMembresiaActivas()
+        public async Task<int> ContarMembresiaActivasAsync()
         {
-            return ObtenerTodasLasMembresias().Count(m => m.Activa); //Metodos normal Implementados 
+
+            var membresias = await _accesoDatos.ListarAsync();
+            return membresias.Count(m => m.Activa); ; //Metodos normal Implementados 
         }
 
-        public virtual void RegistrarMembresia(Membresia nuevaMembresia)
+        public async Task RegistrarMembresiaAsync(Membresia nuevaMembresia)
         {
             if (string.IsNullOrWhiteSpace(nuevaMembresia.Nombre))
             {
@@ -42,7 +46,7 @@ namespace GymNegocio.ClasesMembresia
                 throw new ArgumentException("La fecha de inicio no puede ser mayor a 30 dias en el futuro.");
             }
 
-            var membresiasExistentes = _accesoDatos.Listar();
+            var membresiasExistentes = await _accesoDatos.ListarAsync();
             var membresiaActiva = membresiasExistentes.FirstOrDefault(m => m.Telefono == nuevaMembresia.Telefono && m.Activa);
 
             if (membresiaActiva != null)
@@ -59,52 +63,54 @@ namespace GymNegocio.ClasesMembresia
             nuevaMembresia.CalcularCostoTotal();
             nuevaMembresia.CalcularVencimiento();
 
-            _accesoDatos.InsertarMembresia(nuevaMembresia);
+            await _accesoDatos.InsertarAsync(nuevaMembresia);
         }
 
-        public virtual void ActualizarMembresia(Membresia miembro)
+        public async Task ActualizarMembresiaAsync(Membresia miembro)
         {
-            // agregamos reglas para el negocio y ver validaciones para la actualizacion 
-            if (miembro.Id <= 0)
             {
-                throw new ArgumentException("ID de Membresia Invalido para la Actualizacion.");
-            }
-            if (string.IsNullOrEmpty(miembro.Nombre))
-            {
-                throw new ArgumentException("Nombre del Miembro Obligatorio");
+                // agregamos reglas para el negocio y ver validaciones para la actualizacion 
+                if (miembro.Id <= 0)
+                {
+                    throw new ArgumentException("ID de Membresia Invalido para la Actualizacion.");
+                }
+                if (string.IsNullOrEmpty(miembro.Nombre))
+                {
+                    throw new ArgumentException("Nombre del Miembro Obligatorio");
+                }
+
+                if (string.IsNullOrWhiteSpace(miembro.Telefono))
+                {
+                    throw new ArgumentException("El telefono del Cliente es obligatorio.");
+                }
+                miembro.CalcularVencimiento();
+                //Llamamos nuevamente 
+                miembro.CalcularCostoTotal();
+                miembro.CalcularVencimiento();
+                await _accesoDatos.ActualizarAsync(miembro);//actualiza 
             }
 
-            if (string.IsNullOrWhiteSpace(miembro.Telefono))
-            {
-                throw new ArgumentException("El telefono del Cliente es obligatorio.");
-            }
-            miembro.CalcularVencimiento();
-            //Llamamos nuevamente 
-            miembro.CalcularCostoTotal();
-            miembro.CalcularVencimiento();
-
-            _accesoDatos.Actualizar(miembro);//actualiza 
         }
 
-        public void EliminarMembresia(int idMembresia)
+        public async Task EliminarMembresiaAsync(int idMembresia)
         {
             if (idMembresia <= 0)
             {
                 throw new ArgumentException("ID de Membresia Invalido para la Eliminacion.");
             }
 
-            var membresiaExistente = _accesoDatos.ObtenerPorId(idMembresia);
+            var membresiaExistente = await  _accesoDatos.ObtenerPorIdAsync(idMembresia);
             
             if (membresiaExistente == null)
             {
                 throw new ArgumentException("Membresia no esxiste");
             }
-            _accesoDatos.Eliminar(idMembresia);
+            await _accesoDatos.EliminarAsync(idMembresia);
         }
 
-        public List<Membresia> ObtenerTodasLasMembresias()
+        public async Task<List<Membresia>> ObtenerTodasLasMembresiasAsync()
         {
-            var membresias = _accesoDatos.Listar(); //Llama a los datos
+            var membresias = await _accesoDatos.ListarAsync(); //Llama a los datos
                                                     //Metodo normal implementado
             foreach (var m in membresias)
             {
@@ -113,13 +119,13 @@ namespace GymNegocio.ClasesMembresia
             return membresias;
         }
 
-        public Membresia ObtenerMembresiaPorId(int idMembresia)
+        public async Task<Membresia> ObtenerMembresiaPorId(int idMembresia)
         {
             if (idMembresia <= 0)
             {
                 return null;
             }
-            var membresia = _accesoDatos.ObtenerPorId(idMembresia);
+            var membresia = await _accesoDatos.ObtenerPorIdAsync(idMembresia);
             if (membresia != null)// solo si se encuentra la membresia se va a actualizar su estado 
             {
                 membresia.CalcularVencimiento();
@@ -127,29 +133,34 @@ namespace GymNegocio.ClasesMembresia
             return membresia;
         }
 
-        public List<Membresia> ObtenerMembresiaActivas()
+        public async Task<List<Membresia>> ObtenerMembresiaActivasAsync()
         {
-            return ObtenerTodasLasMembresias().Where(m => m.Activa).ToList();
+            var membresias = await ObtenerTodasLasMembresiasAsync();
+            return membresias.Where(m => m.Activa).ToList();
         }
 
-        public List<Membresia> ObtenerMembresiasPorTipo(string tipo)
+        public async Task<List<Membresia>> ObtenerMembresiasPorTipoAsync(string tipo)
         {
-            return ObtenerTodasLasMembresias().Where(m => m.TipoMembresia.Equals(tipo, StringComparison.OrdinalIgnoreCase)).ToList();
+            var membresias = await ObtenerTodasLasMembresiasAsync();
+            return membresias.Where(m => m.TipoMembresia.Equals(tipo, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
-        public List<Membresia> ObtenerMembresiasVencidas()
+        public async Task<List<Membresia>> ObtenerMembresiasVencidasAsync()
         {
-            return ObtenerTodasLasMembresias().Where(m => !m.Activa).ToList();
+            var membresias = await ObtenerTodasLasMembresiasAsync();
+            return membresias.Where(m => !m.Activa).ToList();
         }
 
-        public decimal CalcularIngresosTotales()
+        public async Task<decimal> CalcularIngresosTotalesAsync()
         {
-            return ObtenerMembresiaActivas().Sum(m => m.CostoTotal);
+            var membresias = await ObtenerMembresiaActivasAsync();
+            return membresias.Sum(m => m.CostoTotal);
         }
 
-        public int ContarMembresiasActivas()
+        public async Task<int> ContarMembresiasActivasAsync()
         {
-            return ObtenerMembresiaActivas().Count;
+            var membresias = await ObtenerMembresiaActivasAsync();
+            return membresias.Count;
         }
 
         // Método abstracto simulado - para demostrar concepto

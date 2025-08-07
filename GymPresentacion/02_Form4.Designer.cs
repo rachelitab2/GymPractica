@@ -149,17 +149,16 @@
             MenuVertical.Dock = DockStyle.Left;
             MenuVertical.Location = new Point(0, 0);
             MenuVertical.Name = "MenuVertical";
-            MenuVertical.Size = new Size(284, 650);
+            MenuVertical.Size = new Size(278, 650);
             MenuVertical.TabIndex = 12;
-            MenuVertical.Paint += MenuVertical_Paint;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label3.Location = new Point(105, 264);
+            label3.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            label3.Location = new Point(141, 270);
             label3.Name = "label3";
-            label3.Size = new Size(94, 37);
+            label3.Size = new Size(75, 31);
             label3.TabIndex = 26;
             label3.Text = "Pagos";
             label3.Click += label3_Click_1;
@@ -167,10 +166,10 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label7.Location = new Point(116, 526);
+            label7.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            label7.Location = new Point(128, 532);
             label7.Name = "label7";
-            label7.Size = new Size(118, 37);
+            label7.Size = new Size(100, 31);
             label7.TabIndex = 25;
             label7.Text = "Equipos";
             label7.Click += label7_Click;
@@ -178,21 +177,20 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label6.Location = new Point(116, 451);
+            label6.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            label6.Location = new Point(126, 465);
             label6.Name = "label6";
-            label6.Size = new Size(107, 37);
+            label6.Size = new Size(91, 31);
             label6.TabIndex = 24;
             label6.Text = "Cliente";
-            label6.Click += label6_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label5.Location = new Point(116, 389);
+            label5.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            label5.Location = new Point(134, 396);
             label5.Name = "label5";
-            label5.Size = new Size(101, 37);
+            label5.Size = new Size(85, 31);
             label5.TabIndex = 23;
             label5.Text = "Rutina";
             label5.Click += label5_Click;
@@ -200,10 +198,10 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label4.Location = new Point(105, 327);
+            label4.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            label4.Location = new Point(102, 333);
             label4.Name = "label4";
-            label4.Size = new Size(187, 37);
+            label4.Size = new Size(155, 31);
             label4.TabIndex = 22;
             label4.Text = "Entrenadores";
             label4.Click += label4_Click;
@@ -211,10 +209,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label2.Location = new Point(105, 199);
+            label2.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            label2.Location = new Point(119, 207);
             label2.Name = "label2";
-            label2.Size = new Size(161, 37);
+            label2.Size = new Size(134, 31);
             label2.TabIndex = 20;
             label2.Text = "Membresia";
             label2.Click += label2_Click;
@@ -222,10 +220,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label1.Location = new Point(105, 132);
+            label1.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
+            label1.Location = new Point(126, 135);
             label1.Name = "label1";
-            label1.Size = new Size(128, 37);
+            label1.Size = new Size(107, 31);
             label1.TabIndex = 19;
             label1.Text = "Usuarios";
             label1.Click += label1_Click;
@@ -236,13 +234,12 @@
             PicPanelEquipo.BackgroundImageLayout = ImageLayout.None;
             PicPanelEquipo.Cursor = Cursors.Hand;
             PicPanelEquipo.Image = Properties.Resources.image_removebg_preview__16_;
-            PicPanelEquipo.Location = new Point(5, 520);
+            PicPanelEquipo.Location = new Point(5, 504);
             PicPanelEquipo.Name = "PicPanelEquipo";
             PicPanelEquipo.Size = new Size(92, 52);
             PicPanelEquipo.SizeMode = PictureBoxSizeMode.Zoom;
             PicPanelEquipo.TabIndex = 18;
             PicPanelEquipo.TabStop = false;
-            PicPanelEquipo.Click += PicPanelEquipo_Click;
             // 
             // PicPanelSeguimiento
             // 
@@ -302,9 +299,9 @@
             // 
             BarraTitular.Controls.Add(PicCerrarSesion);
             BarraTitular.Dock = DockStyle.Top;
-            BarraTitular.Location = new Point(284, 0);
+            BarraTitular.Location = new Point(278, 0);
             BarraTitular.Name = "BarraTitular";
-            BarraTitular.Size = new Size(1016, 50);
+            BarraTitular.Size = new Size(1022, 50);
             BarraTitular.TabIndex = 13;
             // 
             // PicCerrarSesion

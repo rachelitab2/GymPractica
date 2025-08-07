@@ -12,7 +12,9 @@ namespace GymNegocio.Interfaces
             Task InsertarAsync(T entidad);
             Task ActualizarAsync(T entidad);
             Task EliminarAsync(int id);
-        }
+
+            Task<T> ObtenerPorIdAsync(int id);
+    }
     
 }
 /*
