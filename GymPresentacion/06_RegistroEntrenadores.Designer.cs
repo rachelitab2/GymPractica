@@ -151,6 +151,7 @@
             btnAgregarEntrenador.TabIndex = 4;
             btnAgregarEntrenador.Text = "➕ Agregar";
             btnAgregarEntrenador.UseVisualStyleBackColor = false;
+            btnAgregarEntrenador.Click += btnAgregarEntrenador_Click_1;
             // 
             // checkDisponible
             // 
@@ -390,7 +391,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Black;
+            BackColor = Color.FromArgb(28, 27, 27);
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1647, 826);
             Controls.Add(textBox1);

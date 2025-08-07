@@ -160,9 +160,6 @@ namespace GymPresentacion
             btnEditarEntrenador.Click += btnEditar_Click;
             btnEliminarEntrenador.Click += btnEliminar_Click;
             btnConsultar.Click += (s, e) => CargarEntrenadores();
-          //  PicMem2.Click += PicMem2_Click;
-            //PicRutinaEntrenador.Click += PicRutinaEntrenador_Click;
-            PicEntrenadorInicio.Click += PicEntrenadorInicio_Click;
             textBox1.TextChanged += this.textBox1_TextChanged;
         }
 
@@ -475,7 +472,7 @@ namespace GymPresentacion
 
         }
 
-        private void textBox1_TextChanged ( object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -487,6 +484,11 @@ namespace GymPresentacion
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void btnAgregarEntrenador_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
