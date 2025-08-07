@@ -62,8 +62,8 @@ namespace GymPresentacion
             btnConsultarRutina.Click += BtnConsultarRutina_Click;
             dgvRutinas.SelectionChanged += DgvRutinas_SelectionChanged;
 
-            PicMemRutina.Click += PicMemRutina_Click;
-            PicEntrenadorIr.Click += PicEntrenadorIr_Click;
+            //PicMemRutina.Click += PicMemRutina_Click;
+            //PicEntrenadorIr.Click += PicEntrenadorIr_Click;
 
             PicRutinaInicio.Click += PicRutinaInicio_Click;
         }
