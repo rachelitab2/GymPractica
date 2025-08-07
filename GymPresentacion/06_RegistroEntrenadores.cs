@@ -160,9 +160,6 @@ namespace GymPresentacion
             btnEditarEntrenador.Click += btnEditar_Click;
             btnEliminarEntrenador.Click += btnEliminar_Click;
             btnConsultar.Click += (s, e) => CargarEntrenadores();
-            PicMem2.Click += PicMem2_Click;
-            PicRutinaEntrenador.Click += PicRutinaEntrenador_Click;
-            PicEntrenadorInicio.Click += PicEntrenadorInicio_Click;
             textBox1.TextChanged += this.textBox1_TextChanged;
         }
 

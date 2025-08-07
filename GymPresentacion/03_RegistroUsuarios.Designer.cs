@@ -266,7 +266,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Black;
+            BackColor = Color.FromArgb(28, 27, 27);
             ClientSize = new Size(1730, 981);
             Controls.Add(btnLimpiar1);
             Controls.Add(checkBox1);

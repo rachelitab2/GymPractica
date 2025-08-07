@@ -130,7 +130,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Black;
+            BackColor = Color.FromArgb(28, 27, 27);
             ClientSize = new Size(1286, 755);
             Controls.Add(lblTipoAcceso);
             Controls.Add(btnAcceder);

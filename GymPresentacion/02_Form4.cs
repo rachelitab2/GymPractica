@@ -8,7 +8,7 @@ namespace GymPresentacion
     {
         private readonly UsuariosActivos _usuarioActivo;
         private bool _isNavigating = false;
-       
+
 
         public btnDespliegue(UsuariosActivos usuarioActivo)
         {
@@ -26,7 +26,7 @@ namespace GymPresentacion
             PicPanelPagoMembresia.Click += PicPanelPagoMembresia_Click;
             PicPanelSeguimiento.Click += PicPanelSeguimiento_Click;
             PicPanelUsuario.Click += PicPanelUsuario_Click;
-            PicPanelDespliegue.Click += Despliegue_Click;
+          
             pictureBox1.Click += pictureBox1_Click;
             this.FormClosing += btnDespliegue_FormClosing;
             this.Load += btnDespliegue_Load;
@@ -40,7 +40,7 @@ namespace GymPresentacion
             {
                 PicPanelRutina.Visible = false;
                 PicPanelSeguimiento.Visible = false;
-              
+
             }
             else if (rol == "Entrenador")
             {
@@ -131,8 +131,8 @@ namespace GymPresentacion
         private void PicPanelEquipo_Click(object sender, EventArgs e)
         {
             _isNavigating = true;
-           // RegistroEquipo equipo = new RegistroEquipo();
-           //ahora se llama con el parametro
+            // RegistroEquipo equipo = new RegistroEquipo();
+            //ahora se llama con el parametro
             RegistroEquipo equipo = new RegistroEquipo(_usuarioActivo);
             equipo.Show();
             this.Close();
@@ -140,26 +140,7 @@ namespace GymPresentacion
 
         private void Despliegue_Click(object sender, EventArgs e)
         {
-            /*  if (MenuVertical.Width ==250)
-              {
-                  MenuVertical.Width = 70;
-              }
-              else
-              {
-                  MenuVertical.Width = 250;
-              }*/
 
-            if (MenuVertical.Width == 250)
-            {
-                MenuVertical.Width = 70;
-            }
-            else
-            {
-                MenuVertical.Width = 250;
-            }
-
-            // Forzar refresco por si Dock/Anchor está dando problema
-            MenuVertical.Refresh();
         }
 
 
@@ -180,6 +161,84 @@ namespace GymPresentacion
             }
         }
 
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            if (_registroUsuariosForm == null || _registroUsuariosForm.IsDisposed)
+            {
+                _registroUsuariosForm = new RegsitroUsuarios(_usuarioActivo);
+            }
+            _registroUsuariosForm.Show();
+            this.Hide();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            if (_registroMembresiasForm == null || _registroMembresiasForm.IsDisposed)
+            {
+                _registroMembresiasForm = new RegistroMembresias(this);
+            }
+            _registroMembresiasForm.Show();
+            this.Hide();
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+            //TODO Usa solo el singleton
+            PagosMembresia pagoMembresia = PagosMembresia.ObtenerInstancia(_usuarioActivo);
+            pagoMembresia.Show();
+
+            this.Hide(); //TODO Oculta el formulario actual (menú principal u otro)
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            if (_registroEntrenadoresForm == null || _registroEntrenadoresForm.IsDisposed)
+            {
+                _registroEntrenadoresForm = new RegistroEntrenadores(this);
+            }
+            _registroEntrenadoresForm.Show();
+            this.Hide();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            if (_registroRutinaForm == null || _registroRutinaForm.IsDisposed)
+            {
+                _registroRutinaForm = new RegistroRutina(this);
+            }
+            _registroRutinaForm.Show();
+            this.Hide();
+        }
+
+        private void MenuVertical_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            if (_seguimientoForm == null || _seguimientoForm.IsDisposed)
+            {
+                _seguimientoForm = new PesoSeguimien(_usuarioActivo, this);
+            }
+            _seguimientoForm.Show();
+            this.Hide();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            _isNavigating = true;
+            // RegistroEquipo equipo = new RegistroEquipo();
+            //ahora se llama con el parametro
+            RegistroEquipo equipo = new RegistroEquipo(_usuarioActivo);
+            equipo.Show();
+            this.Close();
+        }
     }
 }
 
