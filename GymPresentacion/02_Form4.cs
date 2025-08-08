@@ -88,7 +88,8 @@ namespace GymPresentacion
             Color colorOriginalLbl = lbl.BackColor;
             Color colorHover = Color.Transparent; // SIN COLOR DE FONDO
 
-            pic.MouseEnter += (s, e) => {
+            pic.MouseEnter += (s, e) =>
+            {
                 if (TienePermiso(pic))
                 {
                     // Solo cambiar cursor, sin cambiar color de fondo
@@ -96,14 +97,16 @@ namespace GymPresentacion
                 }
             };
 
-            pic.MouseLeave += (s, e) => {
+            pic.MouseLeave += (s, e) =>
+            {
                 if (TienePermiso(pic))
                 {
                     pic.Cursor = Cursors.Default;
                 }
             };
 
-            lbl.MouseEnter += (s, e) => {
+            lbl.MouseEnter += (s, e) =>
+            {
                 if (TienePermiso(lbl))
                 {
                     // Solo cambiar cursor, sin cambiar color de fondo
@@ -111,7 +114,8 @@ namespace GymPresentacion
                 }
             };
 
-            lbl.MouseLeave += (s, e) => {
+            lbl.MouseLeave += (s, e) =>
+            {
                 if (TienePermiso(lbl))
                 {
                     lbl.Cursor = Cursors.Default;
@@ -359,14 +363,14 @@ namespace GymPresentacion
             this.Hide();
         }
 
-        // NOTA: label6_Click se removió intencionalmente para evitar cierre accidental
+       
 
         private void label7_Click(object sender, EventArgs e)
         {
             _isNavigating = true;
             RegistroEquipo equipo = new RegistroEquipo(_usuarioActivo);
             equipo.Show();
-            this.Close(); 
+            this.Hide();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e) { }
@@ -396,5 +400,15 @@ namespace GymPresentacion
         }
 
         private void Despliegue_Click(object sender, EventArgs e) { }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+            if (!VerificarYMostrarRestriccion(PicPanelSeguimiento, "Seguimiento de Peso")) return;
+            _isNavigating = true;
+            PesoSeguimien seguimiento = new PesoSeguimien(_usuarioActivo, this);
+            seguimiento.Show();
+            this.Hide();
+        }
     }
 }

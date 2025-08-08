@@ -91,6 +91,7 @@ namespace GymPresentacion
             {
                 MessageBox.Show("Error al validar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            this.Hide();
         }
 
         private void Form5LogIn_FormClosing(object sender, FormClosingEventArgs e)
@@ -123,7 +124,7 @@ namespace GymPresentacion
             txtContrasena.UseSystemPasswordChar = !txtContrasena.UseSystemPasswordChar;
         }
 
-        // Método para limpiar todos los campos del formulario
+        //TODO Método para limpiar todos los campos del formulario
         public void LimpiarCampos()
         {
             if (txtUsuario != null)
@@ -146,7 +147,7 @@ namespace GymPresentacion
             }
         }
 
-        // Método para limpiar después de un login fallido
+        //TODO Método para limpiar después de un login fallido
         private void OnLoginFallido()
         {
             LimpiarDespuesDeLogin();
