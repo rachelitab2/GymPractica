@@ -118,6 +118,8 @@ namespace GymPresentacion // nombre importante
         {
             if (btnAgregar != null)// para ver si se creo el boton
             {
+                btnAgregar.Click -= BtnAgregar_Click;
+                btnAgregar.Click += BtnAgregar_Click;
             }
 
             if (btnEditar != null)
@@ -684,6 +686,194 @@ namespace GymPresentacion // nombre importante
 
         private void btnAgregar_Click_1(object sender, EventArgs e)
         {
+            try //Captura de error
+            {
+
+                //para validar datos de antrada 
+                if (string.IsNullOrWhiteSpace(txtNombreCliente.Text) ||
+                   cmbTipoMembresia.SelectedItem == null ||
+                    string.IsNullOrWhiteSpace(mtxtTelefono.Text))
+
+                {
+                    MessageBox.Show("Por Favor, rellenar todos los campos correctamente. La fecha debe ser valida. ", " Error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!mtxtTelefono.MaskCompleted)
+                {
+                    MessageBox.Show("Por favor, complete el número de teléfono.",
+                                  "Teléfono Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    mtxtTelefono.Focus();
+                    return;
+                }
+
+                if (!ValidarTelefono(mtxtTelefono.Text))
+                {
+                    MessageBox.Show("El número de teléfono no es válido. Debe usar un código de área válido (809, 829, 849).",
+                                  "Teléfono Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    mtxtTelefono.Focus();
+                    return;
+                }
+
+
+                DateTime fechaInicio = dateTimePickerInicio.Value.Date;
+                string nombreCliente = txtNombreCliente.Text.Trim();
+                string telefonoCliente = mtxtTelefono.Text.Trim();
+
+                // Crear la memebresia segun su tipo
+                Membresia nuevaMembresia;
+                string tipoMembresiaInput = cmbTipoMembresia.SelectedItem.ToString().ToLower();
+
+                if (tipoMembresiaInput == "anual")
+                {
+                    nuevaMembresia = new Anual(fechaInicio, nombreCliente, telefonoCliente);
+                }
+                else if (tipoMembresiaInput == "mensual")
+                {
+                    nuevaMembresia = new Mensual(fechaInicio, nombreCliente, telefonoCliente);
+                }
+                else
+                {
+                    MessageBox.Show("Tipo de membresía no válido. Debe ser 'Mensual' o 'Anual'.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                _servicioMembresia.RegistrarMembresiaAsync(nuevaMembresia);
+                MessageBox.Show("Membresia agregada con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+
+                //recargar los datos automaticamente despues de agregar una nueva membresia 
+                //BtnConsultar_Click(sender, e);
+
+            }
+            catch (Exception ex) //Captura de error 
+            {
+                MessageBox.Show($"Error al agregar la membresia: {ex.Message} ", " Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+            //logica para enviar correo de confirmacion
+
+
+
+            //Enviar correo de confirmación
+            try
+            {
+                string correoDestino = txtCorreo.Text.Trim();
+                string nombre = txtNombreCliente.Text.Trim();
+                string tipo = cmbTipoMembresia.Text.Trim();
+                string telefono = mtxtTelefono.Text.Trim();
+                DateTime fechaInicio = dateTimePickerInicio.Value;
+                DateTime fechaVencimiento;
+                decimal costo = 0m;
+
+                // Determinar vencimiento y costo según el tipo de membresía
+                switch (tipo.ToLower())
+                {
+                    case "mensual":
+                        fechaVencimiento = fechaInicio.AddMonths(1);
+                        costo = 1200m;
+                        break;
+                    case "anual":
+                        fechaVencimiento = fechaInicio.AddYears(1);
+                        costo = 13000m;
+                        break;
+                    default:
+                        fechaVencimiento = fechaInicio.AddMonths(1);
+                        costo = 1200m;
+                        break;
+                }
+
+                // Cuerpo HTML con estilo visual
+                string cuerpo = $@"
+<html>
+<head>
+    <style>
+        body {{
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }}
+        .container {{
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }}
+        h2 {{
+            color: #0066cc;
+            text-align: center;
+        }}
+        table {{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }}
+        th, td {{
+            border: 1px solid #cccccc;
+            padding: 10px;
+            text-align: left;
+        }}
+        th {{
+            background-color: #e6f2ff;
+        }}
+        .footer {{
+            margin-top: 30px;
+            text-align: center;
+            color: #555;
+        }}
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <h2>¡Bienvenido a PowerFit!</h2>
+        <p>Hola <strong>{nombre}</strong>, gracias por registrarte. Aquí están los detalles de tu membresía:</p>
+
+        <table>
+            <tr><th>Nombre:</th><td>{nombre}</td></tr>
+            <tr><th>Tipo de Membresía:</th><td>{tipo}</td></tr>
+            <tr><th>Fecha de Inicio:</th><td>{fechaInicio:dd/MM/yyyy}</td></tr>
+            <tr><th>Fecha de Vencimiento:</th><td>{fechaVencimiento:dd/MM/yyyy}</td></tr>
+            <tr><th>Costo:</th><td>{costo.ToString("C2", new System.Globalization.CultureInfo("es-DO"))}</td></tr>
+            <tr><th>Teléfono:</th><td>{telefono}</td></tr>
+        </table>
+
+        <div class='footer'>
+            <p><i><b>PowerFit - Train Hard 💪</b></i></p>
+        </div>
+    </div>
+</body>
+</html>";
+
+                // Preparar el correo
+                MailMessage mensaje = new MailMessage();
+                mensaje.From = new MailAddress("gympowerfit98@gmail.com\r\n");
+                mensaje.To.Add(correoDestino);
+                mensaje.Subject = "Confirmación de Membresía - PowerFit";
+                mensaje.Body = cuerpo;
+                mensaje.IsBodyHtml = true;
+
+                // Configurar el SMTP
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential("gympowerfit98@gmail.com\r\n", "rlvc ynha atwf wzic"); // ¡Protege esta clave!
+                smtp.EnableSsl = true;
+
+                // Enviar el correo
+                smtp.Send(mensaje);
+
+                MessageBox.Show("La membresía fue registrada y el correo se envió con éxito.", "PowerFit", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpiar campos 
+                txtCorreo.Clear();
+                txtNombreCliente.Clear();
+                mtxtTelefono.Clear();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al enviar el correo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }
