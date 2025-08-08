@@ -365,13 +365,6 @@ namespace GymPresentacion
 
        
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-            _isNavigating = true;
-            RegistroEquipo equipo = new RegistroEquipo(_usuarioActivo);
-            equipo.Show();
-            this.Hide();
-        }
 
         private void pictureBox1_Click(object sender, EventArgs e) { }
         private void btnDespliegue_Load(object sender, EventArgs e) { }
@@ -391,13 +384,7 @@ namespace GymPresentacion
             this.Close();
         }
 
-        private void PicPanelEquipo_Click(object sender, EventArgs e)
-        {
-            _isNavigating = true;
-            RegistroEquipo equipo = new RegistroEquipo(_usuarioActivo);
-            equipo.Show();
-            this.Close();
-        }
+
 
         private void Despliegue_Click(object sender, EventArgs e) { }
 

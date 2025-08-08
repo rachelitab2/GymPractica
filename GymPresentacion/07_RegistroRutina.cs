@@ -69,7 +69,7 @@ namespace GymPresentacion
             btnConsultarRutina.Click += BtnConsultarRutina_Click;
             dgvRutinas.SelectionChanged += DgvRutinas_SelectionChanged;
 
-           
+
 
             PicRutinaInicio.Click += PicRutinaInicio_Click;
         }
@@ -370,6 +370,16 @@ namespace GymPresentacion
                 MessageBox.Show("Solo letras y espacios", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true; // bloquear
             }
+        }
+
+        private void btnLimpiar1_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos(); // Llama al método que limpia los campos
+        }
+
+        private void btnConsultarRutina_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

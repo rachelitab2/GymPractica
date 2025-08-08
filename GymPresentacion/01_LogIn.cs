@@ -35,10 +35,13 @@ namespace GymPresentacion
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
+
+
             string usuario = txtUsuario.Text.Trim();
             string contrasena = txtContrasena.Text.Trim();
             string rol = cmbRol.SelectedItem?.ToString();
 
+            // Verificar si algún campo está vacío
             if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena) || string.IsNullOrEmpty(rol))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -49,9 +52,13 @@ namespace GymPresentacion
 
             try
             {
+                // Intentar validar las credenciales
                 string rolValidado = acceso.ValidarUsuario(usuario, contrasena, rol);
+
+                // Si las credenciales son válidas
                 if (rolValidado != null)
                 {
+                    // Guardar la configuración dependiendo del rol
                     switch (rol)
                     {
                         case "Administrador":
@@ -66,6 +73,7 @@ namespace GymPresentacion
                     }
                     Properties.Settings.Default.Save();
 
+                    // Crear un objeto de usuario activo
                     UsuariosActivos usuariosActivos = new UsuariosActivos
                     {
                         Usuario = usuario,
@@ -73,25 +81,29 @@ namespace GymPresentacion
                         Rol = rolValidado
                     };
 
+                    // Guardar la sesión del usuario
                     SesionUsuario.Usuario = usuario;
                     SesionUsuario.Rol = rolValidado;
 
+                    // Mostrar mensaje de bienvenida
                     MessageBox.Show($"¡Bienvenido, {usuariosActivos.Usuario}! Rol: {usuariosActivos.Rol}", "Acceso Permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    // Mostrar el formulario principal
                     btnDespliegue principal = new btnDespliegue(usuariosActivos);
                     principal.Show();
-                    this.Hide();
+                    this.Hide();  // Cerrar el formulario de login solo si el acceso es correcto
                 }
                 else
                 {
-                    OnLoginFallido();
+                    // En caso de credenciales incorrectas
+                    OnLoginFallido();  // Llamar a una función que maneje el fallo
                 }
             }
             catch (Exception ex)
             {
+                // Capturar y mostrar el error
                 MessageBox.Show("Error al validar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            this.Hide();
         }
 
         private void Form5LogIn_FormClosing(object sender, FormClosingEventArgs e)

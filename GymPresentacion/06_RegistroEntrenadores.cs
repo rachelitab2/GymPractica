@@ -604,5 +604,10 @@ namespace GymPresentacion
         {
 
         }
+
+        private void btnLimpiar1_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos(); // Llama al método que limpia los campos
+        }
     }
 }

@@ -36,12 +36,12 @@ namespace GymPresentacion
             _usuariosActivos = usuariosActivos;
             _serviciosMembresia = new Servicio_Membresia(new MemGymnasio());
             _servicioPagoMembresia = new Servicio_PagoMembresia();
-          
+
 
             ConfigurarDataGridView();
             CargarMembresias();
             AsignarEventos();
-            
+
 
             this.FormClosing += PagosMembresia_FormClosing;
         }
@@ -117,7 +117,7 @@ namespace GymPresentacion
             try
             {
                 _listaMembresias = await _serviciosMembresia.ObtenerTodasLasMembresiasAsync();
-           
+
 
                 cmbClientePago.DataSource = null;
                 cmbClientePago.DataSource = _listaMembresias;
@@ -164,7 +164,7 @@ namespace GymPresentacion
             cmbClientePago.SelectedIndexChanged += ClientePago_SelectedIndexChanged;
             cmbTipoClientePago.SelectedIndexChanged += TipoMembresia_SelectedIndexChanged;
             btnPago.Click += BtnPago_Click;
-          
+
             ConsultaPago.Click += Consulta_Click;
             EliminarPago.Click += EliminarPago_Click;
             EditarPago.Click += EditarPago_Click;
@@ -176,12 +176,12 @@ namespace GymPresentacion
             if (dgvPagoMembresia.SelectedRows.Count > 0)
             {
                 var pago = dgvPagoMembresia.SelectedRows[0].DataBoundItem as PagoMembresia;
-                if(pago != null)
+                if (pago != null)
                 {
                     txtFechaVencimientoPago.Text = pago.FechaPago.ToShortDateString();
                     cmbMetodoPago.SelectedItem = pago.MetodoPago;
                     txtMonto.Text = pago.Monto.ToString("F2");
-                
+
 
                     _isChangingSelection = false;
                 }
@@ -246,7 +246,7 @@ namespace GymPresentacion
 
         private void EliminarPago_Click(object sender, EventArgs e)
         {
-            if(dgvPagoMembresia.SelectedRows.Count == 0)
+            if (dgvPagoMembresia.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Seleccione un pago para eliminar.", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -261,7 +261,7 @@ namespace GymPresentacion
             {
                 _servicioPagoMembresia.EliminarPago(pago.Id);
                 MessageBox.Show("Pago Eliminado Correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if(cmbClientePago.SelectedItem is Membresia membresia)
+                if (cmbClientePago.SelectedItem is Membresia membresia)
                 {
                     CargarPagos(membresia.Id);
                 }
@@ -273,7 +273,7 @@ namespace GymPresentacion
             }
         }
 
-        private void EditarPago_Click (object sender, EventArgs e)
+        private void EditarPago_Click(object sender, EventArgs e)
         {
             if (dgvPagoMembresia.SelectedRows.Count == 0)
             {
@@ -282,7 +282,7 @@ namespace GymPresentacion
 
             }
             var pago = dgvPagoMembresia.SelectedRows[0].DataBoundItem as PagoMembresia;
-            if(pago == null)
+            if (pago == null)
             {
                 MessageBox.Show("Pago Invalido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -290,7 +290,7 @@ namespace GymPresentacion
             try
             {
                 pago.FechaPago = DateTime.Now;
-                if(decimal.TryParse(txtMonto.Text, out decimal monto))
+                if (decimal.TryParse(txtMonto.Text, out decimal monto))
                 {
                     pago.Monto = monto;
                 }
@@ -303,7 +303,7 @@ namespace GymPresentacion
 
                 _servicioPagoMembresia.ActualizarPago(pago);
                 MessageBox.Show("Pago Actualizado Correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if(cmbClientePago.SelectedItem is Membresia membresia)
+                if (cmbClientePago.SelectedItem is Membresia membresia)
                 {
                     CargarPagos(membresia.Id);
                 }
@@ -333,7 +333,7 @@ namespace GymPresentacion
             {
                 GenerarReciboPDF(pago);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al Gaurdar el Documento: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -353,7 +353,7 @@ namespace GymPresentacion
                 string tipoMembresia = membresia.TipoMembresia;
                 string metodoPago = cmbMetodoPago.SelectedItem?.ToString() ?? "Efectivo";
 
-                if(metodoPago == "Transaccion" || metodoPago == "Tarjeta")
+                if (metodoPago == "Transaccion" || metodoPago == "Tarjeta")
                 {
                     string mensaje = metodoPago == "Transaccion"
                         ? "¿Ha verificado que la transaccion bancaria se completo correctsamente?"
@@ -361,7 +361,7 @@ namespace GymPresentacion
 
                     DialogResult resultado = MessageBox.Show(mensaje, "Validacion de " + metodoPago, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if(resultado == DialogResult.No)
+                    if (resultado == DialogResult.No)
                     {
                         MessageBox.Show("Complete la validacion del pago antes de continuar.", "Validacion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
@@ -423,7 +423,7 @@ namespace GymPresentacion
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         string fileName = saveFileDialog.FileName;
-                        Document doc = new Document(PageSize.A4, 40, 40, 40, 40 );
+                        Document doc = new Document(PageSize.A4, 40, 40, 40, 40);
                         PdfWriter.GetInstance(doc, new FileStream(fileName, FileMode.Create));
                         doc.Open();
 
@@ -499,8 +499,8 @@ namespace GymPresentacion
             }
         }
 
-       public void LimpiarCampos()// limpia los campos de las cjas de textos
-       {
+        public void LimpiarCampos()// limpia los campos de las cjas de textos
+        {
             cmbClientePago.SelectedIndex = -1;
             cmbMetodoPago.SelectedIndex = 0;
             cmbTipoClientePago.SelectedIndex = 0;
@@ -509,9 +509,9 @@ namespace GymPresentacion
             dgvPagoMembresia.ClearSelection();
 
 
-            
 
-       }
+
+        }
         private void PicPagoInicio_Click(object sender, EventArgs e)
         {
             _isNavigating = true; // Marcamos que es navegación
@@ -535,6 +535,11 @@ namespace GymPresentacion
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLimpiar1_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos(); // Llama al método que limpia los campos
         }
     }
 }

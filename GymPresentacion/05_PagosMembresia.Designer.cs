@@ -42,6 +42,7 @@
             GuardarPago = new Button();
             ConsultaPago = new Button();
             cmbMetodoPago = new ComboBox();
+            btnLimpiar1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicPagoInicio).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvPagoMembresia).BeginInit();
@@ -52,9 +53,10 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = Properties.Resources.image_removebg_preview__4_;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(637, 24);
+            pictureBox1.Location = new Point(557, 18);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(589, 162);
+            pictureBox1.Size = new Size(515, 122);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -64,9 +66,10 @@
             PicPagoInicio.BackgroundImage = Properties.Resources.image_removebg_preview__7_;
             PicPagoInicio.BackgroundImageLayout = ImageLayout.Zoom;
             PicPagoInicio.Cursor = Cursors.Hand;
-            PicPagoInicio.Location = new Point(127, 166);
+            PicPagoInicio.Location = new Point(111, 124);
+            PicPagoInicio.Margin = new Padding(3, 2, 3, 2);
             PicPagoInicio.Name = "PicPagoInicio";
-            PicPagoInicio.Size = new Size(125, 62);
+            PicPagoInicio.Size = new Size(109, 46);
             PicPagoInicio.TabIndex = 1;
             PicPagoInicio.TabStop = false;
             PicPagoInicio.Click += PicPagoInicio_Click;
@@ -76,9 +79,10 @@
             dtpPago.CalendarFont = new Font("Verdana", 10.2F, FontStyle.Bold);
             dtpPago.CalendarMonthBackground = Color.Lavender;
             dtpPago.CalendarTitleBackColor = Color.DodgerBlue;
-            dtpPago.Location = new Point(997, 441);
+            dtpPago.Location = new Point(872, 331);
+            dtpPago.Margin = new Padding(3, 2, 3, 2);
             dtpPago.Name = "dtpPago";
-            dtpPago.Size = new Size(371, 27);
+            dtpPago.Size = new Size(325, 23);
             dtpPago.TabIndex = 2;
             // 
             // dgvPagoMembresia
@@ -93,14 +97,15 @@
             dgvPagoMembresia.Cursor = Cursors.Hand;
             dgvPagoMembresia.EnableHeadersVisualStyles = false;
             dgvPagoMembresia.GridColor = Color.DodgerBlue;
-            dgvPagoMembresia.Location = new Point(127, 234);
+            dgvPagoMembresia.Location = new Point(111, 176);
+            dgvPagoMembresia.Margin = new Padding(3, 2, 3, 2);
             dgvPagoMembresia.MultiSelect = false;
             dgvPagoMembresia.Name = "dgvPagoMembresia";
             dgvPagoMembresia.ReadOnly = true;
             dgvPagoMembresia.RowHeadersVisible = false;
             dgvPagoMembresia.RowHeadersWidth = 51;
             dgvPagoMembresia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPagoMembresia.Size = new Size(734, 382);
+            dgvPagoMembresia.Size = new Size(642, 286);
             dgvPagoMembresia.TabIndex = 4;
             // 
             // cmbClientePago
@@ -108,9 +113,10 @@
             cmbClientePago.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbClientePago.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbClientePago.FormattingEnabled = true;
-            cmbClientePago.Location = new Point(997, 285);
+            cmbClientePago.Location = new Point(872, 214);
+            cmbClientePago.Margin = new Padding(3, 2, 3, 2);
             cmbClientePago.Name = "cmbClientePago";
-            cmbClientePago.Size = new Size(371, 28);
+            cmbClientePago.Size = new Size(325, 25);
             cmbClientePago.TabIndex = 5;
             // 
             // cmbTipoClientePago
@@ -118,19 +124,21 @@
             cmbTipoClientePago.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoClientePago.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbTipoClientePago.FormattingEnabled = true;
-            cmbTipoClientePago.Location = new Point(997, 387);
+            cmbTipoClientePago.Location = new Point(872, 290);
+            cmbTipoClientePago.Margin = new Padding(3, 2, 3, 2);
             cmbTipoClientePago.Name = "cmbTipoClientePago";
-            cmbTipoClientePago.Size = new Size(371, 28);
+            cmbTipoClientePago.Size = new Size(325, 25);
             cmbTipoClientePago.TabIndex = 6;
             // 
             // txtFechaVencimientoPago
             // 
             txtFechaVencimientoPago.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             txtFechaVencimientoPago.ForeColor = Color.Black;
-            txtFechaVencimientoPago.Location = new Point(997, 336);
+            txtFechaVencimientoPago.Location = new Point(872, 252);
+            txtFechaVencimientoPago.Margin = new Padding(3, 2, 3, 2);
             txtFechaVencimientoPago.Name = "txtFechaVencimientoPago";
             txtFechaVencimientoPago.ReadOnly = true;
-            txtFechaVencimientoPago.Size = new Size(371, 28);
+            txtFechaVencimientoPago.Size = new Size(325, 24);
             txtFechaVencimientoPago.TabIndex = 7;
             // 
             // btnPago
@@ -138,9 +146,10 @@
             btnPago.BackColor = Color.DodgerBlue;
             btnPago.Cursor = Cursors.Hand;
             btnPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            btnPago.Location = new Point(1118, 631);
+            btnPago.Location = new Point(1058, 472);
+            btnPago.Margin = new Padding(3, 2, 3, 2);
             btnPago.Name = "btnPago";
-            btnPago.Size = new Size(155, 52);
+            btnPago.Size = new Size(136, 39);
             btnPago.TabIndex = 8;
             btnPago.Text = "Pago";
             btnPago.UseVisualStyleBackColor = false;
@@ -148,10 +157,11 @@
             // txtMonto
             // 
             txtMonto.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
-            txtMonto.Location = new Point(997, 498);
+            txtMonto.Location = new Point(872, 374);
+            txtMonto.Margin = new Padding(3, 2, 3, 2);
             txtMonto.Name = "txtMonto";
             txtMonto.ReadOnly = true;
-            txtMonto.Size = new Size(371, 28);
+            txtMonto.Size = new Size(325, 24);
             txtMonto.TabIndex = 9;
             // 
             // EliminarPago
@@ -159,9 +169,10 @@
             EliminarPago.BackColor = Color.DodgerBlue;
             EliminarPago.Cursor = Cursors.Hand;
             EliminarPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            EliminarPago.Location = new Point(370, 631);
+            EliminarPago.Location = new Point(324, 473);
+            EliminarPago.Margin = new Padding(3, 2, 3, 2);
             EliminarPago.Name = "EliminarPago";
-            EliminarPago.Size = new Size(153, 55);
+            EliminarPago.Size = new Size(134, 41);
             EliminarPago.TabIndex = 10;
             EliminarPago.Text = "🗑️ Eliminar";
             EliminarPago.UseVisualStyleBackColor = false;
@@ -171,9 +182,10 @@
             EditarPago.BackColor = Color.DodgerBlue;
             EditarPago.Cursor = Cursors.Hand;
             EditarPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            EditarPago.Location = new Point(529, 631);
+            EditarPago.Location = new Point(463, 473);
+            EditarPago.Margin = new Padding(3, 2, 3, 2);
             EditarPago.Name = "EditarPago";
-            EditarPago.Size = new Size(162, 55);
+            EditarPago.Size = new Size(142, 41);
             EditarPago.TabIndex = 11;
             EditarPago.Text = "✏️ Editar";
             EditarPago.UseVisualStyleBackColor = false;
@@ -183,9 +195,10 @@
             GuardarPago.BackColor = Color.DodgerBlue;
             GuardarPago.Cursor = Cursors.Hand;
             GuardarPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            GuardarPago.Location = new Point(697, 631);
+            GuardarPago.Location = new Point(610, 473);
+            GuardarPago.Margin = new Padding(3, 2, 3, 2);
             GuardarPago.Name = "GuardarPago";
-            GuardarPago.Size = new Size(164, 55);
+            GuardarPago.Size = new Size(144, 41);
             GuardarPago.TabIndex = 12;
             GuardarPago.Text = "Guardar Doc ";
             GuardarPago.UseVisualStyleBackColor = false;
@@ -195,9 +208,10 @@
             ConsultaPago.BackColor = Color.DodgerBlue;
             ConsultaPago.Cursor = Cursors.Hand;
             ConsultaPago.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            ConsultaPago.Location = new Point(194, 631);
+            ConsultaPago.Location = new Point(170, 473);
+            ConsultaPago.Margin = new Padding(3, 2, 3, 2);
             ConsultaPago.Name = "ConsultaPago";
-            ConsultaPago.Size = new Size(170, 55);
+            ConsultaPago.Size = new Size(149, 41);
             ConsultaPago.TabIndex = 13;
             ConsultaPago.Text = "🔍 Consultar";
             ConsultaPago.UseVisualStyleBackColor = false;
@@ -208,17 +222,33 @@
             cmbMetodoPago.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMetodoPago.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbMetodoPago.FormattingEnabled = true;
-            cmbMetodoPago.Location = new Point(997, 550);
+            cmbMetodoPago.Location = new Point(872, 412);
+            cmbMetodoPago.Margin = new Padding(3, 2, 3, 2);
             cmbMetodoPago.Name = "cmbMetodoPago";
-            cmbMetodoPago.Size = new Size(367, 28);
+            cmbMetodoPago.Size = new Size(322, 25);
             cmbMetodoPago.TabIndex = 14;
+            // 
+            // btnLimpiar1
+            // 
+            btnLimpiar1.BackColor = Color.DodgerBlue;
+            btnLimpiar1.Cursor = Cursors.Hand;
+            btnLimpiar1.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
+            btnLimpiar1.Location = new Point(872, 473);
+            btnLimpiar1.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiar1.Name = "btnLimpiar1";
+            btnLimpiar1.Size = new Size(122, 39);
+            btnLimpiar1.TabIndex = 15;
+            btnLimpiar1.Text = "Limpiar";
+            btnLimpiar1.UseVisualStyleBackColor = false;
+            btnLimpiar1.Click += btnLimpiar1_Click;
             // 
             // PagosMembresia
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(28, 27, 27);
-            ClientSize = new Size(1420, 763);
+            ClientSize = new Size(1242, 572);
+            Controls.Add(btnLimpiar1);
             Controls.Add(cmbMetodoPago);
             Controls.Add(ConsultaPago);
             Controls.Add(GuardarPago);
@@ -233,6 +263,7 @@
             Controls.Add(dgvPagoMembresia);
             Controls.Add(dtpPago);
             Controls.Add(PicPagoInicio);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "PagosMembresia";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PagosMembresia";
@@ -260,5 +291,6 @@
         private Button GuardarPago;
         private Button ConsultaPago;
         private ComboBox cmbMetodoPago;
+        private Button btnLimpiar1;
     }
 }

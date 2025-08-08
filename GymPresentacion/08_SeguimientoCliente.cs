@@ -16,6 +16,7 @@ using GymNegocio.Login;
 
 namespace GymPresentacion
 {
+
     public partial class PesoSeguimien : Form
     {
         private UsuariosActivos _usuarioActivo;
@@ -31,7 +32,38 @@ namespace GymPresentacion
             this.FormClosing += SeguimientoCliente_FormClosing; // para controlar el cierre
         }
 
+        private void SoloNumerosDecimales(object sender, KeyPressEventArgs e)
+        {
+            // Permitir control de retroceso
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
 
+            TextBox txt = sender as TextBox;
+
+            // Permitir solo dígitos y un solo punto decimal
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true; // Bloquear
+            }
+
+            // Evitar que haya más de un punto decimal
+            if (e.KeyChar == '.' && txt.Text.Contains("."))
+            {
+                e.Handled = true; // Bloquear
+            }
+        }
+        private void FormatearDosDecimales(object sender, EventArgs e)
+        {
+            var txt = sender as TextBox;
+            if (decimal.TryParse(txt.Text, System.Globalization.NumberStyles.Any,
+                                 System.Globalization.CultureInfo.InvariantCulture, out var val))
+            {
+                // Muestra con 2 decimales
+                txt.Text = val.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture);
+            }
+        }
         private void label3_Click(object sender, EventArgs e)
         {
 
@@ -60,7 +92,6 @@ namespace GymPresentacion
 
             try
             {
-
                 if (string.IsNullOrWhiteSpace(ClienteSeguimiento.Text))
                 {
                     MessageBox.Show("El nombre no puede estar vacío.");
@@ -72,12 +103,38 @@ namespace GymPresentacion
                     return;
                 }
 
+                // ✅ Validar que peso, altura y grasa sean numéricos
+                if (!decimal.TryParse(PesoSeguimieto.Text,
+                        System.Globalization.NumberStyles.Any,
+                        System.Globalization.CultureInfo.InvariantCulture, out var peso))
+                {
+                    MessageBox.Show("Peso inválido.");
+                    return;
+                }
+
+                if (!decimal.TryParse(AlturSeguemiento.Text,
+                        System.Globalization.NumberStyles.Any,
+                        System.Globalization.CultureInfo.InvariantCulture, out var altura))
+                {
+                    MessageBox.Show("Altura inválida.");
+                    return;
+                }
+
+                if (!decimal.TryParse(GrasaSeguimiento.Text,
+                        System.Globalization.NumberStyles.Any,
+                        System.Globalization.CultureInfo.InvariantCulture, out var grasa))
+                {
+                    MessageBox.Show("Grasa corporal inválida.");
+                    return;
+                }
+
+                // ✅ Crear cliente usando las variables ya validadas
                 Cliente nuevoCliente = new Cliente
                 {
                     Nombre = ClienteSeguimiento.Text,
-                    Peso = decimal.Parse(PesoSeguimieto.Text),
-                    Altura = decimal.Parse(AlturSeguemiento.Text),
-                    Grasa = decimal.Parse(GrasaSeguimiento.Text),
+                    Peso = peso,
+                    Altura = altura,
+                    Grasa = grasa,
                     FechaRegistro = FechaSeguimin.Value.Date
                 };
 
@@ -95,7 +152,6 @@ namespace GymPresentacion
                     AlturSeguemiento.Text = "";
                     GrasaSeguimiento.Text = "";
                     FechaSeguimin.Value = DateTime.Today;
-
                 }
                 else
                 {
@@ -107,10 +163,7 @@ namespace GymPresentacion
                 MessageBox.Show("Error: " + ex.Message);
             }
 
-            
         }
-
-        
 
         private void button1_Click(object sender, EventArgs e)
         {

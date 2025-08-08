@@ -46,6 +46,7 @@
             btnEditarRutina = new Button();
             pictureBox1 = new PictureBox();
             PicRutinaInicio = new PictureBox();
+            btnLimpiar1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvRutinas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudDuracion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -57,9 +58,10 @@
             btnAgregarRutina.BackColor = Color.DodgerBlue;
             btnAgregarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnAgregarRutina.ForeColor = Color.Black;
-            btnAgregarRutina.Location = new Point(1143, 565);
+            btnAgregarRutina.Location = new Point(1000, 424);
+            btnAgregarRutina.Margin = new Padding(3, 2, 3, 2);
             btnAgregarRutina.Name = "btnAgregarRutina";
-            btnAgregarRutina.Size = new Size(152, 52);
+            btnAgregarRutina.Size = new Size(133, 39);
             btnAgregarRutina.TabIndex = 0;
             btnAgregarRutina.Text = "➕ Agregar";
             btnAgregarRutina.UseVisualStyleBackColor = false;
@@ -69,21 +71,24 @@
             btnConsultarRutina.BackColor = Color.DodgerBlue;
             btnConsultarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnConsultarRutina.ForeColor = Color.Black;
-            btnConsultarRutina.Location = new Point(335, 565);
+            btnConsultarRutina.Location = new Point(293, 424);
+            btnConsultarRutina.Margin = new Padding(3, 2, 3, 2);
             btnConsultarRutina.Name = "btnConsultarRutina";
-            btnConsultarRutina.Size = new Size(170, 52);
+            btnConsultarRutina.Size = new Size(149, 39);
             btnConsultarRutina.TabIndex = 1;
             btnConsultarRutina.Text = "🔍 Consultar";
             btnConsultarRutina.UseVisualStyleBackColor = false;
+            btnConsultarRutina.Click += btnConsultarRutina_Click_1;
             // 
             // btnEliminarRutina
             // 
             btnEliminarRutina.BackColor = Color.DodgerBlue;
             btnEliminarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEliminarRutina.ForeColor = Color.Black;
-            btnEliminarRutina.Location = new Point(531, 565);
+            btnEliminarRutina.Location = new Point(465, 424);
+            btnEliminarRutina.Margin = new Padding(3, 2, 3, 2);
             btnEliminarRutina.Name = "btnEliminarRutina";
-            btnEliminarRutina.Size = new Size(155, 52);
+            btnEliminarRutina.Size = new Size(136, 39);
             btnEliminarRutina.TabIndex = 2;
             btnEliminarRutina.Text = "🗑️ Eliminar";
             btnEliminarRutina.UseVisualStyleBackColor = false;
@@ -95,9 +100,9 @@
             lblGeneroRutina.BackColor = Color.Transparent;
             lblGeneroRutina.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblGeneroRutina.ForeColor = Color.Lavender;
-            lblGeneroRutina.Location = new Point(925, 278);
+            lblGeneroRutina.Location = new Point(809, 208);
             lblGeneroRutina.Name = "lblGeneroRutina";
-            lblGeneroRutina.Size = new Size(163, 25);
+            lblGeneroRutina.Size = new Size(134, 22);
             lblGeneroRutina.TabIndex = 4;
             lblGeneroRutina.Text = "Genero Cliente";
             lblGeneroRutina.Click += lblGeneroRutina_Click;
@@ -108,9 +113,9 @@
             lblZonaRutina.BackColor = Color.Transparent;
             lblZonaRutina.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblZonaRutina.ForeColor = Color.Lavender;
-            lblZonaRutina.Location = new Point(930, 343);
+            lblZonaRutina.Location = new Point(814, 257);
             lblZonaRutina.Name = "lblZonaRutina";
-            lblZonaRutina.Size = new Size(135, 25);
+            lblZonaRutina.Size = new Size(110, 22);
             lblZonaRutina.TabIndex = 5;
             lblZonaRutina.Text = "Area Rutina";
             // 
@@ -120,9 +125,10 @@
             cmbGeneroRutina.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGeneroRutina.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbGeneroRutina.FormattingEnabled = true;
-            cmbGeneroRutina.Location = new Point(1143, 278);
+            cmbGeneroRutina.Location = new Point(1000, 208);
+            cmbGeneroRutina.Margin = new Padding(3, 2, 3, 2);
             cmbGeneroRutina.Name = "cmbGeneroRutina";
-            cmbGeneroRutina.Size = new Size(296, 28);
+            cmbGeneroRutina.Size = new Size(260, 25);
             cmbGeneroRutina.TabIndex = 9;
             cmbGeneroRutina.SelectedIndexChanged += cmbGeneroRutina_SelectedIndexChanged;
             // 
@@ -155,14 +161,15 @@
             dgvRutinas.DefaultCellStyle = dataGridViewCellStyle3;
             dgvRutinas.EnableHeadersVisualStyles = false;
             dgvRutinas.GridColor = Color.DodgerBlue;
-            dgvRutinas.Location = new Point(42, 192);
+            dgvRutinas.Location = new Point(37, 144);
+            dgvRutinas.Margin = new Padding(3, 2, 3, 2);
             dgvRutinas.MultiSelect = false;
             dgvRutinas.Name = "dgvRutinas";
             dgvRutinas.ReadOnly = true;
             dgvRutinas.RowHeadersVisible = false;
             dgvRutinas.RowHeadersWidth = 51;
             dgvRutinas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvRutinas.Size = new Size(807, 356);
+            dgvRutinas.Size = new Size(706, 267);
             dgvRutinas.TabIndex = 5;
             // 
             // lblNombreRutina
@@ -171,19 +178,20 @@
             lblNombreRutina.BackColor = Color.Transparent;
             lblNombreRutina.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNombreRutina.ForeColor = Color.Lavender;
-            lblNombreRutina.Location = new Point(925, 218);
+            lblNombreRutina.Location = new Point(809, 164);
             lblNombreRutina.Name = "lblNombreRutina";
-            lblNombreRutina.Size = new Size(204, 25);
+            lblNombreRutina.Size = new Size(165, 22);
             lblNombreRutina.TabIndex = 11;
             lblNombreRutina.Text = "Nombre de Rutina ";
             // 
             // txtNombreRutina
             // 
             txtNombreRutina.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
-            txtNombreRutina.Location = new Point(1143, 220);
+            txtNombreRutina.Location = new Point(1000, 165);
+            txtNombreRutina.Margin = new Padding(3, 2, 3, 2);
             txtNombreRutina.Name = "txtNombreRutina";
             txtNombreRutina.ShortcutsEnabled = false;
-            txtNombreRutina.Size = new Size(296, 28);
+            txtNombreRutina.Size = new Size(260, 24);
             txtNombreRutina.TabIndex = 12;
             txtNombreRutina.TextChanged += txtNombreRutina_TextChanged;
             txtNombreRutina.KeyPress += txtNombreRutina_KeyPress;
@@ -194,9 +202,10 @@
             cmbAreaRutina.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAreaRutina.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
             cmbAreaRutina.FormattingEnabled = true;
-            cmbAreaRutina.Location = new Point(1143, 344);
+            cmbAreaRutina.Location = new Point(1000, 258);
+            cmbAreaRutina.Margin = new Padding(3, 2, 3, 2);
             cmbAreaRutina.Name = "cmbAreaRutina";
-            cmbAreaRutina.Size = new Size(296, 28);
+            cmbAreaRutina.Size = new Size(260, 25);
             cmbAreaRutina.TabIndex = 13;
             // 
             // lblDuracion
@@ -205,20 +214,21 @@
             lblDuracion.BackColor = Color.Transparent;
             lblDuracion.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDuracion.ForeColor = Color.Lavender;
-            lblDuracion.Location = new Point(930, 394);
+            lblDuracion.Location = new Point(814, 296);
             lblDuracion.Name = "lblDuracion";
-            lblDuracion.Size = new Size(158, 25);
+            lblDuracion.Size = new Size(128, 22);
             lblDuracion.TabIndex = 14;
             lblDuracion.Text = "Duracion(min)";
             lblDuracion.Click += lblDuracion_Click;
             // 
             // nudDuracion
             // 
-            nudDuracion.Location = new Point(1228, 396);
+            nudDuracion.Location = new Point(1074, 297);
+            nudDuracion.Margin = new Padding(3, 2, 3, 2);
             nudDuracion.Maximum = new decimal(new int[] { 120, 0, 0, 0 });
             nudDuracion.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             nudDuracion.Name = "nudDuracion";
-            nudDuracion.Size = new Size(150, 27);
+            nudDuracion.Size = new Size(131, 23);
             nudDuracion.TabIndex = 15;
             nudDuracion.Value = new decimal(new int[] { 10, 0, 0, 0 });
             nudDuracion.ValueChanged += nudDuracion_ValueChanged;
@@ -228,9 +238,10 @@
             btnEditarRutina.BackColor = Color.DodgerBlue;
             btnEditarRutina.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
             btnEditarRutina.ForeColor = Color.Black;
-            btnEditarRutina.Location = new Point(706, 565);
+            btnEditarRutina.Location = new Point(618, 424);
+            btnEditarRutina.Margin = new Padding(3, 2, 3, 2);
             btnEditarRutina.Name = "btnEditarRutina";
-            btnEditarRutina.Size = new Size(143, 52);
+            btnEditarRutina.Size = new Size(125, 39);
             btnEditarRutina.TabIndex = 16;
             btnEditarRutina.Text = "✏️ Editar";
             btnEditarRutina.UseVisualStyleBackColor = false;
@@ -240,9 +251,10 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
             pictureBox1.Image = Properties.Resources.image_removebg_preview__4_;
-            pictureBox1.Location = new Point(637, 24);
+            pictureBox1.Location = new Point(557, 18);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(589, 162);
+            pictureBox1.Size = new Size(515, 122);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 20;
             pictureBox1.TabStop = false;
@@ -253,20 +265,36 @@
             PicRutinaInicio.BackColor = Color.Transparent;
             PicRutinaInicio.BackgroundImageLayout = ImageLayout.None;
             PicRutinaInicio.Image = Properties.Resources.image_removebg_preview__7_;
-            PicRutinaInicio.Location = new Point(42, 102);
+            PicRutinaInicio.Location = new Point(37, 76);
+            PicRutinaInicio.Margin = new Padding(3, 2, 3, 2);
             PicRutinaInicio.Name = "PicRutinaInicio";
-            PicRutinaInicio.Size = new Size(100, 84);
+            PicRutinaInicio.Size = new Size(88, 63);
             PicRutinaInicio.SizeMode = PictureBoxSizeMode.Zoom;
             PicRutinaInicio.TabIndex = 21;
             PicRutinaInicio.TabStop = false;
             PicRutinaInicio.Click += PicRutinaInicio_Click;
             // 
+            // btnLimpiar1
+            // 
+            btnLimpiar1.BackColor = Color.DodgerBlue;
+            btnLimpiar1.Cursor = Cursors.Hand;
+            btnLimpiar1.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold);
+            btnLimpiar1.Location = new Point(852, 424);
+            btnLimpiar1.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiar1.Name = "btnLimpiar1";
+            btnLimpiar1.Size = new Size(122, 39);
+            btnLimpiar1.TabIndex = 30;
+            btnLimpiar1.Text = "Limpiar";
+            btnLimpiar1.UseVisualStyleBackColor = false;
+            btnLimpiar1.Click += btnLimpiar1_Click;
+            // 
             // RegistroRutina
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(28, 27, 27);
-            ClientSize = new Size(1532, 667);
+            ClientSize = new Size(1340, 500);
+            Controls.Add(btnLimpiar1);
             Controls.Add(PicRutinaInicio);
             Controls.Add(pictureBox1);
             Controls.Add(btnEditarRutina);
@@ -283,6 +311,7 @@
             Controls.Add(btnConsultarRutina);
             Controls.Add(btnAgregarRutina);
             Cursor = Cursors.Hand;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "RegistroRutina";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistroRutina";
@@ -314,5 +343,6 @@
         private ComboBox cmbEntrenador;
         private PictureBox pictureBox1;
         private PictureBox PicRutinaInicio;
+        private Button btnLimpiar1;
     }
 }
