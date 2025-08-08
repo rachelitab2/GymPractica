@@ -38,9 +38,11 @@
             lblTipoAcceso = new Label();
             panelLogin = new Panel();
             PicVerContrasena = new PictureBox();
+            PicCerrarSesion = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PicVerContrasena).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PicCerrarSesion).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -145,6 +147,7 @@
             // panelLogin
             // 
             panelLogin.BackColor = Color.Transparent;
+            panelLogin.Controls.Add(PicCerrarSesion);
             panelLogin.Controls.Add(PicVerContrasena);
             panelLogin.Controls.Add(pictureBox1);
             panelLogin.Controls.Add(btnAcceder);
@@ -172,6 +175,21 @@
             PicVerContrasena.TabIndex = 9;
             PicVerContrasena.TabStop = false;
             // 
+            // PicCerrarSesion
+            // 
+            PicCerrarSesion.BackColor = Color.Transparent;
+            PicCerrarSesion.BackgroundImageLayout = ImageLayout.None;
+            PicCerrarSesion.Cursor = Cursors.Hand;
+            PicCerrarSesion.Image = Properties.Resources.image_removebg_preview__12_;
+            PicCerrarSesion.Location = new Point(689, 0);
+            PicCerrarSesion.Margin = new Padding(3, 2, 3, 2);
+            PicCerrarSesion.Name = "PicCerrarSesion";
+            PicCerrarSesion.Size = new Size(75, 58);
+            PicCerrarSesion.SizeMode = PictureBoxSizeMode.Zoom;
+            PicCerrarSesion.TabIndex = 16;
+            PicCerrarSesion.TabStop = false;
+            PicCerrarSesion.Click += PicCerrarSesion_Click;
+            // 
             // LogIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -190,6 +208,7 @@
             panelLogin.ResumeLayout(false);
             panelLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PicVerContrasena).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PicCerrarSesion).EndInit();
             ResumeLayout(false);
         }
 
@@ -205,5 +224,6 @@
         private Label lblTipoAcceso;
         private Panel panelLogin;
         private PictureBox PicVerContrasena;
+        private PictureBox PicCerrarSesion;
     }
 }

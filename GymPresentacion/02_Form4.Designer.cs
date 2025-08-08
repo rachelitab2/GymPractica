@@ -77,7 +77,7 @@
             PicPanelMemebresia.BackgroundImageLayout = ImageLayout.None;
             PicPanelMemebresia.Cursor = Cursors.Hand;
             PicPanelMemebresia.Image = Properties.Resources.image_removebg_preview__3_;
-            PicPanelMemebresia.Location = new Point(3, 167);
+            PicPanelMemebresia.Location = new Point(4, 143);
             PicPanelMemebresia.Margin = new Padding(3, 2, 3, 2);
             PicPanelMemebresia.Name = "PicPanelMemebresia";
             PicPanelMemebresia.Size = new Size(80, 39);
@@ -91,7 +91,7 @@
             PicPanelEntrenador.BackgroundImageLayout = ImageLayout.None;
             PicPanelEntrenador.Cursor = Cursors.Hand;
             PicPanelEntrenador.Image = Properties.Resources.image_removebg_preview__9_;
-            PicPanelEntrenador.Location = new Point(3, 264);
+            PicPanelEntrenador.Location = new Point(4, 240);
             PicPanelEntrenador.Margin = new Padding(3, 2, 3, 2);
             PicPanelEntrenador.Name = "PicPanelEntrenador";
             PicPanelEntrenador.Size = new Size(80, 39);
@@ -105,7 +105,7 @@
             PicPanelRutina.BackgroundImageLayout = ImageLayout.None;
             PicPanelRutina.Cursor = Cursors.Hand;
             PicPanelRutina.Image = Properties.Resources.image_removebg_preview__5_;
-            PicPanelRutina.Location = new Point(3, 310);
+            PicPanelRutina.Location = new Point(4, 286);
             PicPanelRutina.Margin = new Padding(3, 2, 3, 2);
             PicPanelRutina.Name = "PicPanelRutina";
             PicPanelRutina.Size = new Size(80, 39);
@@ -156,7 +156,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            label3.Location = new Point(122, 226);
+            label3.Location = new Point(123, 202);
             label3.Name = "label3";
             label3.Size = new Size(63, 26);
             label3.TabIndex = 26;
@@ -167,7 +167,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            label6.Location = new Point(109, 373);
+            label6.Location = new Point(110, 349);
             label6.Name = "label6";
             label6.Size = new Size(77, 26);
             label6.TabIndex = 24;
@@ -178,7 +178,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            label5.Location = new Point(116, 321);
+            label5.Location = new Point(117, 297);
             label5.Name = "label5";
             label5.Size = new Size(73, 26);
             label5.TabIndex = 23;
@@ -189,7 +189,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            label4.Location = new Point(88, 274);
+            label4.Location = new Point(89, 250);
             label4.Name = "label4";
             label4.Size = new Size(132, 26);
             label4.TabIndex = 22;
@@ -200,7 +200,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            label2.Location = new Point(103, 179);
+            label2.Location = new Point(104, 155);
             label2.Name = "label2";
             label2.Size = new Size(113, 26);
             label2.TabIndex = 20;
@@ -211,7 +211,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            label1.Location = new Point(109, 125);
+            label1.Location = new Point(110, 101);
             label1.Name = "label1";
             label1.Size = new Size(90, 26);
             label1.TabIndex = 19;
@@ -224,7 +224,7 @@
             PicPanelSeguimiento.BackgroundImageLayout = ImageLayout.None;
             PicPanelSeguimiento.Cursor = Cursors.Hand;
             PicPanelSeguimiento.Image = Properties.Resources.image_removebg_preview__15_;
-            PicPanelSeguimiento.Location = new Point(3, 358);
+            PicPanelSeguimiento.Location = new Point(4, 334);
             PicPanelSeguimiento.Margin = new Padding(3, 2, 3, 2);
             PicPanelSeguimiento.Name = "PicPanelSeguimiento";
             PicPanelSeguimiento.Size = new Size(80, 39);
@@ -239,7 +239,7 @@
             PicPanelPagoMembresia.BackgroundImageLayout = ImageLayout.None;
             PicPanelPagoMembresia.Cursor = Cursors.Hand;
             PicPanelPagoMembresia.Image = Properties.Resources.image_removebg_preview__14_;
-            PicPanelPagoMembresia.Location = new Point(3, 216);
+            PicPanelPagoMembresia.Location = new Point(4, 192);
             PicPanelPagoMembresia.Margin = new Padding(3, 2, 3, 2);
             PicPanelPagoMembresia.Name = "PicPanelPagoMembresia";
             PicPanelPagoMembresia.Size = new Size(80, 39);
@@ -254,7 +254,7 @@
             PicPanelUsuario.BackgroundImageLayout = ImageLayout.None;
             PicPanelUsuario.Cursor = Cursors.Hand;
             PicPanelUsuario.Image = Properties.Resources.image_removebg_preview__13_;
-            PicPanelUsuario.Location = new Point(3, 117);
+            PicPanelUsuario.Location = new Point(4, 93);
             PicPanelUsuario.Margin = new Padding(3, 2, 3, 2);
             PicPanelUsuario.Name = "PicPanelUsuario";
             PicPanelUsuario.Size = new Size(80, 39);

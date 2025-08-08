@@ -180,5 +180,10 @@ namespace GymPresentacion
         private void lblTipoAcceso_Click(object sender, EventArgs e) { }
         private void txtUsuario_TextChanged(object sender, EventArgs e) { }
         private void checkBox1_CheckedChanged(object sender, EventArgs e) { }
+
+        private void PicCerrarSesion_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
