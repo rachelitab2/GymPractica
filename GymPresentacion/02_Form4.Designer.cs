@@ -172,7 +172,7 @@
             label6.Size = new Size(77, 26);
             label6.TabIndex = 24;
             label6.Text = "Cliente";
-            label6.Click += label6_Click;
+            //label6.Click += label6_Click;
             // 
             // label5
             // 

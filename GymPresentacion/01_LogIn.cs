@@ -22,7 +22,7 @@ namespace GymPresentacion
             cmbRol.Items.AddRange(new string[] { "Administrador", "Entrenador" });
             cmbRol.SelectedIndex = 0;
             LimpiarCampos(); // Limpiar al inicializar
-            txtUsuario.Text = Properties.Settings.Default.UsuarioGuardado;
+            //txtUsuario.Text = Properties.Settings.Default.UsuarioGuardado;
             PicVerContrasena.Click += PicVerContrasena_Click1;
             this.BackColor = Color.Black;
         }
