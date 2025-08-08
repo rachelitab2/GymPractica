@@ -28,6 +28,8 @@ namespace GymPresentacion
         private bool _isNavigating = false;
         private bool _isChangingSelection = false;
 
+        private Form _dashboard;
+
         public PagosMembresia(UsuariosActivos usuariosActivos)
         {
             InitializeComponent();
@@ -162,8 +164,7 @@ namespace GymPresentacion
             cmbClientePago.SelectedIndexChanged += ClientePago_SelectedIndexChanged;
             cmbTipoClientePago.SelectedIndexChanged += TipoMembresia_SelectedIndexChanged;
             btnPago.Click += BtnPago_Click;
-            //PicPagoRegistroMembresia.Click += PicPagoRegistroMembresia_Click;
-            PicPagoInicio.Click += PicPagoInicio_Click;
+          
             ConsultaPago.Click += Consulta_Click;
             EliminarPago.Click += EliminarPago_Click;
             EditarPago.Click += EditarPago_Click;
@@ -513,11 +514,10 @@ namespace GymPresentacion
        }
         private void PicPagoInicio_Click(object sender, EventArgs e)
         {
-            _isNavigating = true;
-            btnDespliegue panelPrincipal = new btnDespliegue(_usuariosActivos);
-            panelPrincipal.StartPosition = FormStartPosition.CenterScreen;
-            panelPrincipal.Show();
-            this.Close();
+            _isNavigating = true; // Marcamos que es navegación
+            btnDespliegue panelPrincipal = new btnDespliegue(_usuariosActivos); // Creamos el form principal
+            panelPrincipal.Show(); // Lo mostramos
+            this.Hide(); // Cerramos el form actual
         }
 
         private void PicPagoRegistroMembresia_Click(object sender, EventArgs e)
