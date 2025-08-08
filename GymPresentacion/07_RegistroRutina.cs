@@ -30,6 +30,13 @@ namespace GymPresentacion
             ConfigurarControles();
             AsignarEventos();
             this.FormClosing += Form3Rutina_FormClosing;
+            dgvRutinas.AutoGenerateColumns = false;
+            dgvRutinas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvRutinas.MultiSelect = false;
+            dgvRutinas.ReadOnly = true;                         // evita entrar en edición
+            dgvRutinas.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dgvRutinas.AllowUserToAddRows = false;              // sin fila “nueva”
+            dgvRutinas.RowHeadersVisible = false;
         }
 
 
@@ -134,23 +141,30 @@ namespace GymPresentacion
 
         private void DgvRutinas_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvRutinas.SelectedRows.Count > 0)
+            DataGridViewRow row = dgvRutinas.CurrentRow;
+
+            if (row == null && dgvRutinas.SelectedRows.Count > 0)
+                row = dgvRutinas.SelectedRows[0];
+
+            if (row == null || row.IsNewRow)
             {
+                _rutinaSeleccionada = null;
+                LimpiarCampos();
+                return;
+            }
 
-                _rutinaSeleccionada = dgvRutinas.SelectedRows[0].DataBoundItem as Rutina;
+            _rutinaSeleccionada = row.DataBoundItem as Rutina;
 
-                if (_rutinaSeleccionada != null)
-                {
-                    txtNombreRutina.Text = _rutinaSeleccionada.NombreRutina;
-                    cmbGeneroRutina.SelectedItem = _rutinaSeleccionada.Genero;
-                    cmbAreaRutina.SelectedItem = _rutinaSeleccionada.AreaCuerpo;
-                    nudDuracion.Value = _rutinaSeleccionada.DuracionMinutos;
-
-                }
-                else
-                {
-                    LimpiarCampos();
-                }
+            if (_rutinaSeleccionada != null)
+            {
+                txtNombreRutina.Text = _rutinaSeleccionada.NombreRutina;
+                cmbGeneroRutina.SelectedItem = _rutinaSeleccionada.Genero;
+                cmbAreaRutina.SelectedItem = _rutinaSeleccionada.AreaCuerpo;
+                nudDuracion.Value = _rutinaSeleccionada.DuracionMinutos;
+            }
+            else
+            {
+                LimpiarCampos();
             }
         }
 
@@ -346,11 +360,15 @@ namespace GymPresentacion
 
         private void txtNombreRutina_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar >= 32 && e.KeyChar <=64) || (e.KeyChar >= 91 && e.KeyChar <=96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+            // Permitir letras, espacio y tecla de retroceso
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space)
             {
-                MessageBox.Show("Solo letras", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                e.Handled = true;
-                return;
+                e.Handled = false; // permitir
+            }
+            else
+            {
+                MessageBox.Show("Solo letras y espacios", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true; // bloquear
             }
         }
     }
