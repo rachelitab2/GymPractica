@@ -31,7 +31,7 @@ namespace GymPresentacion
             accesoUsuario = new AccesoUsuario();
             _usuarioActivo = usuarioActivo;
 
-            cmbRolUsuario.Items.AddRange(new string[] { "Administrador", "Secretario", "Entrenador" });
+            cmbRolUsuario.Items.AddRange(new string[] { "Administrador", "Entrenador" });
             cmbRolUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRolUsuario.SelectedIndex = 0;
 

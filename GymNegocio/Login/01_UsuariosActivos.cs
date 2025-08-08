@@ -12,5 +12,6 @@ namespace GymNegocio.Login
         public string Usuario { get; set; }
         public string Contrasena { get; set; }
         public string Rol {  get; set; }
+        public object Nombre { get; set; }
     }
 }
