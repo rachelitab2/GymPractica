@@ -19,7 +19,7 @@ namespace GymPresentacion
         public LogIn()
         {
             InitializeComponent();
-            cmbRol.Items.AddRange(new string[] { "Administrador", "Secretario", "Entrenador" });
+            cmbRol.Items.AddRange(new string[] { "Administrador", "Entrenador" });
             cmbRol.SelectedIndex = 0;
             LimpiarCampos(); // Limpiar al inicializar
             txtUsuario.Text = Properties.Settings.Default.UsuarioGuardado;
@@ -56,9 +56,6 @@ namespace GymPresentacion
                     {
                         case "Administrador":
                             Properties.Settings.Default.UsuarioGuardado_Administrador = usuario;
-                            break;
-                        case "Secretario":
-                            Properties.Settings.Default.UsuarioGuardado_Secretario = usuario;
                             break;
                         case "Entrenador":
                             Properties.Settings.Default.UsuarioGuardado_Entrenador = usuario;
@@ -97,6 +94,7 @@ namespace GymPresentacion
         private void Form5LogIn_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+            Environment.Exit(0);
         }
 
         private void cmbRol_SelectedIndexChanged(object sender, EventArgs e)
@@ -106,9 +104,6 @@ namespace GymPresentacion
             {
                 case "Administrador":
                     txtUsuario.Text = Properties.Settings.Default.UsuarioGuardado_Administrador;
-                    break;
-                case "Secretario":
-                    txtUsuario.Text = Properties.Settings.Default.UsuarioGuardado_Secretario;
                     break;
                 case "Entrenador":
                     txtUsuario.Text = Properties.Settings.Default.UsuarioGuardado_Entrenador;

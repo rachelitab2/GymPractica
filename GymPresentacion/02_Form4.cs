@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using GymNegocio.Login;
 
@@ -23,7 +24,6 @@ namespace GymPresentacion
             InicializarTooltips();
             AsignarEventos();
             ConfigurarControlDeAcceso();
-            AplicarRestriccionesSecretaria();
         }
 
         private void InicializarTooltips()
@@ -51,22 +51,20 @@ namespace GymPresentacion
             this.FormClosing += btnDespliegue_FormClosing;
             this.Load += btnDespliegue_Load;
 
-            // Eventos de labels - SIN label6 (se quitó el evento de cierre)
+            // Eventos de labels
             label1.Click += label1_Click;
             label2.Click += label2_Click;
             label3.Click += label3_Click_1;
             label4.Click += label4_Click;
             label5.Click += label5_Click;
-            // label6.Click += label6_Click; // REMOVIDO para evitar cierre accidental
-            //label7.Click += label7_Click;
+            label7.Click += label7_Click;
 
-            // Eventos de hover para efectos visuales
+            // Eventos de hover
             AsignarEventosHover();
         }
 
         private void AsignarEventosHover()
         {
-            // Efectos hover para PictureBoxes
             AsignarHover(PicPanelUsuario, label1);
             AsignarHover(PicPanelMemebresia, label2);
             AsignarHover(PicPanelPagoMembresia, label3);
@@ -74,52 +72,20 @@ namespace GymPresentacion
             AsignarHover(PicPanelRutina, label5);
             AsignarHover(PicPanelSeguimiento, label6);
         }
-        private void AsignarHoverSiTienePermiso(PictureBox pic, Label lbl)
-        {
-            if (TienePermiso(pic) && TienePermiso(lbl))
-            {
-                AsignarHover(pic, lbl);
-            }
-        }
 
         private void AsignarHover(PictureBox pic, Label lbl)
         {
-            Color colorOriginalPic = pic.BackColor;
-            Color colorOriginalLbl = lbl.BackColor;
-            Color colorHover = Color.Transparent; // SIN COLOR DE FONDO
-
-            pic.MouseEnter += (s, e) =>
-            {
-                if (TienePermiso(pic))
-                {
-                    // Solo cambiar cursor, sin cambiar color de fondo
-                    pic.Cursor = Cursors.Hand;
-                }
+            pic.MouseEnter += (s, e) => {
+                if (TienePermiso(pic)) pic.Cursor = Cursors.Hand;
             };
-
-            pic.MouseLeave += (s, e) =>
-            {
-                if (TienePermiso(pic))
-                {
-                    pic.Cursor = Cursors.Default;
-                }
+            pic.MouseLeave += (s, e) => {
+                if (TienePermiso(pic)) pic.Cursor = Cursors.Default;
             };
-
-            lbl.MouseEnter += (s, e) =>
-            {
-                if (TienePermiso(lbl))
-                {
-                    // Solo cambiar cursor, sin cambiar color de fondo
-                    lbl.Cursor = Cursors.Hand;
-                }
+            lbl.MouseEnter += (s, e) => {
+                if (TienePermiso(lbl)) lbl.Cursor = Cursors.Hand;
             };
-
-            lbl.MouseLeave += (s, e) =>
-            {
-                if (TienePermiso(lbl))
-                {
-                    lbl.Cursor = Cursors.Default;
-                }
+            lbl.MouseLeave += (s, e) => {
+                if (TienePermiso(lbl)) lbl.Cursor = Cursors.Default;
             };
         }
 
@@ -127,108 +93,47 @@ namespace GymPresentacion
         {
             string rol = _usuarioActivo.Rol;
 
-            // CONTROL ESPECÍFICO POR ROL
-
+            // SIMPLIFICADO: Solo Administrador y Entrenador
             if (rol == "Entrenador")
             {
-                // ENTRENADOR: Solo puede usar Rutinas y Equipos, todo lo demás restringido
+                // ENTRENADOR: Solo puede usar Rutinas y Equipos
                 ConfigurarRestriccion(PicPanelUsuario, label1, "Solo Administradores pueden gestionar usuarios");
-                ConfigurarRestriccion(PicPanelMemebresia, label2, "Solo Administradores y Secretarias pueden gestionar membresías");
-                ConfigurarRestriccion(PicPanelPagoMembresia, label3, "Solo Administradores y Secretarias pueden gestionar pagos");
+                ConfigurarRestriccion(PicPanelMemebresia, label2, "Solo Administradores pueden gestionar membresías");
+                ConfigurarRestriccion(PicPanelPagoMembresia, label3, "Solo Administradores pueden gestionar pagos");
                 ConfigurarRestriccion(PicPanelEntrenador, label4, "Solo Administradores pueden gestionar entrenadores");
                 ConfigurarRestriccion(PicPanelSeguimiento, label6, "Solo Administradores pueden gestionar seguimiento");
 
-                // PicPanelRutina y label5 están disponibles (no se configuran)
-                // PicPanelEquipo y label7 están disponibles (no se configuran)
-            }
-            else if (rol == "Secretaria")
-            {
-                // SECRETARIA: Puede usar Membresías, Pagos y Equipos. NO puede Usuarios ni Rutinas
-                ConfigurarRestriccion(PicPanelUsuario, label1, "Solo Administradores pueden gestionar usuarios");
-                ConfigurarRestriccion(PicPanelRutina, label5, "Solo Administradores y Entrenadores pueden gestionar rutinas");
-                ConfigurarRestriccion(PicPanelEntrenador, label4, "Solo Administradores pueden gestionar entrenadores");
-                ConfigurarRestriccion(PicPanelSeguimiento, label6, "Solo Administradores y Entrenadores pueden gestionar seguimiento");
-
-                // PicPanelMemebresia y label2 están disponibles (no se configuran)
-                // PicPanelPagoMembresia y label3 están disponibles (no se configuran)
-                // PicPanelEquipo y label7 están disponibles (no se configuran)
+                // Disponibles: Rutinas y Equipos
             }
             else if (rol == "Administrador")
             {
-                // ADMINISTRADOR: Acceso total, no se configura ninguna restricción
+                // ADMINISTRADOR: Acceso total
                 // Todos los controles están disponibles
+            }
+            else
+            {
+                // Si llega un rol no reconocido, tratar como Entrenador
+                ConfigurarRestriccion(PicPanelUsuario, label1, "Rol no reconocido - Acceso limitado");
+                ConfigurarRestriccion(PicPanelMemebresia, label2, "Rol no reconocido - Acceso limitado");
+                ConfigurarRestriccion(PicPanelPagoMembresia, label3, "Rol no reconocido - Acceso limitado");
+                ConfigurarRestriccion(PicPanelEntrenador, label4, "Rol no reconocido - Acceso limitado");
+                ConfigurarRestriccion(PicPanelSeguimiento, label6, "Rol no reconocido - Acceso limitado");
             }
         }
 
         private void ConfigurarRestriccion(PictureBox pic, Label lbl, string mensaje)
         {
-            // NO cambiar colores, mantener apariencia normal
             pic.Tag = "RESTRINGIDO";
             lbl.Tag = "RESTRINGIDO";
-
-            // Configurar tooltips
             _toolTip.SetToolTip(pic, mensaje);
             _toolTip.SetToolTip(lbl, mensaje);
-
-            // Cambiar cursor para indicar que no está disponible
             pic.Cursor = Cursors.No;
             lbl.Cursor = Cursors.No;
-        }
-
-        private void AplicarRestriccionesSecretaria()
-        {
-            if (_usuarioActivo != null && _usuarioActivo.Rol == "Secretaria")
-            {
-                PicPanelUsuario.Enabled = false;
-                label1.Enabled = false;
-
-                PicPanelEntrenador.Enabled = false;
-                label4.Enabled = false;
-
-                PicPanelRutina.Enabled = false;
-                label5.Enabled = false;
-
-                PicPanelSeguimiento.Enabled = false;
-                label6.Enabled = false;
-
-                // OPCIONAL: Cambiar cursor a "prohibido"
-                AplicarCursorNo(PicPanelUsuario, label1);
-                AplicarCursorNo(PicPanelEntrenador, label4);
-                AplicarCursorNo(PicPanelRutina, label5);
-                AplicarCursorNo(PicPanelSeguimiento, label6);
-            }
-        }
-
-        private void AplicarCursorNo(PictureBox pic, Label lbl)
-        {
-            if (!pic.Enabled) pic.Cursor = Cursors.No;
-            if (!lbl.Enabled) lbl.Cursor = Cursors.No;
         }
 
         private bool TienePermiso(Control control)
         {
             return control.Tag?.ToString() != "RESTRINGIDO";
-        }
-
-        // Método para limpiar formularios de usuario
-        private void LimpiarTextBoxUsuarios()
-        {
-            if (_registroUsuariosForm != null && !_registroUsuariosForm.IsDisposed)
-            {
-                try
-                {
-                    var limpiarMethod = _registroUsuariosForm.GetType().GetMethod("LimpiarCampos");
-                    if (limpiarMethod != null)
-                    {
-                        limpiarMethod.Invoke(_registroUsuariosForm, null);
-                    }
-                }
-                catch (Exception)
-                {
-                    _registroUsuariosForm.Dispose();
-                    _registroUsuariosForm = null;
-                }
-            }
         }
 
         private bool VerificarYMostrarRestriccion(Control control, string nombreModulo)
@@ -253,7 +158,6 @@ namespace GymPresentacion
         private void PicPanelMembresia(object sender, EventArgs e)
         {
             if (!VerificarYMostrarRestriccion(PicPanelMemebresia, "Membresías")) return;
-
             if (_registroMembresiasForm == null || _registroMembresiasForm.IsDisposed)
                 _registroMembresiasForm = new RegistroMembresias(this);
             _registroMembresiasForm.Show();
@@ -263,7 +167,6 @@ namespace GymPresentacion
         private void PicPanelEntrenadores(object sender, EventArgs e)
         {
             if (!VerificarYMostrarRestriccion(PicPanelEntrenador, "Entrenadores")) return;
-
             if (_registroEntrenadoresForm == null || _registroEntrenadoresForm.IsDisposed)
                 _registroEntrenadoresForm = new RegistroEntrenadores(this);
             _registroEntrenadoresForm.Show();
@@ -273,7 +176,6 @@ namespace GymPresentacion
         private void PicPanelRutina_Click(object sender, EventArgs e)
         {
             if (!VerificarYMostrarRestriccion(PicPanelRutina, "Rutinas")) return;
-
             if (_registroRutinaForm == null || _registroRutinaForm.IsDisposed)
                 _registroRutinaForm = new RegistroRutina(this);
             _registroRutinaForm.Show();
@@ -283,7 +185,6 @@ namespace GymPresentacion
         private void PicPanelPagoMembresia_Click(object sender, EventArgs e)
         {
             if (!VerificarYMostrarRestriccion(PicPanelPagoMembresia, "Pagos de Membresía")) return;
-
             PagosMembresia pagoMembresia = PagosMembresia.ObtenerInstancia(_usuarioActivo);
             pagoMembresia.Show();
             this.Hide();
@@ -292,7 +193,6 @@ namespace GymPresentacion
         private void PicPanelSeguimiento_Click(object sender, EventArgs e)
         {
             if (!VerificarYMostrarRestriccion(PicPanelSeguimiento, "Seguimiento de Peso")) return;
-
             if (_seguimientoForm == null || _seguimientoForm.IsDisposed)
                 _seguimientoForm = new PesoSeguimien(_usuarioActivo, this);
             _seguimientoForm.Show();
@@ -302,9 +202,6 @@ namespace GymPresentacion
         private void PicPanelUsuario_Click(object sender, EventArgs e)
         {
             if (!VerificarYMostrarRestriccion(PicPanelUsuario, "Usuarios")) return;
-
-            LimpiarTextBoxUsuarios();
-
             if (_registroUsuariosForm == null || _registroUsuariosForm.IsDisposed)
                 _registroUsuariosForm = new RegsitroUsuarios(_usuarioActivo);
             _registroUsuariosForm.Show();
@@ -315,9 +212,6 @@ namespace GymPresentacion
         private void label1_Click(object sender, EventArgs e)
         {
             if (!VerificarYMostrarRestriccion(label1, "Usuarios")) return;
-
-            LimpiarTextBoxUsuarios();
-
             if (_registroUsuariosForm == null || _registroUsuariosForm.IsDisposed)
                 _registroUsuariosForm = new RegsitroUsuarios(_usuarioActivo);
             _registroUsuariosForm.Show();
@@ -327,7 +221,6 @@ namespace GymPresentacion
         private void label2_Click(object sender, EventArgs e)
         {
             if (!VerificarYMostrarRestriccion(label2, "Membresías")) return;
-
             if (_registroMembresiasForm == null || _registroMembresiasForm.IsDisposed)
                 _registroMembresiasForm = new RegistroMembresias(this);
             _registroMembresiasForm.Show();
@@ -337,7 +230,6 @@ namespace GymPresentacion
         private void label3_Click_1(object sender, EventArgs e)
         {
             if (!VerificarYMostrarRestriccion(label3, "Pagos de Membresía")) return;
-
             PagosMembresia pagoMembresia = PagosMembresia.ObtenerInstancia(_usuarioActivo);
             pagoMembresia.Show();
             this.Hide();
@@ -346,7 +238,6 @@ namespace GymPresentacion
         private void label4_Click(object sender, EventArgs e)
         {
             if (!VerificarYMostrarRestriccion(label4, "Entrenadores")) return;
-
             if (_registroEntrenadoresForm == null || _registroEntrenadoresForm.IsDisposed)
                 _registroEntrenadoresForm = new RegistroEntrenadores(this);
             _registroEntrenadoresForm.Show();
@@ -356,32 +247,27 @@ namespace GymPresentacion
         private void label5_Click(object sender, EventArgs e)
         {
             if (!VerificarYMostrarRestriccion(label5, "Rutinas")) return;
-
             if (_registroRutinaForm == null || _registroRutinaForm.IsDisposed)
                 _registroRutinaForm = new RegistroRutina(this);
             _registroRutinaForm.Show();
             this.Hide();
         }
 
-       
-
         private void label7_Click(object sender, EventArgs e)
         {
             _isNavigating = true;
             RegistroEquipo equipo = new RegistroEquipo(_usuarioActivo);
             equipo.Show();
-            this.Hide();
+            this.Close();
         }
 
+        // Eventos auxiliares
         private void pictureBox1_Click(object sender, EventArgs e) { }
         private void btnDespliegue_Load(object sender, EventArgs e) { }
         private void btnDespliegue_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!_isNavigating) Application.Exit();
         }
-
-
-        private void MenuVertical_Paint(object sender, PaintEventArgs e) { }
 
         private void PicCerrarSesion_Click(object sender, EventArgs e)
         {
@@ -400,15 +286,5 @@ namespace GymPresentacion
         }
 
         private void Despliegue_Click(object sender, EventArgs e) { }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-            if (!VerificarYMostrarRestriccion(PicPanelSeguimiento, "Seguimiento de Peso")) return;
-            _isNavigating = true;
-            PesoSeguimien seguimiento = new PesoSeguimien(_usuarioActivo, this);
-            seguimiento.Show();
-            this.Hide();
-        }
     }
 }
