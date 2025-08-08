@@ -60,12 +60,10 @@ namespace GymPresentacion
         private void PicEquipoInicio_Click(object sender, EventArgs e)
         {
 
-
-            _isNavigating = true;
-            btnDespliegue principal = new btnDespliegue(_usuarioActivo);
-            principal.StartPosition = FormStartPosition.CenterScreen;
-            principal.Show();
-            this.Close();
+            _isNavigating = true; 
+            btnDespliegue panelPrincipal = new btnDespliegue(_usuarioActivo); //TODO Usa el mismo usuario activo
+            panelPrincipal.Show();
+            this.Hide(); 
 
         }
 

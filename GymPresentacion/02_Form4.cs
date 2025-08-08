@@ -58,7 +58,7 @@ namespace GymPresentacion
             label4.Click += label4_Click;
             label5.Click += label5_Click;
             // label6.Click += label6_Click; // REMOVIDO para evitar cierre accidental
-            label7.Click += label7_Click;
+            //label7.Click += label7_Click;
 
             // Eventos de hover para efectos visuales
             AsignarEventosHover();
