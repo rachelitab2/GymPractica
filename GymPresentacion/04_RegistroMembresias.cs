@@ -278,22 +278,67 @@ namespace GymPresentacion // nombre importante
                         break;
                 }
 
-                // Cuerpo del mensaje con los datos
+                // Cuerpo HTML con estilo visual
                 string cuerpo = $@"
-    <h2>¡Bienvenido a PowerFit!</h2>
-    <p>Hola <strong>{nombre}</strong>,</p>
-    <p>Gracias por registrarte. Aquí están los detalles de tu membresía:</p>
-    <table border='1' cellpadding='5' cellspacing='0'>
-        <tr><td><strong>Nombre:</strong></td><td>{nombre}</td></tr>
-        <tr><td><strong>Tipo de Membresía:</strong></td><td>{tipo}</td></tr>
-        <tr><td><strong>Fecha de Inicio:</strong></td><td>{fechaInicio:dd/MM/yyyy}</td></tr>
-        <tr><td><strong>Fecha de Vencimiento:</strong></td><td>{fechaVencimiento:dd/MM/yyyy}</td></tr>
-        <tr><td><strong>Costo:</strong></td><td>{costo.ToString("C")}</td></tr>
-        <tr><td><strong>Teléfono:</strong></td><td>{telefono}</td></tr>
-    </table>
-    <p>Te esperamos para entrenar duro.</p>
-    <p><em>PowerFit - Train Hard 💪</em></p>
-    ";
+<html>
+<head>
+    <style>
+        body {{
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }}
+        .container {{
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }}
+        h2 {{
+            color: #0066cc;
+            text-align: center;
+        }}
+        table {{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }}
+        th, td {{
+            border: 1px solid #cccccc;
+            padding: 10px;
+            text-align: left;
+        }}
+        th {{
+            background-color: #e6f2ff;
+        }}
+        .footer {{
+            margin-top: 30px;
+            text-align: center;
+            color: #555;
+        }}
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <h2>¡Bienvenido a PowerFit!</h2>
+        <p>Hola <strong>{nombre}</strong>, gracias por registrarte. Aquí están los detalles de tu membresía:</p>
+
+        <table>
+            <tr><th>Nombre:</th><td>{nombre}</td></tr>
+            <tr><th>Tipo de Membresía:</th><td>{tipo}</td></tr>
+            <tr><th>Fecha de Inicio:</th><td>{fechaInicio:dd/MM/yyyy}</td></tr>
+            <tr><th>Fecha de Vencimiento:</th><td>{fechaVencimiento:dd/MM/yyyy}</td></tr>
+            <tr><th>Costo:</th><td>{costo.ToString("C2", new System.Globalization.CultureInfo("es-DO"))}</td></tr>
+            <tr><th>Teléfono:</th><td>{telefono}</td></tr>
+        </table>
+
+        <div class='footer'>
+            <p><i><b>PowerFit - Train Hard 💪</b></i></p>
+        </div>
+    </div>
+</body>
+</html>";
 
                 // Preparar el correo
                 MailMessage mensaje = new MailMessage();
