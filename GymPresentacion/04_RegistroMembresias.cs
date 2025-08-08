@@ -118,8 +118,6 @@ namespace GymPresentacion // nombre importante
         {
             if (btnAgregar != null)// para ver si se creo el boton
             {
-                btnAgregar.Click -= BtnAgregar_Click;
-                btnAgregar.Click += BtnAgregar_Click;
             }
 
             if (btnEditar != null)
